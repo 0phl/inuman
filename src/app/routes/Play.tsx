@@ -1,13 +1,14 @@
-import { Suspense, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Navigate, useNavigate } from 'react-router';
 import type { SessionState } from '@/core/engine/session';
 import { getLogic } from '@/core/games/registry';
 import { getView } from '@/games/views';
 import { sceneTunnel } from '@/stage/tunnel';
+import { useFx } from '@/store/fx';
 import { useGameView, useSession } from '@/store/session';
 import { FxLayer } from '@/ui/FxLayer';
-import { IconMenu, IconPlus } from '@/ui/icons';
+import { IconArrowRight, IconEye, IconMenu, IconPlus } from '@/ui/icons';
 import { ParusaSheet } from '@/ui/ParusaSheet';
 import { Sheet } from '@/ui/Sheet';
 import { Tally } from '@/ui/Tally';
@@ -76,7 +77,50 @@ function PlayMenu({
   );
 }
 
-function GameOver({ session }: { session: SessionState }) {
+/** The last move (final reveal, last card, 4th king) stays on the table this long before the results. */
+const OVER_DELAY_MS = 2200;
+
+/**
+ * When to put the game-over cover up. A game that ends while you watch shows its final move first:
+ * the cover waits OVER_DELAY_MS, or comes up as soon as "Tingnan ang resulta" is tapped. A game
+ * that was already over when the screen opened (reload, resume) goes straight to the results.
+ * From the cover, "Silipin ang mesa" goes back to the table until the pill is tapped again.
+ */
+function useResultsCover(over: boolean) {
+  const [shown, setShown] = useState(over);
+  const [lookingAtTable, setLookingAtTable] = useState(false);
+  const [wasOver, setWasOver] = useState(over);
+  if (wasOver !== over) {
+    // A new game (Isa pa!) starts with a clean slate.
+    setWasOver(over);
+    setShown(false);
+    setLookingAtTable(false);
+  }
+  useEffect(() => {
+    if (!over || shown || lookingAtTable) return;
+    const t = window.setTimeout(() => setShown(true), OVER_DELAY_MS);
+    return () => window.clearTimeout(t);
+  }, [over, shown, lookingAtTable]);
+
+  const visible = over && shown;
+  const setResultsShown = useFx((s) => s.setResultsShown);
+  useEffect(() => {
+    setResultsShown(visible);
+    return () => setResultsShown(false);
+  }, [visible, setResultsShown]);
+
+  return {
+    visible,
+    waiting: over && !shown,
+    show: () => setShown(true),
+    lookAtTable: () => {
+      setShown(false);
+      setLookingAtTable(true);
+    },
+  };
+}
+
+function GameOver({ session, onLookAtTable }: { session: SessionState; onLookAtTable(): void }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const startGame = useSession((s) => s.startGame);
@@ -111,6 +155,15 @@ function GameOver({ session }: { session: SessionState }) {
           >
             {t('play.over.home')}
           </button>
+          <button
+            type="button"
+            className="btn btn-ghost gap-2 text-capiz-300"
+            onClick={onLookAtTable}
+            data-testid="look-at-table"
+          >
+            <IconEye size={20} />
+            {t('play.over.lookAtTable')}
+          </button>
         </div>
       </div>
     </div>
@@ -124,6 +177,7 @@ function PlaySession({ session }: { session: SessionState }) {
   const gameView = getView(session.gameId);
   const [menu, setMenu] = useState(false);
   const [parusa, setParusa] = useState(false);
+  const results = useResultsCover(session.over);
 
   if (!gameView || view === null) return <Navigate to="/" replace />;
   const { Scene, Hud } = gameView;
@@ -148,9 +202,21 @@ function PlaySession({ session }: { session: SessionState }) {
           >
             <IconMenu />
           </button>
-          <span className="flex-1 truncate text-center text-sm font-bold text-capiz-300">
-            {t(`game.${session.gameId}.title`)}
-          </span>
+          {results.waiting ? (
+            <button
+              type="button"
+              className="btn btn-brass anim-pour min-h-12 min-w-0 flex-1 gap-1.5 px-3 text-[0.95rem] whitespace-nowrap"
+              onClick={results.show}
+              data-testid="see-results"
+            >
+              <span className="truncate">{t('play.over.see')}</span>
+              <IconArrowRight size={18} className="shrink-0" />
+            </button>
+          ) : (
+            <span className="flex-1 truncate text-center text-sm font-bold text-capiz-300">
+              {t(`game.${session.gameId}.title`)}
+            </span>
+          )}
           <button
             type="button"
             className="btn btn-wood min-h-12 gap-1 px-3 text-sm"
@@ -177,7 +243,7 @@ function PlaySession({ session }: { session: SessionState }) {
         session={session}
         onParusa={() => setParusa(true)}
       />
-      {session.over && <GameOver session={session} />}
+      {results.visible && <GameOver session={session} onLookAtTable={results.lookAtTable} />}
     </main>
   );
 }

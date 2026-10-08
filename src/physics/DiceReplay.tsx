@@ -122,8 +122,18 @@ function TrayModel({ tray }: { tray: TraySpec }) {
     return t;
   }, [tray.width, tray.depth]);
   useEffect(() => () => felt.dispose(), [felt]);
+  // The pendant is straight above the tray, so the near rail's front face (the one facing the
+  // camera) gets no direct light and rendered pure black. A touch of self-emission in the wood's
+  // own colour stands in for the bounce from the felt and keeps it reading as wood.
   const wood = useMemo(
-    () => new MeshStandardMaterial({ color: '#4a2614', roughness: 0.42, envMapIntensity: 0.8 }),
+    () =>
+      new MeshStandardMaterial({
+        color: '#55301a',
+        emissive: '#4a2614',
+        emissiveIntensity: 0.7,
+        roughness: 0.5,
+        envMapIntensity: 0.8,
+      }),
     [],
   );
   useEffect(() => () => wood.dispose(), [wood]);

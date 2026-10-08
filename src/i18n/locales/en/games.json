@@ -170,6 +170,61 @@
       "busMaxAttempts": "Max bus attempts",
       "busMaxAttempts_help": "After this many tries the rider gets off anyway. Enough is enough!",
       "aceHigh": "Aces high"
+    },
+    "bp": {
+      "teams": "Teams",
+      "teams_opt_alternate": "Alternate seats",
+      "teams_opt_halves": "Split down the middle",
+      "teams_help": "Alternate: seats 1-3-5 vs 2-4-6. Split: the first half of the seats vs the rest.",
+      "cups": "Cups per side",
+      "cups_opt_6": "6 (triangle)",
+      "cups_opt_10": "10 (classic)",
+      "throwsPerTurn": "Throws per turn",
+      "throwsPerTurn_opt_1": "1 throw",
+      "throwsPerTurn_opt_2": "2 throws",
+      "ballsBack": "Balls back",
+      "ballsBack_help": "Sink both throws in a turn and your team shoots again.",
+      "cupSips": "Sips per sunk cup",
+      "drinker": "Who drinks a sunk cup",
+      "drinker_opt_rotate": "Teammates take turns",
+      "drinker_opt_team": "The whole team",
+      "reracks": "Re-racks per team",
+      "reracks_help": "Before throwing, a team can reshape the cups it's shooting at.",
+      "aimAssist": "Aim assist",
+      "aimAssist_help": "0 = pure skill, 3 = maximum help.",
+      "loserSips": "Sips for the losing team"
+    },
+    "qt": {
+      "aimAssist": "Aim assist",
+      "aimAssist_help": "0 = pure skill, 3 = maximum help.",
+      "mustBounce": "Must bounce",
+      "mustBounce_help": "A coin that drops straight into the glass without bouncing counts as a miss.",
+      "sips": "Sips per make",
+      "sips_help": "The shooter picks who drinks.",
+      "missesBeforePass": "Misses before passing",
+      "missesBeforePass_help": "Total misses in a turn before the coin moves on. Makes don't reset them.",
+      "streakRule": "Streak reward",
+      "streakRule_opt_makeRule": "Make a house rule",
+      "streakRule_opt_none": "Nothing",
+      "streakRule_help": "Hit the streak and the shooter adds a house rule.",
+      "streakLength": "Makes in a row for a streak"
+    },
+    "fc": {
+      "teams": "Teams",
+      "teams_opt_alternate": "Alternate seats",
+      "teams_opt_halves": "Split down the middle",
+      "teams_help": "Alternate: seats 1-3-5 vs 2-4-6. Split: the first half of the seats vs the rest.",
+      "drinkBeforeFlip": "Drink before flipping",
+      "drinkBeforeFlip_help": "Every player drinks before their flip.",
+      "sips": "Sips before the flip",
+      "difficulty": "Difficulty",
+      "difficulty_opt_easy": "Easy",
+      "difficulty_opt_normal": "Normal",
+      "difficulty_opt_hard": "Hard",
+      "difficulty_help": "The harder it is, the cleaner your flick has to be.",
+      "loserSips": "Sips for the losing team",
+      "maxAttemptsPerLeg": "Max tries per player",
+      "maxAttemptsPerLeg_help": "After this many, play passes on. The tries still count."
     }
   },
   "hl": {
@@ -553,6 +608,138 @@
       "offBus": "Off the bus!",
       "released": "Let off the bus",
       "give": "Hand out {{sips}}"
+    }
+  },
+  "bp": {
+    "team": {
+      "0": "Red Team",
+      "1": "Blue Team"
+    },
+    "reason": {
+      "cup": "They sank your cup! Drink.",
+      "lost": "Your team lost! Everybody drinks."
+    },
+    "notice": {
+      "hit": "Sunk it! Nice shot, {{name}}. {{drinkers}}, drink! Cups left: {{left}}",
+      "ballsBack": "Balls back! Shoot again, {{names}}!",
+      "rerack": "Re-rack! {{name}} reshaped the cups.",
+      "win": {
+        "0": "Red Team wins! GG, {{names}}!",
+        "1": "Blue Team wins! GG, {{names}}!"
+      }
+    },
+    "error": {
+      "badThrow": "That throw doesn't look right.",
+      "ownCup": "That's your own cup! Doesn't count.",
+      "noCup": "There's no cup there anymore.",
+      "rerackLate": "Re-rack before you throw.",
+      "noReracks": "Your team is out of re-racks.",
+      "formation": "The cups left don't fit that formation.",
+      "sameFormation": "The cups are already set up like that."
+    },
+    "hud": {
+      "shoot": "Shoot!",
+      "aim": "Flick the ball toward the cups",
+      "made": "Sunk it!",
+      "miss": "Miss!",
+      "turn": "{{team}} to throw",
+      "thrower": "Throwing: {{name}}",
+      "throwsLeft": "Throws left: {{n}}",
+      "cupsLeft": "Cups: {{n}}",
+      "reracksLeft": "Re-racks: {{n}}",
+      "rerack": "Re-rack",
+      "rerackPick": "Pick a new formation",
+      "ballsBack": "Balls back!",
+      "drinker": "Next to drink: {{name}}",
+      "members": "Players: {{names}}",
+      "stats": "{{hits}}/{{throws}} sunk",
+      "vs": "vs",
+      "winner": "{{team}} wins!",
+      "formation": {
+        "tri10": "Triangle (10)",
+        "tri6": "Triangle (6)",
+        "tri3": "Triangle (3)",
+        "line2": "Line (2)",
+        "single": "Single cup"
+      }
+    }
+  },
+  "qt": {
+    "reason": {
+      "picked": "{{name}} picked you! Drink."
+    },
+    "notice": {
+      "made": "In! {{name}} picks who drinks.",
+      "noBounce": "No bounce, {{name}}! That's a miss.",
+      "streak": "{{streak}} in a row for {{name}}! Time for a house rule."
+    },
+    "error": {
+      "badThrow": "That throw doesn't look right.",
+      "pending": "Settle this first: who drinks?",
+      "noPending": "Nothing to settle right now.",
+      "badTarget": "Pick another player at the table.",
+      "ruleText": "Write the rule (up to 140 characters)."
+    },
+    "hud": {
+      "shoot": "Shoot!",
+      "aim": "Flick to bounce the coin into the glass",
+      "made": "In!",
+      "miss": "Miss!",
+      "noBounce": "No bounce!",
+      "shooter": "Shooter: {{name}}",
+      "streak": "Streak: {{n}}",
+      "best": "Best streak: {{n}}",
+      "missesLeft": "Misses left: {{n}}",
+      "pick": "Who drinks?",
+      "pickHint": "Pick someone to drink {{sips}}.",
+      "makeRule": "Make a house rule!",
+      "rulePlaceholder": "e.g. No saying \"drink\"",
+      "saveRule": "Make it a rule",
+      "skip": "Skip",
+      "houseRules": "House rules",
+      "stats": "{{makes}}/{{shots}} made"
+    }
+  },
+  "fc": {
+    "reason": {
+      "drink": "Drink before you flip!",
+      "lost": "Your team lost! Everybody drinks.",
+      "draw": "It's a draw! Everybody drinks."
+    },
+    "notice": {
+      "flipped": "{{name}} flipped it! Tries: {{attempts}}",
+      "capped": "That's enough, {{name}}! Passing on after {{attempts}} tries.",
+      "suddenDeath": "Tied! Sudden death, round {{round}}!",
+      "draw": "Still tied after {{rounds}} sudden-death rounds. It's a draw!",
+      "win": {
+        "0": "Red Team wins! GG, {{names}}!",
+        "1": "Blue Team wins! GG, {{names}}!"
+      }
+    },
+    "error": {
+      "drinkFirst": "Drink first, then flip!",
+      "notDrinking": "No drink needed right now.",
+      "flipping": "Hold on, the cup is still flipping.",
+      "staleFlip": "That flip is already over.",
+      "badQuality": "That flick doesn't look right."
+    },
+    "hud": {
+      "drink": "Drink up first, {{name}}!",
+      "drank": "Done drinking!",
+      "flip": "Flip it!",
+      "flipHint": "Flick the cup's edge upward",
+      "flipping": "Flipping…",
+      "success": "Flipped! Nice!",
+      "fail": "Again!",
+      "capped": "Passed!",
+      "attempts": "Tries: {{n}}",
+      "leg": "Player {{n}} of {{total}}",
+      "teamAttempts": "{{team}}: {{n}} tries",
+      "fewerWins": "Fewest tries wins",
+      "cap": "Max {{n}} tries",
+      "suddenDeath": "Sudden death!",
+      "winner": "{{team}} wins!",
+      "draw": "Draw!"
     }
   }
 }

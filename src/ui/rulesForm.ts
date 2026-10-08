@@ -71,7 +71,11 @@ function typeOf(node: JsonSchema): string | undefined {
   return node.type;
 }
 
-export function schemaToFields(node: JsonSchema, root: JsonSchema, path: string[] = []): FieldNode[] {
+export function schemaToFields(
+  node: JsonSchema,
+  root: JsonSchema,
+  path: string[] = [],
+): FieldNode[] {
   const props = resolve(node, root).properties ?? {};
   return Object.entries(props).map(([key, raw]) => toField(key, raw, root, [...path, key]));
 }
@@ -81,7 +85,8 @@ function toField(key: string, raw: JsonSchema, root: JsonSchema, path: string[])
   const base: Base = { key, path, label: node.label };
   const variants = node.anyOf ?? node.oneOf;
 
-  if (node.enum && node.enum.every(isPrimitive)) return { ...base, kind: 'enum', options: node.enum };
+  if (node.enum && node.enum.every(isPrimitive))
+    return { ...base, kind: 'enum', options: node.enum };
   if (variants && variants.length > 0) {
     const consts = variants.map((v) => resolve(v, root));
     if (consts.every((v) => 'const' in v && isPrimitive(v.const))) {
@@ -93,8 +98,10 @@ function toField(key: string, raw: JsonSchema, root: JsonSchema, path: string[])
     case 'integer':
     case 'number': {
       const integer = typeOf(node) === 'integer';
-      const min = node.minimum ?? (node.exclusiveMinimum !== undefined ? node.exclusiveMinimum : undefined);
-      const max = node.maximum ?? (node.exclusiveMaximum !== undefined ? node.exclusiveMaximum : undefined);
+      const min =
+        node.minimum ?? (node.exclusiveMinimum !== undefined ? node.exclusiveMinimum : undefined);
+      const max =
+        node.maximum ?? (node.exclusiveMaximum !== undefined ? node.exclusiveMaximum : undefined);
       const step = node.multipleOf ?? (integer ? 1 : 0.5);
       return { ...base, kind: 'number', min, max, step, integer };
     }

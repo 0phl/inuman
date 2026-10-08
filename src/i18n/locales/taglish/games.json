@@ -170,6 +170,61 @@
       "busMaxAttempts": "Max na ikot sa bus",
       "busMaxAttempts_help": "Pag naubos ang ikot, pababain na sa bus. Tama na 'yan!",
       "aceHigh": "Pinakamataas ang Alas"
+    },
+    "bp": {
+      "teams": "Hatian ng teams",
+      "teams_opt_alternate": "Salitan sa upuan",
+      "teams_opt_halves": "Hati sa gitna",
+      "teams_help": "Salitan: upuan 1-3-5 vs 2-4-6. Hati: unang kalahati ng upuan vs ang natitira.",
+      "cups": "Cups bawat side",
+      "cups_opt_6": "6 (triangle)",
+      "cups_opt_10": "10 (classic)",
+      "throwsPerTurn": "Tira bawat turn",
+      "throwsPerTurn_opt_1": "1 tira",
+      "throwsPerTurn_opt_2": "2 tira",
+      "ballsBack": "Balls back",
+      "ballsBack_help": "Pag pumasok pareho ang tira n'yo, tira ulit ang team!",
+      "cupSips": "Lagok bawat cup na pumasok",
+      "drinker": "Sino iinom pag na-shoot",
+      "drinker_opt_rotate": "Salitan sa team",
+      "drinker_opt_team": "Buong team",
+      "reracks": "Re-rack bawat team",
+      "reracks_help": "Bago tumira, puwedeng ayusin ng team ang natitirang cups na tinitira nila.",
+      "aimAssist": "Aim assist",
+      "aimAssist_help": "0 = puro galing, 3 = todo alalay sa tira.",
+      "loserSips": "Tagay ng talong team"
+    },
+    "qt": {
+      "aimAssist": "Aim assist",
+      "aimAssist_help": "0 = puro galing, 3 = todo alalay sa tira.",
+      "mustBounce": "Dapat mag-bounce",
+      "mustBounce_help": "Pag diretsong pumasok sa baso nang walang bounce, sablay 'yan.",
+      "sips": "Lagok pag pumasok",
+      "sips_help": "Ang shooter ang pipili kung sino iinom.",
+      "missesBeforePass": "Sablay bago ipasa",
+      "missesBeforePass_help": "Ilang sablay sa isang turn bago ipasa ang barya. Hindi nare-reset pag pumasok.",
+      "streakRule": "Pag sunod-sunod ang pasok",
+      "streakRule_opt_makeRule": "Gagawa ng house rule",
+      "streakRule_opt_none": "Wala",
+      "streakRule_help": "Pag naka-streak, ang shooter ang gagawa ng bagong rule sa inuman.",
+      "streakLength": "Ilang sunod-sunod para sa streak"
+    },
+    "fc": {
+      "teams": "Hatian ng teams",
+      "teams_opt_alternate": "Salitan sa upuan",
+      "teams_opt_halves": "Hati sa gitna",
+      "teams_help": "Salitan: upuan 1-3-5 vs 2-4-6. Hati: unang kalahati ng upuan vs ang natitira.",
+      "drinkBeforeFlip": "Inom muna bago mag-flip",
+      "drinkBeforeFlip_help": "Bawat player, iinom muna bago i-flip ang cup.",
+      "sips": "Lagok bago mag-flip",
+      "difficulty": "Hirap",
+      "difficulty_opt_easy": "Madali",
+      "difficulty_opt_normal": "Sakto lang",
+      "difficulty_opt_hard": "Mahirap",
+      "difficulty_help": "Mas mahirap, mas kailangan ng swabeng flick.",
+      "loserSips": "Tagay ng talong team",
+      "maxAttemptsPerLeg": "Max na try bawat player",
+      "maxAttemptsPerLeg_help": "Pag naubos, pasa na sa kasunod. Bilang pa rin ang mga try."
     }
   },
   "hl": {
@@ -553,6 +608,138 @@
       "offBus": "Nakababa na!",
       "released": "Pinaalis sa bus",
       "give": "Mamigay ng {{sips}}"
+    }
+  },
+  "bp": {
+    "team": {
+      "0": "Team Pula",
+      "1": "Team Asul"
+    },
+    "reason": {
+      "cup": "Na-shoot ang cup n'yo! Tagay.",
+      "lost": "Talo ang team n'yo! Tagay lahat."
+    },
+    "notice": {
+      "hit": "Pasok! Shoot ni {{name}}. Tagay, {{drinkers}}! Natitirang cups: {{left}}",
+      "ballsBack": "Balls back! Tira ulit, {{names}}!",
+      "rerack": "Re-rack! Inayos ni {{name}} ang cups.",
+      "win": {
+        "0": "Panalo ang Team Pula! GG, {{names}}!",
+        "1": "Panalo ang Team Asul! GG, {{names}}!"
+      }
+    },
+    "error": {
+      "badThrow": "Parang may mali sa tira na 'yan.",
+      "ownCup": "Sariling cup 'yan! Hindi puwede.",
+      "noCup": "Wala nang cup diyan.",
+      "rerackLate": "Bago tumira lang puwedeng mag-re-rack.",
+      "noReracks": "Ubos na ang re-rack n'yo.",
+      "formation": "Hindi kasya ang natitirang cups sa formation na 'yan.",
+      "sameFormation": "Ganyan na ang ayos ng cups."
+    },
+    "hud": {
+      "shoot": "Shoot!",
+      "aim": "I-flick ang bola papunta sa cups",
+      "made": "Pasok!",
+      "miss": "Sablay!",
+      "turn": "Tira ng {{team}}",
+      "thrower": "Titira: {{name}}",
+      "throwsLeft": "Natitirang tira: {{n}}",
+      "cupsLeft": "Cups: {{n}}",
+      "reracksLeft": "Re-rack: {{n}}",
+      "rerack": "Re-rack",
+      "rerackPick": "Pumili ng bagong ayos",
+      "ballsBack": "Balls back!",
+      "drinker": "Susunod na iinom: {{name}}",
+      "members": "Kasama: {{names}}",
+      "stats": "{{hits}}/{{throws}} pasok",
+      "vs": "vs",
+      "winner": "Panalo ang {{team}}!",
+      "formation": {
+        "tri10": "Triangle (10)",
+        "tri6": "Triangle (6)",
+        "tri3": "Triangle (3)",
+        "line2": "Pahaba (2)",
+        "single": "Isang cup"
+      }
+    }
+  },
+  "qt": {
+    "reason": {
+      "picked": "Pinili ka ni {{name}}! Tagay."
+    },
+    "notice": {
+      "made": "Pasok! Pipili si {{name}} kung sino iinom.",
+      "noBounce": "Walang bounce, {{name}}! Sablay 'yan.",
+      "streak": "{{streak}} sunod-sunod si {{name}}! Gagawa siya ng house rule."
+    },
+    "error": {
+      "badThrow": "Parang may mali sa tira na 'yan.",
+      "pending": "Tapusin muna: sino iinom?",
+      "noPending": "Walang kailangang i-settle.",
+      "badTarget": "Pumili ng ibang player sa mesa.",
+      "ruleText": "Isulat ang rule (hanggang 140 letters)."
+    },
+    "hud": {
+      "shoot": "Shoot!",
+      "aim": "I-flick para i-bounce ang barya papasok sa baso",
+      "made": "Pasok!",
+      "miss": "Sablay!",
+      "noBounce": "Walang bounce!",
+      "shooter": "Shooter: {{name}}",
+      "streak": "Streak: {{n}}",
+      "best": "Pinakamahabang streak: {{n}}",
+      "missesLeft": "Natitirang sablay: {{n}}",
+      "pick": "Sino iinom?",
+      "pickHint": "Pumili ng iinom ng {{sips}} lagok.",
+      "makeRule": "Gumawa ng house rule!",
+      "rulePlaceholder": "Hal. Bawal sabihin ang \"inom\"",
+      "saveRule": "G, rule na 'yan!",
+      "skip": "Skip",
+      "houseRules": "House rules",
+      "stats": "{{makes}}/{{shots}} pasok"
+    }
+  },
+  "fc": {
+    "reason": {
+      "drink": "Inom muna bago mag-flip!",
+      "lost": "Talo ang team n'yo! Tagay lahat.",
+      "draw": "Tabla! Lahat, tagay."
+    },
+    "notice": {
+      "flipped": "Na-flip ni {{name}}! Try: {{attempts}}",
+      "capped": "Tama na, {{name}}! Pasa na pagkatapos ng {{attempts}} try.",
+      "suddenDeath": "Tabla! Sudden death, round {{round}}!",
+      "draw": "Tabla pa rin pagkatapos ng {{rounds}} sudden death. Draw!",
+      "win": {
+        "0": "Panalo ang Team Pula! GG, {{names}}!",
+        "1": "Panalo ang Team Asul! GG, {{names}}!"
+      }
+    },
+    "error": {
+      "drinkFirst": "Inom muna bago mag-flip!",
+      "notDrinking": "Wala pang iinumin ngayon.",
+      "flipping": "Teka, fina-flip pa ang cup.",
+      "staleFlip": "Tapos na ang flip na 'yan.",
+      "badQuality": "Parang may mali sa flick na 'yan."
+    },
+    "hud": {
+      "drink": "Inom muna, {{name}}!",
+      "drank": "Nainom ko na!",
+      "flip": "I-flip!",
+      "flipHint": "I-flick pataas ang gilid ng cup",
+      "flipping": "Fina-flip…",
+      "success": "Tumaob! Ayos!",
+      "fail": "Ulit!",
+      "capped": "Pasa na!",
+      "attempts": "Try: {{n}}",
+      "leg": "Player {{n}} sa {{total}}",
+      "teamAttempts": "{{team}}: {{n}} try",
+      "fewerWins": "Pababaan ng try ang labanan",
+      "cap": "Max {{n}} try",
+      "suddenDeath": "Sudden death!",
+      "winner": "Panalo ang {{team}}!",
+      "draw": "Tabla!"
     }
   }
 }

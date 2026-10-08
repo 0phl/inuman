@@ -13,14 +13,23 @@ async function seat(page: Page, names: string[]) {
   await expect(page.getByTestId('player-row')).toHaveCount(names.length);
 }
 
-/** Tap the pass-the-phone cover low down, clear of any drink toasts stacked near the top. */
-async function dismissCover(page: Page) {
+/**
+ * Pass the phone: a public pass is a banner over the turn indicator (tap it away; the table stays
+ * usable underneath), a private one the opaque full-screen cover (tap low, clear of any toasts).
+ */
+async function passPhone(page: Page) {
   const cover = page.getByTestId('pass-cover');
-  const box = await cover.boundingBox();
-  await cover.click({ position: { x: 24, y: (box?.height ?? 600) - 24 } });
-  await expect(cover).toBeHidden();
+  const banner = page.getByTestId('pass-banner');
+  await expect(cover.or(banner).first()).toBeVisible({ timeout: 8_000 });
+  if (await cover.isVisible()) {
+    const box = await cover.boundingBox();
+    await cover.click({ position: { x: 24, y: (box?.height ?? 600) - 24 } });
+    await expect(cover).toBeHidden();
+  } else {
+    await banner.click();
+    await expect(banner).toBeHidden();
+  }
 }
-
 test('Kings Cup: draw until a card needs settling, then settle it', async ({ page }) => {
   await seat(page, ['Migs', 'Bea', 'Jun']);
   await page.goto('/games/kings-cup');
@@ -34,7 +43,7 @@ test('Kings Cup: draw until a card needs settling, then settle it', async ({ pag
   await expect(page.getByTestId('kc-kings')).toContainText('4');
 
   const pending = page.getByTestId('kc-pending');
-  const cover = page.getByTestId('pass-cover');
+  const cover = page.getByTestId(/^pass-(cover|banner)$/);
   const draw = page.getByTestId('kc-draw');
 
   for (let i = 0; i < 10; i++) {
@@ -45,12 +54,12 @@ test('Kings Cup: draw until a card needs settling, then settle it', async ({ pag
     // Either the table has to settle the card, or the phone goes to the next player.
     await expect(pending.or(cover).first()).toBeVisible({ timeout: 6_000 });
     if (await pending.isVisible()) break;
-    await dismissCover(page);
+    await passPhone(page);
   }
 
   // ~10 draws without a single pending card is possible but very unlikely (<0.1%).
   if (await pending.isVisible()) {
-    // The pass-the-phone cover waits until the card is settled.
+    // The pass-the-phone prompt waits until the card is settled.
     await expect(cover).toBeHidden();
     const kind = await pending.getAttribute('data-kind');
     if (kind === 'rule') {
@@ -64,7 +73,7 @@ test('Kings Cup: draw until a card needs settling, then settle it', async ({ pag
     if (kind === 'rule') await expect(page.getByTestId('kc-house-rules')).toContainText('1');
     if (kind === 'mate') await expect(page.getByTestId('kc-mates')).toBeVisible();
     await expect(cover).toBeVisible({ timeout: 5_000 });
-    await dismissCover(page);
+    await passPhone(page);
     await expect(draw).toBeEnabled();
   }
 });

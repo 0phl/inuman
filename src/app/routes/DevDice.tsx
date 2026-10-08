@@ -9,10 +9,6 @@ import { DIE_MATERIAL_IDS, type DieMaterialId } from '@/three/diceTextures';
 // Dev test bench for outcome-first dice (/dev/dice). Math.random is fine here: it stands in for the
 // reducer's RNG. The visible faces are read back from the rendered meshes' world quaternions.
 
-/** StageHost only reveals the canvas on /play; this bench borrows it while mounted. */
-const SHOW_STAGE =
-  '[data-testid="stage"]{visibility:visible!important;pointer-events:auto!important}';
-
 const randomFace = (): Face => (1 + Math.floor(Math.random() * 6)) as Face;
 
 interface Stats {
@@ -91,7 +87,6 @@ export default function DevDice() {
       className="pointer-events-none relative flex h-dvh flex-col justify-between gap-3 overflow-hidden px-3 pt-[calc(env(safe-area-inset-top)+10px)] pb-[calc(env(safe-area-inset-bottom)+12px)] select-none"
       data-testid="dev-dice"
     >
-      <style>{SHOW_STAGE}</style>
       <sceneTunnel.In>
         <DiceReplay
           ref={group}

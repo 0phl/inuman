@@ -51,7 +51,12 @@
     }
   },
   "games": { "title": "Mga laro", "soon": "Soon" },
-  "family": { "cards": "Baraha", "dice": "Dice", "skill": "Galingan", "party": "Kwentuhan at party" },
+  "family": {
+    "cards": "Baraha",
+    "dice": "Dice",
+    "skill": "Galingan",
+    "party": "Kwentuhan at party"
+  },
   "lobby": {
     "players_one": "{{count}} kasali",
     "players_other": "{{count}} kasali",
@@ -125,6 +130,7 @@
     "cardBack": "Likod ng baraha",
     "felt": "Kulay ng mesa",
     "quality": "Graphics",
+    "qualityRow": "Kalidad ng 3D",
     "qualityHelp": "Pag naglo-lag ang phone, piliin ang Low.",
     "feedback": "Tunog at vibrate",
     "sound": "Tunog",
@@ -135,7 +141,48 @@
     "creditsBody": "Ginawa ang 3D bar sa Blender gamit ang mga libreng CC0 (public domain) asset galing Poly Haven:"
   },
   "quality": { "auto": "Auto", "low": "Low", "mid": "Mid", "high": "High" },
-  "cardBack": { "classic-red": "Pula", "classic-blue": "Asul", "banig": "Banig", "jeepney": "Jeepney" },
+  "cardBack": {
+    "classic-red": "Pula",
+    "classic-blue": "Asul",
+    "banig": "Banig",
+    "jeepney": "Jeepney"
+  },
+  "theme": {
+    "title": "Itsura ng mesa",
+    "previewCaption": "Ganito ang mesa n'yo. Kita agad sa laro ang binago.",
+    "previewAria": "Preview ng mesa: {{back}} na likod ng baraha, {{felt}} na felt",
+    "environment": "Lugar",
+    "env": { "dive-bar": "Dive bar", "procedural-bar": "Simpleng bar" },
+    "envHelp": {
+      "dive-bar": "Buong 3D bar, may neon. Magda-download sa unang laro.",
+      "procedural-bar": "Mas magaan, walang download. Pang-lumang phone."
+    },
+    "dice": "Dice",
+    "diceName": { "ivory": "Ivory", "red-casino": "Pulang casino", "wood": "Kahoy" },
+    "cup": "Kulay ng baso",
+    "cupName": {
+      "red": "Pula",
+      "blue": "Asul",
+      "bottle": "Berdeng bote",
+      "yellow": "Dilaw",
+      "pink": "Pink",
+      "black": "Itim"
+    },
+    "feltName": {
+      "green": "Berde",
+      "blue": "Asul",
+      "maroon": "Maroon",
+      "charcoal": "Uling",
+      "ube": "Ube"
+    },
+    "custom": "Ibang kulay",
+    "customAria": "Pumili ng sariling kulay para sa {{what}}",
+    "share": "I-share ang itsura",
+    "shareTitle": "I-share ang itsura ng mesa",
+    "shareName": "Itsura ng mesa namin",
+    "reset": "I-reset",
+    "change": "Palitan"
+  },
   "play": {
     "turnOf": "Turn ni",
     "menu": {
@@ -148,7 +195,9 @@
       "title": "Tapos na!",
       "body": "Salamat sa inuman. Uwi nang ligtas, at walang magda-drive nang lasing.",
       "again": "Isa pa!",
-      "home": "Balik sa Home"
+      "home": "Balik sa Home",
+      "see": "Tingnan ang resulta",
+      "lookAtTable": "Silipin ang mesa"
     },
     "hl": {
       "higher": "Mas mataas",
@@ -205,7 +254,9 @@
     "note": "Hindi 'to paligsahan. Pag marami na, tubig muna."
   },
   "water": { "reminder": "Hinay-hinay lang! Inom muna ng tubig 💧", "done": "Nag-tubig na" },
-  "stage": { "lost": { "title": "Nawala ang graphics", "body": "I-tap para ibalik. Safe ang laro n'yo." } },
+  "stage": {
+    "lost": { "title": "Nawala ang graphics", "body": "I-tap para ibalik. Safe ang laro n'yo." }
+  },
   "kcui": {
     "drewBy": "Bunot ni {{name}}",
     "firstTitle": "Bunot na!",
@@ -386,6 +437,17 @@
     "errorHint": "Walang na-save. Safe ang mga pack mo.",
     "unknownGame": "Para sa larong wala sa app na 'to ang rules na 'yan.",
     "themeUnsupported": "Hindi pa pwedeng mag-import ng theme. Abangan!",
+    "themeIntro": "Silipin muna ang itsura bago gamitin. Pwede mo pang ibalik ang dati.",
+    "themeNew": "bago",
+    "themeSame": "Ganito na mismo ang itsura ng mesa mo.",
+    "themeNote": "Papalitan nito ang itsura ng mesa mo. Pwede mo pang ibalik pagkatapos.",
+    "themeApply": "Gamitin ang itsura",
+    "themeApplied": "Ayos, bago na!",
+    "themeAppliedBody": "Ito na ang itsura ng mesa n'yo.",
+    "themeUndo": "Ibalik ang dati",
+    "themeUndone": "Naibalik na!",
+    "themeUndoneBody": "Balik na sa dating itsura ang mesa mo.",
+    "themeToSettings": "Ayusin pa sa Settings",
     "noGameYet": "Wala pang laro para dito, pero pwede mo nang i-save.",
     "firstItems_one": "Unang {{count}} prompt",
     "firstItems_other": "Unang {{count}} prompts",
@@ -427,5 +489,33 @@
     "pyramidHint": "Buksan ang unang card sa ibaba.",
     "flipped": "{{n}}/{{total}} bukas",
     "leftovers": "Natirang cards"
+  },
+  "bpui": {
+    "turnAria": "Tira ni {{name}}",
+    "swipeHint": "I-swipe pataas para tumira",
+    "shoot": "Tumira",
+    "holdHint": "Hold, tapos bitaw",
+    "inFlight": "Lumilipad ang bola…",
+    "winnerEyebrow": "Panalo!",
+    "losers": "Talo: {{names}}",
+    "cupsAria": "{{team}}: {{n}} cups na natitira",
+    "rerackHint": "Cups ng {{team}}: {{n}}. Piliin ang bagong ayos.",
+    "rerackCurrent": "Ayos ngayon"
+  },
+  "qtui": {
+    "eyebrow": "Shooter",
+    "swipeHint": "I-swipe pataas para i-bounce ang barya",
+    "inFlight": "Tumatalbog ang barya…",
+    "mustBounceHint": "Dapat tumalbog muna sa mesa bago pumasok.",
+    "confirm": "Siya ang iinom",
+    "ruleHint": "Si {{name}} ang gagawa ng rule.",
+    "noRules": "Wala pang house rule. Mag-streak para gumawa."
+  },
+  "fcui": {
+    "meter": "Lakas ng flick",
+    "quality": "Ganda: {{q}}%",
+    "angle": "Tagilid: {{deg}}°",
+    "tapHint": "O i-tap ang I-flip! pag nasa gold na bahagi ang guhit.",
+    "raceOver": "Tapos ang karera"
   }
 }

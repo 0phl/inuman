@@ -10,8 +10,18 @@ describe('rulesFields', () => {
     const fields = rulesFields(hlRules);
     expect(fields.map((f) => f.kind)).toEqual(['number', 'enum', 'enum', 'number', 'boolean']);
     const wrong = byKey(fields, 'wrongSips');
-    expect(wrong).toMatchObject({ kind: 'number', min: 1, max: 5, step: 1, integer: true, label: 'rules.hl.wrongSips' });
-    expect(byKey(fields, 'tie')).toMatchObject({ kind: 'enum', options: ['lose', 'safe', 'social'] });
+    expect(wrong).toMatchObject({
+      kind: 'number',
+      min: 1,
+      max: 5,
+      step: 1,
+      integer: true,
+      label: 'rules.hl.wrongSips',
+    });
+    expect(byKey(fields, 'tie')).toMatchObject({
+      kind: 'enum',
+      options: ['lose', 'safe', 'social'],
+    });
   });
 
   it('recurses into nested objects (Kings Cup style card tables)', () => {
@@ -21,10 +31,16 @@ describe('rulesFields', () => {
     });
     const schema = z.object({
       cards: z
-        .object({ A: card.default({ title: 'i18n:kc.card.A.title', sips: 2 }), K: card.default({ title: 'x', sips: 1 }) })
+        .object({
+          A: card.default({ title: 'i18n:kc.card.A.title', sips: 2 }),
+          K: card.default({ title: 'x', sips: 1 }),
+        })
         .default({ A: { title: 'i18n:kc.card.A.title', sips: 2 }, K: { title: 'x', sips: 1 } })
         .meta({ label: 'rules.kc.cards' }),
-      speed: z.union([z.literal(0.5), z.literal(1)]).default(1).meta({ label: 'rules.kc.speed' }),
+      speed: z
+        .union([z.literal(0.5), z.literal(1)])
+        .default(1)
+        .meta({ label: 'rules.kc.speed' }),
     });
     const fields = rulesFields(schema);
     const cards = byKey(fields, 'cards');
@@ -34,7 +50,11 @@ describe('rulesFields', () => {
     const a = cards.children[0] as FieldNode;
     if (a.kind !== 'group') throw new Error('expected group');
     expect(a.label).toBeUndefined();
-    expect(a.children[0]).toMatchObject({ kind: 'string', path: ['cards', 'A', 'title'], maxLength: 40 });
+    expect(a.children[0]).toMatchObject({
+      kind: 'string',
+      path: ['cards', 'A', 'title'],
+      maxLength: 40,
+    });
     expect(byKey(fields, 'speed')).toMatchObject({ kind: 'enum', options: [0.5, 1] });
   });
 });

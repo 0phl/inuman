@@ -2,7 +2,7 @@ import { useEffect, useMemo } from 'react';
 import { MeshStandardMaterial } from 'three';
 import type { ThreeElements } from '@react-three/fiber';
 import { cardGeometries, deckHeight } from './cardGeometry';
-import { cardBackTexture, deckEdgeTexture } from './cardTextures';
+import { cardBackTexture, cardMaterial, deckEdgeTexture } from './cardTextures';
 
 const capMaterial = new MeshStandardMaterial({ color: '#efe6d2', roughness: 0.8 });
 
@@ -18,10 +18,7 @@ export function Deck3D({ count, back, ...group }: Deck3DProps) {
     map.needsUpdate = true;
     return new MeshStandardMaterial({ map, roughness: 0.85 });
   }, [count]);
-  const top = useMemo(
-    () => new MeshStandardMaterial({ map: cardBackTexture(back), roughness: 0.4, envMapIntensity: 0.8 }),
-    [back],
-  );
+  const top = useMemo(() => cardMaterial(cardBackTexture(back)), [back]);
   useEffect(
     () => () => {
       side.map?.dispose();

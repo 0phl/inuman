@@ -31,8 +31,10 @@ let narra: MeshStandardMaterial | null = null;
 let brass: MeshStandardMaterial | null = null;
 
 /**
- * Narra wood for trays and the dock. It carries a little of its own grain as emissive so faces
- * turned away from the bar's lights never go flat black.
+ * Narra wood for trays and the dock. It carries some of its own grain as emissive so faces
+ * turned away from the bar's lights never go flat black: the pendant is straight above the table,
+ * so a tray's near rail (facing the camera) gets no direct light at all. At 0.2 it rendered
+ * near-black (26,3,0 on screen); at 1.0 it reads as dark narra while the lit faces barely change.
  */
 export function narraMaterial(): MeshStandardMaterial {
   if (narra) return narra;
@@ -44,7 +46,7 @@ export function narraMaterial(): MeshStandardMaterial {
     roughness: 0.6,
     emissive: '#ffffff',
     emissiveMap: map,
-    emissiveIntensity: 0.2,
+    emissiveIntensity: 1,
     envMapIntensity: 0.8,
   });
   return narra;

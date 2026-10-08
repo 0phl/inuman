@@ -31,15 +31,23 @@ async function start(page: Page) {
   await expect(page).toHaveURL(/\/play$/);
 }
 
-/** Tap the pass-the-phone cover low down, clear of any toasts near the top. */
-async function dismissCover(page: Page) {
+/**
+ * Pass the phone: a public pass is a banner over the turn indicator (tap it away; the table stays
+ * usable underneath), a private one the opaque full-screen cover (tap low, clear of any toasts).
+ */
+async function passPhone(page: Page) {
   const cover = page.getByTestId('pass-cover');
-  await expect(cover).toBeVisible({ timeout: 8_000 });
-  const box = await cover.boundingBox();
-  await cover.click({ position: { x: 24, y: (box?.height ?? 600) - 24 } });
-  await expect(cover).toBeHidden();
+  const banner = page.getByTestId('pass-banner');
+  await expect(cover.or(banner).first()).toBeVisible({ timeout: 8_000 });
+  if (await cover.isVisible()) {
+    const box = await cover.boundingBox();
+    await cover.click({ position: { x: 24, y: (box?.height ?? 600) - 24 } });
+    await expect(cover).toBeHidden();
+  } else {
+    await banner.click();
+    await expect(banner).toBeHidden();
+  }
 }
-
 test('Spin the Bottle: flick-free spin, the bottle lands, truth, done, next spin', async ({
   page,
 }) => {
@@ -59,7 +67,7 @@ test('Spin the Bottle: flick-free spin, the bottle lands, truth, done, next spin
   await expect(page.getByTestId('stb-choose')).toBeVisible({ timeout: 15_000 });
   const picked = (await page.getByTestId('turn-name').textContent())?.trim() ?? '';
   expect(['Bea', 'Jun']).toContain(picked);
-  await dismissCover(page);
+  await passPhone(page);
 
   await page.getByTestId('stb-truth').click();
   const prompt = page.getByTestId('stb-prompt');
@@ -73,7 +81,7 @@ test('Spin the Bottle: flick-free spin, the bottle lands, truth, done, next spin
   await expect(page.getByTestId('stb-round')).toHaveText('Round 2');
   // Whoever got picked spins next.
   await expect(page.getByTestId('turn-name')).toHaveText(picked);
-  await dismissCover(page);
+  await passPhone(page);
   await expect(page.getByTestId('stb-spin')).toBeEnabled();
 });
 
@@ -103,8 +111,14 @@ test('Truth or Dare: the wheel picks, refusing costs a drink', async ({ page }) 
   const toast = page.getByTestId('toast-drinks');
   await expect(toast).toBeVisible({ timeout: 5_000 });
   await expect(toast).toContainText('Migs');
+  // A public pass is a banner, not a cover: the table and the HUD stay in view and usable.
+  const banner = page.getByTestId('pass-banner');
+  await expect(banner).toBeVisible({ timeout: 5_000 });
+  await expect(banner).toContainText('Bea');
+  await expect(page.getByTestId('pass-cover')).toHaveCount(0);
+  await expect(toast).toBeVisible();
 
-  await dismissCover(page);
+  await passPhone(page);
   await expect(page.getByTestId('turn-name')).toHaveText('Bea');
   await expect(page.getByTestId('tod-round')).toHaveText('Round 2');
   await expect(page.getByTestId('tod-spin')).toBeEnabled();
@@ -130,14 +144,14 @@ test('Most Likely To: point mode, pick who got pointed at, then skip', async ({ 
   const toast = page.getByTestId('toast-drinks');
   await expect(toast).toBeVisible({ timeout: 5_000 });
   await expect(toast).toContainText('Bea');
-  await dismissCover(page);
+  await passPhone(page);
   await expect(page.getByTestId('mlt-round')).toHaveText('Round 2');
   await expect(page.getByTestId('turn-name')).toHaveText('Bea');
   await expect(page.locator('[data-testid="mlt-player"][aria-pressed="true"]')).toHaveCount(0);
 
   await expect(page.getByTestId('mlt-skip')).toBeEnabled();
   await page.getByTestId('mlt-skip').click();
-  await dismissCover(page);
+  await passPhone(page);
   await expect(page.getByTestId('mlt-round')).toHaveText('Round 3');
   await expect(page.getByTestId('turn-name')).toHaveText('Jun');
 });
@@ -167,7 +181,7 @@ test('Most Likely To: secret vote with 3 players, past the pass covers, then the
     await expect(page.getByTestId('mlt-vote')).toBeDisabled();
     await page.getByTestId('mlt-choice').filter({ hasText: choice }).click();
     await page.getByTestId('mlt-vote').click();
-    if (i < ballot.length - 1) await dismissCover(page);
+    if (i < ballot.length - 1) await passPhone(page);
   }
 
   await expect(page.getByTestId('mlt-reveal')).toBeVisible();
@@ -182,7 +196,7 @@ test('Most Likely To: secret vote with 3 players, past the pass covers, then the
   await expect(page.getByTestId('toast-drinks')).toContainText('Bea', { timeout: 5_000 });
 
   await page.getByTestId('mlt-next').click();
-  await dismissCover(page);
+  await passPhone(page);
   await expect(page.getByTestId('mlt-round')).toHaveText('Round 2');
   await expect(page.getByTestId('turn-name')).toHaveText('Bea');
 });
@@ -214,7 +228,7 @@ test('Ride the Bus: 2 players deal, flip the pyramid, board, ride until it ends'
           questions[q + 1] as string,
         );
     }
-    if (p === 0) await dismissCover(page);
+    if (p === 0) await passPhone(page);
   }
 
   // Pyramid: ten face-down cards, flipped one at a time.
@@ -228,18 +242,20 @@ test('Ride the Bus: 2 players deal, flip the pyramid, board, ride until it ends'
 
   // Whoever holds the most cards boards the bus.
   await expect(page.getByTestId('rtb-board')).toBeVisible({ timeout: 5_000 });
-  await dismissCover(page);
+  await passPhone(page);
   const rider = (await page.getByTestId('turn-name').textContent())?.trim() ?? '';
   expect(['Migs', 'Bea']).toContain(rider);
   await page.getByTestId('rtb-board').click();
   await expect(page.getByTestId('rtb-attempt')).toContainText('1');
 
   // Four right in a row gets off; with one attempt allowed, the first miss ends it too.
+  // The game ends on the last answer; the results cover follows a moment later.
   const over = page.getByTestId('game-over');
-  for (let i = 0; i < 4 && !(await over.isVisible()); i++) {
+  const ended = page.getByTestId('see-results').or(over);
+  for (let i = 0; i < 4 && !(await ended.first().isVisible()); i++) {
     const answer = page.getByTestId('rtb-answer').first();
-    await expect(answer.or(over).first()).toBeVisible();
-    if (await over.isVisible()) break;
+    await expect(answer.or(ended).first()).toBeVisible();
+    if (await ended.first().isVisible()) break;
     await expect(answer).toBeEnabled({ timeout: 5_000 });
     await answer.click();
     await page.waitForTimeout(300);

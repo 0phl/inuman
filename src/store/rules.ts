@@ -68,7 +68,8 @@ export function sanitizeRules(raw: unknown): ByGame {
       for (const p of v.presets as { name?: unknown; rules?: unknown }[]) {
         if (typeof p?.name !== 'string' || !p.name.trim()) continue;
         const parsed = getLogic(id).rulesSchema.safeParse(p.rules);
-        if (parsed.success) presets.push({ name: p.name.slice(0, MAX_PRESET_NAME), rules: parsed.data });
+        if (parsed.success)
+          presets.push({ name: p.name.slice(0, MAX_PRESET_NAME), rules: parsed.data });
       }
     }
     out[id] = { current: validRules(id, v.current), presets: presets.slice(0, MAX_PRESETS) };
@@ -76,7 +77,8 @@ export function sanitizeRules(raw: unknown): ByGame {
   return out;
 }
 
-const entry = (byGame: ByGame, id: GameId): GameRules => byGame[id] ?? { current: defaultRules(id), presets: [] };
+const entry = (byGame: ByGame, id: GameId): GameRules =>
+  byGame[id] ?? { current: defaultRules(id), presets: [] };
 
 export const useRules = create<RulesState>()(
   persist(
@@ -85,17 +87,19 @@ export const useRules = create<RulesState>()(
       setRules: (id, rules) =>
         set((s) => ({ byGame: { ...s.byGame, [id]: { ...entry(s.byGame, id), current: rules } } })),
       reset: (id) =>
-        set((s) => ({ byGame: { ...s.byGame, [id]: { ...entry(s.byGame, id), current: defaultRules(id) } } })),
+        set((s) => ({
+          byGame: { ...s.byGame, [id]: { ...entry(s.byGame, id), current: defaultRules(id) } },
+        })),
       savePreset(id, raw) {
         const name = raw.trim().slice(0, MAX_PRESET_NAME);
         if (!name) return 'error.emptyName';
         const e = entry(get().byGame, id);
         const parsed = getLogic(id).rulesSchema.safeParse(e.current);
         if (!parsed.success) return 'rulesUi.invalid';
-        const presets = [{ name, rules: parsed.data }, ...e.presets.filter((p) => p.name !== name)].slice(
-          0,
-          MAX_PRESETS,
-        );
+        const presets = [
+          { name, rules: parsed.data },
+          ...e.presets.filter((p) => p.name !== name),
+        ].slice(0, MAX_PRESETS);
         set((s) => ({ byGame: { ...s.byGame, [id]: { ...e, presets } } }));
         return null;
       },
@@ -103,7 +107,9 @@ export const useRules = create<RulesState>()(
         const e = entry(get().byGame, id);
         const preset = e.presets.find((p) => p.name === name);
         if (!preset) return;
-        set((s) => ({ byGame: { ...s.byGame, [id]: { ...e, current: validRules(id, preset.rules) } } }));
+        set((s) => ({
+          byGame: { ...s.byGame, [id]: { ...e, current: validRules(id, preset.rules) } },
+        }));
       },
       addPreset(id, raw, rules) {
         if (!hasLogic(id)) return { error: 'import.unknownGame' };
@@ -111,7 +117,10 @@ export const useRules = create<RulesState>()(
         const parsed = getLogic(id).rulesSchema.safeParse(rules);
         if (!parsed.success) return { error: 'share.invalid' };
         const e = entry(get().byGame, id);
-        const name = uniquePresetName(raw, e.presets.map((p) => p.name));
+        const name = uniquePresetName(
+          raw,
+          e.presets.map((p) => p.name),
+        );
         const presets = [{ name, rules: parsed.data }, ...e.presets].slice(0, MAX_PRESETS);
         set((s) => ({ byGame: { ...s.byGame, [id]: { ...e, presets } } }));
         return { name };
@@ -119,7 +128,12 @@ export const useRules = create<RulesState>()(
       deletePreset: (id, name) =>
         set((s) => {
           const e = entry(s.byGame, id);
-          return { byGame: { ...s.byGame, [id]: { ...e, presets: e.presets.filter((p) => p.name !== name) } } };
+          return {
+            byGame: {
+              ...s.byGame,
+              [id]: { ...e, presets: e.presets.filter((p) => p.name !== name) },
+            },
+          };
         }),
     }),
     {
@@ -127,7 +141,9 @@ export const useRules = create<RulesState>()(
       version: 1,
       storage: createJSONStorage(() => localStorage),
       partialize: (s) => ({ byGame: s.byGame }),
-      migrate: (persisted) => ({ byGame: sanitizeRules((persisted as { byGame?: unknown } | null)?.byGame) }),
+      migrate: (persisted) => ({
+        byGame: sanitizeRules((persisted as { byGame?: unknown } | null)?.byGame),
+      }),
       merge: (persisted, current) => ({
         ...current,
         byGame: sanitizeRules((persisted as { byGame?: unknown } | null)?.byGame),

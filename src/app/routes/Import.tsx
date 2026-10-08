@@ -45,7 +45,9 @@ export default function Import() {
         </div>
       ) : result.ok ? (
         <>
-          <p className="-mt-2 text-capiz-300">{t('import.intro')}</p>
+          <p className="-mt-2 text-capiz-300">
+            {t(result.payload.kind === 'theme' ? 'import.themeIntro' : 'import.intro')}
+          </p>
           <ImportPreview payload={result.payload} onCancel={() => navigate('/')} />
         </>
       ) : (

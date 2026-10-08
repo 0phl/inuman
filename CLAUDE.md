@@ -13,6 +13,8 @@ Approved plan: `~/.claude/plans/glimmering-prancing-token.md`. Commands: `pnpm d
     actor `'host'` is the trusted local device, a PlayerId is a remote seat (check turn ownership).
   - `reduce()` returns `{ state, effects }`. Games emit drinks in **base sips** via `{ type: 'drink', ... }`;
     never apply intensity in a game — `src/core/engine/drink.ts#resolveDrink` does multiplier/cap/tagay/non-alcoholic.
+    `kind: 'give'` means the `to` players *hand out* those sips (shown, not logged as drunk); a player picked to
+    drink (Kings Cup "Ikaw", Quarters pick) gets a plain `'drink'`.
   - `project(state, viewer)` must strip hidden info (deck order, other players' dice). The UI renders only views.
   - State must be JSON-serializable (no Map/Set/class instances).
 - `src/core/engine/session.ts` wraps every game (`startSession`, `sessionReducer`).

@@ -18,6 +18,7 @@ import { Segmented, Toggle } from '@/ui/controls';
 import { RulesEditor } from '@/ui/RulesEditor';
 import { rulesFields } from '@/ui/rulesForm';
 import { ShareSheet } from '@/ui/ShareSheet';
+import { ThemeQuickRow } from '@/ui/ThemePicker';
 import { TopBar } from '@/ui/TopBar';
 
 const MULTIPLIERS = [0.5, 1, 1.5, 2] as const;
@@ -267,6 +268,8 @@ function LobbyFor({ id }: { id: GameId }) {
         </h2>
         <QuickIntensity />
       </section>
+
+      <ThemeQuickRow />
 
       <ShareSheet
         open={sharing !== null}

@@ -2,13 +2,12 @@ import type { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { DIVE_BAR_CREDITS } from '@/stage/environments/credits';
 import { QUALITY_OPTIONS, useSettings } from '@/store/settings';
-import { CARD_BACKS, useTheme } from '@/store/theme';
 import { FieldRow, InlineRow, Segmented, Stepper, Toggle } from '@/ui/controls';
+import { ThemePicker } from '@/ui/ThemePicker';
 import { TopBar } from '@/ui/TopBar';
 import { LanguageSwitch } from '../LanguageSwitch';
 
 const MULTIPLIERS = [0.5, 1, 1.5, 2] as const;
-const FELTS = ['#1d4d33', '#123a5c', '#5a1a24', '#2b2b2b'] as const;
 
 function Section({ title, children }: { title: string; children: ReactNode }) {
   return (
@@ -22,8 +21,6 @@ function Section({ title, children }: { title: string; children: ReactNode }) {
 export default function Settings() {
   const { t } = useTranslation();
   const s = useSettings();
-  const theme = useTheme((x) => x.theme);
-  const setTheme = useTheme((x) => x.setTheme);
   const i = s.intensity;
   const soft = i.mode === 'non-alcoholic';
 
@@ -104,32 +101,17 @@ export default function Settings() {
         </InlineRow>
       </Section>
 
-      <Section title={t('settings.look')}>
-        <FieldRow label={t('settings.cardBack')}>
-          <Segmented
-            label={t('settings.cardBack')}
-            value={theme.cardBack}
-            onChange={(cardBack) => setTheme({ cardBack })}
-            options={CARD_BACKS.map((b) => ({ value: b, label: t(`cardBack.${b}`) }))}
-          />
-        </FieldRow>
-        <FieldRow label={t('settings.felt')}>
-          <div className="flex gap-3" role="radiogroup" aria-label={t('settings.felt')}>
-            {FELTS.map((c) => (
-              <button
-                key={c}
-                type="button"
-                role="radio"
-                aria-checked={theme.feltColor === c}
-                aria-label={c}
-                onClick={() => setTheme({ feltColor: c })}
-                className={`size-12 rounded-full border-2 ${theme.feltColor === c ? 'border-brass-300 ring-2 ring-brass-400/50' : 'border-narra-500'}`}
-                style={{ background: c }}
-              />
-            ))}
-          </div>
-        </FieldRow>
-        <FieldRow label={t('settings.quality')} help={t('settings.qualityHelp')}>
+      <section className="mb-5" aria-labelledby="settings-theme" data-testid="settings-theme">
+        <h2 id="settings-theme" className="eyebrow mb-2 text-capiz-300">
+          {t('theme.title')}
+        </h2>
+        <div className="panel p-4">
+          <ThemePicker />
+        </div>
+      </section>
+
+      <Section title={t('settings.quality')}>
+        <FieldRow label={t('settings.qualityRow')} help={t('settings.qualityHelp')}>
           <Segmented
             label={t('settings.quality')}
             value={s.quality}

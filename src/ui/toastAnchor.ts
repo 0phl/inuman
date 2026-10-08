@@ -1,4 +1,4 @@
-import { useCallback, type RefCallback } from 'react';
+import { useCallback, useEffect, type RefCallback } from 'react';
 import { useFx } from '@/store/fx';
 
 /**
@@ -28,4 +28,16 @@ export function useToastAnchor<T extends HTMLElement>(): RefCallback<T> {
     },
     [setAnchor],
   );
+}
+
+/**
+ * While `on`, drink toasts and notices shrink to one-line chips under the turn indicator. For
+ * moments where the table itself is the news (a reveal), so the toasts don't sit on top of it.
+ */
+export function useCompactToasts(on: boolean): void {
+  const setCompact = useFx((s) => s.setCompact);
+  useEffect(() => {
+    setCompact(on);
+    return () => setCompact(false);
+  }, [on, setCompact]);
 }

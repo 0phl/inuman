@@ -23,7 +23,7 @@ import { useTheme } from '@/store/theme';
 import { BlobShadow } from '@/three/BlobShadow';
 import { Card3D } from '@/three/Card3D';
 import { CARD_T, cardGeometries } from '@/three/cardGeometry';
-import { cardBackTexture } from '@/three/cardTextures';
+import { cardBackTexture, cardMaterial } from '@/three/cardTextures';
 import type { GameViewProps } from '../types';
 
 const DECK_SIZE = 52;
@@ -126,15 +126,7 @@ function Ring({ count, back }: { count: number; back: string }) {
   const top = useRef<InstancedMesh>(null);
   const edge = useRef<InstancedMesh>(null);
   const invalidate = useThree((s) => s.invalidate);
-  const topMat = useMemo(
-    () =>
-      new MeshStandardMaterial({
-        map: cardBackTexture(back),
-        roughness: 0.42,
-        envMapIntensity: 0.8,
-      }),
-    [back],
-  );
+  const topMat = useMemo(() => cardMaterial(cardBackTexture(back)), [back]);
   const shadow = ringShadow();
   useEffect(() => () => topMat.dispose(), [topMat]);
 
@@ -222,6 +214,9 @@ function cupGeometries() {
   };
 }
 
+/** Emission as a fraction of the cup colour (see KingsCup). */
+const CUP_SELF_LIGHT = 0.32;
+
 function KingsCup({ kings }: { kings: number }) {
   const cupColor = useTheme((s) => s.theme.cupColor);
   const invalidate = useThree((s) => s.invalidate);
@@ -230,9 +225,14 @@ function KingsCup({ kings }: { kings: number }) {
     () =>
       new MeshStandardMaterial({
         color: cupColor,
-        roughness: 0.34,
+        // The pendant lights the cup from straight above, so its walls only catch grazing light
+        // and a red cup read dark maroon. A share of its own colour as emission stands in for the
+        // bounce off the felt and the room, and keeps any theme colour reading as itself.
+        emissive: cupColor,
+        emissiveIntensity: CUP_SELF_LIGHT,
+        roughness: 0.38,
         metalness: 0,
-        envMapIntensity: 1.1,
+        envMapIntensity: 0.9,
       }),
     [cupColor],
   );

@@ -3,7 +3,7 @@
 // landed up, so the replay can remap each visual die onto its target face.
 //
 // Imports use relative `.ts` paths so `node scripts/dice-fairness.ts` runs this file unbundled.
-import RAPIER from '@dimforge/rapier3d-compat';
+import { initRapier, mixSeed, mulberry32, RAPIER } from './rapierRuntime.ts';
 import { COCKED_THRESHOLD, topFace, type Face, type Quat } from '../core/primitives/dice.ts';
 import { DEFAULT_TRAY, DIE_RADIUS, DIE_SIZE, FRAME_STRIDE, type TraySpec } from './diceConfig.ts';
 
@@ -74,34 +74,11 @@ const REST_STEPS = 10;
 
 // ---------------------------------------------------------------- Rapier bootstrap
 
-let ready: Promise<void> | null = null;
-
-/** Loads and instantiates the Rapier WASM once; later calls reuse the same promise. */
-export function initRapier(): Promise<void> {
-  ready ??= RAPIER.init();
-  return ready;
-}
-
-// ---------------------------------------------------------------- local PRNG (outside core, fine)
-
-function mulberry32(seed: number): () => number {
-  let a = seed >>> 0;
-  return () => {
-    a = (a + 0x6d2b79f5) >>> 0;
-    let t = a;
-    t = Math.imul(t ^ (t >>> 15), t | 1);
-    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-  };
-}
+/** Loads and instantiates the Rapier WASM once (shared with the throw pre-sim). */
+export { initRapier };
 
 /** Mixes an attempt number into the seed so each retry is a genuinely different throw. */
-function perturb(seed: number, attempt: number): number {
-  let h = (seed ^ Math.imul(attempt + 1, 0x9e3779b9)) >>> 0;
-  h = Math.imul(h ^ (h >>> 16), 0x85ebca6b);
-  h = Math.imul(h ^ (h >>> 13), 0xc2b2ae35);
-  return (h ^ (h >>> 16)) >>> 0;
-}
+const perturb = mixSeed;
 
 /** Uniformly random rotation (Shoemake). */
 function randomQuat(r: () => number): Quat {

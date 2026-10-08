@@ -1,6 +1,6 @@
-import { CanvasTexture, MeshStandardMaterial, SRGBColorSpace, type Texture } from 'three';
+import { CanvasTexture, SRGBColorSpace, type MeshPhysicalMaterial, type Texture } from 'three';
 import type { Card } from '@/core/primitives/deck';
-import { CARD_TEX_H, CARD_TEX_W, drawCardFace } from '@/three/cardTextures';
+import { CARD_TEX_H, CARD_TEX_W, cardMaterial, drawCardFace } from '@/three/cardTextures';
 
 // Ride the Bus can have ~50 face-up cards out at once (everyone's hand plus the pyramid), more than
 // the shared face-texture cache holds. Small cards come from one half-resolution atlas of all 52
@@ -16,9 +16,9 @@ const PAD = 4;
 const W = COLS * (CW + 2 * PAD);
 const H = ROWS * (CH + 2 * PAD);
 
-let materials: MeshStandardMaterial[] | null = null;
+let materials: MeshPhysicalMaterial[] | null = null;
 
-function build(): MeshStandardMaterial[] {
+function build(): MeshPhysicalMaterial[] {
   const c = document.createElement('canvas');
   c.width = W;
   c.height = H;
@@ -46,12 +46,12 @@ function build(): MeshStandardMaterial[] {
     view.repeat.set(CW / W, CH / H);
     // Canvas rows run down, UVs run up (flipY).
     view.offset.set(x0 / W, 1 - (y0 + CH) / H);
-    return new MeshStandardMaterial({ map: view, roughness: 0.4, envMapIntensity: 0.8 });
+    return cardMaterial(view);
   });
 }
 
 /** The shared material for a small face-up card. Never dispose it. */
-export function atlasFaceMaterial(card: Card): MeshStandardMaterial {
+export function atlasFaceMaterial(card: Card): MeshPhysicalMaterial {
   materials ??= build();
-  return materials[((card % 52) + 52) % 52] as MeshStandardMaterial;
+  return materials[((card % 52) + 52) % 52] as MeshPhysicalMaterial;
 }

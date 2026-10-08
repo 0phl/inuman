@@ -129,10 +129,7 @@ test('a corrupted or wrong-version link shows a friendly error', async ({ page }
   await expect(error).toHaveAttribute('data-error', 'share.badVersion');
 });
 
-test('download .dgpack.json, then import the file on another phone', async ({
-  page,
-  browser,
-}) => {
+test('download .dgpack.json, then import the file on another phone', async ({ page, browser }) => {
   await enter(page);
   await createNhiePack(page, 'Pang/File: "Inuman"', ['Never have I ever nag-file transfer.']);
   const [download] = await Promise.all([
@@ -144,7 +141,13 @@ test('download .dgpack.json, then import the file on another phone', async ({
   await download.saveAs(file);
 
   const { viewport, userAgent, deviceScaleFactor, isMobile, hasTouch } = test.info().project.use;
-  const friend = await browser.newContext({ viewport, userAgent, deviceScaleFactor, isMobile, hasTouch });
+  const friend = await browser.newContext({
+    viewport,
+    userAgent,
+    deviceScaleFactor,
+    isMobile,
+    hasTouch,
+  });
   try {
     const p2 = await friend.newPage();
     await p2.goto('/');

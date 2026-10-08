@@ -1,10 +1,13 @@
 import type { AnyGameLogic, GameId } from '../engine/types';
+import { beerPong } from './beer-pong/logic';
+import { flipCup } from './flip-cup/logic';
 import { higherLower } from './higher-lower/logic';
 import { kingsCup } from './kings-cup/logic';
 import { liarsDice } from './liars-dice/logic';
 import { mexico } from './mexico/logic';
 import { mostLikelyTo } from './most-likely-to/logic';
 import { neverHaveIEver } from './never-have-i-ever/logic';
+import { quarters } from './quarters/logic';
 import { rideTheBus } from './ride-the-bus/logic';
 import { shipCaptainCrew } from './ship-captain-crew/logic';
 import { spinTheBottle } from './spin-the-bottle/logic';
@@ -16,6 +19,9 @@ const LOGIC: Partial<Record<GameId, AnyGameLogic>> = {
   mexico,
   'liars-dice': liarsDice,
   'ship-captain-crew': shipCaptainCrew,
+  'beer-pong': beerPong,
+  'flip-cup': flipCup,
+  quarters,
   'never-have-i-ever': neverHaveIEver,
   'ride-the-bus': rideTheBus,
   'spin-the-bottle': spinTheBottle,

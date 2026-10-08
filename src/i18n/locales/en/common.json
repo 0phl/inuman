@@ -125,6 +125,7 @@
     "cardBack": "Card back",
     "felt": "Table color",
     "quality": "Graphics",
+    "qualityRow": "3D quality",
     "qualityHelp": "If your phone lags, choose Low.",
     "feedback": "Sound & vibration",
     "sound": "Sound",
@@ -135,7 +136,48 @@
     "creditsBody": "3D bar made in Blender with free CC0 (public domain) assets from Poly Haven:"
   },
   "quality": { "auto": "Auto", "low": "Low", "mid": "Mid", "high": "High" },
-  "cardBack": { "classic-red": "Red", "classic-blue": "Blue", "banig": "Banig", "jeepney": "Jeepney" },
+  "cardBack": {
+    "classic-red": "Red",
+    "classic-blue": "Blue",
+    "banig": "Banig",
+    "jeepney": "Jeepney"
+  },
+  "theme": {
+    "title": "Table look",
+    "previewCaption": "Your table at a glance. Changes show up in the game right away.",
+    "previewAria": "Table preview: {{back}} card backs, {{felt}} felt",
+    "environment": "Room",
+    "env": { "dive-bar": "Dive bar", "procedural-bar": "Simple bar" },
+    "envHelp": {
+      "dive-bar": "Full 3D bar with neon. Downloads on first play.",
+      "procedural-bar": "Lighter, no download. Best for older phones."
+    },
+    "dice": "Dice",
+    "diceName": { "ivory": "Ivory", "red-casino": "Casino red", "wood": "Wood" },
+    "cup": "Cup color",
+    "cupName": {
+      "red": "Red",
+      "blue": "Blue",
+      "bottle": "Bottle green",
+      "yellow": "Yellow",
+      "pink": "Pink",
+      "black": "Black"
+    },
+    "feltName": {
+      "green": "Green",
+      "blue": "Blue",
+      "maroon": "Maroon",
+      "charcoal": "Charcoal",
+      "ube": "Ube"
+    },
+    "custom": "Other color",
+    "customAria": "Pick your own color for the {{what}}",
+    "share": "Share look",
+    "shareTitle": "Share this table look",
+    "shareName": "Our table look",
+    "reset": "Reset",
+    "change": "Change"
+  },
   "play": {
     "turnOf": "Turn of",
     "menu": {
@@ -148,7 +190,9 @@
       "title": "That's it!",
       "body": "Thanks for playing. Get home safe, and nobody drives drunk.",
       "again": "One more!",
-      "home": "Back to Home"
+      "home": "Back to Home",
+      "see": "See results",
+      "lookAtTable": "Look at the table"
     },
     "hl": {
       "higher": "Higher",
@@ -205,7 +249,9 @@
     "note": "It's not a contest. If someone's had a lot, water first."
   },
   "water": { "reminder": "Easy now! Have some water 💧", "done": "Had water" },
-  "stage": { "lost": { "title": "Graphics paused", "body": "Tap to bring them back. Your game is safe." } },
+  "stage": {
+    "lost": { "title": "Graphics paused", "body": "Tap to bring them back. Your game is safe." }
+  },
   "kcui": {
     "drewBy": "{{name}} drew",
     "firstTitle": "Draw a card!",
@@ -386,6 +432,17 @@
     "errorHint": "Nothing was saved. Your packs are safe.",
     "unknownGame": "These rules are for a game this app doesn't have.",
     "themeUnsupported": "Themes can't be imported yet. Coming soon!",
+    "themeIntro": "Have a look first. You can switch back to your old look after.",
+    "themeNew": "new",
+    "themeSame": "This is exactly your current table look.",
+    "themeNote": "This replaces your table look. You can undo it right after.",
+    "themeApply": "Use this look",
+    "themeApplied": "Looking good!",
+    "themeAppliedBody": "Your table now has this look.",
+    "themeUndo": "Undo",
+    "themeUndone": "Undone!",
+    "themeUndoneBody": "Your table is back to how it was.",
+    "themeToSettings": "Fine-tune in Settings",
     "noGameYet": "That game isn't playable yet, but you can save the pack now.",
     "firstItems_one": "First {{count}} prompt",
     "firstItems_other": "First {{count}} prompts",
@@ -427,5 +484,33 @@
     "pyramidHint": "Flip the first card on the bottom row.",
     "flipped": "{{n}}/{{total}} flipped",
     "leftovers": "Cards left"
+  },
+  "bpui": {
+    "turnAria": "{{name}} to throw",
+    "swipeHint": "Swipe up to throw",
+    "shoot": "Throw",
+    "holdHint": "Hold, then let go",
+    "inFlight": "Ball in the air…",
+    "winnerEyebrow": "Winners!",
+    "losers": "Lost: {{names}}",
+    "cupsAria": "{{team}}: {{n}} cups left",
+    "rerackHint": "{{team}}'s cups: {{n}}. Pick a new formation.",
+    "rerackCurrent": "Right now"
+  },
+  "qtui": {
+    "eyebrow": "Shooter",
+    "swipeHint": "Swipe up to bounce the coin",
+    "inFlight": "Coin bouncing…",
+    "mustBounceHint": "It has to bounce off the table before it goes in.",
+    "confirm": "They drink",
+    "ruleHint": "{{name}} makes the rule.",
+    "noRules": "No house rules yet. Get a streak to make one."
+  },
+  "fcui": {
+    "meter": "Flick power",
+    "quality": "Quality: {{q}}%",
+    "angle": "Off by {{deg}}°",
+    "tapHint": "Or tap Flip it! when the needle is in the gold band.",
+    "raceOver": "Race over"
   }
 }

@@ -31,7 +31,8 @@ function roundedRect(w: number, h: number, r: number): Shape {
 function normalizeUv(g: BufferGeometry, w: number, h: number) {
   const uv = g.getAttribute('uv');
   const pos = g.getAttribute('position');
-  for (let i = 0; i < uv.count; i++) uv.setXY(i, (pos.getX(i) + w / 2) / w, (pos.getY(i) + h / 2) / h);
+  for (let i = 0; i < uv.count; i++)
+    uv.setXY(i, (pos.getX(i) + w / 2) / w, (pos.getY(i) + h / 2) / h);
   uv.needsUpdate = true;
 }
 

@@ -1,6 +1,12 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
-import { DEFAULT_INTENSITY, IntensitySchema, LOCALES, type Intensity, type Locale } from '@/core/content/schemas';
+import {
+  DEFAULT_INTENSITY,
+  IntensitySchema,
+  LOCALES,
+  type Intensity,
+  type Locale,
+} from '@/core/content/schemas';
 
 export const QUALITY_OPTIONS = ['auto', 'low', 'mid', 'high'] as const;
 export type Quality = (typeof QUALITY_OPTIONS)[number];
@@ -43,7 +49,9 @@ const SETTINGS_VERSION = 1;
 
 /** Accepts anything from storage and returns a valid settings object. */
 export function sanitizeSettings(raw: unknown): SettingsData {
-  const r = (raw && typeof raw === 'object' ? raw : {}) as Partial<Record<keyof SettingsData, unknown>>;
+  const r = (raw && typeof raw === 'object' ? raw : {}) as Partial<
+    Record<keyof SettingsData, unknown>
+  >;
   const intensity = IntensitySchema.safeParse(r.intensity ?? {});
   const tier = (v: unknown): v is Tier => v === 'low' || v === 'mid' || v === 'high';
   return {

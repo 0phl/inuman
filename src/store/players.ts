@@ -23,7 +23,8 @@ const clean = (name: string) => name.replace(/\s+/g, ' ').trim().slice(0, MAX_NA
 function nameError(name: string, players: Player[], selfId?: string): string | null {
   if (!name) return 'error.emptyName';
   const lower = name.toLocaleLowerCase();
-  if (players.some((p) => p.id !== selfId && p.name.toLocaleLowerCase() === lower)) return 'players.error.duplicate';
+  if (players.some((p) => p.id !== selfId && p.name.toLocaleLowerCase() === lower))
+    return 'players.error.duplicate';
   return null;
 }
 
@@ -51,7 +52,12 @@ export const usePlayers = create<PlayersState>()(
         if (players.length >= MAX_PLAYERS) return 'players.error.full';
         const err = nameError(name, players);
         if (err) return err;
-        set({ players: [...players, { id: newPlayerId(), name, nonAlcoholic: false, sittingOut: false }] });
+        set({
+          players: [
+            ...players,
+            { id: newPlayerId(), name, nonAlcoholic: false, sittingOut: false },
+          ],
+        });
         return null;
       },
       rename(id, raw) {
@@ -71,16 +77,24 @@ export const usePlayers = create<PlayersState>()(
         set({ players });
       },
       toggleNonAlcoholic: (id) =>
-        set((s) => ({ players: s.players.map((p) => (p.id === id ? { ...p, nonAlcoholic: !p.nonAlcoholic } : p)) })),
+        set((s) => ({
+          players: s.players.map((p) =>
+            p.id === id ? { ...p, nonAlcoholic: !p.nonAlcoholic } : p,
+          ),
+        })),
       toggleSittingOut: (id) =>
-        set((s) => ({ players: s.players.map((p) => (p.id === id ? { ...p, sittingOut: !p.sittingOut } : p)) })),
+        set((s) => ({
+          players: s.players.map((p) => (p.id === id ? { ...p, sittingOut: !p.sittingOut } : p)),
+        })),
     }),
     {
       name: 'inuman.players',
       version: 1,
       storage: createJSONStorage(() => localStorage),
       partialize: (s) => ({ players: s.players }),
-      migrate: (persisted) => ({ players: sanitizePlayers((persisted as { players?: unknown } | null)?.players) }),
+      migrate: (persisted) => ({
+        players: sanitizePlayers((persisted as { players?: unknown } | null)?.players),
+      }),
       merge: (persisted, current) => ({
         ...current,
         players: sanitizePlayers((persisted as { players?: unknown } | null)?.players),

@@ -32,13 +32,32 @@ const TONES = {
 export function BottleCap({ size = 44, tone = 'brass', children, className = '' }: BottleCapProps) {
   const c = TONES[tone];
   return (
-    <span className={`relative inline-grid shrink-0 place-items-center ${className}`} style={{ width: size, height: size }}>
-      <svg viewBox="0 0 100 100" width={size} height={size} className="absolute inset-0" aria-hidden>
+    <span
+      className={`relative inline-grid shrink-0 place-items-center ${className}`}
+      style={{ width: size, height: size }}
+    >
+      <svg
+        viewBox="0 0 100 100"
+        width={size}
+        height={size}
+        className="absolute inset-0"
+        aria-hidden
+      >
         <path d={CROWN} fill={c.fill} />
         <circle cx="50" cy="50" r="37" fill="none" stroke={c.ring} strokeWidth="3" />
-        <circle cx="50" cy="50" r="31" fill="none" stroke="rgb(255 255 255 / 0.25)" strokeWidth="1.5" />
+        <circle
+          cx="50"
+          cy="50"
+          r="31"
+          fill="none"
+          stroke="rgb(255 255 255 / 0.25)"
+          strokeWidth="1.5"
+        />
       </svg>
-      <span className="relative font-sign leading-none" style={{ color: c.ink, fontSize: size * 0.4 }}>
+      <span
+        className="relative font-sign leading-none"
+        style={{ color: c.ink, fontSize: size * 0.4 }}
+      >
         {children}
       </span>
     </span>

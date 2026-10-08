@@ -12,18 +12,39 @@ interface StepperProps {
   testId?: string;
 }
 
-export function Stepper({ value, min = -Infinity, max = Infinity, step = 1, onChange, label, format, testId }: StepperProps) {
+export function Stepper({
+  value,
+  min = -Infinity,
+  max = Infinity,
+  step = 1,
+  onChange,
+  label,
+  format,
+  testId,
+}: StepperProps) {
   const round = (v: number) => Math.round(v / step) * step;
   const clamp = (v: number) => Math.min(max, Math.max(min, round(v)));
   return (
     <div className="flex items-center gap-1.5" role="group" aria-label={label} data-testid={testId}>
-      <button type="button" className="icon-btn" aria-label={`${label} −`} disabled={value <= min} onClick={() => onChange(clamp(value - step))}>
+      <button
+        type="button"
+        className="icon-btn"
+        aria-label={`${label} −`}
+        disabled={value <= min}
+        onClick={() => onChange(clamp(value - step))}
+      >
         <IconMinus />
       </button>
       <output className="min-w-12 text-center font-sign text-xl text-capiz-50" aria-live="polite">
         {format ? format(value) : value}
       </output>
-      <button type="button" className="icon-btn" aria-label={`${label} +`} disabled={value >= max} onClick={() => onChange(clamp(value + step))}>
+      <button
+        type="button"
+        className="icon-btn"
+        aria-label={`${label} +`}
+        disabled={value >= max}
+        onClick={() => onChange(clamp(value + step))}
+      >
         <IconPlus />
       </button>
     </div>
@@ -43,7 +64,13 @@ interface SegmentedProps<T> {
   testId?: string;
 }
 
-export function Segmented<T extends string | number | boolean>({ value, options, onChange, label, testId }: SegmentedProps<T>) {
+export function Segmented<T extends string | number | boolean>({
+  value,
+  options,
+  onChange,
+  label,
+  testId,
+}: SegmentedProps<T>) {
   return (
     <div
       role="radiogroup"
@@ -122,7 +149,15 @@ export function Toggle({ checked, onChange, label, description, testId }: Toggle
 }
 
 /** A labelled settings row: label (+ help) above, control below. */
-export function FieldRow({ label, help, children }: { label: ReactNode; help?: ReactNode; children: ReactNode }) {
+export function FieldRow({
+  label,
+  help,
+  children,
+}: {
+  label: ReactNode;
+  help?: ReactNode;
+  children: ReactNode;
+}) {
   return (
     <div className="flex flex-col gap-2 py-3">
       <div className="flex flex-col">
@@ -135,7 +170,15 @@ export function FieldRow({ label, help, children }: { label: ReactNode; help?: R
 }
 
 /** Label left, compact control right. */
-export function InlineRow({ label, help, children }: { label: ReactNode; help?: ReactNode; children: ReactNode }) {
+export function InlineRow({
+  label,
+  help,
+  children,
+}: {
+  label: ReactNode;
+  help?: ReactNode;
+  children: ReactNode;
+}) {
   return (
     <div className="flex items-center justify-between gap-3 py-2.5">
       <div className="flex min-w-0 flex-col">

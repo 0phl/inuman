@@ -289,7 +289,7 @@ describe('kings cup pending', () => {
       type: 'drink',
       to: ['p3'],
       amount: 2,
-      kind: 'give',
+      kind: 'drink',
       reason: { key: 'kc.reason.choose' },
     });
   });

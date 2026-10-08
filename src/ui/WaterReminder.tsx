@@ -31,7 +31,11 @@ export function WaterReminder() {
     >
       <IconDrop size={28} className="shrink-0 text-tubig-300" />
       <span className="flex-1 font-bold text-capiz-50">{t('water.reminder')}</span>
-      <button type="button" className="btn min-h-11 shrink-0 bg-tubig-400 px-3 text-sm text-narra-950" onClick={markWater}>
+      <button
+        type="button"
+        className="btn min-h-11 shrink-0 bg-tubig-400 px-3 text-sm text-narra-950"
+        onClick={markWater}
+      >
         {t('water.done')}
       </button>
     </div>

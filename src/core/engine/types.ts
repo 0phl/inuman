@@ -37,6 +37,8 @@ export interface DrinkEffect {
   amount: number;
   /** "Finish your drink" — downgraded to the per-turn cap unless intensity.allowFinish. */
   finish?: boolean;
+  /** 'give': the `to` players hand these sips out to others IRL — shown, but not logged as drunk.
+   *  Someone picked to drink (e.g. Kings Cup "Ikaw") is a plain 'drink' for the picked player. */
   kind: 'drink' | 'give' | 'social' | 'waterfall';
   reason: Msg;
 }

@@ -1,8 +1,15 @@
 import { create } from 'zustand';
 import { useSettings, type Tier } from '@/store/settings';
 
+/**
+ * Routes that show the 3D stage: /play, plus the dev benches (/dev/*) in dev builds only (in a
+ * production build `import.meta.env.DEV` is false and the dev routes don't exist).
+ */
+export const isStageRoute = (pathname: string): boolean =>
+  pathname === '/play' || (import.meta.env.DEV && pathname.startsWith('/dev/'));
+
 interface StageState {
-  /** Set once the player first reaches /play; the Canvas stays mounted afterwards. */
+  /** Set once the player first reaches a stage route; the Canvas stays mounted afterwards. */
   wanted: boolean;
   want(): void;
 }

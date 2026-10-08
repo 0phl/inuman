@@ -36,6 +36,14 @@ test('age gate → players → Higher or Lower → guess → reload → resume',
   ).toBeVisible({
     timeout: 5_000,
   });
+  // A miss passes the phone in the open: a banner names the next player, nothing covers the table.
+  if ((await page.getByTestId('turn-name').textContent()) === 'Bea') {
+    const banner = page.getByTestId('pass-banner');
+    await expect(banner).toBeVisible({ timeout: 5_000 });
+    await expect(banner).toContainText('Bea');
+    await expect(page.getByTestId('pass-cover')).toHaveCount(0);
+    await expect(page.getByTestId('guess-lower')).toBeEnabled();
+  }
 
   // Reload on /play: the session comes back from IndexedDB
   await page.reload();

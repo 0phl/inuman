@@ -357,15 +357,8 @@ function resolve(state: State, action: Extract<Action, { type: 'RESOLVE' }>) {
     case 'choose':
     case 'loser': {
       const to = withMates([action.target as PlayerId], state.mates);
-      effects.push(
-        ...drink(
-          to,
-          pending.sips,
-          pending.kind === 'choose' ? 'give' : 'drink',
-          pending.kind,
-          pending.rank,
-        ),
-      );
+      // The picked player (and their mates) actually drinks, whether chosen or the loser.
+      effects.push(...drink(to, pending.sips, 'drink', pending.kind, pending.rank));
       break;
     }
     case 'mate': {

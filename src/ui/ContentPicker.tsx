@@ -34,7 +34,9 @@ function PackToggle({
         <span
           aria-hidden
           className={`grid size-7 shrink-0 place-items-center rounded-lg border-2 ${
-            on ? 'border-brass-300 bg-brass-400 text-narra-950' : 'border-narra-500 text-transparent'
+            on
+              ? 'border-brass-300 bg-brass-400 text-narra-950'
+              : 'border-narra-500 text-transparent'
           }`}
         >
           <IconCheck size={16} />
@@ -118,7 +120,10 @@ export function ContentPicker({
       <div className="flex flex-col gap-2 pt-1" data-testid="custom-packs">
         <div className="flex items-center justify-between gap-2">
           <h3 className="eyebrow flex items-center gap-2 text-capiz-300">
-            <span aria-hidden className="size-2.5 rounded-full border border-felt-600 bg-felt-700" />
+            <span
+              aria-hidden
+              className="size-2.5 rounded-full border border-felt-600 bg-felt-700"
+            />
             {t('lobby.packs.custom')}
           </h3>
           <Link

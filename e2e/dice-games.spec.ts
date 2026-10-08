@@ -25,15 +25,23 @@ async function startGame(page: Page, id: string) {
   await expect(page).toHaveURL(/\/play$/);
 }
 
-/** Tap the pass-the-phone cover low down, clear of any toasts near the top. */
-async function dismissCover(page: Page) {
+/**
+ * Pass the phone: a public pass is a banner over the turn indicator (tap it away; the table stays
+ * usable underneath), a private one the opaque full-screen cover (tap low, clear of any toasts).
+ */
+async function passPhone(page: Page) {
   const cover = page.getByTestId('pass-cover');
-  await expect(cover).toBeVisible({ timeout: 8_000 });
-  const box = await cover.boundingBox();
-  await cover.click({ position: { x: 24, y: (box?.height ?? 600) - 24 } });
-  await expect(cover).toBeHidden();
+  const banner = page.getByTestId('pass-banner');
+  await expect(cover.or(banner).first()).toBeVisible({ timeout: 8_000 });
+  if (await cover.isVisible()) {
+    const box = await cover.boundingBox();
+    await cover.click({ position: { x: 24, y: (box?.height ?? 600) - 24 } });
+    await expect(cover).toBeHidden();
+  } else {
+    await banner.click();
+    await expect(banner).toBeHidden();
+  }
 }
-
 test('Dice games are playable from the catalog, with their house rules', async ({ page }) => {
   await seat(page, ['Migs', 'Bea']);
   await page.goto('/games');
@@ -83,9 +91,11 @@ test('Mexico: a full round with 3 players, a reload mid-turn, then the next roun
     const keep = page.getByTestId('mx-keep');
     if (await keep.isVisible()) await keep.click();
     const next = page.getByTestId('mx-next');
-    await expect(next.or(page.getByTestId('pass-cover')).first()).toBeVisible({ timeout: 8_000 });
+    await expect(next.or(page.getByTestId(/^pass-(cover|banner)$/)).first()).toBeVisible({
+      timeout: 8_000,
+    });
     if (await next.isVisible()) break;
-    await dismissCover(page);
+    await passPhone(page);
   }
 
   await expect(page.getByTestId('mx-next')).toBeVisible();
@@ -93,7 +103,7 @@ test('Mexico: a full round with 3 players, a reload mid-turn, then the next roun
   await expect(page.getByTestId('mx-stake')).toBeVisible();
   await expect(page.getByTestId('mx-loser-mark').first()).toBeVisible();
   await page.getByTestId('mx-next').click();
-  await dismissCover(page);
+  await passPhone(page);
   await expect(page.getByTestId('mx-round')).toHaveText('Round 2');
   await expect(page.getByTestId('mx-roll')).toBeEnabled();
 });
@@ -133,18 +143,18 @@ test.describe('reduced motion', () => {
         }
       }
       const next = page.getByTestId('scc-next');
-      await expect(next.or(page.getByTestId('pass-cover')).first()).toBeVisible({
+      await expect(next.or(page.getByTestId(/^pass-(cover|banner)$/)).first()).toBeVisible({
         timeout: 8_000,
       });
       if (await next.isVisible()) break;
-      await dismissCover(page);
+      await passPhone(page);
     }
 
     await expect(page.getByTestId('scc-next')).toBeVisible();
     await expect(page.getByTestId('scc-standings')).toContainText('Migs');
     await expect(page.getByTestId('scc-standings')).toContainText('Jun');
     await page.getByTestId('scc-next').click();
-    await dismissCover(page);
+    await passPhone(page);
     await expect(page.getByTestId('scc-round')).toHaveText('Round 2');
   });
 });
@@ -172,7 +182,7 @@ test("Liar's Dice: peek, bid, pass, challenge, reveal, next round", async ({ pag
   await page.getByTestId('ld-face-4').click();
   await page.getByTestId('ld-bid').click();
   await expect(peek).toBeHidden();
-  await dismissCover(page);
+  await passPhone(page);
   await expect(page.getByTestId('turn-name')).toHaveText('Bea');
   await expect(peek).toBeHidden();
   await expect(page.getByTestId('ld-bid-chip')).toHaveCount(1);
@@ -183,12 +193,17 @@ test("Liar's Dice: peek, bid, pass, challenge, reveal, next round", async ({ pag
   await page.getByTestId('ld-challenge').click();
   const reveal = page.getByTestId('ld-reveal');
   await expect(reveal).toBeVisible();
+  // The reveal is the news: toasts shrink to chips so they don't sit on the dice.
+  await expect(page.getByTestId('toasts')).toHaveAttribute('data-compact', 'true');
+  await expect(page.getByTestId('toast-drinks')).toHaveAttribute('data-compact', 'true', {
+    timeout: 5_000,
+  });
   await expect(page.getByTestId('ld-count')).toHaveText(/^\d+/);
   await expect(page.getByTestId('ld-verdict')).not.toBeEmpty();
   await expect(page.getByTestId('ld-loser')).toHaveCount(1);
 
   await page.getByTestId('ld-next').click();
-  await dismissCover(page);
+  await passPhone(page);
   await expect(page.getByTestId('ld-round')).toHaveText('Round 2');
   await expect(page.getByTestId('ld-bid-chip')).toHaveCount(0);
   await expect(page.getByTestId('ld-peek')).toBeVisible();
@@ -207,8 +222,20 @@ test("Liar's Dice: losing your last die ends the game with a winner", async ({ p
   await expect(page.getByTestId('ld-total')).toContainText('2');
   await expect(page.getByTestId('ld-last-bid')).toBeVisible({ timeout: 8_000 });
   await page.getByTestId('ld-bid').click();
-  await dismissCover(page);
+  await passPhone(page);
   await page.getByTestId('ld-challenge').click();
-  await expect(page.getByTestId('game-over')).toBeVisible();
+  // The final reveal stays on the table first; the results come up after a beat or on request.
+  const over = page.getByTestId('game-over');
+  const see = page.getByTestId('see-results');
+  await expect(see).toBeVisible();
+  await expect(over).toBeHidden();
+  await expect(page.getByTestId('ld-reveal')).toBeVisible();
+  await expect(over).toBeVisible({ timeout: 5_000 });
   await expect(page.getByTestId('ld-winner')).toContainText(/Panalo si (Migs|Bea)/);
+  // Back to the table, and back to the results.
+  await page.getByTestId('look-at-table').click();
+  await expect(over).toBeHidden();
+  await expect(page.getByTestId('ld-winner')).toBeHidden();
+  await see.click();
+  await expect(over).toBeVisible();
 });

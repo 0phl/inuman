@@ -143,3 +143,20 @@ export const IconLines = ({ size = 20, ...p }: IconProps) => (
     <path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01" />
   </svg>
 );
+export const IconArrowRight = ({ size = 24, ...p }: IconProps) => (
+  <svg {...base(size)} strokeWidth={2.8} {...p}>
+    <path d="M5 12h14M13 6l6 6-6 6" />
+  </svg>
+);
+export const IconEye = ({ size = 22, ...p }: IconProps) => (
+  <svg {...base(size)} {...p}>
+    <path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z" />
+    <circle cx="12" cy="12" r="3" />
+  </svg>
+);
+export const IconUndo = ({ size = 20, ...p }: IconProps) => (
+  <svg {...base(size)} {...p}>
+    <path d="M9 14L4 9l5-5" />
+    <path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11" />
+  </svg>
+);

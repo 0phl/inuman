@@ -15,7 +15,7 @@ import { BlobShadow } from '@/three/BlobShadow';
 import { Card3D } from '@/three/Card3D';
 import { Deck3D } from '@/three/Deck3D';
 import { CARD_H, CARD_T, CARD_W, cardGeometries, deckHeight } from '@/three/cardGeometry';
-import { cardBackTexture } from '@/three/cardTextures';
+import { cardBackTexture, cardMaterial } from '@/three/cardTextures';
 import { clamp01, easeInOut, easeOut, reducedMotion } from '../mexico/dice3d';
 import { GlowDisc } from '../mexico/diceKit';
 import { Nameplate } from '../spin-the-bottle/seatKit';
@@ -475,15 +475,7 @@ export default function RideTheBusScene({ view, players }: GameViewProps<View>) 
   const n = view.order.length;
   const layout = useMemo(() => seatLayout(n), [n]);
   const nameOf = (id: PlayerId) => players.find((p) => p.id === id)?.name ?? '?';
-  const backMat = useMemo(
-    () =>
-      new MeshStandardMaterial({
-        map: cardBackTexture(back),
-        roughness: 0.42,
-        envMapIntensity: 0.8,
-      }),
-    [back],
-  );
+  const backMat = useMemo(() => cardMaterial(cardBackTexture(back)), [back]);
   useEffect(() => () => backMat.dispose(), [backMat]);
 
   // What was on the table before this update, to tell which change just happened.

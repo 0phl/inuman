@@ -8,14 +8,23 @@ import { Sheet } from './Sheet';
 const AMOUNTS = [1, 2, 3] as const;
 
 /** "+ Parusa": a house-rule penalty the table agrees on. Goes through MANUAL_DRINK like any drink. */
-export function ParusaSheet({ open, onClose, players }: { open: boolean; onClose(): void; players: readonly Player[] }) {
+export function ParusaSheet({
+  open,
+  onClose,
+  players,
+}: {
+  open: boolean;
+  onClose(): void;
+  players: readonly Player[];
+}) {
   const { t } = useTranslation();
   const dispatch = useSession((s) => s.dispatch);
   const [picked, setPicked] = useState<string[]>([]);
   const [amount, setAmount] = useState<number>(1);
   const seated = players.filter((p) => !p.sittingOut);
 
-  const toggle = (id: string) => setPicked((cur) => (cur.includes(id) ? cur.filter((x) => x !== id) : [...cur, id]));
+  const toggle = (id: string) =>
+    setPicked((cur) => (cur.includes(id) ? cur.filter((x) => x !== id) : [...cur, id]));
   const close = () => {
     setPicked([]);
     setAmount(1);
@@ -35,7 +44,9 @@ export function ParusaSheet({ open, onClose, players }: { open: boolean; onClose
               aria-pressed={on}
               onClick={() => toggle(p.id)}
               className={`min-h-12 rounded-full border px-4 font-bold ${
-                on ? 'border-sili-500 bg-sili-500 text-capiz-50' : 'border-narra-500 bg-narra-950/60 text-capiz-200'
+                on
+                  ? 'border-sili-500 bg-sili-500 text-capiz-50'
+                  : 'border-narra-500 bg-narra-950/60 text-capiz-200'
               }`}
             >
               {p.name}

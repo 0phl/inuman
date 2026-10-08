@@ -39,10 +39,20 @@ export const router = createBrowserRouter([
         path: 'settings',
         lazy: () => import('./routes/Settings').then((m) => ({ Component: m.default })),
       },
-      {
-        path: 'dev/dice',
-        lazy: () => import('./routes/DevDice').then((m) => ({ Component: m.default })),
-      },
+      // Dev benches: only in dev builds (import.meta.env.DEV is statically false in production,
+      // so these routes and their chunks are dropped from the build).
+      ...(import.meta.env.DEV
+        ? [
+            {
+              path: 'dev/dice',
+              lazy: () => import('./routes/DevDice').then((m) => ({ Component: m.default })),
+            },
+            {
+              path: 'dev/throw',
+              lazy: () => import('./routes/DevThrow').then((m) => ({ Component: m.default })),
+            },
+          ]
+        : []),
       { path: '*', element: <Navigate to="/" replace /> },
     ],
   },

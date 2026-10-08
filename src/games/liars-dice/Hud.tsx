@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { Action, Rules, View } from '@/core/games/liars-dice/logic';
+import { useFx } from '@/store/fx';
 import { Stepper } from '@/ui/controls';
+import { useCompactToasts } from '@/ui/toastAnchor';
 import { DiceRow, DieFace } from '../mexico/DieFace';
 import { TurnHeader } from '../mexico/hudKit';
 import type { GameViewProps } from '../types';
@@ -294,6 +296,9 @@ export default function LiarsDiceHud({ view, rules, players, dispatch }: GameVie
 
   const last = view.lastBid;
   const reveal = view.phase === 'reveal' ? view.reveal : null;
+  // The reveal is the news: drink toasts and notices shrink to chips so the dice stay readable.
+  useCompactToasts(reveal !== null);
+  const resultsShown = useFx((s) => s.resultsShown);
 
   return (
     <div className="flex h-full flex-col justify-between gap-2">
@@ -413,7 +418,7 @@ export default function LiarsDiceHud({ view, rules, players, dispatch }: GameVie
         ) : null}
       </section>
 
-      {view.winner !== null && (
+      {view.winner !== null && resultsShown && (
         // Sits over the play screen's game-over cover so the winner is named there too.
         <div
           className="anim-pour pointer-events-none fixed inset-x-0 top-[calc(env(safe-area-inset-top)+12px)] z-[31] mx-auto flex max-w-[440px] flex-col items-center px-4 text-center"

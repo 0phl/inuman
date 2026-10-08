@@ -1,17 +1,21 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
-import type { PromptPack } from '@/core/content/schemas';
+import type { PromptPack, Theme } from '@/core/content/schemas';
 import type { SharePayload } from '@/core/share/codec';
 import type { GameId } from '@/core/engine/types';
 import { getLogic, hasLogic } from '@/core/games/registry';
 import { useTx } from '@/i18n/tx';
 import { spiceSpread, usePacks } from '@/store/packs';
 import { MAX_PRESET_NAME, useRules } from '@/store/rules';
+import { sameTheme, useTheme } from '@/store/theme';
 import { checkPayload } from './importCheck';
 import { KindTag, LocaleBadge, PromptText, SpiceDots, SpiceSpread } from './packBits';
 import { rulesDiff, type RuleChange } from './rulesDiff';
 import type { Primitive } from './rulesForm';
+import { TablePreview } from './ThemePicker';
+import { feltSwatchCss } from './themeArt';
+import { swatchName } from './themeNames';
 
 const PREVIEW_ITEMS = 10;
 
@@ -166,7 +170,91 @@ function RulesPreview({
   );
 }
 
-type Saved = { kind: 'pack'; id: string } | { kind: 'rules'; gameId: GameId; name: string };
+function ThemeImportPreview({ name, theme }: { name: string; theme: Theme }) {
+  const { t } = useTranslation();
+  const current = useTheme((s) => s.theme);
+  const same = sameTheme(current, theme);
+  const dot = (hex: string, felt = false) => (
+    <span
+      aria-hidden
+      className="size-5 shrink-0 rounded-full border border-narra-950 shadow-[0_0_0_1.5px_var(--color-brass-500)]"
+      style={{ background: felt ? feltSwatchCss(hex) : hex }}
+    />
+  );
+  const rows: { key: keyof Theme; label: string; value: string; swatch?: ReactNode }[] = [
+    {
+      key: 'environmentId',
+      label: t('theme.environment'),
+      value: t(`theme.env.${theme.environmentId}`),
+    },
+    { key: 'cardBack', label: t('settings.cardBack'), value: t(`cardBack.${theme.cardBack}`) },
+    {
+      key: 'diceMaterialId',
+      label: t('theme.dice'),
+      value: t(`theme.diceName.${theme.diceMaterialId}`),
+    },
+    {
+      key: 'cupColor',
+      label: t('theme.cup'),
+      value: swatchName(t, 'cup', theme.cupColor),
+      swatch: dot(theme.cupColor),
+    },
+    {
+      key: 'feltColor',
+      label: t('settings.felt'),
+      value: swatchName(t, 'felt', theme.feltColor),
+      swatch: dot(theme.feltColor, true),
+    },
+  ];
+  return (
+    <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-1">
+        <span className="eyebrow">{t('theme.title')}</span>
+        <h2
+          className="font-sign text-[1.55rem] leading-tight text-brass-300 [overflow-wrap:anywhere]"
+          data-testid="import-name"
+        >
+          {name}
+        </h2>
+      </div>
+      <div className="overflow-hidden rounded-xl border border-narra-500">
+        <TablePreview
+          theme={theme}
+          className="aspect-[16/9] w-full"
+          testId="import-theme-preview"
+        />
+      </div>
+      <ul className="flex flex-col gap-1.5" data-testid="import-theme-rows">
+        {rows.map((r) => {
+          const changed =
+            String(current[r.key]).toLowerCase() !== String(theme[r.key]).toLowerCase();
+          return (
+            <li
+              key={r.key}
+              className="flex min-h-11 items-center gap-3 rounded-xl border border-white/8 bg-narra-950/40 px-3 py-2"
+              data-changed={changed}
+            >
+              <span className="min-w-0 flex-1 text-sm font-bold text-capiz-200">{r.label}</span>
+              {r.swatch}
+              <span className="font-bold text-capiz-50">{r.value}</span>
+              {changed && (
+                <span className="chip min-h-6 border-brass-500/70 px-2 text-[0.7rem] text-brass-200">
+                  {t('import.themeNew')}
+                </span>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+      {same && <p className="text-center text-capiz-300">{t('import.themeSame')}</p>}
+    </div>
+  );
+}
+
+type Saved =
+  | { kind: 'pack'; id: string }
+  | { kind: 'rules'; gameId: GameId; name: string }
+  | { kind: 'theme'; previous: Theme; undone: boolean };
 
 interface ImportPreviewProps {
   payload: SharePayload;
@@ -182,6 +270,7 @@ export function ImportPreview({ payload, onCancel, onBackToPacks }: ImportPrevie
   const hydrated = usePacks((s) => s.hydrated);
   const importPack = usePacks((s) => s.importPack);
   const addPreset = useRules((s) => s.addPreset);
+  const setTheme = useTheme((s) => s.setTheme);
   const [presetName, setPresetName] = useState(() =>
     checked.kind === 'rules' ? checked.name.slice(0, MAX_PRESET_NAME) : '',
   );
@@ -198,18 +287,49 @@ export function ImportPreview({ payload, onCancel, onBackToPacks }: ImportPrevie
         role="status"
       >
         <h2 className="sign-pintor relative z-10 text-[clamp(2.2rem,11vw,3rem)]">
-          {t('import.saved')}
+          {saved.kind === 'theme'
+            ? saved.undone
+              ? t('import.themeUndone')
+              : t('import.themeApplied')
+            : t('import.saved')}
         </h2>
         <p className="relative z-10 text-capiz-200">
           {saved.kind === 'pack'
             ? t('import.savedPack')
-            : t('import.savedRules', {
-                name: saved.name,
-                game: t(`game.${saved.gameId}.title`),
-              })}
+            : saved.kind === 'theme'
+              ? saved.undone
+                ? t('import.themeUndoneBody')
+                : t('import.themeAppliedBody')
+              : t('import.savedRules', {
+                  name: saved.name,
+                  game: t(`game.${saved.gameId}.title`),
+                })}
         </p>
         <div className="relative z-10 mt-2 flex w-full flex-col gap-2">
-          {saved.kind === 'pack' ? (
+          {saved.kind === 'theme' ? (
+            <>
+              <Link
+                to="/settings"
+                className="btn btn-brass min-h-14"
+                data-testid="import-to-settings"
+              >
+                {t('import.themeToSettings')}
+              </Link>
+              {!saved.undone && (
+                <button
+                  type="button"
+                  className="btn btn-wood"
+                  onClick={() => {
+                    setTheme(saved.previous);
+                    setSaved({ ...saved, undone: true });
+                  }}
+                  data-testid="import-theme-undo"
+                >
+                  {t('import.themeUndo')}
+                </button>
+              )}
+            </>
+          ) : saved.kind === 'pack' ? (
             <>
               <Link
                 to={`/packs/${saved.id}`}
@@ -244,6 +364,11 @@ export function ImportPreview({ payload, onCancel, onBackToPacks }: ImportPrevie
   }
 
   const save = () => {
+    if (checked.kind === 'theme') {
+      setSaved({ kind: 'theme', previous: useTheme.getState().theme, undone: false });
+      setTheme(checked.theme);
+      return;
+    }
     if (checked.kind === 'pack') {
       const res = importPack(checked.pack);
       if (res.ok) setSaved({ kind: 'pack', id: res.value });
@@ -265,6 +390,8 @@ export function ImportPreview({ payload, onCancel, onBackToPacks }: ImportPrevie
         />
         {checked.kind === 'pack' ? (
           <PackPreview pack={checked.pack} />
+        ) : checked.kind === 'theme' ? (
+          <ThemeImportPreview name={checked.name} theme={checked.theme} />
         ) : (
           <RulesPreview
             gameId={checked.gameId}
@@ -275,7 +402,11 @@ export function ImportPreview({ payload, onCancel, onBackToPacks }: ImportPrevie
         )}
       </article>
       <p className="text-center text-sm text-capiz-400">
-        {checked.kind === 'pack' ? t('import.packNote') : t('import.rulesNote')}
+        {checked.kind === 'pack'
+          ? t('import.packNote')
+          : checked.kind === 'theme'
+            ? t('import.themeNote')
+            : t('import.rulesNote')}
       </p>
       {error && (
         <p className="text-center font-bold text-sili-500" role="alert">
@@ -290,7 +421,11 @@ export function ImportPreview({ payload, onCancel, onBackToPacks }: ImportPrevie
           onClick={save}
           data-testid="import-save"
         >
-          {waiting ? t('import.loading') : t('import.save')}
+          {waiting
+            ? t('import.loading')
+            : checked.kind === 'theme'
+              ? t('import.themeApply')
+              : t('import.save')}
         </button>
         <button
           type="button"

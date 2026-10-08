@@ -19,7 +19,14 @@ type BlobShadowProps = ThreeElements['mesh'] & { opacity?: number; ref?: Ref<Mes
 export function BlobShadow({ opacity = 0.55, ref, ...mesh }: BlobShadowProps) {
   const { geometry: g, texture: map } = shared();
   const material = useMemo(
-    () => new MeshBasicMaterial({ map, transparent: true, depthWrite: false, opacity, color: '#000000' }),
+    () =>
+      new MeshBasicMaterial({
+        map,
+        transparent: true,
+        depthWrite: false,
+        opacity,
+        color: '#000000',
+      }),
     [map, opacity],
   );
   useEffect(() => () => material.dispose(), [material]);
