@@ -1,0 +1,334 @@
+{
+  "game": {
+    "higher-lower": { "title": "Higher or Lower", "desc": "Hulaan kung mas mataas o mas mababa ang susunod na card." },
+    "kings-cup": { "title": "King's Cup", "desc": "Bunot ng card, sundin ang rule. Wag ikaw ang bumunot ng huling King!" },
+    "ride-the-bus": { "title": "Ride the Bus", "desc": "Hulaan ang apat na card. Pag nagkamali, sakay ka ng bus." },
+    "mexico": { "title": "Mexico", "desc": "Pataasan ng roll sa dice. Ang pinakamababa, tagay!" },
+    "liars-dice": { "title": "Liar's Dice", "desc": "Bolahan gamit ang dice. Sino'ng sinungaling?" },
+    "ship-captain-crew": { "title": "Ship, Captain, Crew", "desc": "Kumpletuhin ang 6-5-4 bago maubos ang roll mo." },
+    "beer-pong": { "title": "Beer Pong", "desc": "I-shoot ang bola sa mga cup ng kalaban." },
+    "flip-cup": { "title": "Flip Cup", "desc": "Inom, tapos i-flip ang cup. Bilisan!" },
+    "quarters": { "title": "Quarters", "desc": "I-bounce ang barya papasok sa baso." },
+    "spin-the-bottle": { "title": "Spin the Bottle", "desc": "Paikutin ang bote. Kung kanino tumapat, siya ang taya." },
+    "truth-or-dare": { "title": "Truth or Dare", "desc": "Truth o dare? Pag umatras ka, tagay!" },
+    "never-have-i-ever": { "title": "Never Have I Ever", "desc": "Inom kung nagawa mo na. Walang plastikan!" },
+    "most-likely-to": { "title": "Most Likely To", "desc": "Turuan kung sino ang pinaka-malamang gumawa nito." }
+  },
+  "rules": {
+    "hl": {
+      "wrongSips": "Lagok pag mali",
+      "penalty": "Parusa",
+      "penalty_opt_fixed": "Pare-pareho",
+      "penalty_opt_streak": "Lumalaki sa streak",
+      "penalty_help": "Sa streak, dagdag ang haba ng streak sa lagok.",
+      "tie": "Pag tabla",
+      "tie_opt_lose": "Talo",
+      "tie_opt_safe": "Ligtas",
+      "tie_opt_social": "Lahat, inom!",
+      "passAfter": "Ipasa pagkatapos ng ilang tama",
+      "passAfter_help": "0 = tuloy lang hangga't hindi nagkakamali.",
+      "aceHigh": "Pinakamataas ang Alas"
+    },
+    "kc": {
+      "cards": "Mga card at rule",
+      "cards_help": "Palitan ang ibig sabihin ng bawat card.",
+      "endOnFourthKing": "Tapos na pag lumabas ang ika-4 na King",
+      "rank": {
+        "A": "Alas (A)",
+        "2": "2",
+        "3": "3",
+        "4": "4",
+        "5": "5",
+        "6": "6",
+        "7": "7",
+        "8": "8",
+        "9": "9",
+        "10": "10",
+        "J": "Jack (J)",
+        "Q": "Queen (Q)",
+        "K": "King (K)"
+      },
+      "card": {
+        "title": "Pangalan",
+        "text": "Gagawin",
+        "effect": "Sino iinom",
+        "effect_opt_none": "Walang iinom",
+        "effect_opt_self": "Ang bumunot",
+        "effect_opt_everyone": "Lahat",
+        "effect_opt_left": "Nasa kaliwa",
+        "effect_opt_right": "Nasa kanan",
+        "effect_opt_choose": "Pipili ang bumunot",
+        "effect_opt_loser": "Ang talo",
+        "effect_opt_mate": "Pipili ng mate",
+        "effect_opt_questionMaster": "Question Master",
+        "effect_opt_thumbMaster": "Thumb Master",
+        "effect_opt_rule": "Gagawa ng rule",
+        "effect_opt_kingsCup": "King's Cup",
+        "sips": "Ilang lagok",
+        "sips_help": "Base na lagok. Inaayos pa ito ng intensity settings."
+      }
+    },
+    "nhie": {
+      "sips": "Lagok kapag nagawa mo na",
+      "maxSpice": "Anghang",
+      "maxSpice_help": "0 = pang-pamilya, 3 = extra spicy.",
+      "maxSpice_opt_0": "Pang-pamilya",
+      "maxSpice_opt_1": "Medyo maanghang",
+      "maxSpice_opt_2": "Maanghang",
+      "maxSpice_opt_3": "Extra spicy",
+      "rounds": "Ilang round",
+      "rounds_help": "0 = hanggang maubos ang cards."
+    },
+    "mx": {
+      "maxRolls": "Max na roll bawat turn",
+      "maxRolls_help": "Puwedeng huminto nang maaga. Ang huling roll mo ang bilang.",
+      "leaderSetsRolls": "Ang nauna ang magse-set ng limit",
+      "leaderSetsRolls_help": "Kung ilang beses nag-roll ang unang player, 'yun na rin ang limit ng lahat sa round na 'yon.",
+      "loserSips": "Lagok ng pinakamababa",
+      "mexicoDoubles": "Doble pag may Mexico",
+      "mexicoDoubles_help": "Bawat Mexico (2-1) sa round, doble ang tagay ng talo.",
+      "tie": "Pag tabla sa pinakamababa",
+      "tie_opt_all": "Lahat ng tabla, iinom",
+      "tie_opt_rolloff": "Roll-off",
+      "tie_help": "Sa roll-off, ang mga tabla lang ang magro-roll ulit hanggang may matalo."
+    },
+    "scc": {
+      "maxRolls": "Ilang roll bawat turn",
+      "maxRolls_help": "I-lock ang 6 (ship), tapos 5 (captain), tapos 4 (crew). Ang natirang dalawang dice ang cargo mo.",
+      "loserSips": "Lagok ng pinakamababa",
+      "winnerGivesSips": "Lagok na ipamimigay ng panalo",
+      "winnerGivesSips_help": "0 = off. Ang may pinakamataas na score, mamimigay kahit kanino."
+    },
+    "ld": {
+      "dicePerPlayer": "Ilang dice bawat player",
+      "onesWild": "Wild ang 1",
+      "onesWild_help": "Pasok ang 1 sa kahit anong face, maliban kung 1 mismo ang bid.",
+      "spotOn": "Puwede ang Spot On",
+      "spotOn_help": "Tawagin kung sakto ang bid. Tama ka? Tagay lahat ng iba. Mali? Ikaw ang iinom.",
+      "loserSips": "Lagok ng talo",
+      "loseDie": "Bawas dice sa talo",
+      "loseDie_help": "Pag naubusan ka ng dice, out ka na. Ang huling may dice, panalo. Off = tuloy-tuloy hanggang i-end ng host."
+    }
+  },
+  "hl": {
+    "reason": {
+      "wrong": "Mali! Tagay mo na.",
+      "tieSocial": "Tabla! Lahat, inom!"
+    },
+    "notice": {
+      "safe": "{{streak}} sunod na tama! Ligtas ka, pasa na."
+    }
+  },
+  "kc": {
+    "card": {
+      "A": { "title": "Waterfall", "text": "Sabay-sabay uminom, simula sa bumunot. Bawal huminto hangga't hindi humihinto ang nauna sa 'yo." },
+      "2": { "title": "Ikaw", "text": "Pumili ka ng iinom. Ikaw ang bahala!" },
+      "3": { "title": "Ako", "text": "Ikaw ang iinom. Tagay mo na!" },
+      "4": { "title": "Floor", "text": "Hawak sa sahig! Ang huling humawak, iinom." },
+      "5": { "title": "Thumb Master", "text": "Ikaw na ang Thumb Master. Pag nilapag mo ang thumb mo sa mesa, gagaya lahat. Ang huli, iinom." },
+      "6": { "title": "Tagay Lahat", "text": "Lahat, inom! Cheers!" },
+      "7": { "title": "Heaven", "text": "Taas ang kamay! Ang huling nagtaas, iinom." },
+      "8": { "title": "Mate", "text": "Pumili ng mate. Pag uminom ang isa sa inyo, iinom din ang isa." },
+      "9": { "title": "Rhyme", "text": "Magbigay ng salita. Ikot sa mesa, mag-rhyme. Ang matigilan o umulit, iinom." },
+      "10": { "title": "Categories", "text": "Pumili ng category, hal. brand ng beer. Ikot sa mesa. Ang walang maisip, iinom." },
+      "J": { "title": "Gawa ng Rule", "text": "Gumawa ng bagong house rule. Ang lumabag, iinom." },
+      "Q": { "title": "Question Master", "text": "Ikaw na ang Question Master. Ang sumagot sa tanong mo, iinom." },
+      "K": { "title": "King's Cup", "text": "Magbuhos sa King's Cup. Ang makabunot ng ika-4 na King, iinom ng King's Cup!" }
+    },
+    "reason": {
+      "none": "{{card}}",
+      "self": "{{card}}: Tagay mo na!",
+      "everyone": "{{card}}: Lahat, inom!",
+      "left": "{{card}}: Tagay ng nasa kaliwa!",
+      "right": "{{card}}: Tagay ng nasa kanan!",
+      "choose": "{{card}}: Ikaw ang napili!",
+      "loser": "{{card}}: Talo ka!",
+      "mate": "{{card}}: Damay ang mate!",
+      "questionMaster": "Sumagot sa Question Master!",
+      "thumbMaster": "Huli sa Thumb Master!",
+      "rule": "Lumabag sa house rule!",
+      "kingsCup": "Ika-4 na King! Inom sa King's Cup!"
+    },
+    "notice": {
+      "pour": "Buhos sa King's Cup! {{left}} King na lang."
+    },
+    "pending": {
+      "choose": "Sino iinom?",
+      "loser": "Sino natalo?",
+      "mate": "Sino ang mate mo?",
+      "rule": "Ano'ng bagong rule?"
+    },
+    "role": {
+      "questionMaster": "Question Master",
+      "thumbMaster": "Thumb Master"
+    },
+    "error": {
+      "pending": "Tapusin muna ang card na 'to.",
+      "noPending": "Walang kailangang i-settle.",
+      "badTarget": "Pumili ng player sa mesa.",
+      "selfMate": "Bawal maging mate ang sarili!",
+      "ruleText": "Isulat ang rule (hanggang 140 letters)."
+    },
+    "hud": {
+      "draw": "Bunot!",
+      "skip": "Skip",
+      "confirm": "Sige!",
+      "kingsLeft": "King na natitira",
+      "cardsLeft": "Cards na natitira",
+      "houseRules": "House rules",
+      "mates": "Mga mate",
+      "rulePlaceholder": "Hal. Bawal mag-English"
+    }
+  },
+  "nhie": {
+    "reason": {
+      "did": "Nagawa mo na 'yan!"
+    },
+    "error": {
+      "badPlayer": "May napiling wala sa mesa.",
+      "duplicate": "Dalawang beses napili ang isang player."
+    },
+    "hud": {
+      "whoDid": "Sino na nakagawa?",
+      "next": "Next!",
+      "nobody": "Walang nakagawa",
+      "reader": "Babasa: {{name}}",
+      "round": "Round {{round}}",
+      "remaining": "{{n}} cards pa",
+      "done": "Ubos na ang cards!",
+      "empty": "Walang prompts. Mag-add ng pack o babaan ang anghang."
+    }
+  },
+  "mx": {
+    "reason": {
+      "lowest": "Pinakamababa! Tagay mo na.",
+      "lowestDoubled": "Pinakamababa! Doble pa dahil sa Mexico ({{count}})."
+    },
+    "notice": {
+      "mexico": "MEXICO! 2-1 si {{name}}!",
+      "cap": "{{rolls}} roll lang si {{name}}. 'Yan ang limit ng lahat ngayong round.",
+      "rolloff": "Tabla sa baba! Roll-off: {{names}}",
+      "lost": "Talo sa round {{round}}: {{names}}!"
+    },
+    "error": {
+      "rolling": "Teka, hintayin munang tumigil ang dice.",
+      "noRoll": "Mag-roll ka muna.",
+      "noRollsLeft": "Ubos na ang roll mo.",
+      "staleRoll": "Tapos na ang roll na 'yan.",
+      "roundOver": "Tapos na ang round.",
+      "roundNotOver": "Hindi pa tapos ang round."
+    },
+    "hud": {
+      "roll": "Roll na!",
+      "rollAgain": "Roll ulit",
+      "keep": "Okay na 'to",
+      "nextRound": "Next round!",
+      "turn": "Turn ni {{name}}",
+      "round": "Round {{round}}",
+      "rolloff": "Roll-off",
+      "rollsLeft": "Natitirang roll: {{n}}",
+      "limit": "Limit: {{n}}",
+      "rolling": "Gumugulong…",
+      "mexico": "Mexico!",
+      "doubles": "Doble",
+      "score": "Score",
+      "standings": "Standings",
+      "notRolled": "Hindi pa nagro-roll",
+      "lowest": "Pinakamababa",
+      "loser": "Talo",
+      "losers": "Mga talo",
+      "stake": "Lagok ng talo: {{sips}}",
+      "mexicos": "Mexico ngayong round: {{count}}"
+    }
+  },
+  "scc": {
+    "reason": {
+      "lowest": "Pinakamababa! Tagay!",
+      "give": "Ikaw ang panalo! Mamigay ka ng tagay."
+    },
+    "notice": {
+      "crew": "Kumpleto na ang crew ni {{name}}!",
+      "sunk": "Walang crew si {{name}}. Zero!",
+      "lost": "Talo sa round {{round}}: {{names}}!"
+    },
+    "error": {
+      "rolling": "Teka, hintayin munang tumigil ang dice.",
+      "noRollsLeft": "Ubos na ang roll mo.",
+      "staleRoll": "Tapos na ang roll na 'yan.",
+      "noCrew": "Kumpletuhin muna ang ship, captain at crew.",
+      "roundOver": "Tapos na ang round.",
+      "roundNotOver": "Hindi pa tapos ang round."
+    },
+    "hud": {
+      "roll": "Roll na!",
+      "rollAgain": "Roll ulit",
+      "rollCargo": "Roll ng cargo",
+      "keep": "Okay na ang cargo",
+      "nextRound": "Next round!",
+      "turn": "Turn ni {{name}}",
+      "round": "Round {{round}}",
+      "rollsLeft": "Natitirang roll: {{n}}",
+      "rolling": "Gumugulong…",
+      "ship": "Ship",
+      "captain": "Captain",
+      "crew": "Crew",
+      "cargo": "Cargo",
+      "need": "Kailangan ng {{face}}",
+      "noCrew": "Walang crew",
+      "score": "Score",
+      "standings": "Standings",
+      "notRolled": "Hindi pa nagro-roll",
+      "winner": "Panalo",
+      "winners": "Mga panalo",
+      "loser": "Talo",
+      "losers": "Mga talo"
+    }
+  },
+  "ld": {
+    "reason": {
+      "caught": "Huli ka! Bolero!",
+      "badCall": "Sablay ang tawag mo! Totoo pala.",
+      "spotOn": "Sakto! Tagay lahat ng iba!",
+      "spotOnMiss": "Hindi sakto! Ikaw ang iinom."
+    },
+    "notice": {
+      "count": "May {{count}} na {{face}} sa mesa. Ang bid: {{quantity}}.",
+      "out": "Ubos na ang dice ni {{name}}. Out!",
+      "winner": "Panalo si {{name}} sa Liar's Dice!"
+    },
+    "error": {
+      "noBid": "Wala pang bid na puwedeng tawagin.",
+      "lowBid": "Taasan mo: mas maraming dice, o parehong bilang pero mas mataas na face.",
+      "tooMany": "Wala namang ganyan karaming dice sa mesa.",
+      "spotOnOff": "Naka-off ang Spot On.",
+      "notBidding": "Sarado na ang bidding. Next round na.",
+      "notReveal": "Tapusin muna ang round."
+    },
+    "hud": {
+      "bid": "Bid",
+      "challenge": "Sinungaling!",
+      "spotOn": "Sakto!",
+      "quantity": "Ilan",
+      "face": "Face",
+      "yourDice": "Dice mo",
+      "peek": "Silipin",
+      "hide": "Itago",
+      "passTo": "Ipasa kay {{name}}. Bawal sumilip!",
+      "totalDice": "{{n}} dice sa mesa",
+      "dice": "{{n}} dice",
+      "lastBid": "Bid ni {{name}}: {{quantity}} × {{face}}",
+      "noBid": "Wala pang bid. Ikaw na mauna!",
+      "bids": "Mga bid",
+      "turn": "Turn ni {{name}}",
+      "round": "Round {{round}}",
+      "shaking": "Inaalog ang cup…",
+      "reveal": "Buksan!",
+      "count": "Bilang: {{count}}",
+      "caller": "Tumawag: {{name}}",
+      "wild": "Wild ang 1",
+      "out": "Out",
+      "nextRound": "Next round!",
+      "winner": "Panalo si {{name}}!"
+    }
+  }
+}

@@ -1,0 +1,334 @@
+{
+  "game": {
+    "higher-lower": { "title": "Higher or Lower", "desc": "Guess whether the next card is higher or lower." },
+    "kings-cup": { "title": "King's Cup", "desc": "Draw a card, follow its rule, and don't pull the last King." },
+    "ride-the-bus": { "title": "Ride the Bus", "desc": "Guess four cards in a row or ride the bus." },
+    "mexico": { "title": "Mexico", "desc": "Roll two dice; the lowest score drinks." },
+    "liars-dice": { "title": "Liar's Dice", "desc": "Bid on hidden dice and call out the liar." },
+    "ship-captain-crew": { "title": "Ship, Captain, Crew", "desc": "Roll a 6-5-4, then score with your crew." },
+    "beer-pong": { "title": "Beer Pong", "desc": "Sink the ball in the other team's cups." },
+    "flip-cup": { "title": "Flip Cup", "desc": "Drink, then flip your cup. Fastest team wins." },
+    "quarters": { "title": "Quarters", "desc": "Bounce a coin into the glass." },
+    "spin-the-bottle": { "title": "Spin the Bottle", "desc": "Spin the bottle; whoever it points at is up." },
+    "truth-or-dare": { "title": "Truth or Dare", "desc": "Pick truth or dare. Chicken out and you drink." },
+    "never-have-i-ever": { "title": "Never Have I Ever", "desc": "Drink if you've done it. No lying!" },
+    "most-likely-to": { "title": "Most Likely To", "desc": "Point at whoever is most likely to do it." }
+  },
+  "rules": {
+    "hl": {
+      "wrongSips": "Sips for a wrong guess",
+      "penalty": "Penalty",
+      "penalty_opt_fixed": "Fixed",
+      "penalty_opt_streak": "Grows with streak",
+      "penalty_help": "With streak, your current streak is added to the sips.",
+      "tie": "On a tie",
+      "tie_opt_lose": "Counts as wrong",
+      "tie_opt_safe": "Safe",
+      "tie_opt_social": "Everyone drinks",
+      "passAfter": "Pass after correct guesses",
+      "passAfter_help": "0 = keep going until you miss.",
+      "aceHigh": "Aces high"
+    },
+    "kc": {
+      "cards": "Card rules",
+      "cards_help": "Change what each card means.",
+      "endOnFourthKing": "End on the 4th King",
+      "rank": {
+        "A": "Ace (A)",
+        "2": "2",
+        "3": "3",
+        "4": "4",
+        "5": "5",
+        "6": "6",
+        "7": "7",
+        "8": "8",
+        "9": "9",
+        "10": "10",
+        "J": "Jack (J)",
+        "Q": "Queen (Q)",
+        "K": "King (K)"
+      },
+      "card": {
+        "title": "Name",
+        "text": "Instructions",
+        "effect": "Who drinks",
+        "effect_opt_none": "Nobody",
+        "effect_opt_self": "Whoever drew it",
+        "effect_opt_everyone": "Everyone",
+        "effect_opt_left": "Player on the left",
+        "effect_opt_right": "Player on the right",
+        "effect_opt_choose": "Drawer picks someone",
+        "effect_opt_loser": "The loser",
+        "effect_opt_mate": "Pick a mate",
+        "effect_opt_questionMaster": "Question Master",
+        "effect_opt_thumbMaster": "Thumb Master",
+        "effect_opt_rule": "Make a rule",
+        "effect_opt_kingsCup": "King's Cup",
+        "sips": "Sips",
+        "sips_help": "Base sips, adjusted by your intensity settings."
+      }
+    },
+    "nhie": {
+      "sips": "Sips if you've done it",
+      "maxSpice": "Spice level",
+      "maxSpice_help": "0 = family-friendly, 3 = extra spicy.",
+      "maxSpice_opt_0": "Family-friendly",
+      "maxSpice_opt_1": "Mild",
+      "maxSpice_opt_2": "Spicy",
+      "maxSpice_opt_3": "Extra spicy",
+      "rounds": "Rounds",
+      "rounds_help": "0 = until the cards run out."
+    },
+    "mx": {
+      "maxRolls": "Max rolls per turn",
+      "maxRolls_help": "Stop early whenever you like. Your last roll is your score.",
+      "leaderSetsRolls": "First player sets the roll limit",
+      "leaderSetsRolls_help": "However many rolls the first player uses becomes everyone else's limit that round.",
+      "loserSips": "Sips for the lowest roll",
+      "mexicoDoubles": "Mexico doubles the sips",
+      "mexicoDoubles_help": "Every Mexico (2-1) rolled in a round doubles what the loser drinks.",
+      "tie": "Tie for lowest",
+      "tie_opt_all": "Everyone tied drinks",
+      "tie_opt_rolloff": "Roll-off",
+      "tie_help": "Roll-off: only the tied players roll again until one of them loses."
+    },
+    "scc": {
+      "maxRolls": "Rolls per turn",
+      "maxRolls_help": "Lock a 6 (ship), then a 5 (captain), then a 4 (crew). The other two dice are your cargo.",
+      "loserSips": "Sips for the lowest score",
+      "winnerGivesSips": "Sips the winner hands out",
+      "winnerGivesSips_help": "0 = off. The top scorer gives these sips to anyone they like."
+    },
+    "ld": {
+      "dicePerPlayer": "Dice per player",
+      "onesWild": "1s are wild",
+      "onesWild_help": "1s count as any face, except when the bid is on 1s.",
+      "spotOn": "Allow Spot On",
+      "spotOn_help": "Call it when you think the bid is exactly right. Right: everyone else drinks. Wrong: you drink.",
+      "loserSips": "Sips for the loser",
+      "loseDie": "Loser loses a die",
+      "loseDie_help": "Run out of dice and you're out. Last one with dice wins. Off: play until the host ends it."
+    }
+  },
+  "hl": {
+    "reason": {
+      "wrong": "Wrong guess!",
+      "tieSocial": "It's a tie. Everybody drinks!"
+    },
+    "notice": {
+      "safe": "{{streak}} in a row! You're safe, pass it on."
+    }
+  },
+  "kc": {
+    "card": {
+      "A": { "title": "Waterfall", "text": "Everyone drinks, starting with you. Nobody stops until the person before them stops." },
+      "2": { "title": "You", "text": "Pick someone to drink." },
+      "3": { "title": "Me", "text": "You drink." },
+      "4": { "title": "Floor", "text": "Touch the floor! Last one to do it drinks." },
+      "5": { "title": "Thumb Master", "text": "You're the Thumb Master. Put your thumb on the table any time and everyone must copy. Last one drinks." },
+      "6": { "title": "Social", "text": "Everybody drinks. Cheers!" },
+      "7": { "title": "Heaven", "text": "Point to the sky! Last one to do it drinks." },
+      "8": { "title": "Mate", "text": "Pick a mate. Whenever one of you drinks, the other drinks too." },
+      "9": { "title": "Rhyme", "text": "Say a word. Go around the table rhyming with it. First to stall or repeat drinks." },
+      "10": { "title": "Categories", "text": "Pick a category, like beer brands. Go around naming things in it. First to blank drinks." },
+      "J": { "title": "Make a Rule", "text": "Make a new house rule. Anyone who breaks it drinks." },
+      "Q": { "title": "Question Master", "text": "You're the Question Master. Anyone who answers one of your questions drinks." },
+      "K": { "title": "King's Cup", "text": "Pour some of your drink into the King's Cup. Whoever draws the 4th King drinks the cup!" }
+    },
+    "reason": {
+      "none": "{{card}}",
+      "self": "{{card}}: that's you!",
+      "everyone": "{{card}}: everybody drinks!",
+      "left": "{{card}}: player on the left drinks!",
+      "right": "{{card}}: player on the right drinks!",
+      "choose": "{{card}}: you got picked!",
+      "loser": "{{card}}: you lost!",
+      "mate": "{{card}}: drinking with your mate!",
+      "questionMaster": "Answered the Question Master!",
+      "thumbMaster": "Last to the Thumb Master!",
+      "rule": "Broke a house rule!",
+      "kingsCup": "4th King! Drink the King's Cup!"
+    },
+    "notice": {
+      "pour": "Pour into the King's Cup! Kings left: {{left}}"
+    },
+    "pending": {
+      "choose": "Who drinks?",
+      "loser": "Who lost?",
+      "mate": "Who's your mate?",
+      "rule": "What's the new rule?"
+    },
+    "role": {
+      "questionMaster": "Question Master",
+      "thumbMaster": "Thumb Master"
+    },
+    "error": {
+      "pending": "Finish this card first.",
+      "noPending": "Nothing to settle right now.",
+      "badTarget": "Pick a player at the table.",
+      "selfMate": "You can't be your own mate!",
+      "ruleText": "Write the rule (up to 140 characters)."
+    },
+    "hud": {
+      "draw": "Draw",
+      "skip": "Skip",
+      "confirm": "Done",
+      "kingsLeft": "Kings left",
+      "cardsLeft": "Cards left",
+      "houseRules": "House rules",
+      "mates": "Mates",
+      "rulePlaceholder": "e.g. No pointing with fingers"
+    }
+  },
+  "nhie": {
+    "reason": {
+      "did": "You've done it!"
+    },
+    "error": {
+      "badPlayer": "That player isn't at the table.",
+      "duplicate": "A player was picked twice."
+    },
+    "hud": {
+      "whoDid": "Who's done it?",
+      "next": "Next",
+      "nobody": "Nobody",
+      "reader": "Reader: {{name}}",
+      "round": "Round {{round}}",
+      "remaining": "{{n}} cards left",
+      "done": "That's all the cards!",
+      "empty": "No prompts. Add a pack or lower the spice level."
+    }
+  },
+  "mx": {
+    "reason": {
+      "lowest": "Lowest roll!",
+      "lowestDoubled": "Lowest roll! Doubled for every Mexico ({{count}})."
+    },
+    "notice": {
+      "mexico": "MEXICO! {{name}} rolled 2-1!",
+      "cap": "{{name}} stopped at {{rolls}}. That's everyone's limit this round.",
+      "rolloff": "Tie for lowest! Roll-off: {{names}}",
+      "lost": "{{names}} lost round {{round}}!"
+    },
+    "error": {
+      "rolling": "Wait for the dice to stop.",
+      "noRoll": "Roll first.",
+      "noRollsLeft": "No rolls left this turn.",
+      "staleRoll": "That roll is already done.",
+      "roundOver": "This round is over.",
+      "roundNotOver": "The round isn't over yet."
+    },
+    "hud": {
+      "roll": "Roll",
+      "rollAgain": "Roll again",
+      "keep": "Keep it",
+      "nextRound": "Next round",
+      "turn": "{{name}}'s turn",
+      "round": "Round {{round}}",
+      "rolloff": "Roll-off",
+      "rollsLeft": "Rolls left: {{n}}",
+      "limit": "Limit: {{n}}",
+      "rolling": "Rolling…",
+      "mexico": "Mexico!",
+      "doubles": "Doubles",
+      "score": "Score",
+      "standings": "Standings",
+      "notRolled": "Hasn't rolled yet",
+      "lowest": "Lowest",
+      "loser": "Loser",
+      "losers": "Losers",
+      "stake": "Loser drinks {{sips}}",
+      "mexicos": "Mexicos this round: {{count}}"
+    }
+  },
+  "scc": {
+    "reason": {
+      "lowest": "Lowest score!",
+      "give": "Top score! Hand out your sips."
+    },
+    "notice": {
+      "crew": "{{name}} has a full crew!",
+      "sunk": "{{name}} never got a crew. Score: 0",
+      "lost": "{{names}} lost round {{round}}!"
+    },
+    "error": {
+      "rolling": "Wait for the dice to stop.",
+      "noRollsLeft": "No rolls left this turn.",
+      "staleRoll": "That roll is already done.",
+      "noCrew": "Lock your ship, captain and crew first.",
+      "roundOver": "This round is over.",
+      "roundNotOver": "The round isn't over yet."
+    },
+    "hud": {
+      "roll": "Roll",
+      "rollAgain": "Roll again",
+      "rollCargo": "Roll cargo",
+      "keep": "Keep cargo",
+      "nextRound": "Next round",
+      "turn": "{{name}}'s turn",
+      "round": "Round {{round}}",
+      "rollsLeft": "Rolls left: {{n}}",
+      "rolling": "Rolling…",
+      "ship": "Ship",
+      "captain": "Captain",
+      "crew": "Crew",
+      "cargo": "Cargo",
+      "need": "Need a {{face}}",
+      "noCrew": "No crew",
+      "score": "Score",
+      "standings": "Standings",
+      "notRolled": "Hasn't rolled yet",
+      "winner": "Winner",
+      "winners": "Winners",
+      "loser": "Loser",
+      "losers": "Losers"
+    }
+  },
+  "ld": {
+    "reason": {
+      "caught": "Caught bluffing!",
+      "badCall": "Bad call! The bid was true.",
+      "spotOn": "Spot on! Everyone else drinks.",
+      "spotOnMiss": "Not spot on!"
+    },
+    "notice": {
+      "count": "{{count}} × {{face}} on the table. The bid was {{quantity}}.",
+      "out": "{{name}} is out of dice!",
+      "winner": "{{name}} wins Liar's Dice!"
+    },
+    "error": {
+      "noBid": "There's no bid to call yet.",
+      "lowBid": "Go higher: more dice, or the same number with a higher face.",
+      "tooMany": "There aren't that many dice on the table.",
+      "spotOnOff": "Spot On is turned off.",
+      "notBidding": "Bidding is closed. Start the next round.",
+      "notReveal": "Finish this round first."
+    },
+    "hud": {
+      "bid": "Bid",
+      "challenge": "Liar!",
+      "spotOn": "Spot on!",
+      "quantity": "How many",
+      "face": "Face",
+      "yourDice": "Your dice",
+      "peek": "Peek",
+      "hide": "Hide",
+      "passTo": "Pass to {{name}}. No peeking!",
+      "totalDice": "{{n}} dice on the table",
+      "dice": "{{n}} dice",
+      "lastBid": "{{name}} bid {{quantity}} × {{face}}",
+      "noBid": "No bids yet. Open the bidding!",
+      "bids": "Bids",
+      "turn": "{{name}}'s turn",
+      "round": "Round {{round}}",
+      "shaking": "Shaking the cups…",
+      "reveal": "Reveal",
+      "count": "Count: {{count}}",
+      "caller": "Called by {{name}}",
+      "wild": "1s are wild",
+      "out": "Out",
+      "nextRound": "Next round",
+      "winner": "{{name}} wins!"
+    }
+  }
+}

@@ -1,0 +1,60 @@
+import type { ReactNode } from 'react';
+import { useToastAnchor } from '@/ui/toastAnchor';
+
+// HUD pieces shared by the dice games (Mexico, Ship Captain & Crew, Liar's Dice). DOM only.
+
+/** Turn indicator: eyebrow, the big hand-painted name, then chips. Toasts stack below it. */
+export function TurnHeader({
+  eyebrow,
+  name,
+  aria,
+  testId = 'turn-name',
+  tone = 'brass',
+  children,
+}: {
+  eyebrow: string;
+  name: string;
+  aria?: string;
+  testId?: string;
+  tone?: 'brass' | 'sili';
+  children?: ReactNode;
+}) {
+  const anchor = useToastAnchor<HTMLElement>();
+  return (
+    <section
+      ref={anchor}
+      className="pointer-events-auto mx-auto flex w-full max-w-[440px] flex-col items-center gap-1.5 bg-[radial-gradient(closest-side,rgb(14_8_5/0.72),transparent)] pt-1 pb-2 text-center"
+    >
+      <span className="eyebrow">{eyebrow}</span>
+      <h2
+        className={`sign-pintor max-w-full text-[clamp(1.9rem,10vw,3.2rem)] [overflow-wrap:anywhere] ${
+          tone === 'sili' ? 'text-[#ff8a6b]' : ''
+        }`}
+        aria-label={aria}
+        data-testid={testId}
+      >
+        {name}
+      </h2>
+      {children && <div className="flex flex-wrap items-center justify-center gap-1.5">{children}</div>}
+    </section>
+  );
+}
+
+/** "Rolls left" with one brass dot per roll still available. */
+export function RollsChip({ left, cap, label }: { left: number; cap: number; label: string }) {
+  return (
+    <span className="chip" data-testid="rolls-left" data-left={left}>
+      {label}
+      <span aria-hidden className="ml-0.5 flex gap-1">
+        {Array.from({ length: cap }, (_, i) => (
+          <span
+            key={i}
+            className={`size-2.5 rounded-full ${
+              i < left ? 'bg-brass-400 shadow-[0_0_6px_rgb(232_176_74/0.8)]' : 'bg-narra-500'
+            }`}
+          />
+        ))}
+      </span>
+    </span>
+  );
+}

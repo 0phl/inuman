@@ -1,0 +1,331 @@
+{
+  "schema": 1,
+  "kind": "pack",
+  "id": "builtin-nhie-taglish",
+  "name": "Never Have I Ever: Barkada Edition",
+  "game": "never-have-i-ever",
+  "locale": "taglish",
+  "builtin": true,
+  "items": [
+    {
+      "id": "nhie-tl-001",
+      "text": "Never have I ever nakatulog sa jeep tapos lumampas sa babaan.",
+      "spice": 0
+    },
+    {
+      "id": "nhie-tl-002",
+      "text": "Never have I ever nag-“On the way na ako!” kahit kakagising ko lang.",
+      "spice": 0
+    },
+    {
+      "id": "nhie-tl-003",
+      "text": "Never have I ever nag-mano sa hindi ko kakilala sa sobrang hiya.",
+      "spice": 0
+    },
+    {
+      "id": "nhie-tl-004",
+      "text": "Never have I ever nakalimutan ang pangalan ng pinsan ko sa mismong reunion.",
+      "spice": 0
+    },
+    {
+      "id": "nhie-tl-005",
+      "text": "Never have I ever naiyak sa Jollibee commercial.",
+      "spice": 0
+    },
+    {
+      "id": "nhie-tl-006",
+      "text": "Never have I ever nagbalot ng handa sa party para iuwi.",
+      "spice": 0
+    },
+    {
+      "id": "nhie-tl-007",
+      "text": "Never have I ever nakipag-agawan ng mic sa videoke.",
+      "spice": 0
+    },
+    {
+      "id": "nhie-tl-008",
+      "text": "Never have I ever nag-refresh nang nag-refresh sa page ng LGU para lang sa #WalangPasok.",
+      "spice": 0
+    },
+    {
+      "id": "nhie-tl-009",
+      "text": "Never have I ever sumiksik sa tricycle na anim kami sa loob.",
+      "spice": 0
+    },
+    {
+      "id": "nhie-tl-010",
+      "text": "Never have I ever nagtago sa kwarto para hindi matanong ng mga tita kung may jowa na ako.",
+      "spice": 0
+    },
+    {
+      "id": "nhie-tl-011",
+      "text": "Never have I ever natawag na “Mama” ang teacher ko sa harap ng buong klase.",
+      "spice": 0
+    },
+    {
+      "id": "nhie-tl-012",
+      "text": "Never have I ever naligaw sa loob ng mall at nag-chat sa GC para magpasundo.",
+      "spice": 0
+    },
+    {
+      "id": "nhie-tl-013",
+      "text": "Never have I ever nag-bus pauwi ng probinsya nang lampas sampung oras ang biyahe.",
+      "spice": 0
+    },
+    {
+      "id": "nhie-tl-014",
+      "text": "Never have I ever nabudol sa online shopping at iba ang dumating sa in-order ko.",
+      "spice": 0
+    },
+    {
+      "id": "nhie-tl-015",
+      "text": "Never have I ever nakipagtawaran sa Divisoria tapos nagkunwaring aalis na.",
+      "spice": 0
+    },
+    {
+      "id": "nhie-tl-016",
+      "text": "Never have I ever nabasa sa basaan tuwing fiesta.",
+      "spice": 0
+    },
+    {
+      "id": "nhie-tl-017",
+      "text": "Never have I ever nag-ulam ng sabaw lang kasi naubos na ang laman ng sinigang.",
+      "spice": 0
+    },
+    {
+      "id": "nhie-tl-018",
+      "text": "Never have I ever nanood ng teleserye kasama si Lola at mas naiyak pa ako sa kanya.",
+      "spice": 0
+    },
+    {
+      "id": "nhie-tl-019",
+      "text": "Never have I ever kumain ng balut, pati 'yung sisiw.",
+      "spice": 0
+    },
+    {
+      "id": "nhie-tl-020",
+      "text": "Never have I ever nagpaalam na “saglit lang” sa computer shop tapos inabot ng gabi.",
+      "spice": 0
+    },
+    {
+      "id": "nhie-tl-021",
+      "text": "Never have I ever nagpa-load ng sampung piso para lang maka-text.",
+      "spice": 0
+    },
+    {
+      "id": "nhie-tl-022",
+      "text": "Never have I ever sinabing “Busog pa ako” sa handaan pero kumuha pa rin ng isa pang plato.",
+      "spice": 0
+    },
+    {
+      "id": "nhie-tl-023",
+      "text": "Never have I ever na-ghost ng ka-talking stage ko.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-tl-024",
+      "text": "Never have I ever nang-ghost ng ka-chat kasi tinamad na akong mag-reply.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-tl-025",
+      "text": "Never have I ever nag-stalk ng IG ng ex ko hanggang sa pinakaunang post.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-tl-026",
+      "text": "Never have I ever na-heart ko ang lumang picture ng crush ko habang nag-i-stalk.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-tl-027",
+      "text": "Never have I ever nag-mute ng family group chat.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-tl-028",
+      "text": "Never have I ever nag-leave sa GC ng barkada tapos nagpa-add ulit.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-tl-029",
+      "text": "Never have I ever nag-cutting classes para maglaro sa computer shop.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-tl-030",
+      "text": "Never have I ever nangopya sa quiz o exam.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-tl-031",
+      "text": "Never have I ever nag-send ng chismis sa maling GC.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-tl-032",
+      "text": "Never have I ever nag-unsend ng chat kasi nahiya ako bigla.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-tl-033",
+      "text": "Never have I ever umutang tapos “nakalimutan” ko nang bayaran.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-tl-034",
+      "text": "Never have I ever nagkunwaring walang signal para lang matapos ang tawag.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-tl-035",
+      "text": "Never have I ever nag-regift ng natanggap ko sa Monito-Monita.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-tl-036",
+      "text": "Never have I ever nakatulog sa online class o Zoom meeting nang naka-on ang camera.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-tl-037",
+      "text": "Never have I ever nagpasundo sa crush kahit kaya ko namang mag-commute.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-tl-038",
+      "text": "Never have I ever nag-post ng hugot para mapansin ng isang specific na tao.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-tl-039",
+      "text": "Never have I ever na-friendzone.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-tl-040",
+      "text": "Never have I ever kinain ang baon ng officemate ko sa ref.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-tl-041",
+      "text": "Never have I ever nagkunwaring busy para hindi makasama sa lakad ni {random}.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-tl-042",
+      "text": "Never have I ever nag-sick leave kahit puyat lang talaga ako.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-tl-043",
+      "text": "Never have I ever sinabi kay Mama na nasa bahay lang ako ng kaibigan pero nasa gimikan pala.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-tl-044",
+      "text": "Never have I ever nag-drunk text sa ex ko.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-tl-045",
+      "text": "Never have I ever nagising na hindi ko alam kung paano ako nakauwi.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-tl-046",
+      "text": "Never have I ever nasuka sa Grab o taxi pauwi galing inuman.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-tl-047",
+      "text": "Never have I ever nakipag-date sa nakilala ko sa dating app.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-tl-048",
+      "text": "Never have I ever nagka-crush sa jowa ng kaibigan ko.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-tl-049",
+      "text": "Never have I ever nakipagbalikan sa ex ko.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-tl-050",
+      "text": "Never have I ever nagtago ng jowa sa mga magulang ko.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-tl-051",
+      "text": "Never have I ever nagsabing “Last na 'to” sa inuman tapos lima pa ang sumunod.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-tl-052",
+      "text": "Never have I ever nang-ghost pagkatapos ng first date.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-tl-053",
+      "text": "Never have I ever nagselos sa bestfriend ng jowa ko.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-tl-054",
+      "text": "Never have I ever nag-stalk sa bagong jowa ng ex ko.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-tl-055",
+      "text": "Never have I ever nakipag-usap sa dalawang ka-talking stage nang sabay.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-tl-056",
+      "text": "Never have I ever umamin ng feelings habang lasing tapos nagkunwaring wala akong maalala kinabukasan.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-tl-057",
+      "text": "Never have I ever nagka-crush sa isa sa mga kasama ko sa inuman na 'to.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-tl-058",
+      "text": "Never have I ever pumasok sa trabaho o klase na may hangover pa.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-tl-059",
+      "text": "Never have I ever nakipag-kiss sa first date.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-tl-060",
+      "text": "Never have I ever nakipag-make out sa sinehan.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-tl-061",
+      "text": "Never have I ever nagkaroon ng situationship na sikreto sa lahat, pati sa barkada.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-tl-062",
+      "text": "Never have I ever nag-post ng thirst trap para sa isang specific na tao.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-tl-063",
+      "text": "Never have I ever nahuli ng magulang ko na may kahalikan.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-tl-064",
+      "text": "Never have I ever nakipag-kiss sa kaibigan tapos nagkunwaring walang nangyari.",
+      "spice": 3
+    }
+  ]
+}

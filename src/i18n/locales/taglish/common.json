@@ -1,0 +1,235 @@
+{
+  "app": { "name": "Inuman" },
+  "nav": { "back": "Balik", "close": "Isara" },
+  "locale": { "taglish": "Taglish", "en": "English" },
+  "age": {
+    "title": "18 ka na ba?",
+    "body": "Pang-18 pataas lang 'tong app. 'Yan ang legal drinking age dito sa Pinas.",
+    "yes": "Oo, 18+ na 'ko",
+    "no": "Hindi pa",
+    "refusedTitle": "Balik ka pag 18 ka na!",
+    "refusedBody": "Para talaga sa 18 pataas 'to. Ingat palagi, ha?",
+    "noDrive": "Huwag mag-drive nang lasing.",
+    "responsible": "Uminom nang responsable, at bantayan ang barkada."
+  },
+  "home": {
+    "tagline": "Mga drinking game para sa barkada. Isang phone lang, pasa-pasa.",
+    "paused": "Naka-pause",
+    "pausedMeta_one": "{{count}} kasali",
+    "pausedMeta_other": "{{count}} kasali",
+    "resume": "Ituloy",
+    "pickGame": "Pili ng laro",
+    "players": "Mga kasama",
+    "playerCount_one": "{{count}}",
+    "playerCount_other": "{{count}}",
+    "footer": "Hinay-hinay lang. Inom ng tubig, at walang magda-drive nang lasing."
+  },
+  "players": {
+    "title": "Mga kasama",
+    "placeholder": "Pangalan (hal. Migs)",
+    "nameLabel": "Pangalan ng player",
+    "add": "Idagdag",
+    "emptyTitle": "Sino-sino ang kasama?",
+    "emptyBody": "Ilagay ang pangalan ng bawat isa. Ito rin ang pagkakasunod-sunod ng turn.",
+    "orderHint": "Ganito ang ikot ng turn. I-tap ang pangalan para palitan.",
+    "seat": "Pang-{{n}} sa ikot",
+    "rename": "Bagong pangalan",
+    "renameNamed": "Palitan ang pangalan ni {{name}}",
+    "remove": "Tanggalin si {{name}}",
+    "moveUp": "Iakyat si {{name}}",
+    "moveDown": "Ibaba si {{name}}",
+    "nonAlc": "Non-alcoholic",
+    "nonAlcShort": "non-alc",
+    "nonAlcChip": "Non-alc",
+    "sittingOutChip": "Pahinga",
+    "sittingOut": "Pahinga muna",
+    "next": "Pili na ng laro",
+    "error": {
+      "duplicate": "May kapangalan na. Lagyan ng initial, hal. \"Migs B.\"",
+      "full": "Hanggang {{max}} players lang."
+    }
+  },
+  "games": { "title": "Mga laro", "soon": "Soon" },
+  "family": { "cards": "Baraha", "dice": "Dice", "skill": "Galingan", "party": "Kwentuhan at party" },
+  "lobby": {
+    "players_one": "{{count}} kasali",
+    "players_other": "{{count}} kasali",
+    "editPlayers": "Ayusin",
+    "needPlayers_one": "Kailangan ng at least {{count}} player.",
+    "needPlayers_other": "Kailangan ng at least {{count}} players.",
+    "tooMany_one": "Hanggang {{count}} player lang dito.",
+    "tooMany_other": "Hanggang {{count}} players lang dito.",
+    "rules": "House rules",
+    "intensity": "Lakas ng inuman",
+    "start": "Simulan na!",
+    "noView": "Ready na ang rules nito pero wala pang table view. Abangan!",
+    "replaces": "Papalitan nito ang naka-pause na laro.",
+    "packs": {
+      "title": "Mga prompt",
+      "help": "Piliin kung aling pack ang gagamitin.",
+      "spice": "Anghang",
+      "count_one": "{{count}} prompt ang pasok",
+      "count_other": "{{count}} prompts ang pasok",
+      "items": "{{match}}/{{total}} pasok",
+      "none": "Walang prompt na pasok. Pumili ng pack o taasan ang anghang.",
+      "anyLocale": "Kahit ano"
+    }
+  },
+  "rulesUi": {
+    "presets": "Mga naka-save na rules",
+    "reset": "Ibalik sa default",
+    "savePreset": "I-save bilang preset",
+    "presetName": "Pangalan ng preset",
+    "presetPlaceholder": "hal. House rules namin",
+    "save": "I-save",
+    "deletePreset": "Burahin ang {{name}}",
+    "fieldError": "Ayusin muna 'to.",
+    "invalid": "May mali sa rules. Ayusin muna bago magsimula."
+  },
+  "intensity": {
+    "mode": "Mode",
+    "modeAlcohol": "May alak",
+    "modeSoft": "Non-alcoholic",
+    "nonAlcMode": "Non-alcoholic mode",
+    "nonAlcModeHelp": "Juice, softdrinks o tubig muna para sa lahat.",
+    "multiplier": "Lakas",
+    "multiplierHelp": "Pinaparami o binabawasan ang lahat ng inom.",
+    "mult": { "0_5": "Chill ½×", "1": "Sakto 1×", "1_5": "Lakas 1½×", "2": "Todo 2×" },
+    "unit": "Bilang ng inom",
+    "unitHelp": "1 tagay = mga 3 lagok.",
+    "unitSip": "Lagok",
+    "unitTagay": "Tagay",
+    "maxSips": "Max kada turn",
+    "maxSipsHelp": "Pinakamaraming lagok sa isang turn.",
+    "allowFinish": "Payagan ang \"Ubusin!\"",
+    "allowFinishHelp": "Naka-off by default. Pag naka-off, hanggang max lang ang iinumin.",
+    "allowFinishSoft": "Walang ubusan sa non-alcoholic mode.",
+    "water": "Paalala sa tubig",
+    "waterHelp": "Magpapaalala uminom ng tubig every ilang minuto.",
+    "waterOff": "Naka-off ang paalala.",
+    "off": "Off",
+    "minutes_one": "{{count}}m",
+    "minutes_other": "{{count}}m"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Wika",
+    "drinking": "Inuman",
+    "look": "Itsura",
+    "cardBack": "Likod ng baraha",
+    "felt": "Kulay ng mesa",
+    "quality": "Graphics",
+    "qualityHelp": "Pag naglo-lag ang phone, piliin ang Low.",
+    "feedback": "Tunog at vibrate",
+    "sound": "Tunog",
+    "haptics": "Vibrate",
+    "responsibleTitle": "Inom nang responsable",
+    "responsibleBody": "Laro lang 'to. Pwedeng tumigil o mag-non-alcoholic kahit kailan, at walang pipilitin.",
+    "credits": "Credits",
+    "creditsBody": "Ginawa ang 3D bar sa Blender gamit ang mga libreng CC0 (public domain) asset galing Poly Haven:"
+  },
+  "quality": { "auto": "Auto", "low": "Low", "mid": "Mid", "high": "High" },
+  "cardBack": { "classic-red": "Pula", "classic-blue": "Asul", "banig": "Banig", "jeepney": "Jeepney" },
+  "play": {
+    "turnOf": "Turn ni",
+    "menu": {
+      "open": "Menu",
+      "pause": "Pause muna",
+      "end": "Tapusin ang laro",
+      "endConfirm": "Sure ka? Tapusin na"
+    },
+    "over": {
+      "title": "Tapos na!",
+      "body": "Salamat sa inuman. Uwi nang ligtas, at walang magda-drive nang lasing.",
+      "again": "Isa pa!",
+      "home": "Balik sa Home"
+    },
+    "hl": {
+      "higher": "Mas mataas",
+      "lower": "Mas mababa",
+      "prompt": "Mas mataas ba o mas mababa ang susunod na card?",
+      "deckLeft_one": "{{count}} card na lang",
+      "deckLeft_other": "{{count}} cards pa",
+      "onTable": "Nasa mesa:",
+      "streak": "Streak",
+      "streakAria": "{{streak}} sa {{need}} na sunod na tama",
+      "outcome": { "correct": "Tama!", "wrong": "Mali!", "tie": "Tabla!" }
+    }
+  },
+  "drink": {
+    "line": "{{name}}: {{amount}}",
+    "sips_one": "{{count}} lagok",
+    "sips_other": "{{count}} lagok",
+    "sipsSoft_one": "{{count}} lagok",
+    "sipsSoft_other": "{{count}} lagok",
+    "tagay_one": "{{count}} tagay",
+    "tagay_other": "{{count}} tagay",
+    "finish": "Ubusin!",
+    "nonAlc": "Non-alcoholic",
+    "everyone": "Lahat, tagay!",
+    "group": "Iinom:",
+    "manual": "Parusa ng barkada",
+    "everyoneSoft": "Lahat, inom!",
+    "nonAlcoholicReason": "Non-alcoholic: juice, softdrinks o tubig lang."
+  },
+  "pass": {
+    "eyebrow": "Pasa ang phone",
+    "to": "Ipasa kay",
+    "aria": "Ipasa kay {{name}}. I-tap para tuloy.",
+    "private": "Ikaw lang ang titingin, ha? Bawal sumilip ang iba.",
+    "tap": "Hawak ko na"
+  },
+  "parusa": {
+    "title": "Parusa",
+    "short": "Parusa",
+    "open": "+ Parusa",
+    "help": "May lumabag sa house rules? Piliin kung sino, tapos ilang lagok.",
+    "amount": "Ilang lagok",
+    "confirm_one": "Ipainom ({{count}})",
+    "confirm_other": "Ipainom ({{count}})"
+  },
+  "tally": {
+    "title": "Bilang ng inom",
+    "sips_one": "{{count}} lagok",
+    "sips_other": "{{count}} lagok",
+    "soft_one": "{{count}} non-alc",
+    "soft_other": "{{count}} non-alc",
+    "note": "Hindi 'to paligsahan. Pag marami na, tubig muna."
+  },
+  "water": { "reminder": "Hinay-hinay lang! Inom muna ng tubig 💧", "done": "Nag-tubig na" },
+  "stage": { "lost": { "title": "Nawala ang graphics", "body": "I-tap para ibalik. Safe ang laro n'yo." } },
+  "kcui": {
+    "drewBy": "Bunot ni {{name}}",
+    "firstTitle": "Bunot na!",
+    "firstBody": "Isa-isang bumunot sa bilog. Lalabas dito kung ano'ng gagawin sa card.",
+    "guide": "Ibig sabihin ng cards",
+    "guideShort": "Cards",
+    "noRules": "Wala pang house rule. Bumunot ng Jack para gumawa.",
+    "ruleLabel": "Bagong house rule",
+    "hint": {
+      "choose": "Si {{name}} ang pipili.",
+      "loser": "Ang barkada ang magdedesisyon.",
+      "mate": "Si {{name}} ang pipili ng mate.",
+      "rule": "Si {{name}} ang gagawa ng rule."
+    }
+  },
+  "nhieui": {
+    "readOf": "Basa ni",
+    "pickHint": "I-tap lahat ng nakagawa na.",
+    "drinkers_one": "{{count}} ang iinom",
+    "drinkers_other": "{{count}} ang iinom",
+    "endBody": "Ubos na ang prompts. Salamat sa kwentuhan!"
+  },
+  "diceui": {
+    "ld": {
+      "peekMine": "Silipin ang dice ko"
+    }
+  },
+  "error": {
+    "gameOver": "Tapos na ang laro.",
+    "badAction": "Hindi pwede 'yan.",
+    "notYourTurn": "Hindi mo pa turn.",
+    "noPlayers": "Kulang ang players.",
+    "emptyName": "Lagyan muna ng pangalan."
+  }
+}

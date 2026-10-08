@@ -1,0 +1,235 @@
+{
+  "app": { "name": "Inuman" },
+  "nav": { "back": "Back", "close": "Close" },
+  "locale": { "taglish": "Taglish", "en": "English" },
+  "age": {
+    "title": "Are you 18 or older?",
+    "body": "This app is for 18+ only, the legal drinking age in the Philippines.",
+    "yes": "Yes, I'm 18+",
+    "no": "Not yet",
+    "refusedTitle": "Come back when you're 18!",
+    "refusedBody": "This one's strictly for 18 and up. Take care.",
+    "noDrive": "Don't drink and drive.",
+    "responsible": "Drink responsibly and look out for each other."
+  },
+  "home": {
+    "tagline": "Drinking games for the barkada. One phone, passed around.",
+    "paused": "Paused",
+    "pausedMeta_one": "{{count}} player",
+    "pausedMeta_other": "{{count}} players",
+    "resume": "Resume",
+    "pickGame": "Pick a game",
+    "players": "Players",
+    "playerCount_one": "{{count}}",
+    "playerCount_other": "{{count}}",
+    "footer": "Pace yourselves. Drink water, and nobody drives drunk."
+  },
+  "players": {
+    "title": "Players",
+    "placeholder": "Name (e.g. Migs)",
+    "nameLabel": "Player name",
+    "add": "Add",
+    "emptyTitle": "Who's playing?",
+    "emptyBody": "Add everyone's name. This is also the turn order.",
+    "orderHint": "This is the turn order. Tap a name to rename.",
+    "seat": "Seat {{n}}",
+    "rename": "New name",
+    "renameNamed": "Rename {{name}}",
+    "remove": "Remove {{name}}",
+    "moveUp": "Move {{name}} up",
+    "moveDown": "Move {{name}} down",
+    "nonAlc": "Non-alcoholic",
+    "nonAlcShort": "non-alc",
+    "nonAlcChip": "Non-alc",
+    "sittingOutChip": "Sit out",
+    "sittingOut": "Sitting out",
+    "next": "Pick a game",
+    "error": {
+      "duplicate": "That name's taken. Add an initial, e.g. \"Migs B.\"",
+      "full": "Up to {{max}} players only."
+    }
+  },
+  "games": { "title": "Games", "soon": "Soon" },
+  "family": { "cards": "Cards", "dice": "Dice", "skill": "Skill", "party": "Party" },
+  "lobby": {
+    "players_one": "{{count}} playing",
+    "players_other": "{{count}} playing",
+    "editPlayers": "Edit",
+    "needPlayers_one": "Needs at least {{count}} player.",
+    "needPlayers_other": "Needs at least {{count}} players.",
+    "tooMany_one": "Up to {{count}} player here.",
+    "tooMany_other": "Up to {{count}} players here.",
+    "rules": "House rules",
+    "intensity": "Intensity",
+    "start": "Start!",
+    "noView": "The rules are ready but the table view isn't yet. Coming soon!",
+    "replaces": "This replaces the paused game.",
+    "packs": {
+      "title": "Prompt packs",
+      "help": "Choose which packs to deal from.",
+      "spice": "Spice level",
+      "count_one": "{{count}} prompt in play",
+      "count_other": "{{count}} prompts in play",
+      "items": "{{match}} of {{total}}",
+      "none": "No prompts match. Pick a pack or raise the spice level.",
+      "anyLocale": "Any"
+    }
+  },
+  "rulesUi": {
+    "presets": "Saved rules",
+    "reset": "Reset to defaults",
+    "savePreset": "Save as preset",
+    "presetName": "Preset name",
+    "presetPlaceholder": "e.g. Our house rules",
+    "save": "Save",
+    "deletePreset": "Delete {{name}}",
+    "fieldError": "Fix this first.",
+    "invalid": "Some rules aren't valid. Fix them before starting."
+  },
+  "intensity": {
+    "mode": "Mode",
+    "modeAlcohol": "Alcohol",
+    "modeSoft": "Non-alcoholic",
+    "nonAlcMode": "Non-alcoholic mode",
+    "nonAlcModeHelp": "Juice, soda or water for everyone.",
+    "multiplier": "Strength",
+    "multiplierHelp": "Scales every drink up or down.",
+    "mult": { "0_5": "Chill ½×", "1": "Normal 1×", "1_5": "Strong 1½×", "2": "Heavy 2×" },
+    "unit": "Count drinks in",
+    "unitHelp": "1 shot (tagay) ≈ 3 sips.",
+    "unitSip": "Sips",
+    "unitTagay": "Shots",
+    "maxSips": "Max per turn",
+    "maxSipsHelp": "Most sips anyone drinks in one turn.",
+    "allowFinish": "Allow \"Finish it!\"",
+    "allowFinishHelp": "Off by default. When off, it's capped at the max instead.",
+    "allowFinishSoft": "No chugging in non-alcoholic mode.",
+    "water": "Water reminder",
+    "waterHelp": "Reminds everyone to drink water every few minutes.",
+    "waterOff": "Reminder is off.",
+    "off": "Off",
+    "minutes_one": "{{count}}m",
+    "minutes_other": "{{count}}m"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "drinking": "Drinking",
+    "look": "Look",
+    "cardBack": "Card back",
+    "felt": "Table color",
+    "quality": "Graphics",
+    "qualityHelp": "If your phone lags, choose Low.",
+    "feedback": "Sound & vibration",
+    "sound": "Sound",
+    "haptics": "Vibration",
+    "responsibleTitle": "Drink responsibly",
+    "responsibleBody": "It's just a game. Anyone can stop or switch to non-alcoholic anytime, no pressure.",
+    "credits": "Credits",
+    "creditsBody": "3D bar made in Blender with free CC0 (public domain) assets from Poly Haven:"
+  },
+  "quality": { "auto": "Auto", "low": "Low", "mid": "Mid", "high": "High" },
+  "cardBack": { "classic-red": "Red", "classic-blue": "Blue", "banig": "Banig", "jeepney": "Jeepney" },
+  "play": {
+    "turnOf": "Turn of",
+    "menu": {
+      "open": "Menu",
+      "pause": "Pause",
+      "end": "End game",
+      "endConfirm": "Sure? End it"
+    },
+    "over": {
+      "title": "That's it!",
+      "body": "Thanks for playing. Get home safe, and nobody drives drunk.",
+      "again": "One more!",
+      "home": "Back to Home"
+    },
+    "hl": {
+      "higher": "Higher",
+      "lower": "Lower",
+      "prompt": "Is the next card higher or lower?",
+      "deckLeft_one": "{{count}} card left",
+      "deckLeft_other": "{{count}} cards left",
+      "onTable": "On the table:",
+      "streak": "Streak",
+      "streakAria": "{{streak}} of {{need}} correct in a row",
+      "outcome": { "correct": "Correct!", "wrong": "Wrong!", "tie": "Tie!" }
+    }
+  },
+  "drink": {
+    "line": "{{name}}: {{amount}}",
+    "sips_one": "{{count}} sip",
+    "sips_other": "{{count}} sips",
+    "sipsSoft_one": "{{count}} sip",
+    "sipsSoft_other": "{{count}} sips",
+    "tagay_one": "{{count}} shot",
+    "tagay_other": "{{count}} shots",
+    "finish": "Finish it!",
+    "nonAlc": "Non-alcoholic",
+    "everyone": "Everybody drinks!",
+    "group": "Drinking:",
+    "manual": "House-rule penalty",
+    "everyoneSoft": "Everybody drinks!",
+    "nonAlcoholicReason": "Non-alcoholic: juice, soda or water."
+  },
+  "pass": {
+    "eyebrow": "Pass the phone",
+    "to": "Pass it to",
+    "aria": "Pass it to {{name}}. Tap to continue.",
+    "private": "Eyes only for you. No peeking, everyone else.",
+    "tap": "Got it"
+  },
+  "parusa": {
+    "title": "Penalty",
+    "short": "Penalty",
+    "open": "+ Penalty",
+    "help": "Someone broke a house rule? Pick who, then how many sips.",
+    "amount": "How many sips",
+    "confirm_one": "Make {{count}} drink",
+    "confirm_other": "Make {{count}} drink"
+  },
+  "tally": {
+    "title": "Drink count",
+    "sips_one": "{{count}} sip",
+    "sips_other": "{{count}} sips",
+    "soft_one": "{{count}} non-alc",
+    "soft_other": "{{count}} non-alc",
+    "note": "It's not a contest. If someone's had a lot, water first."
+  },
+  "water": { "reminder": "Easy now! Have some water 💧", "done": "Had water" },
+  "stage": { "lost": { "title": "Graphics paused", "body": "Tap to bring them back. Your game is safe." } },
+  "kcui": {
+    "drewBy": "{{name}} drew",
+    "firstTitle": "Draw a card!",
+    "firstBody": "Take turns drawing from the circle. What each card means shows up here.",
+    "guide": "Card meanings",
+    "guideShort": "Cards",
+    "noRules": "No house rules yet. Draw a Jack to make one.",
+    "ruleLabel": "New house rule",
+    "hint": {
+      "choose": "{{name}} picks.",
+      "loser": "The table decides.",
+      "mate": "{{name}} picks a mate.",
+      "rule": "{{name}} makes the rule."
+    }
+  },
+  "nhieui": {
+    "readOf": "Read by",
+    "pickHint": "Tap everyone who has.",
+    "drinkers_one": "{{count}} drinks",
+    "drinkers_other": "{{count}} drink",
+    "endBody": "That's every prompt. Thanks for the stories!"
+  },
+  "diceui": {
+    "ld": {
+      "peekMine": "Peek at my dice"
+    }
+  },
+  "error": {
+    "gameOver": "The game is over.",
+    "badAction": "That move isn't allowed.",
+    "notYourTurn": "It's not your turn yet.",
+    "noPlayers": "Not enough players.",
+    "emptyName": "Enter a name first."
+  }
+}
