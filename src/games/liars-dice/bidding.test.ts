@@ -2,7 +2,15 @@ import { describe, expect, it } from 'vitest';
 import fc from 'fast-check';
 import { beats } from '@/core/games/liars-dice/logic';
 import type { Face } from '@/core/primitives/dice';
-import { clampDraft, FACES, isLegalBid, legalFaces, minQuantity, suggestBid, type BidDraft } from './bidding';
+import {
+  clampDraft,
+  FACES,
+  isLegalBid,
+  legalFaces,
+  minQuantity,
+  suggestBid,
+  type BidDraft,
+} from './bidding';
 
 const face = fc.constantFrom<Face>(...FACES);
 const table = fc.integer({ min: 2, max: 120 });
@@ -12,11 +20,14 @@ const lastBid = (total: number) =>
 describe("Liar's Dice bid composer", () => {
   it('minQuantity is exactly the smallest count that beats the last bid', () => {
     fc.assert(
-      fc.property(table.chain((t) => fc.tuple(fc.constant(t), lastBid(t), face)), ([, last, f]) => {
-        const q = minQuantity(last, f);
-        expect(beats({ quantity: q, face: f }, last)).toBe(true);
-        expect(beats({ quantity: q - 1, face: f }, last)).toBe(false);
-      }),
+      fc.property(
+        table.chain((t) => fc.tuple(fc.constant(t), lastBid(t), face)),
+        ([, last, f]) => {
+          const q = minQuantity(last, f);
+          expect(beats({ quantity: q, face: f }, last)).toBe(true);
+          expect(beats({ quantity: q - 1, face: f }, last)).toBe(false);
+        },
+      ),
     );
   });
 
@@ -24,7 +35,12 @@ describe("Liar's Dice bid composer", () => {
     fc.assert(
       fc.property(
         table.chain((t) =>
-          fc.tuple(fc.constant(t), fc.option(lastBid(t), { nil: null }), face, fc.integer({ min: -5, max: 200 })),
+          fc.tuple(
+            fc.constant(t),
+            fc.option(lastBid(t), { nil: null }),
+            face,
+            fc.integer({ min: -5, max: 200 }),
+          ),
         ),
         ([total, last, f, q]) => {
           const d = clampDraft({ quantity: q, face: f }, last, total);
@@ -37,7 +53,9 @@ describe("Liar's Dice bid composer", () => {
   it('the suggestion is legal whenever any raise exists', () => {
     fc.assert(
       fc.property(
-        table.chain((t) => fc.tuple(fc.constant(t), fc.option(lastBid(t), { nil: null }), fc.boolean())),
+        table.chain((t) =>
+          fc.tuple(fc.constant(t), fc.option(lastBid(t), { nil: null }), fc.boolean()),
+        ),
         ([total, last, wild]) => {
           const s = suggestBid(last, total, wild);
           expect(isLegalBid(s, last, total)).toBe(legalFaces(last, total).length > 0);

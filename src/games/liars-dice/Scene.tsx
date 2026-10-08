@@ -33,7 +33,11 @@ interface DieSpot {
 }
 
 /** A hand spread out where the cup stood: rows of up to three, nudged so it looks tipped out. */
-function spreadHand(hand: readonly Face[], scale: number, seed: number): { spots: DieSpot[]; depth: number } {
+function spreadHand(
+  hand: readonly Face[],
+  scale: number,
+  seed: number,
+): { spots: DieSpot[]; depth: number } {
   const n = hand.length;
   const cols = n <= 3 ? n : Math.ceil(n / 2);
   const rows = Math.ceil(n / cols);
@@ -99,7 +103,10 @@ function Seat({
   const hand = useMemo(() => (dice ? spreadHand(dice, ds, seed) : null), [dice, ds, seed]);
   const back = (hand?.depth ?? DIE_SIZE) / 2 + CUP_R_TOP * cs + 0.07;
 
-  const tex = useMemo(() => tagTexture(name, count, tone, outLabel, invalidate), [name, count, tone, outLabel, invalidate]);
+  const tex = useMemo(
+    () => tagTexture(name, count, tone, outLabel, invalidate),
+    [name, count, tone, outLabel, invalidate],
+  );
   useEffect(() => () => tex.dispose(), [tex]);
 
   useEffect(() => {
@@ -128,7 +135,8 @@ function Seat({
       const waited = !lifted || now - a.liftT0 >= delay;
       if (waited) {
         const rate = reducedMotion() ? 8 : 1 / LIFT_S;
-        a.lift = target > a.lift ? Math.min(1, a.lift + dt * rate) : Math.max(0, a.lift - dt * rate * 1.6);
+        a.lift =
+          target > a.lift ? Math.min(1, a.lift + dt * rate) : Math.max(0, a.lift - dt * rate * 1.6);
       }
       busy = true;
     }
@@ -171,14 +179,23 @@ function Seat({
   const tagW = 0.74 * Math.min(1, cs * 1.05);
   return (
     <group ref={ref}>
-      {tone === 'turn' && <GlowDisc radius={0.38 * cs} opacity={0.5} position-y={TABLE_Y + 0.003} />}
+      {tone === 'turn' && (
+        <GlowDisc radius={0.38 * cs} opacity={0.5} position-y={TABLE_Y + 0.003} />
+      )}
       <DiceCup ref={cup} scale={cs} />
       {hand && (
         <group ref={diceGroup}>
           {hand.spots.map((s, i) => (
             <group key={i} position={[s.x, TABLE_Y, s.z]}>
-              {match?.(s.face) && <GlowDisc radius={DIE_SIZE * ds * 1.45} opacity={0.9} position-y={0.003} />}
-              <Die3D materialId={theme} size={DIE_SIZE * ds} position-y={(DIE_SIZE * ds) / 2} quaternion={s.q} />
+              {match?.(s.face) && (
+                <GlowDisc radius={DIE_SIZE * ds * 1.45} opacity={0.9} position-y={0.003} />
+              )}
+              <Die3D
+                materialId={theme}
+                size={DIE_SIZE * ds}
+                position-y={(DIE_SIZE * ds) / 2}
+                quaternion={s.q}
+              />
               <DieShadow size={ds} position-y={0.004} opacity={0.45} />
             </group>
           ))}
@@ -210,7 +227,9 @@ export default function LiarsDiceScene({ view, rules, players }: GameViewProps<V
   const ring = useRef(ringTarget);
   const seats = useRef<(Group | null)[]>([]);
   // A game that starts here shakes; a resumed round doesn't shake again.
-  const [mountRoll] = useState(() => (view.phase === 'bidding' && view.bids.length === 0 ? -1 : view.roll.id));
+  const [mountRoll] = useState(() =>
+    view.phase === 'bidding' && view.bids.length === 0 ? -1 : view.roll.id,
+  );
   const shakeCue = view.roll.id === mountRoll ? 0 : view.roll.id;
 
   useEffect(() => invalidate(), [ringTarget, invalidate]);
@@ -235,7 +254,9 @@ export default function LiarsDiceScene({ view, rules, players }: GameViewProps<V
   const ds = Math.min(0.8, chord / (3.6 * DIE_SIZE));
   const reveal = view.phase === 'reveal' ? view.reveal : null;
   const bid = reveal?.bid ?? null;
-  const match = bid ? (f: Face) => f === bid.face || (r.onesWild && bid.face !== 1 && f === 1) : null;
+  const match = bid
+    ? (f: Face) => f === bid.face || (r.onesWild && bid.face !== 1 && f === 1)
+    : null;
   const nameOf = (id: string) => players.find((p) => p.id === id)?.name ?? '?';
 
   return (
@@ -271,4 +292,3 @@ export default function LiarsDiceScene({ view, rules, players }: GameViewProps<V
     </group>
   );
 }
-

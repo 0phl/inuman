@@ -5,7 +5,7 @@ import { getLogic } from '@/core/games/registry';
 import { useTx } from '@/i18n/tx';
 import { MAX_PRESET_NAME, useRules } from '@/store/rules';
 import { Segmented, Stepper, Toggle } from './controls';
-import { IconChevron, IconClose } from './icons';
+import { IconChevron, IconClose, IconShare } from './icons';
 import { getAt, rulesFields, setAt, type FieldNode, type Primitive } from './rulesForm';
 
 interface FieldProps {
@@ -157,12 +157,20 @@ interface RulesEditorProps {
   onChange(next: unknown): void;
   /** Dot-joined paths that failed validation. */
   invalid?: ReadonlySet<string>;
+  /** Shows a "share these rules" button next to the preset controls. */
+  onShare?(): void;
 }
 
 const NONE: ReadonlySet<string> = new Set();
 
 /** Rules form generated from the game's zod rulesSchema (via z.toJSONSchema). */
-export function RulesEditor({ gameId, value, onChange, invalid = NONE }: RulesEditorProps) {
+export function RulesEditor({
+  gameId,
+  value,
+  onChange,
+  invalid = NONE,
+  onShare,
+}: RulesEditorProps) {
   const { t } = useTranslation();
   const logic = getLogic(gameId);
   const fields = useMemo(() => rulesFields(logic.rulesSchema), [logic]);
@@ -264,6 +272,17 @@ export function RulesEditor({ gameId, value, onChange, invalid = NONE }: RulesEd
           >
             {t('rulesUi.savePreset')}
           </button>
+          {onShare && (
+            <button
+              type="button"
+              className="btn btn-ghost col-span-2 min-h-12 text-[0.95rem] text-brass-300"
+              onClick={onShare}
+              data-testid="rules-share"
+            >
+              <IconShare size={20} />
+              {t('rulesUi.share')}
+            </button>
+          )}
         </div>
       )}
       {error && <p className="mt-2 text-sm font-bold text-sili-500">{t(error)}</p>}

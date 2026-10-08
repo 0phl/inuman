@@ -38,6 +38,22 @@ const VIEWS: Partial<Record<GameId, GameView>> = {
     Scene: lazy(() => import('./liars-dice/Scene')),
     Hud: lazy(() => import('./liars-dice/Hud')),
   },
+  'spin-the-bottle': {
+    Scene: lazy(() => import('./spin-the-bottle/Scene')),
+    Hud: lazy(() => import('./spin-the-bottle/Hud')),
+  },
+  'truth-or-dare': {
+    Scene: lazy(() => import('./truth-or-dare/Scene')),
+    Hud: lazy(() => import('./truth-or-dare/Hud')),
+  },
+  'most-likely-to': {
+    Scene: lazy(() => import('./most-likely-to/Scene')),
+    Hud: lazy(() => import('./most-likely-to/Hud')),
+  },
+  'ride-the-bus': {
+    Scene: lazy(() => import('./ride-the-bus/Scene')),
+    Hud: lazy(() => import('./ride-the-bus/Hud')),
+  },
 };
 
 export const getView = (id: GameId): GameView | undefined => VIEWS[id];

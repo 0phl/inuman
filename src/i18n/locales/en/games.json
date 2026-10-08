@@ -108,6 +108,68 @@
       "loserSips": "Sips for the loser",
       "loseDie": "Loser loses a die",
       "loseDie_help": "Run out of dice and you're out. Last one with dice wins. Off: play until the host ends it."
+    },
+    "stb": {
+      "outcome": "When the bottle picks you",
+      "outcome_opt_truthOrDare": "Truth or dare",
+      "outcome_opt_drink": "Drink",
+      "outcome_opt_free": "The table decides",
+      "outcome_help": "With 'The table decides', the app just shows who got picked. What happens next is up to you.",
+      "sips": "Sips",
+      "sips_help": "For whoever gets picked in Drink mode. Refusing a truth or dare costs one more.",
+      "allowSelf": "Bottle can land on the spinner",
+      "allowSelf_help": "When off, the bottle never lands on whoever spun it.",
+      "nextSpinner": "Who spins next",
+      "nextSpinner_opt_picked": "Whoever got picked",
+      "nextSpinner_opt_clockwise": "Player on the left",
+      "maxSpice": "Spice level",
+      "maxSpice_help": "0 = family-friendly, 3 = extra spicy.",
+      "maxSpice_opt_0": "Family-friendly",
+      "maxSpice_opt_1": "Mild",
+      "maxSpice_opt_2": "Spicy",
+      "maxSpice_opt_3": "Extra spicy"
+    },
+    "tod": {
+      "choice": "Who picks",
+      "choice_opt_player": "The player",
+      "choice_opt_wheel": "The wheel",
+      "choice_help": "With the wheel, a spin decides truth or dare for you.",
+      "refuseSips": "Sips for refusing",
+      "refuseSips_help": "Base sips. A prompt can set its own amount.",
+      "maxSpice": "Spice level",
+      "maxSpice_help": "0 = family-friendly, 3 = extra spicy.",
+      "maxSpice_opt_0": "Family-friendly",
+      "maxSpice_opt_1": "Mild",
+      "maxSpice_opt_2": "Spicy",
+      "maxSpice_opt_3": "Extra spicy",
+      "rounds": "Turns",
+      "rounds_help": "0 = keep going until the host ends it."
+    },
+    "mlt": {
+      "voting": "How to pick",
+      "voting_opt_point": "Point",
+      "voting_opt_secret": "Secret vote",
+      "voting_help": "Point: everyone points at once and the reader records it. Secret: pass the phone, vote one by one, and the results come out at the end.",
+      "sips": "Sips for whoever gets picked",
+      "maxSpice": "Spice level",
+      "maxSpice_help": "0 = family-friendly, 3 = extra spicy.",
+      "maxSpice_opt_0": "Family-friendly",
+      "maxSpice_opt_1": "Mild",
+      "maxSpice_opt_2": "Spicy",
+      "maxSpice_opt_3": "Extra spicy",
+      "rounds": "Rounds",
+      "rounds_help": "0 = until the cards run out."
+    },
+    "rtb": {
+      "wrongSips": "Sips for a wrong answer",
+      "wrongSips_opt_escalating": "Escalating (1 to 4)",
+      "wrongSips_opt_fixed": "Always 1",
+      "wrongSips_help": "Escalating: you drink the question number.",
+      "pyramid": "Play the pyramid",
+      "pyramid_help": "Ten face-down cards. Match one and you hand out sips. Whoever ends up holding the most cards rides the bus.",
+      "busMaxAttempts": "Max bus attempts",
+      "busMaxAttempts_help": "After this many tries the rider gets off anyway. Enough is enough!",
+      "aceHigh": "Aces high"
     }
   },
   "hl": {
@@ -329,6 +391,168 @@
       "out": "Out",
       "nextRound": "Next round",
       "winner": "{{name}} wins!"
+    }
+  },
+  "stb": {
+    "reason": {
+      "picked": "The bottle picked you!",
+      "refused": "Chickened out! One extra."
+    },
+    "notice": {
+      "picked": "The bottle points at {{name}}!",
+      "onlyTruths": "No dares in these packs, so it's a truth!",
+      "onlyDares": "No truths in these packs, so it's a dare!"
+    },
+    "error": {
+      "spinning": "The bottle is still spinning.",
+      "staleSpin": "That spin is already done.",
+      "notChoosing": "It's not time to pick truth or dare.",
+      "noTask": "There's no truth or dare to finish.",
+      "notResolved": "Finish this round first."
+    },
+    "hud": {
+      "spin": "Spin!",
+      "flick": "Flick the bottle to spin it",
+      "spinning": "Spinning…",
+      "spinner": "{{name}} spins",
+      "picked": "It's {{name}}!",
+      "choose": "Truth or dare?",
+      "truth": "Truth",
+      "dare": "Dare",
+      "done": "Done!",
+      "refuse": "Pass, I'll drink",
+      "refuseCost": "Refusing costs {{sips}}",
+      "drink": "{{name}}, drink up!",
+      "free": "Your call: what does {{name}} have to do?",
+      "freestyleTruth": "No prompts. Make up a truth!",
+      "freestyleDare": "No prompts. Make up a dare!",
+      "next": "Next spin",
+      "round": "Round {{round}}"
+    }
+  },
+  "tod": {
+    "reason": {
+      "refused": "Chickened out!"
+    },
+    "notice": {
+      "onlyTruths": "No dares in these packs, so it's a truth!",
+      "onlyDares": "No truths in these packs, so it's a dare!"
+    },
+    "error": {
+      "wheelMode": "Wheel mode is on. Spin the wheel.",
+      "playerMode": "You pick this time. No wheel.",
+      "notChoosing": "Finish the current prompt first.",
+      "spinning": "The wheel is still spinning.",
+      "staleWheel": "That spin is already done.",
+      "noPrompt": "Pick truth or dare first."
+    },
+    "hud": {
+      "choose": "Truth or dare?",
+      "truth": "Truth",
+      "dare": "Dare",
+      "spinWheel": "Spin the wheel!",
+      "spinning": "Spinning…",
+      "done": "Done!",
+      "refuse": "Pass, I'll drink",
+      "refuseCost": "Refusing costs {{sips}}",
+      "turn": "{{name}}'s turn",
+      "round": "Round {{round}}",
+      "roundOf": "Round {{round}} of {{total}}",
+      "over": "That's the game!",
+      "empty": "No prompts. Add a pack or lower the spice level."
+    }
+  },
+  "mlt": {
+    "reason": {
+      "most": "The table has spoken!"
+    },
+    "notice": {
+      "most": "Most votes: {{names}} ({{votes}})!"
+    },
+    "error": {
+      "badPlayer": "That player isn't at the table.",
+      "duplicate": "A player was picked twice.",
+      "secretMode": "This is a secret vote. Vote one at a time.",
+      "pointMode": "This is point mode. Just pick who got pointed at.",
+      "notVoting": "Voting is over.",
+      "voting": "Finish the vote first."
+    },
+    "hud": {
+      "point": "Point on three! 3, 2, 1…",
+      "whoPicked": "Who got pointed at?",
+      "pick": "That's them",
+      "skip": "Skip",
+      "vote": "Vote",
+      "voter": "{{name}} is voting",
+      "passTo": "Pass to {{name}}. No peeking!",
+      "yourVote": "Your vote: {{name}}",
+      "voted": "{{n}}/{{total}} voted",
+      "votes": "{{n}} votes",
+      "reveal": "Results!",
+      "most": "Most likely",
+      "next": "Next",
+      "reader": "Reader: {{name}}",
+      "round": "Round {{round}}",
+      "remaining": "{{n}} cards left",
+      "done": "That's all the cards!",
+      "empty": "No prompts. Add a pack or lower the spice level."
+    }
+  },
+  "rtb": {
+    "reason": {
+      "wrong": "Wrong on question {{q}}!",
+      "busWrong": "Missed! Back to the start of the bus.",
+      "give": "You matched the pyramid ({{card}})! Hand out your sips."
+    },
+    "notice": {
+      "give": "{{name}} has a {{card}}! They hand out {{sips}}.",
+      "rider": "{{name}} rides the bus! ({{cards}} cards left)",
+      "restart": "{{name}} missed! Back to Q1. Attempt {{attempt}} of {{max}}.",
+      "offBus": "{{name}} made it off the bus! Game over.",
+      "released": "That's enough! {{name}} gets let off the bus."
+    },
+    "error": {
+      "notGuessing": "It's not time to guess.",
+      "wrongQuestion": "That's not the question right now.",
+      "notPyramid": "There's no pyramid to flip.",
+      "notBoarding": "It's not time to board the bus."
+    },
+    "hud": {
+      "q1": "Red or black?",
+      "q2": "Higher or lower?",
+      "q3": "Inside or outside?",
+      "q4": "Which suit?",
+      "red": "Red",
+      "black": "Black",
+      "redBlack": "Red/Black",
+      "higher": "Higher",
+      "lower": "Lower",
+      "higherLower": "Higher/Lower",
+      "inside": "Inside",
+      "outside": "Outside",
+      "insideOutside": "Inside/Outside",
+      "suit": {
+        "S": "Spades",
+        "H": "Hearts",
+        "D": "Diamonds",
+        "C": "Clubs"
+      },
+      "question": "Question {{q}} of 4",
+      "turn": "{{name}}'s turn",
+      "hand": "{{name}}'s cards",
+      "correct": "Correct!",
+      "wrong": "Wrong!",
+      "pyramid": "Pyramid",
+      "flip": "Flip",
+      "row": "Row {{row}}: {{sips}} per match",
+      "board": "Board the bus",
+      "rider": "On the bus: {{name}}",
+      "attempt": "Attempt {{attempt}} of {{max}}",
+      "deck": "{{n}} cards in the deck",
+      "leftover": "{{n}} left",
+      "offBus": "Off the bus!",
+      "released": "Let off the bus",
+      "give": "Hand out {{sips}}"
     }
   }
 }

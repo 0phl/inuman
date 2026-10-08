@@ -97,7 +97,8 @@ function applyEffects(
     }
     const entries = resolveDrink(fx, state.intensity, state.players);
     if (entries.length === 0) continue;
-    logged.push(...entries);
+    // 'give' sips are handed out IRL by these players; they didn't drink them.
+    if (fx.kind !== 'give') logged.push(...entries);
     out.push({ type: 'drinks', entries, reason: fx.reason, kind: fx.kind });
   }
   const drinks = logged.length ? [...state.drinks, ...logged].slice(-MAX_DRINK_LOG) : state.drinks;

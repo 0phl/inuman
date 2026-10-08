@@ -1,0 +1,557 @@
+{
+  "schema": 1,
+  "kind": "pack",
+  "id": "builtin-tod-en",
+  "name": "Truth or Dare: Classic",
+  "game": "truth-or-dare",
+  "locale": "en",
+  "builtin": true,
+  "items": [
+    {
+      "id": "tod-en-t001",
+      "text": "What's the most embarrassing thing that's happened to you in public?",
+      "kind": "truth",
+      "spice": 0
+    },
+    {
+      "id": "tod-en-t002",
+      "text": "What song do you secretly know every single word to?",
+      "kind": "truth",
+      "spice": 0
+    },
+    {
+      "id": "tod-en-t003",
+      "text": "What's the worst haircut you've ever had?",
+      "kind": "truth",
+      "spice": 0
+    },
+    {
+      "id": "tod-en-t004",
+      "text": "Who was your first celebrity crush?",
+      "kind": "truth",
+      "spice": 0
+    },
+    {
+      "id": "tod-en-t005",
+      "text": "What's the strangest food combination you genuinely love?",
+      "kind": "truth",
+      "spice": 0
+    },
+    {
+      "id": "tod-en-t006",
+      "text": "What's a lie you told as a kid that you never got caught for?",
+      "kind": "truth",
+      "spice": 0
+    },
+    {
+      "id": "tod-en-t007",
+      "text": "What's your most useless talent? Demonstrate it.",
+      "kind": "truth",
+      "spice": 0
+    },
+    {
+      "id": "tod-en-t008",
+      "text": "If you could only keep one app on your phone, which one?",
+      "kind": "truth",
+      "spice": 0
+    },
+    {
+      "id": "tod-en-t009",
+      "text": "What's the pettiest thing you've ever done to a sibling or roommate?",
+      "kind": "truth",
+      "spice": 0
+    },
+    {
+      "id": "tod-en-t010",
+      "text": "What's the most expensive thing you've broken by accident?",
+      "kind": "truth",
+      "spice": 0
+    },
+    {
+      "id": "tod-en-t011",
+      "text": "What's your most irrational fear?",
+      "kind": "truth",
+      "spice": 0
+    },
+    {
+      "id": "tod-en-t012",
+      "text": "Who at this table would survive longest in a zombie apocalypse?",
+      "kind": "truth",
+      "spice": 0
+    },
+    {
+      "id": "tod-en-t013",
+      "text": "What's the dumbest way you've ever injured yourself?",
+      "kind": "truth",
+      "spice": 0
+    },
+    {
+      "id": "tod-en-t014",
+      "text": "What's a movie everyone loves that you secretly can't stand?",
+      "kind": "truth",
+      "spice": 0
+    },
+    {
+      "id": "tod-en-t015",
+      "text": "What would your autobiography be called?",
+      "kind": "truth",
+      "spice": 0
+    },
+    {
+      "id": "tod-en-t016",
+      "text": "Who's the last person you looked up on social media?",
+      "kind": "truth",
+      "spice": 1
+    },
+    {
+      "id": "tod-en-t017",
+      "text": "Who in this group would you trust least with a secret?",
+      "kind": "truth",
+      "spice": 1
+    },
+    {
+      "id": "tod-en-t018",
+      "text": "What's the worst excuse you've used to get out of plans?",
+      "kind": "truth",
+      "spice": 1
+    },
+    {
+      "id": "tod-en-t019",
+      "text": "What's a text you sent to the wrong person that still haunts you?",
+      "kind": "truth",
+      "spice": 1
+    },
+    {
+      "id": "tod-en-t020",
+      "text": "Who was the last person you left on read, and why?",
+      "kind": "truth",
+      "spice": 1
+    },
+    {
+      "id": "tod-en-t021",
+      "text": "What's the most childish thing you still do?",
+      "kind": "truth",
+      "spice": 1
+    },
+    {
+      "id": "tod-en-t022",
+      "text": "Have you ever re-gifted a present? Who ended up with it?",
+      "kind": "truth",
+      "spice": 1
+    },
+    {
+      "id": "tod-en-t023",
+      "text": "What's a habit of yours that nobody here knows about?",
+      "kind": "truth",
+      "spice": 1
+    },
+    {
+      "id": "tod-en-t024",
+      "text": "What's the cheesiest pickup line you've used with a straight face?",
+      "kind": "truth",
+      "spice": 1
+    },
+    {
+      "id": "tod-en-t025",
+      "text": "What's something you did that your parents still don't know about?",
+      "kind": "truth",
+      "spice": 1
+    },
+    {
+      "id": "tod-en-t026",
+      "text": "What's the most money you've wasted on something dumb?",
+      "kind": "truth",
+      "spice": 1
+    },
+    {
+      "id": "tod-en-t027",
+      "text": "What compliment did you get years ago that you still think about?",
+      "kind": "truth",
+      "spice": 1
+    },
+    {
+      "id": "tod-en-t028",
+      "text": "Which of your exes would your family pick for you?",
+      "kind": "truth",
+      "spice": 1
+    },
+    {
+      "id": "tod-en-t029",
+      "text": "What's your most embarrassing autocorrect fail?",
+      "kind": "truth",
+      "spice": 1
+    },
+    {
+      "id": "tod-en-t030",
+      "text": "Do you have a crush on anyone at this table? Yes or no only.",
+      "kind": "truth",
+      "spice": 2
+    },
+    {
+      "id": "tod-en-t031",
+      "text": "What's the worst date you've ever been on?",
+      "kind": "truth",
+      "spice": 2
+    },
+    {
+      "id": "tod-en-t032",
+      "text": "What's your biggest dating deal-breaker, and have you ever ignored it?",
+      "kind": "truth",
+      "spice": 2
+    },
+    {
+      "id": "tod-en-t033",
+      "text": "If you had to go on a date with someone at this table, who would it be?",
+      "kind": "truth",
+      "spice": 2
+    },
+    {
+      "id": "tod-en-t034",
+      "text": "What's the most jealous you've ever been?",
+      "kind": "truth",
+      "spice": 2
+    },
+    {
+      "id": "tod-en-t035",
+      "text": "What's the boldest thing you've ever done to get someone's attention?",
+      "kind": "truth",
+      "spice": 2
+    },
+    {
+      "id": "tod-en-t036",
+      "text": "Who here do you think has the most secrets?",
+      "kind": "truth",
+      "spice": 2
+    },
+    {
+      "id": "tod-en-t037",
+      "text": "Who was the last person you daydreamed about?",
+      "kind": "truth",
+      "spice": 2
+    },
+    {
+      "id": "tod-en-t038",
+      "text": "What's the longest you've pretended to like someone's hobby to impress them?",
+      "kind": "truth",
+      "spice": 2
+    },
+    {
+      "id": "tod-en-t039",
+      "text": "Have you ever had a crush on a friend's partner? No names needed.",
+      "kind": "truth",
+      "spice": 2
+    },
+    {
+      "id": "tod-en-t040",
+      "text": "What's the most romantic thing you've ever done that went horribly wrong?",
+      "kind": "truth",
+      "spice": 2
+    },
+    {
+      "id": "tod-en-t041",
+      "text": "What's the most unusual place you've ever kissed someone?",
+      "kind": "truth",
+      "spice": 3
+    },
+    {
+      "id": "tod-en-t042",
+      "text": "What's the flirtiest text you've ever sent? Paraphrase it for us.",
+      "kind": "truth",
+      "spice": 3
+    },
+    {
+      "id": "tod-en-t043",
+      "text": "What's the most daring first move you've ever made?",
+      "kind": "truth",
+      "spice": 3
+    },
+    {
+      "id": "tod-en-t044",
+      "text": "Tell us about your most romantic dream. PG-13 version only.",
+      "kind": "truth",
+      "spice": 3
+    },
+    {
+      "id": "tod-en-t045",
+      "text": "Who's a lingering crush you never acted on?",
+      "kind": "truth",
+      "spice": 3
+    },
+    {
+      "id": "tod-en-t046",
+      "text": "What's the most spontaneous thing you've ever done for love?",
+      "kind": "truth",
+      "spice": 3
+    },
+    {
+      "id": "tod-en-d001",
+      "text": "Sing the chorus of the last song you listened to, as dramatically as possible.",
+      "kind": "dare",
+      "spice": 0
+    },
+    {
+      "id": "tod-en-d002",
+      "text": "Act out a famous movie scene without words until someone guesses it.",
+      "kind": "dare",
+      "spice": 0
+    },
+    {
+      "id": "tod-en-d003",
+      "text": "Commentate everything happening at the table like a sports broadcaster for one minute.",
+      "kind": "dare",
+      "spice": 0
+    },
+    {
+      "id": "tod-en-d004",
+      "text": "Text a family member 'I'm proud of you' right now, no explanation.",
+      "kind": "dare",
+      "spice": 0
+    },
+    {
+      "id": "tod-en-d005",
+      "text": "Do 10 jumping jacks while saying the alphabet backwards.",
+      "kind": "dare",
+      "spice": 0
+    },
+    {
+      "id": "tod-en-d006",
+      "text": "Speak only in questions until your next turn.",
+      "kind": "dare",
+      "spice": 0
+    },
+    {
+      "id": "tod-en-d007",
+      "text": "Give a one-minute TED talk on why your favorite snack is the best.",
+      "kind": "dare",
+      "spice": 0
+    },
+    {
+      "id": "tod-en-d008",
+      "text": "Let {random} pick a word you can't say until your next turn. Every slip, you owe them a compliment.",
+      "kind": "dare",
+      "spice": 0
+    },
+    {
+      "id": "tod-en-d009",
+      "text": "Hold a plank for 20 seconds while everyone tries to make you laugh.",
+      "kind": "dare",
+      "spice": 0
+    },
+    {
+      "id": "tod-en-d010",
+      "text": "Describe your morning routine like a nature documentary narrator.",
+      "kind": "dare",
+      "spice": 0
+    },
+    {
+      "id": "tod-en-d011",
+      "text": "Do your best runway walk across the room and back.",
+      "kind": "dare",
+      "spice": 0
+    },
+    {
+      "id": "tod-en-d012",
+      "text": "Write a four-line poem about the drink in front of you and perform it.",
+      "kind": "dare",
+      "spice": 0
+    },
+    {
+      "id": "tod-en-d013",
+      "text": "Try to lick your elbow. Really commit to it.",
+      "kind": "dare",
+      "spice": 0
+    },
+    {
+      "id": "tod-en-d014",
+      "text": "Give a toast to {random} like it's their wedding day.",
+      "kind": "dare",
+      "spice": 0
+    },
+    {
+      "id": "tod-en-d015",
+      "text": "Play a fancy waiter and take everyone's order in an accent of your choice.",
+      "kind": "dare",
+      "spice": 0
+    },
+    {
+      "id": "tod-en-d016",
+      "text": "Hand your phone to {random} and let them read your latest notification out loud.",
+      "kind": "dare",
+      "spice": 1
+    },
+    {
+      "id": "tod-en-d017",
+      "text": "Show everyone your screen time report for this week.",
+      "kind": "dare",
+      "spice": 1
+    },
+    {
+      "id": "tod-en-d018",
+      "text": "Let {random} write your next social media status, keep it wholesome, and post it.",
+      "kind": "dare",
+      "spice": 1
+    },
+    {
+      "id": "tod-en-d019",
+      "text": "Call a friend who isn't here and sing them happy birthday, even though it's not their birthday.",
+      "kind": "dare",
+      "spice": 1
+    },
+    {
+      "id": "tod-en-d020",
+      "text": "Swap an accessory (hat, watch, jacket) with {random} until your next turn, if they're up for it.",
+      "kind": "dare",
+      "spice": 1
+    },
+    {
+      "id": "tod-en-d021",
+      "text": "Send 'I have an announcement' to a group chat and don't explain for five minutes.",
+      "kind": "dare",
+      "spice": 1
+    },
+    {
+      "id": "tod-en-d022",
+      "text": "Describe your crush using only three emojis and show the group.",
+      "kind": "dare",
+      "spice": 1
+    },
+    {
+      "id": "tod-en-d023",
+      "text": "Perform a soap-opera crying scene for 15 seconds.",
+      "kind": "dare",
+      "spice": 1
+    },
+    {
+      "id": "tod-en-d024",
+      "text": "Rap four lines about {random}. Keep it friendly.",
+      "kind": "dare",
+      "spice": 1
+    },
+    {
+      "id": "tod-en-d025",
+      "text": "Let {left} pick a song from your library, then sing the first verse.",
+      "kind": "dare",
+      "spice": 1
+    },
+    {
+      "id": "tod-en-d026",
+      "text": "Set your phone wallpaper to a photo the group picks, for the rest of the night.",
+      "kind": "dare",
+      "spice": 1
+    },
+    {
+      "id": "tod-en-d027",
+      "text": "Text someone you owe an apology to and apologize, right now.",
+      "kind": "dare",
+      "spice": 1
+    },
+    {
+      "id": "tod-en-d028",
+      "text": "Narrate {right}'s every move like a wildlife documentary for one minute.",
+      "kind": "dare",
+      "spice": 1
+    },
+    {
+      "id": "tod-en-d029",
+      "text": "Post a throwback photo with the caption 'simpler times.'",
+      "kind": "dare",
+      "spice": 1
+    },
+    {
+      "id": "tod-en-d030",
+      "text": "Message someone you haven't talked to in over a year: 'Thought of you today, hope you're well!'",
+      "kind": "dare",
+      "spice": 2
+    },
+    {
+      "id": "tod-en-d031",
+      "text": "Let {random} scroll through your camera roll for ten seconds.",
+      "kind": "dare",
+      "spice": 2
+    },
+    {
+      "id": "tod-en-d032",
+      "text": "Tell {random} something you've always wanted to say to them.",
+      "kind": "dare",
+      "spice": 2
+    },
+    {
+      "id": "tod-en-d033",
+      "text": "Give {random} a 30-second hand massage, if they're okay with it.",
+      "kind": "dare",
+      "spice": 2
+    },
+    {
+      "id": "tod-en-d034",
+      "text": "Let the group pick a contact, then send them a voice note of you singing one line of a love song.",
+      "kind": "dare",
+      "spice": 2
+    },
+    {
+      "id": "tod-en-d035",
+      "text": "Read out the last message in your oldest unanswered chat.",
+      "kind": "dare",
+      "spice": 2
+    },
+    {
+      "id": "tod-en-d036",
+      "text": "Tell the group three things you genuinely admire about {random}.",
+      "kind": "dare",
+      "spice": 2
+    },
+    {
+      "id": "tod-en-d037",
+      "text": "Show the group your most-used emoji and explain who you send it to most.",
+      "kind": "dare",
+      "spice": 2
+    },
+    {
+      "id": "tod-en-d038",
+      "text": "Let {random} send one wholesome emoji to anyone in your contacts.",
+      "kind": "dare",
+      "spice": 2
+    },
+    {
+      "id": "tod-en-d039",
+      "text": "Show the group the last person you searched for on Instagram.",
+      "kind": "dare",
+      "spice": 2
+    },
+    {
+      "id": "tod-en-d040",
+      "text": "Describe your ideal first-kiss setting in exactly ten words.",
+      "kind": "dare",
+      "spice": 3
+    },
+    {
+      "id": "tod-en-d041",
+      "text": "Let {random} ask you one spicy yes-or-no question. No passing.",
+      "kind": "dare",
+      "spice": 3
+    },
+    {
+      "id": "tod-en-d042",
+      "text": "Draft a flirty message to your crush, let the group read it, and let them vote on whether you send it.",
+      "kind": "dare",
+      "spice": 3
+    },
+    {
+      "id": "tod-en-d043",
+      "text": "Give {random} your best smolder for five full seconds, if they're game.",
+      "kind": "dare",
+      "spice": 3
+    },
+    {
+      "id": "tod-en-d044",
+      "text": "Explain to {random}, with a straight face and eye contact, why they'd make a great partner.",
+      "kind": "dare",
+      "spice": 3
+    },
+    {
+      "id": "tod-en-d045",
+      "text": "Rate your flirting skills out of 10, then prove it with one line to {random}, if they're game.",
+      "kind": "dare",
+      "spice": 3
+    }
+  ]
+}

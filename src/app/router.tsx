@@ -24,6 +24,18 @@ export const router = createBrowserRouter([
       },
       { path: 'play', lazy: () => import('./routes/Play').then((m) => ({ Component: m.default })) },
       {
+        path: 'packs',
+        lazy: () => import('./routes/Packs').then((m) => ({ Component: m.default })),
+      },
+      {
+        path: 'packs/:id',
+        lazy: () => import('./routes/PackEditor').then((m) => ({ Component: m.default })),
+      },
+      {
+        path: 'import',
+        lazy: () => import('./routes/Import').then((m) => ({ Component: m.default })),
+      },
+      {
         path: 'settings',
         lazy: () => import('./routes/Settings').then((m) => ({ Component: m.default })),
       },

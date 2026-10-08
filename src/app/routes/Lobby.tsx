@@ -1,12 +1,14 @@
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, Navigate, useNavigate, useParams } from 'react-router';
-import { BUILTIN_PACKS, collectPrompts } from '@/core/content/builtin';
-import { PACK_GAMES, type Locale, type PackGame, type PromptPack } from '@/core/content/schemas';
+import { collectPrompts } from '@/core/content/builtin';
+import { PACK_GAMES, type PackGame } from '@/core/content/schemas';
 import type { GameId } from '@/core/engine/types';
 import { getLogic, hasLogic } from '@/core/games/registry';
+import type { SharePayload } from '@/core/share/codec';
 import { isGameId } from '@/games/catalog';
 import { hasView } from '@/games/views';
+import { allPacksFor, resolvePicks, usePackPicks, usePacks } from '@/store/packs';
 import { usePlayers } from '@/store/players';
 import { defaultRules, useRules, validRules } from '@/store/rules';
 import { useSession } from '@/store/session';
@@ -15,17 +17,23 @@ import { ContentPicker } from '@/ui/ContentPicker';
 import { Segmented, Toggle } from '@/ui/controls';
 import { RulesEditor } from '@/ui/RulesEditor';
 import { rulesFields } from '@/ui/rulesForm';
+import { ShareSheet } from '@/ui/ShareSheet';
 import { TopBar } from '@/ui/TopBar';
 
 const MULTIPLIERS = [0.5, 1, 1.5, 2] as const;
 
 const isPackGame = (id: GameId): id is PackGame => (PACK_GAMES as readonly string[]).includes(id);
 
-/** Built-in packs that match the UI language (or are language-neutral); all of them if none do. */
-function defaultPackIds(packs: readonly PromptPack[], locale: Locale): string[] {
-  const local = packs.filter((p) => p.locale === locale || p.locale === 'any');
-  return (local.length ? local : packs).map((p) => p.id);
-}
+/** Games that can deal from another game's packs, but only when their rules ask for it.
+ *  Unlike `needsContent` games they still play with no prompts (the table makes them up). */
+const BORROWED_PACKS: Partial<
+  Record<GameId, { game: PackGame; when: (rules: unknown) => boolean }>
+> = {
+  'spin-the-bottle': {
+    game: 'truth-or-dare',
+    when: (rules) => (rules as { outcome?: unknown } | null)?.outcome === 'truthOrDare',
+  },
+};
 
 /** The `maxSpice` rule as currently edited (clamped), else the game's default. */
 function spiceOf(id: GameId, rules: unknown): number {
@@ -92,15 +100,22 @@ function LobbyFor({ id }: { id: GameId }) {
   const [invalid, setInvalid] = useState<ReadonlySet<string>>(new Set());
   const [error, setError] = useState<string | null>(null);
 
-  // Prompt games: which built-in packs to deal from (default: the UI language's pack).
+  // Prompt games: which packs to deal from — built-ins plus the barkada's own. The last pick is
+  // remembered per game (default: the UI language's built-in pack); spice lives in the rules.
   const locale = useSettings((s) => s.locale);
   const needsContent = Boolean(logic.meta.needsContent);
-  const packGame = isPackGame(id) ? id : undefined;
-  const packs = useMemo(
-    () => (packGame ? BUILTIN_PACKS.filter((p) => p.game === packGame) : []),
-    [packGame],
+  const borrowed = BORROWED_PACKS[id];
+  const packGame = isPackGame(id) ? id : borrowed?.game;
+  const packs = usePacks(useMemo(() => allPacksFor(packGame), [packGame]));
+  const packsReady = usePacks((s) => s.hydrated);
+  const storedPicks = usePackPicks((s) => (packGame ? s.byGame[packGame] : undefined));
+  const setPicks = usePackPicks((s) => s.setPicks);
+  const packIds = useMemo(
+    () => resolvePicks(storedPicks, packs, locale, packsReady),
+    [storedPicks, packs, locale, packsReady],
   );
-  const [packIds, setPackIds] = useState<string[]>(() => defaultPackIds(packs, locale));
+  const setPackIds = (ids: string[]) => packGame && setPicks(packGame, ids);
+  const [sharing, setSharing] = useState<SharePayload | null>(null);
   const spiceLabel = useMemo(
     () => rulesFields(logic.rulesSchema).find((f) => f.key === 'maxSpice')?.label,
     [logic],
@@ -108,6 +123,7 @@ function LobbyFor({ id }: { id: GameId }) {
 
   // Rules as stored (possibly mid-edit) — validity is checked on Start.
   const rules = useMemo(() => (raw === undefined ? validRules(id, undefined) : raw), [raw, id]);
+  const usesContent = needsContent || Boolean(borrowed?.when(rules));
   const seated = players.filter((p) => !p.sittingOut);
   const { min, max } = logic.meta;
   const enough = seated.length >= min;
@@ -117,15 +133,35 @@ function LobbyFor({ id }: { id: GameId }) {
   const maxSpice = spiceOf(id, rules);
   const prompts = useMemo(
     () =>
-      needsContent
+      usesContent
         ? collectPrompts(
             packs.filter((p) => packIds.includes(p.id)),
             { maxSpice, game: packGame },
           )
         : [],
-    [needsContent, packs, packIds, maxSpice, packGame],
+    [usesContent, packs, packIds, maxSpice, packGame],
   );
   const noPrompts = needsContent && prompts.length === 0;
+  const presets = useRules((s) => s.byGame[id]?.presets);
+
+  /** Shares the current rules (named after the matching preset, if any) as a `kind:'rules'` link. */
+  const shareRules = () => {
+    const parsed = logic.rulesSchema.safeParse(rules);
+    if (!parsed.success) {
+      setInvalid(new Set(parsed.error.issues.map((i) => i.path.map(String).join('.'))));
+      setError('rulesUi.invalid');
+      return;
+    }
+    const same = presets?.find((p) => JSON.stringify(p.rules) === JSON.stringify(parsed.data));
+    setError(null);
+    setSharing({
+      schema: 1,
+      kind: 'rules',
+      gameId: id,
+      name: same?.name ?? t('rulesUi.shareName', { game: t(`game.${id}.title`) }).slice(0, 60),
+      rules: parsed.data,
+    });
+  };
 
   const start = () => {
     const parsed = logic.rulesSchema.safeParse(rules);
@@ -136,15 +172,16 @@ function LobbyFor({ id }: { id: GameId }) {
     }
     setInvalid(new Set());
     setRules(id, parsed.data);
-    const content = needsContent
-      ? {
-          prompts: collectPrompts(
-            packs.filter((p) => packIds.includes(p.id)),
-            { maxSpice: spiceOf(id, parsed.data), game: packGame },
-          ),
-        }
-      : undefined;
-    if (content && content.prompts.length === 0) {
+    const content =
+      needsContent || borrowed?.when(parsed.data)
+        ? {
+            prompts: collectPrompts(
+              packs.filter((p) => packIds.includes(p.id)),
+              { maxSpice: spiceOf(id, parsed.data), game: packGame },
+            ),
+          }
+        : undefined;
+    if (needsContent && content && content.prompts.length === 0) {
       setError('lobby.packs.none');
       return;
     }
@@ -194,7 +231,7 @@ function LobbyFor({ id }: { id: GameId }) {
         )}
       </section>
 
-      {needsContent && (
+      {usesContent && (
         <ContentPicker
           packs={packs}
           selected={packIds}
@@ -203,6 +240,7 @@ function LobbyFor({ id }: { id: GameId }) {
           spiceLabel={spiceLabel}
           onMaxSpice={(level) => setRules(id, { ...(rules as object), maxSpice: level })}
           matchCount={prompts.length}
+          manageHref={`/packs?back=${encodeURIComponent(`/games/${id}`)}`}
         />
       )}
 
@@ -217,6 +255,7 @@ function LobbyFor({ id }: { id: GameId }) {
               value={rules}
               onChange={(next) => setRules(id, next)}
               invalid={invalid}
+              onShare={shareRules}
             />
           </div>
         </div>
@@ -228,6 +267,13 @@ function LobbyFor({ id }: { id: GameId }) {
         </h2>
         <QuickIntensity />
       </section>
+
+      <ShareSheet
+        open={sharing !== null}
+        onClose={() => setSharing(null)}
+        payload={sharing}
+        title={t('share.rulesTitle')}
+      />
 
       <div className="fixed inset-x-0 bottom-0 z-20 bg-gradient-to-t from-narra-950 from-70% to-transparent px-4 pt-10 pb-[calc(env(safe-area-inset-bottom)+14px)]">
         <div className="mx-auto flex max-w-[528px] flex-col gap-2">
@@ -246,7 +292,7 @@ function LobbyFor({ id }: { id: GameId }) {
           <button
             type="button"
             className="btn btn-brass min-h-16 font-sign text-xl"
-            disabled={!enough || tooMany || !playable || noPrompts}
+            disabled={!enough || tooMany || !playable || noPrompts || (usesContent && !packsReady)}
             onClick={start}
             data-testid="start-game"
           >

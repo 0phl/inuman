@@ -59,6 +59,10 @@ export default function Home() {
             <IconChevron />
           </span>
         </Link>
+        <Link to="/packs" className="btn btn-wood min-h-14 justify-between" data-testid="nav-packs">
+          <span>{t('home.packs')}</span>
+          <IconChevron className="text-capiz-300" />
+        </Link>
       </nav>
 
       <p className="text-center text-sm text-capiz-400">{t('home.footer')}</p>

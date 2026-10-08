@@ -104,3 +104,42 @@ export const IconCards = ({ size = 20, ...p }: IconProps) => (
     <path d="M5.5 7.5l-1 .3a1.6 1.6 0 0 0-1.1 2l2.6 9.4a1.6 1.6 0 0 0 2 1.1l3.5-1" />
   </svg>
 );
+export const IconShare = ({ size = 22, ...p }: IconProps) => (
+  <svg {...base(size)} {...p}>
+    <circle cx="18" cy="5.5" r="2.5" />
+    <circle cx="6" cy="12" r="2.5" />
+    <circle cx="18" cy="18.5" r="2.5" />
+    <path d="M8.2 10.8l7.6-4.1M8.2 13.2l7.6 4.1" />
+  </svg>
+);
+export const IconCopy = ({ size = 22, ...p }: IconProps) => (
+  <svg {...base(size)} {...p}>
+    <rect x="8.5" y="8.5" width="11.5" height="11.5" rx="2" />
+    <path d="M15.5 8.5V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7.5a2 2 0 0 0 2 2h2.5" />
+  </svg>
+);
+export const IconDownload = ({ size = 22, ...p }: IconProps) => (
+  <svg {...base(size)} {...p}>
+    <path d="M12 4v11M7 10.5l5 5 5-5M5 19.5h14" />
+  </svg>
+);
+export const IconUpload = ({ size = 22, ...p }: IconProps) => (
+  <svg {...base(size)} {...p}>
+    <path d="M12 15.5V4.5M7 9l5-5 5 5M5 19.5h14" />
+  </svg>
+);
+export const IconTrash = ({ size = 22, ...p }: IconProps) => (
+  <svg {...base(size)} {...p}>
+    <path d="M4.5 7h15M10 4h4M6.5 7l.8 11.2A2 2 0 0 0 9.3 20h5.4a2 2 0 0 0 2-1.8L17.5 7M10 11v5M14 11v5" />
+  </svg>
+);
+export const IconPencil = ({ size = 20, ...p }: IconProps) => (
+  <svg {...base(size)} {...p}>
+    <path d="M14.5 5.5l4 4M4 20l1-4.5L15.8 4.7a1.4 1.4 0 0 1 2 0l1.5 1.5a1.4 1.4 0 0 1 0 2L8.5 19 4 20z" />
+  </svg>
+);
+export const IconLines = ({ size = 20, ...p }: IconProps) => (
+  <svg {...base(size)} {...p}>
+    <path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01" />
+  </svg>
+);

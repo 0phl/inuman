@@ -25,6 +25,22 @@ interface RulesState {
   savePreset(id: GameId, name: string): string | null;
   applyPreset(id: GameId, name: string): void;
   deletePreset(id: GameId, name: string): void;
+  /**
+   * Saves given rules (e.g. from a share link) as a preset without touching the current rules.
+   * Never overwrites: a name clash gets a " (2)" suffix. Returns the saved name, or an error key.
+   */
+  addPreset(id: GameId, name: string, rules: unknown): { name: string } | { error: string };
+}
+
+/** `name`, or `name (2)`, `name (3)`… — the first one not in `taken`, within MAX_PRESET_NAME. */
+export function uniquePresetName(raw: string, taken: readonly string[]): string {
+  const name = raw.trim().slice(0, MAX_PRESET_NAME);
+  if (!taken.includes(name)) return name;
+  for (let n = 2; ; n++) {
+    const suffix = ` (${n})`;
+    const next = `${name.slice(0, MAX_PRESET_NAME - suffix.length).trimEnd()}${suffix}`;
+    if (!taken.includes(next)) return next;
+  }
 }
 
 export const defaultRules = (id: GameId): unknown => getLogic(id).rulesSchema.parse({});
@@ -88,6 +104,17 @@ export const useRules = create<RulesState>()(
         const preset = e.presets.find((p) => p.name === name);
         if (!preset) return;
         set((s) => ({ byGame: { ...s.byGame, [id]: { ...e, current: validRules(id, preset.rules) } } }));
+      },
+      addPreset(id, raw, rules) {
+        if (!hasLogic(id)) return { error: 'import.unknownGame' };
+        if (!raw.trim()) return { error: 'error.emptyName' };
+        const parsed = getLogic(id).rulesSchema.safeParse(rules);
+        if (!parsed.success) return { error: 'share.invalid' };
+        const e = entry(get().byGame, id);
+        const name = uniquePresetName(raw, e.presets.map((p) => p.name));
+        const presets = [{ name, rules: parsed.data }, ...e.presets].slice(0, MAX_PRESETS);
+        set((s) => ({ byGame: { ...s.byGame, [id]: { ...e, presets } } }));
+        return { name };
       },
       deletePreset: (id, name) =>
         set((s) => {

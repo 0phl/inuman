@@ -3,12 +3,28 @@ import { BUILTIN_PACKS, collectPrompts } from './builtin';
 import type { PromptPack } from './schemas';
 
 describe('built-in packs', () => {
-  it('ships a Taglish and an English Never Have I Ever pack', () => {
+  it('ships a Taglish and an English pack for every prompt game', () => {
     expect(BUILTIN_PACKS.map((p) => [p.locale, p.game])).toEqual([
       ['taglish', 'never-have-i-ever'],
       ['en', 'never-have-i-ever'],
+      ['taglish', 'truth-or-dare'],
+      ['en', 'truth-or-dare'],
+      ['taglish', 'most-likely-to'],
+      ['en', 'most-likely-to'],
     ]);
     for (const pack of BUILTIN_PACKS) expect(pack.builtin).toBe(true);
+  });
+
+  it('marks every truth-or-dare item as a truth or a dare, with both at every everyday spice', () => {
+    for (const pack of BUILTIN_PACKS.filter((p) => p.game === 'truth-or-dare')) {
+      for (const item of pack.items) expect(['truth', 'dare']).toContain(item.kind);
+      for (const kind of ['truth', 'dare'])
+        for (const spice of [0, 1, 2])
+          expect(
+            pack.items.filter((i) => i.kind === kind && i.spice === spice).length,
+            `${pack.id} ${kind} spice ${spice}`,
+          ).toBeGreaterThan(0);
+    }
   });
 
   it('has prompts at every everyday spice level and unique ids', () => {

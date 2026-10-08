@@ -1,9 +1,13 @@
+import enMlt from './packs/en/most-likely-to.json';
 import enNhie from './packs/en/never-have-i-ever.json';
+import enTod from './packs/en/truth-or-dare.json';
+import tlMlt from './packs/taglish/most-likely-to.json';
 import tlNhie from './packs/taglish/never-have-i-ever.json';
+import tlTod from './packs/taglish/truth-or-dare.json';
 import { PromptPackSchema, type PackGame, type PromptItem, type PromptPack } from './schemas';
 
 /** Packs that ship with the app, validated at load so a bad edit fails fast (and in tests). */
-export const BUILTIN_PACKS: PromptPack[] = [tlNhie, enNhie].map((raw) =>
+export const BUILTIN_PACKS: PromptPack[] = [tlNhie, enNhie, tlTod, enTod, tlMlt, enMlt].map((raw) =>
   PromptPackSchema.parse(raw),
 );
 

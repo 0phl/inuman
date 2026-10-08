@@ -3,7 +3,8 @@ import { CanvasTexture, SRGBColorSpace } from 'three';
 // The little tag in front of each cup: the player's name and how many dice are under it.
 
 const SIGN_FONT = "Bungee, 'Arial Black', 'Helvetica Neue', sans-serif";
-const BODY_FONT = "'Atkinson Hyperlegible Next Variable', 'Atkinson Hyperlegible Next', system-ui, sans-serif";
+const BODY_FONT =
+  "'Atkinson Hyperlegible Next Variable', 'Atkinson Hyperlegible Next', system-ui, sans-serif";
 
 export type TagTone = 'idle' | 'turn' | 'out';
 
@@ -15,7 +16,13 @@ const PIP5: readonly (readonly [number, number])[] = [
   [1, 1],
 ];
 
-function fitText(ctx: CanvasRenderingContext2D, text: string, font: (px: number) => string, max: number, px: number) {
+function fitText(
+  ctx: CanvasRenderingContext2D,
+  text: string,
+  font: (px: number) => string,
+  max: number,
+  px: number,
+) {
   let size = px;
   ctx.font = font(size);
   while (ctx.measureText(text).width > max && size > 14) {
@@ -28,7 +35,15 @@ function fitText(ctx: CanvasRenderingContext2D, text: string, font: (px: number)
   return `${t}…`;
 }
 
-function draw(ctx: CanvasRenderingContext2D, w: number, h: number, name: string, count: number, tone: TagTone, outLabel: string) {
+function draw(
+  ctx: CanvasRenderingContext2D,
+  w: number,
+  h: number,
+  name: string,
+  count: number,
+  tone: TagTone,
+  outLabel: string,
+) {
   ctx.clearRect(0, 0, w, h);
   const plate = new Path2D();
   plate.roundRect(3, 3, w - 6, h - 6, 22);
@@ -86,7 +101,13 @@ function draw(ctx: CanvasRenderingContext2D, w: number, h: number, name: string,
 }
 
 /** A 512 × 128 tag texture. The caller owns it (dispose when the label changes). */
-export function tagTexture(name: string, count: number, tone: TagTone, outLabel: string, onRedraw?: () => void): CanvasTexture {
+export function tagTexture(
+  name: string,
+  count: number,
+  tone: TagTone,
+  outLabel: string,
+  onRedraw?: () => void,
+): CanvasTexture {
   const c = document.createElement('canvas');
   c.width = 512;
   c.height = 128;

@@ -108,6 +108,68 @@
       "loserSips": "Lagok ng talo",
       "loseDie": "Bawas dice sa talo",
       "loseDie_help": "Pag naubusan ka ng dice, out ka na. Ang huling may dice, panalo. Off = tuloy-tuloy hanggang i-end ng host."
+    },
+    "stb": {
+      "outcome": "Pag tinapatan ng bote",
+      "outcome_opt_truthOrDare": "Truth or dare",
+      "outcome_opt_drink": "Tagay",
+      "outcome_opt_free": "Bahala na ang barkada",
+      "outcome_help": "Sa 'Bahala na ang barkada', ipapakita lang ng app kung sino ang tinapatan. Kayo na ang mag-isip ng gagawin.",
+      "sips": "Ilang lagok",
+      "sips_help": "Para sa tinapatan sa Tagay mode. Pag umatras sa truth or dare, dagdag isa.",
+      "allowSelf": "Puwedeng tumapat sa nagpaikot",
+      "allowSelf_help": "Pag naka-off, hindi kailanman tatapat ang bote sa nagpaikot.",
+      "nextSpinner": "Susunod na magpapaikot",
+      "nextSpinner_opt_picked": "Ang tinapatan",
+      "nextSpinner_opt_clockwise": "Ang katabi sa kaliwa",
+      "maxSpice": "Anghang",
+      "maxSpice_help": "0 = pang-pamilya, 3 = extra spicy.",
+      "maxSpice_opt_0": "Pang-pamilya",
+      "maxSpice_opt_1": "Medyo maanghang",
+      "maxSpice_opt_2": "Maanghang",
+      "maxSpice_opt_3": "Extra spicy"
+    },
+    "tod": {
+      "choice": "Sino'ng pipili",
+      "choice_opt_player": "Ang player",
+      "choice_opt_wheel": "Ang wheel",
+      "choice_help": "Sa wheel, paiikutin ang gulong at ito ang magdedesisyon kung truth o dare.",
+      "refuseSips": "Lagok pag umatras",
+      "refuseSips_help": "Base na lagok. Puwedeng may sariling lagok ang isang prompt.",
+      "maxSpice": "Anghang",
+      "maxSpice_help": "0 = pang-pamilya, 3 = extra spicy.",
+      "maxSpice_opt_0": "Pang-pamilya",
+      "maxSpice_opt_1": "Medyo maanghang",
+      "maxSpice_opt_2": "Maanghang",
+      "maxSpice_opt_3": "Extra spicy",
+      "rounds": "Ilang turn",
+      "rounds_help": "0 = tuloy-tuloy hanggang i-end ng host."
+    },
+    "mlt": {
+      "voting": "Paano pipili",
+      "voting_opt_point": "Turuan",
+      "voting_opt_secret": "Secret na botohan",
+      "voting_help": "Turuan: sabay-sabay ituturo, at ilalagay ng babasa kung sino. Secret: ipapasa ang phone, isa-isang boboto, at sa dulo lalabas ang resulta.",
+      "sips": "Lagok ng napili",
+      "maxSpice": "Anghang",
+      "maxSpice_help": "0 = pang-pamilya, 3 = extra spicy.",
+      "maxSpice_opt_0": "Pang-pamilya",
+      "maxSpice_opt_1": "Medyo maanghang",
+      "maxSpice_opt_2": "Maanghang",
+      "maxSpice_opt_3": "Extra spicy",
+      "rounds": "Ilang round",
+      "rounds_help": "0 = hanggang maubos ang cards."
+    },
+    "rtb": {
+      "wrongSips": "Lagok pag mali",
+      "wrongSips_opt_escalating": "Palaki (1 hanggang 4)",
+      "wrongSips_opt_fixed": "Isa lang palagi",
+      "wrongSips_help": "Palaki: kung pang-ilang tanong, 'yun ang lagok.",
+      "pyramid": "May pyramid",
+      "pyramid_help": "10 card na nakataob. Pag may kapares ka, mamimigay ka ng lagok. Ang may pinakamaraming natirang card, sasakay sa bus.",
+      "busMaxAttempts": "Max na ikot sa bus",
+      "busMaxAttempts_help": "Pag naubos ang ikot, pababain na sa bus. Tama na 'yan!",
+      "aceHigh": "Pinakamataas ang Alas"
     }
   },
   "hl": {
@@ -329,6 +391,168 @@
       "out": "Out",
       "nextRound": "Next round!",
       "winner": "Panalo si {{name}}!"
+    }
+  },
+  "stb": {
+    "reason": {
+      "picked": "Tinapatan ka ng bote! Tagay.",
+      "refused": "Umatras ka! Dagdag tagay."
+    },
+    "notice": {
+      "picked": "Kay {{name}} tumapat ang bote!",
+      "onlyTruths": "Walang dare sa packs, truth na lang!",
+      "onlyDares": "Walang truth sa packs, dare na lang!"
+    },
+    "error": {
+      "spinning": "Umiikot pa ang bote.",
+      "staleSpin": "Tapos na ang ikot na 'yan.",
+      "notChoosing": "Hindi pa oras pumili ng truth o dare.",
+      "noTask": "Wala pang truth o dare na gagawin.",
+      "notResolved": "Tapusin muna ang round."
+    },
+    "hud": {
+      "spin": "Paikutin!",
+      "flick": "I-flick ang bote para paikutin",
+      "spinning": "Umiikot…",
+      "spinner": "Magpapaikot: {{name}}",
+      "picked": "Tumapat kay {{name}}!",
+      "choose": "Truth o dare?",
+      "truth": "Truth",
+      "dare": "Dare",
+      "done": "Nagawa!",
+      "refuse": "Ayoko, inom na lang",
+      "refuseCost": "Pag umatras: {{sips}} lagok",
+      "drink": "Tagay, {{name}}!",
+      "free": "Kayo na bahala kay {{name}}!",
+      "freestyleTruth": "Walang prompt. Kayo na mag-isip ng tanong!",
+      "freestyleDare": "Walang prompt. Kayo na mag-isip ng dare!",
+      "next": "Next spin!",
+      "round": "Round {{round}}"
+    }
+  },
+  "tod": {
+    "reason": {
+      "refused": "Umatras ka! Tagay."
+    },
+    "notice": {
+      "onlyTruths": "Walang dare sa packs, truth na lang!",
+      "onlyDares": "Walang truth sa packs, dare na lang!"
+    },
+    "error": {
+      "wheelMode": "Naka-wheel mode. Paikutin muna ang wheel.",
+      "playerMode": "Ikaw ang pipili. Walang wheel ngayon.",
+      "notChoosing": "May prompt pa. Tapusin muna.",
+      "spinning": "Umiikot pa ang wheel.",
+      "staleWheel": "Tapos na ang ikot na 'yan.",
+      "noPrompt": "Pumili muna ng truth o dare."
+    },
+    "hud": {
+      "choose": "Truth o dare?",
+      "truth": "Truth",
+      "dare": "Dare",
+      "spinWheel": "Paikutin ang wheel!",
+      "spinning": "Umiikot…",
+      "done": "Nagawa!",
+      "refuse": "Ayoko! Tagay na lang",
+      "refuseCost": "Pag umatras: {{sips}} lagok",
+      "turn": "Turn ni {{name}}",
+      "round": "Round {{round}}",
+      "roundOf": "Round {{round}} / {{total}}",
+      "over": "Tapos na ang laro!",
+      "empty": "Walang prompts. Mag-add ng pack o babaan ang anghang."
+    }
+  },
+  "mlt": {
+    "reason": {
+      "most": "Ikaw daw ang pinaka! Tagay."
+    },
+    "notice": {
+      "most": "Napili: {{names}} ({{votes}} boto)!"
+    },
+    "error": {
+      "badPlayer": "May napiling wala sa mesa.",
+      "duplicate": "Dalawang beses napili ang isang player.",
+      "secretMode": "Secret na botohan 'to. Isa-isang bumoto.",
+      "pointMode": "Turuan mode 'to. Piliin na lang kung sino ang tinuro.",
+      "notVoting": "Tapos na ang botohan.",
+      "voting": "Tapusin muna ang botohan."
+    },
+    "hud": {
+      "point": "Turuan na! 3, 2, 1…",
+      "whoPicked": "Sino'ng tinuro?",
+      "pick": "Sila na!",
+      "skip": "Skip",
+      "vote": "Iboto",
+      "voter": "Boboto: {{name}}",
+      "passTo": "Ipasa kay {{name}}. Bawal sumilip!",
+      "yourVote": "Boto mo: {{name}}",
+      "voted": "{{n}}/{{total}} nakaboto na",
+      "votes": "{{n}} boto",
+      "reveal": "Resulta!",
+      "most": "Pinaka-malamang",
+      "next": "Next!",
+      "reader": "Babasa: {{name}}",
+      "round": "Round {{round}}",
+      "remaining": "{{n}} cards pa",
+      "done": "Ubos na ang cards!",
+      "empty": "Walang prompts. Mag-add ng pack o babaan ang anghang."
+    }
+  },
+  "rtb": {
+    "reason": {
+      "wrong": "Mali sa tanong {{q}}! Tagay.",
+      "busWrong": "Sablay! Balik sa umpisa ng bus.",
+      "give": "May kapares ka sa pyramid ({{card}})! Mamigay ng tagay."
+    },
+    "notice": {
+      "give": "May {{card}} si {{name}}! Mamimigay siya ng {{sips}} lagok.",
+      "rider": "Si {{name}} ang sasakay sa bus! ({{cards}} card ang natira)",
+      "restart": "Sablay si {{name}}! Balik sa Q1. Ikot {{attempt}} / {{max}}.",
+      "offBus": "Nakababa na si {{name}} sa bus! Tapos ang laro.",
+      "released": "Tama na 'yan! Pinaalis na si {{name}} sa bus."
+    },
+    "error": {
+      "notGuessing": "Hindi pa oras manghula.",
+      "wrongQuestion": "Hindi 'yan ang tanong ngayon.",
+      "notPyramid": "Wala pang pyramid na bubuksan.",
+      "notBoarding": "Hindi pa oras sumakay sa bus."
+    },
+    "hud": {
+      "q1": "Pula o itim?",
+      "q2": "Mas mataas o mas mababa?",
+      "q3": "Loob o labas?",
+      "q4": "Anong suit?",
+      "red": "Pula",
+      "black": "Itim",
+      "redBlack": "Pula/Itim",
+      "higher": "Mas mataas",
+      "lower": "Mas mababa",
+      "higherLower": "Mas mataas/Mas mababa",
+      "inside": "Loob",
+      "outside": "Labas",
+      "insideOutside": "Loob/Labas",
+      "suit": {
+        "S": "Spade",
+        "H": "Heart",
+        "D": "Diamond",
+        "C": "Clover"
+      },
+      "question": "Tanong {{q}} / 4",
+      "turn": "Turn ni {{name}}",
+      "hand": "Cards ni {{name}}",
+      "correct": "Tama!",
+      "wrong": "Mali!",
+      "pyramid": "Pyramid",
+      "flip": "Buksan",
+      "row": "Row {{row}}: {{sips}} lagok bawat kapares",
+      "board": "Sumakay sa bus",
+      "rider": "Nakasakay: {{name}}",
+      "attempt": "Ikot {{attempt}} / {{max}}",
+      "deck": "{{n}} cards sa deck",
+      "leftover": "{{n}} natira",
+      "offBus": "Nakababa na!",
+      "released": "Pinaalis sa bus",
+      "give": "Mamigay ng {{sips}}"
     }
   }
 }

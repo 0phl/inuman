@@ -24,7 +24,17 @@ const prefersReducedMotion = () =>
 
 function IconEye({ size = 22 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2.2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
       <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z" />
       <circle cx="12" cy="12" r="3" />
     </svg>
@@ -35,7 +45,9 @@ function BidChip({ bid, name, latest }: { bid: BidDraft; name: string; latest: b
   return (
     <li
       className={`flex shrink-0 items-center gap-1.5 rounded-full border px-2.5 py-1 text-sm font-bold ${
-        latest ? 'border-brass-500 bg-narra-800 text-capiz-50' : 'border-narra-600 bg-black/30 text-capiz-300'
+        latest
+          ? 'border-brass-500 bg-narra-800 text-capiz-50'
+          : 'border-narra-600 bg-black/30 text-capiz-300'
       }`}
       data-testid="ld-bid-chip"
     >
@@ -86,7 +98,10 @@ function Composer({
             label={t('ld.hud.quantity')}
             testId="ld-quantity"
           />
-          <span className="flex items-center gap-2 font-sign text-[1.6rem] leading-none text-capiz-50" aria-hidden>
+          <span
+            className="flex items-center gap-2 font-sign text-[1.6rem] leading-none text-capiz-50"
+            aria-hidden
+          >
             {quantity}
             <span className="text-brass-400">×</span>
             <DieFace face={d.face} size={38} />
@@ -104,9 +119,13 @@ function Composer({
                 aria-checked={on}
                 aria-label={String(f)}
                 disabled={!ok}
-                onClick={() => setDraft({ ...d, face: f, quantity: Math.max(quantity, minQuantity(last, f)) })}
+                onClick={() =>
+                  setDraft({ ...d, face: f, quantity: Math.max(quantity, minQuantity(last, f)) })
+                }
                 className={`grid min-h-12 place-items-center rounded-xl border transition-colors disabled:opacity-30 ${
-                  on ? 'border-brass-400 bg-brass-400/25 shadow-[0_0_12px_rgb(232_176_74/0.45)]' : 'border-narra-600 bg-narra-950/60'
+                  on
+                    ? 'border-brass-400 bg-brass-400/25 shadow-[0_0_12px_rgb(232_176_74/0.45)]'
+                    : 'border-narra-600 bg-narra-950/60'
                 }`}
                 data-testid={`ld-face-${f}`}
               >
@@ -115,7 +134,9 @@ function Composer({
             );
           })}
         </div>
-        <div className={`grid gap-2 ${rules.spotOn ? 'grid-cols-[1.25fr_1fr_0.85fr]' : 'grid-cols-[1.2fr_1fr]'}`}>
+        <div
+          className={`grid gap-2 ${rules.spotOn ? 'grid-cols-[1.25fr_1fr_0.85fr]' : 'grid-cols-[1.2fr_1fr]'}`}
+        >
           <button
             type="button"
             className="btn btn-brass min-h-14 px-2 font-sign text-lg"
@@ -184,10 +205,15 @@ function RevealPanel({
           <span className="font-sign text-xl text-brass-300">
             {t(rv.call === 'challenge' ? 'ld.hud.challenge' : 'ld.hud.spotOn')}
           </span>
-          <span className="text-sm text-capiz-300">{t('ld.hud.caller', { name: nameOf(rv.caller) })}</span>
+          <span className="text-sm text-capiz-300">
+            {t('ld.hud.caller', { name: nameOf(rv.caller) })}
+          </span>
         </div>
         <div className="flex items-center gap-3">
-          <span className="flex items-center gap-2 font-sign text-[2.4rem] leading-none text-capiz-50" data-testid="ld-count">
+          <span
+            className="flex items-center gap-2 font-sign text-[2.4rem] leading-none text-capiz-50"
+            data-testid="ld-count"
+          >
             {rv.count}
             <span className="text-brass-400">×</span>
             <DieFace face={rv.bid.face} size={40} />
@@ -195,7 +221,11 @@ function RevealPanel({
           <span className="flex min-w-0 flex-col text-sm leading-snug text-capiz-200">
             <span>{t('ld.hud.count', { count: rv.count })}</span>
             <span className="truncate">
-              {t('ld.hud.lastBid', { name: nameOf(rv.bid.player), quantity: rv.bid.quantity, face: rv.bid.face })}
+              {t('ld.hud.lastBid', {
+                name: nameOf(rv.bid.player),
+                quantity: rv.bid.quantity,
+                face: rv.bid.face,
+              })}
             </span>
           </span>
         </div>
@@ -292,7 +322,10 @@ export default function LiarsDiceHud({ view, rules, players, dispatch }: GameVie
             </span>
             {r.onesWild && <span className="chip text-brass-200">{t('ld.hud.wild')}</span>}
             {shaking ? (
-              <span className="chip anim-fade w-full justify-center border-brass-500/60 text-capiz-200" data-testid="ld-shaking">
+              <span
+                className="chip anim-fade w-full justify-center border-brass-500/60 text-capiz-200"
+                data-testid="ld-shaking"
+              >
                 {t('ld.hud.shaking')}
               </span>
             ) : (
@@ -302,7 +335,11 @@ export default function LiarsDiceHud({ view, rules, players, dispatch }: GameVie
               >
                 {last ? (
                   <>
-                    {t('ld.hud.lastBid', { name: nameOf(last.player), quantity: last.quantity, face: last.face })}
+                    {t('ld.hud.lastBid', {
+                      name: nameOf(last.player),
+                      quantity: last.quantity,
+                      face: last.face,
+                    })}
                     <DieFace face={last.face} size={20} />
                   </>
                 ) : (
@@ -323,7 +360,12 @@ export default function LiarsDiceHud({ view, rules, players, dispatch }: GameVie
               <span className="eyebrow text-brass-300">{t('ld.hud.yourDice')}</span>
               <DiceRow faces={mine} size={38} className="flex-wrap gap-1.5" />
             </div>
-            <button type="button" className="btn btn-wood min-h-12 px-4" onClick={closePeek} data-testid="ld-hide">
+            <button
+              type="button"
+              className="btn btn-wood min-h-12 px-4"
+              onClick={closePeek}
+              data-testid="ld-hide"
+            >
               {t('ld.hud.hide')}
             </button>
           </section>
@@ -343,7 +385,12 @@ export default function LiarsDiceHud({ view, rules, players, dispatch }: GameVie
                 data-testid="ld-bids"
               >
                 {view.bids.map((b, i) => (
-                  <BidChip key={i} bid={b} name={nameOf(b.player)} latest={i === view.bids.length - 1} />
+                  <BidChip
+                    key={i}
+                    bid={b}
+                    name={nameOf(b.player)}
+                    latest={i === view.bids.length - 1}
+                  />
                 ))}
               </ul>
               {!peeking && (

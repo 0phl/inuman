@@ -3,8 +3,12 @@ import { higherLower } from './higher-lower/logic';
 import { kingsCup } from './kings-cup/logic';
 import { liarsDice } from './liars-dice/logic';
 import { mexico } from './mexico/logic';
+import { mostLikelyTo } from './most-likely-to/logic';
 import { neverHaveIEver } from './never-have-i-ever/logic';
+import { rideTheBus } from './ride-the-bus/logic';
 import { shipCaptainCrew } from './ship-captain-crew/logic';
+import { spinTheBottle } from './spin-the-bottle/logic';
+import { truthOrDare } from './truth-or-dare/logic';
 
 const LOGIC: Partial<Record<GameId, AnyGameLogic>> = {
   'higher-lower': higherLower,
@@ -13,6 +17,10 @@ const LOGIC: Partial<Record<GameId, AnyGameLogic>> = {
   'liars-dice': liarsDice,
   'ship-captain-crew': shipCaptainCrew,
   'never-have-i-ever': neverHaveIEver,
+  'ride-the-bus': rideTheBus,
+  'spin-the-bottle': spinTheBottle,
+  'truth-or-dare': truthOrDare,
+  'most-likely-to': mostLikelyTo,
 };
 
 export const implementedGames = (): GameId[] => Object.keys(LOGIC) as GameId[];

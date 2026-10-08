@@ -1,0 +1,261 @@
+{
+  "schema": 1,
+  "kind": "pack",
+  "id": "builtin-mlt-en",
+  "name": "Most Likely To: Classic",
+  "game": "most-likely-to",
+  "locale": "en",
+  "builtin": true,
+  "items": [
+    {
+      "id": "mlt-en-001",
+      "text": "Most likely to show up late to their own birthday party.",
+      "spice": 0
+    },
+    {
+      "id": "mlt-en-002",
+      "text": "Most likely to cry at a kids' movie.",
+      "spice": 0
+    },
+    {
+      "id": "mlt-en-003",
+      "text": "Most likely to adopt a dog on impulse.",
+      "spice": 0
+    },
+    {
+      "id": "mlt-en-004",
+      "text": "Most likely to win a cooking competition show.",
+      "spice": 0
+    },
+    {
+      "id": "mlt-en-005",
+      "text": "Most likely to become famous for something completely random.",
+      "spice": 0
+    },
+    {
+      "id": "mlt-en-006",
+      "text": "Most likely to survive a horror movie.",
+      "spice": 0
+    },
+    {
+      "id": "mlt-en-007",
+      "text": "Most likely to talk to their plants every morning.",
+      "spice": 0
+    },
+    {
+      "id": "mlt-en-008",
+      "text": "Most likely to forget where they parked.",
+      "spice": 0
+    },
+    {
+      "id": "mlt-en-009",
+      "text": "Most likely to know every word of a musical.",
+      "spice": 0
+    },
+    {
+      "id": "mlt-en-010",
+      "text": "Most likely to be the first one on the dance floor.",
+      "spice": 0
+    },
+    {
+      "id": "mlt-en-011",
+      "text": "Most likely to start a podcast nobody asked for.",
+      "spice": 0
+    },
+    {
+      "id": "mlt-en-012",
+      "text": "Most likely to eat dessert before dinner.",
+      "spice": 0
+    },
+    {
+      "id": "mlt-en-013",
+      "text": "Most likely to win an argument they started for no reason.",
+      "spice": 0
+    },
+    {
+      "id": "mlt-en-014",
+      "text": "Most likely to get lost in a supermarket.",
+      "spice": 0
+    },
+    {
+      "id": "mlt-en-015",
+      "text": "Most likely to keep every receipt they've ever been handed.",
+      "spice": 0
+    },
+    {
+      "id": "mlt-en-016",
+      "text": "Most likely to bring snacks for everyone.",
+      "spice": 0
+    },
+    {
+      "id": "mlt-en-017",
+      "text": "Most likely to laugh at their own joke before finishing it.",
+      "spice": 0
+    },
+    {
+      "id": "mlt-en-018",
+      "text": "Most likely to move to another country on a whim.",
+      "spice": 0
+    },
+    {
+      "id": "mlt-en-019",
+      "text": "Most likely to have a secret account just for lurking.",
+      "spice": 1
+    },
+    {
+      "id": "mlt-en-020",
+      "text": "Most likely to send a risky text and then put their phone face down.",
+      "spice": 1
+    },
+    {
+      "id": "mlt-en-021",
+      "text": "Most likely to fall for an obvious phishing email.",
+      "spice": 1
+    },
+    {
+      "id": "mlt-en-022",
+      "text": "Most likely to sleep through their alarm on a really important day.",
+      "spice": 1
+    },
+    {
+      "id": "mlt-en-023",
+      "text": "Most likely to pretend they've seen the movie everyone's talking about.",
+      "spice": 1
+    },
+    {
+      "id": "mlt-en-024",
+      "text": "Most likely to order takeout right after saying they'll cook.",
+      "spice": 1
+    },
+    {
+      "id": "mlt-en-025",
+      "text": "Most likely to mute the group chat and forget it exists.",
+      "spice": 1
+    },
+    {
+      "id": "mlt-en-026",
+      "text": "Most likely to cancel plans five minutes before.",
+      "spice": 1
+    },
+    {
+      "id": "mlt-en-027",
+      "text": "Most likely to read someone's texts over their shoulder.",
+      "spice": 1
+    },
+    {
+      "id": "mlt-en-028",
+      "text": "Most likely to start drama and then act surprised.",
+      "spice": 1
+    },
+    {
+      "id": "mlt-en-029",
+      "text": "Most likely to get kicked out of a group chat.",
+      "spice": 1
+    },
+    {
+      "id": "mlt-en-030",
+      "text": "Most likely to text their ex 'happy birthday' at exactly midnight.",
+      "spice": 1
+    },
+    {
+      "id": "mlt-en-031",
+      "text": "Most likely to blame {random} for something they did.",
+      "spice": 1
+    },
+    {
+      "id": "mlt-en-032",
+      "text": "Most likely to end the night giving everyone life advice.",
+      "spice": 1
+    },
+    {
+      "id": "mlt-en-033",
+      "text": "Most likely to make a best friend in the bathroom line.",
+      "spice": 1
+    },
+    {
+      "id": "mlt-en-034",
+      "text": "Most likely to spend an hour picking a restaurant and then hate the food.",
+      "spice": 1
+    },
+    {
+      "id": "mlt-en-035",
+      "text": "Most likely to meet their soulmate on a dating app.",
+      "spice": 2
+    },
+    {
+      "id": "mlt-en-036",
+      "text": "Most likely to go back to an ex 'just to talk.'",
+      "spice": 2
+    },
+    {
+      "id": "mlt-en-037",
+      "text": "Most likely to fall for a coworker.",
+      "spice": 2
+    },
+    {
+      "id": "mlt-en-038",
+      "text": "Most likely to plan a proposal bigger than the wedding.",
+      "spice": 2
+    },
+    {
+      "id": "mlt-en-039",
+      "text": "Most likely to slide into a celebrity's DMs.",
+      "spice": 2
+    },
+    {
+      "id": "mlt-en-040",
+      "text": "Most likely to type out a love confession and delete it.",
+      "spice": 2
+    },
+    {
+      "id": "mlt-en-041",
+      "text": "Most likely to get jealous over a single 'like.'",
+      "spice": 2
+    },
+    {
+      "id": "mlt-en-042",
+      "text": "Most likely to have a crush on someone in this room.",
+      "spice": 2
+    },
+    {
+      "id": "mlt-en-043",
+      "text": "Most likely to date two people with the same name.",
+      "spice": 2
+    },
+    {
+      "id": "mlt-en-044",
+      "text": "Most likely to fall in love on vacation.",
+      "spice": 2
+    },
+    {
+      "id": "mlt-en-045",
+      "text": "Most likely to still have their ex's hoodie.",
+      "spice": 2
+    },
+    {
+      "id": "mlt-en-046",
+      "text": "Most likely to write a love song about someone here.",
+      "spice": 2
+    },
+    {
+      "id": "mlt-en-047",
+      "text": "Most likely to wake up somewhere they don't recognize.",
+      "spice": 3
+    },
+    {
+      "id": "mlt-en-048",
+      "text": "Most likely to send a thirst trap to the wrong person.",
+      "spice": 3
+    },
+    {
+      "id": "mlt-en-049",
+      "text": "Most likely to have a tattoo in a very private spot.",
+      "spice": 3
+    },
+    {
+      "id": "mlt-en-050",
+      "text": "Most likely to have a story they only tell after midnight.",
+      "spice": 3
+    }
+  ]
+}

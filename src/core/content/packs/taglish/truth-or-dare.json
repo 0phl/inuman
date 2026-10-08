@@ -1,0 +1,563 @@
+{
+  "schema": 1,
+  "kind": "pack",
+  "id": "builtin-tod-taglish",
+  "name": "Truth or Dare: Barkada Edition",
+  "game": "truth-or-dare",
+  "locale": "taglish",
+  "builtin": true,
+  "items": [
+    {
+      "id": "tod-tl-t001",
+      "text": "Ano ang pinaka-nakakahiyang nangyari sa 'yo sa jeep, bus o MRT?",
+      "kind": "truth",
+      "spice": 0
+    },
+    {
+      "id": "tod-tl-t002",
+      "text": "Anong kanta ang lagi mong kinakanta sa videoke kahit hindi mo abot ang tono?",
+      "kind": "truth",
+      "spice": 0
+    },
+    {
+      "id": "tod-tl-t003",
+      "text": "Ano ang pinakamatagal mong hindi pagligo? Walang hiya-hiya.",
+      "kind": "truth",
+      "spice": 0
+    },
+    {
+      "id": "tod-tl-t004",
+      "text": "Ano ang guilty pleasure mong teleserye o K-drama?",
+      "kind": "truth",
+      "spice": 0
+    },
+    {
+      "id": "tod-tl-t005",
+      "text": "Sino ang crush mo noong elementary? Buong pangalan, please.",
+      "kind": "truth",
+      "spice": 0
+    },
+    {
+      "id": "tod-tl-t006",
+      "text": "Ano ang pinaka-cringe mong post sa Facebook noong high school?",
+      "kind": "truth",
+      "spice": 0
+    },
+    {
+      "id": "tod-tl-t007",
+      "text": "Kung isang ulam lang ang puwede mong kainin habambuhay, ano 'yon?",
+      "kind": "truth",
+      "spice": 0
+    },
+    {
+      "id": "tod-tl-t008",
+      "text": "Ano ang pinaka-OA mong palusot para lang hindi pumasok?",
+      "kind": "truth",
+      "spice": 0
+    },
+    {
+      "id": "tod-tl-t009",
+      "text": "Nakatulog ka na ba sa misa? Ilang beses na?",
+      "kind": "truth",
+      "spice": 0
+    },
+    {
+      "id": "tod-tl-t010",
+      "text": "Kung manalo ka sa lotto bukas, ano ang una mong bibilhin?",
+      "kind": "truth",
+      "spice": 0
+    },
+    {
+      "id": "tod-tl-t011",
+      "text": "Sino sa mesa ang kamukha ng isang artista, at sino'ng artista?",
+      "kind": "truth",
+      "spice": 0
+    },
+    {
+      "id": "tod-tl-t012",
+      "text": "Ano ang pinakamalaking kasinungalingan mo kay Mama noong bata ka?",
+      "kind": "truth",
+      "spice": 0
+    },
+    {
+      "id": "tod-tl-t013",
+      "text": "Ano ang pinakamahal na nabili mo na pinagsisihan mo agad?",
+      "kind": "truth",
+      "spice": 0
+    },
+    {
+      "id": "tod-tl-t014",
+      "text": "Ano ang pinaka-weird na pagkain na natikman mo sa probinsya?",
+      "kind": "truth",
+      "spice": 0
+    },
+    {
+      "id": "tod-tl-t015",
+      "text": "Ano ang palayaw mo sa bahay na ayaw mong malaman ng iba?",
+      "kind": "truth",
+      "spice": 0
+    },
+    {
+      "id": "tod-tl-t016",
+      "text": "Sino sa barkada ang pinaka-hindi mo pagkakatiwalaan ng sikreto?",
+      "kind": "truth",
+      "spice": 1
+    },
+    {
+      "id": "tod-tl-t017",
+      "text": "Ano ang huling sinearch mo sa Google? Basahin nang malakas.",
+      "kind": "truth",
+      "spice": 1
+    },
+    {
+      "id": "tod-tl-t018",
+      "text": "May na-stalk ka bang ex sa social media ngayong buwan?",
+      "kind": "truth",
+      "spice": 1
+    },
+    {
+      "id": "tod-tl-t019",
+      "text": "Ilang beses ka nang nag-'on the way na' habang naliligo pa lang?",
+      "kind": "truth",
+      "spice": 1
+    },
+    {
+      "id": "tod-tl-t020",
+      "text": "Sino ang huling nag-chat sa 'yo na hindi mo pa nirereplyan?",
+      "kind": "truth",
+      "spice": 1
+    },
+    {
+      "id": "tod-tl-t021",
+      "text": "Ano ang pinaka-petty na dahilan kung bakit ka nagtampo sa kaibigan?",
+      "kind": "truth",
+      "spice": 1
+    },
+    {
+      "id": "tod-tl-t022",
+      "text": "Kanino ka huling nagselos, at bakit?",
+      "kind": "truth",
+      "spice": 1
+    },
+    {
+      "id": "tod-tl-t023",
+      "text": "Ano ang hindi pa rin alam ng magulang mo tungkol sa 'yo?",
+      "kind": "truth",
+      "spice": 1
+    },
+    {
+      "id": "tod-tl-t024",
+      "text": "Nakapag-ghost ka na ba ng ka-chat? Ano'ng dahilan?",
+      "kind": "truth",
+      "spice": 1
+    },
+    {
+      "id": "tod-tl-t025",
+      "text": "Ano ang pinaka-cheesy na banat na nagamit mo nang seryoso?",
+      "kind": "truth",
+      "spice": 1
+    },
+    {
+      "id": "tod-tl-t026",
+      "text": "Sino sa mesa ang gusto mong maging roommate, at sino ang hinding-hindi?",
+      "kind": "truth",
+      "spice": 1
+    },
+    {
+      "id": "tod-tl-t027",
+      "text": "Ano ang pinakamalalang nagawa mo habang lasing?",
+      "kind": "truth",
+      "spice": 1
+    },
+    {
+      "id": "tod-tl-t028",
+      "text": "Ano ang pinaka-nakakahiyang mensahe na na-send mo sa maling GC?",
+      "kind": "truth",
+      "spice": 1
+    },
+    {
+      "id": "tod-tl-t029",
+      "text": "Magkano ang pinakamalaking utang mo na hindi mo pa nababayaran? Kanino?",
+      "kind": "truth",
+      "spice": 1
+    },
+    {
+      "id": "tod-tl-t030",
+      "text": "Sino ang huling taong naisip mo bago ka natulog kagabi?",
+      "kind": "truth",
+      "spice": 2
+    },
+    {
+      "id": "tod-tl-t031",
+      "text": "May crush ka ba sa isang nandito ngayon? Oo o hindi lang.",
+      "kind": "truth",
+      "spice": 2
+    },
+    {
+      "id": "tod-tl-t032",
+      "text": "Ano ang pinaka-red flag mo pagdating sa jowa?",
+      "kind": "truth",
+      "spice": 2
+    },
+    {
+      "id": "tod-tl-t033",
+      "text": "Ilan na ang naging jowa mo, kasama ang mga 'di mo sigurado kung jowa?",
+      "kind": "truth",
+      "spice": 2
+    },
+    {
+      "id": "tod-tl-t034",
+      "text": "Ano ang pinaka-baliw na nagawa mo para sa crush?",
+      "kind": "truth",
+      "spice": 2
+    },
+    {
+      "id": "tod-tl-t035",
+      "text": "Nakipagbalikan ka na ba sa ex kahit alam mong mali?",
+      "kind": "truth",
+      "spice": 2
+    },
+    {
+      "id": "tod-tl-t036",
+      "text": "Ano ang pinakamatagal mong naitagong relasyon?",
+      "kind": "truth",
+      "spice": 2
+    },
+    {
+      "id": "tod-tl-t037",
+      "text": "Ano ang pinaka-awkward na first date mo?",
+      "kind": "truth",
+      "spice": 2
+    },
+    {
+      "id": "tod-tl-t038",
+      "text": "Kailan ka huling nag-message sa ex mo, at ano ang sinabi mo?",
+      "kind": "truth",
+      "spice": 2
+    },
+    {
+      "id": "tod-tl-t039",
+      "text": "Ano ang pinakamatinding selos mo na hindi mo inamin?",
+      "kind": "truth",
+      "spice": 2
+    },
+    {
+      "id": "tod-tl-t040",
+      "text": "Kung ireto ka ng barkada sa isa sa mga nandito, sino ang gusto mo?",
+      "kind": "truth",
+      "spice": 2
+    },
+    {
+      "id": "tod-tl-t041",
+      "text": "Ano ang pinaka-wild na lugar kung saan ka nakipag-make out?",
+      "kind": "truth",
+      "spice": 3
+    },
+    {
+      "id": "tod-tl-t042",
+      "text": "Nakapag-send ka na ba ng thirst trap para sa iisang tao lang? Para kanino?",
+      "kind": "truth",
+      "spice": 3
+    },
+    {
+      "id": "tod-tl-t043",
+      "text": "Ano ang pinaka-spicy mong panaginip na kaya mong ikuwento nang PG-13?",
+      "kind": "truth",
+      "spice": 3
+    },
+    {
+      "id": "tod-tl-t044",
+      "text": "Sino sa mesa ang sa tingin mo pinakamagaling humalik? Bakit?",
+      "kind": "truth",
+      "spice": 3
+    },
+    {
+      "id": "tod-tl-t045",
+      "text": "Ano ang pinaka-nakakakilig na nangyari sa 'yo sa isang inuman?",
+      "kind": "truth",
+      "spice": 3
+    },
+    {
+      "id": "tod-tl-t046",
+      "text": "Ano ang pinakamatapang na banat mo sa crush na nag-work?",
+      "kind": "truth",
+      "spice": 3
+    },
+    {
+      "id": "tod-tl-d001",
+      "text": "Kantahin ang chorus ng paboritong OPM song mo na parang nasa videoke.",
+      "kind": "dare",
+      "spice": 0
+    },
+    {
+      "id": "tod-tl-d002",
+      "text": "I-text si Mama ng 'I love you' ngayon na.",
+      "kind": "dare",
+      "spice": 0
+    },
+    {
+      "id": "tod-tl-d003",
+      "text": "Ibalita ang nangyayari sa mesa na parang news anchor sa panggabing balita.",
+      "kind": "dare",
+      "spice": 0
+    },
+    {
+      "id": "tod-tl-d004",
+      "text": "Ibenta ang hawak mong baso na parang tindera sa Divisoria.",
+      "kind": "dare",
+      "spice": 0
+    },
+    {
+      "id": "tod-tl-d005",
+      "text": "Sumayaw ng budots nang 15 segundo.",
+      "kind": "dare",
+      "spice": 0
+    },
+    {
+      "id": "tod-tl-d006",
+      "text": "Magsalita nang conyo hanggang sa susunod mong turn.",
+      "kind": "dare",
+      "spice": 0
+    },
+    {
+      "id": "tod-tl-d007",
+      "text": "Gumawa ng 30-second na vlog intro para kay {random}.",
+      "kind": "dare",
+      "spice": 0
+    },
+    {
+      "id": "tod-tl-d008",
+      "text": "Gayahin ang tita sa reunion na nagtatanong kung kailan ka mag-aasawa.",
+      "kind": "dare",
+      "spice": 0
+    },
+    {
+      "id": "tod-tl-d009",
+      "text": "Mag-thank you speech na parang nanalo ka ng Best Actress.",
+      "kind": "dare",
+      "spice": 0
+    },
+    {
+      "id": "tod-tl-d010",
+      "text": "Hulaan ang paboritong ulam ni {random}. Pag mali, kantahan mo siya ng 'Happy Birthday.'",
+      "kind": "dare",
+      "spice": 0
+    },
+    {
+      "id": "tod-tl-d011",
+      "text": "Mag-10 jumping jacks habang nagbibilang sa Tagalog.",
+      "kind": "dare",
+      "spice": 0
+    },
+    {
+      "id": "tod-tl-d012",
+      "text": "Kausapin ang pinakamalapit na gamit na parang matagal na kayong hindi nagkita.",
+      "kind": "dare",
+      "spice": 0
+    },
+    {
+      "id": "tod-tl-d013",
+      "text": "Magkuwento ng katatakutan sa loob ng isang minuto, kumpleto sa sound effects.",
+      "kind": "dare",
+      "spice": 0
+    },
+    {
+      "id": "tod-tl-d014",
+      "text": "Sumagot na parang beauty queen sa Q&A: 'Ano ang mas mahalaga, pera o tulog?'",
+      "kind": "dare",
+      "spice": 0
+    },
+    {
+      "id": "tod-tl-d015",
+      "text": "Ihele ang isang unan na parang baby habang kinakanta ang 'Sa Ugoy ng Duyan.'",
+      "kind": "dare",
+      "spice": 0
+    },
+    {
+      "id": "tod-tl-d016",
+      "text": "Ipakita sa grupo ang huling litrato sa camera roll mo.",
+      "kind": "dare",
+      "spice": 1
+    },
+    {
+      "id": "tod-tl-d017",
+      "text": "Basahin nang malakas ang huling text na natanggap mo.",
+      "kind": "dare",
+      "spice": 1
+    },
+    {
+      "id": "tod-tl-d018",
+      "text": "Hayaang si {random} ang sumulat ng wholesome na FB status mo, tapos i-post mo.",
+      "kind": "dare",
+      "spice": 1
+    },
+    {
+      "id": "tod-tl-d019",
+      "text": "Tawagan ang kaibigang wala rito at kantahan ng 'Happy Birthday,' kahit hindi niya birthday.",
+      "kind": "dare",
+      "spice": 1
+    },
+    {
+      "id": "tod-tl-d020",
+      "text": "Mag-voice message sa family GC ng 'Proud ako sa inyo.' Walang paliwanag.",
+      "kind": "dare",
+      "spice": 1
+    },
+    {
+      "id": "tod-tl-d021",
+      "text": "I-describe ang crush mo gamit lang ang tatlong emoji, tapos ipakita sa lahat.",
+      "kind": "dare",
+      "spice": 1
+    },
+    {
+      "id": "tod-tl-d022",
+      "text": "Mag-wacky selfie at gawing profile pic mo sa loob ng isang oras.",
+      "kind": "dare",
+      "spice": 1
+    },
+    {
+      "id": "tod-tl-d023",
+      "text": "Mag-rap ng apat na linya tungkol kay {random}. Bawal manlait.",
+      "kind": "dare",
+      "spice": 1
+    },
+    {
+      "id": "tod-tl-d024",
+      "text": "Ipakita kay {left} ang huli mong pinanood sa YouTube.",
+      "kind": "dare",
+      "spice": 1
+    },
+    {
+      "id": "tod-tl-d025",
+      "text": "I-text ang taong may atraso ka at mag-sorry, ngayon na.",
+      "kind": "dare",
+      "spice": 1
+    },
+    {
+      "id": "tod-tl-d026",
+      "text": "Umiyak na parang nasa teleserye nang 15 segundo, may kasamang 'Hindi kita kailangan!'",
+      "kind": "dare",
+      "spice": 1
+    },
+    {
+      "id": "tod-tl-d027",
+      "text": "Mag-commentary na parang boxing announcer habang umiinom ng tubig si {right}.",
+      "kind": "dare",
+      "spice": 1
+    },
+    {
+      "id": "tod-tl-d028",
+      "text": "I-chat ang huli mong ka-text ng 'Kumain ka na?' at wag nang magpaliwanag.",
+      "kind": "dare",
+      "spice": 1
+    },
+    {
+      "id": "tod-tl-d029",
+      "text": "Kantahan si {random} ng jingle ng paborito mong fast food.",
+      "kind": "dare",
+      "spice": 1
+    },
+    {
+      "id": "tod-tl-d030",
+      "text": "I-chat ang crush mo noong high school ng 'Uy! Kumusta ka na?'",
+      "kind": "dare",
+      "spice": 2
+    },
+    {
+      "id": "tod-tl-d031",
+      "text": "Hayaang basahin ni {random} ang huling limang chat mo nang 10 segundo.",
+      "kind": "dare",
+      "spice": 2
+    },
+    {
+      "id": "tod-tl-d032",
+      "text": "Sabihin kay {random} ang isang bagay na matagal mo nang gustong sabihin sa kanya.",
+      "kind": "dare",
+      "spice": 2
+    },
+    {
+      "id": "tod-tl-d033",
+      "text": "Bigyan si {random} ng 30-second na shoulder massage, kung okay lang sa kanya.",
+      "kind": "dare",
+      "spice": 2
+    },
+    {
+      "id": "tod-tl-d034",
+      "text": "Haranahin si {random} ng isang linya ng love song habang nakatingin sa mata niya.",
+      "kind": "dare",
+      "spice": 2
+    },
+    {
+      "id": "tod-tl-d035",
+      "text": "Mag-slow dance kayo ni {random} nang isang chorus, kung game siya.",
+      "kind": "dare",
+      "spice": 2
+    },
+    {
+      "id": "tod-tl-d036",
+      "text": "Mag-post ng throwback pic na may caption na 'Miss ko na 'to.'",
+      "kind": "dare",
+      "spice": 2
+    },
+    {
+      "id": "tod-tl-d037",
+      "text": "Gumawa ng dating profile para kay {random} sa loob ng 30 segundo, puro papuri.",
+      "kind": "dare",
+      "spice": 2
+    },
+    {
+      "id": "tod-tl-d038",
+      "text": "Titigan si {random} nang 20 segundo. Ang unang tumawa, kakanta ng chorus.",
+      "kind": "dare",
+      "spice": 2
+    },
+    {
+      "id": "tod-tl-d039",
+      "text": "I-like ang pinakalumang litrato sa profile ng ex mo.",
+      "kind": "dare",
+      "spice": 2
+    },
+    {
+      "id": "tod-tl-d040",
+      "text": "Ilarawan ang dream date mo na parang trailer ng romcom, naka-slow-mo na boses pa.",
+      "kind": "dare",
+      "spice": 2
+    },
+    {
+      "id": "tod-tl-d041",
+      "text": "Bulungan si {random} ng pinaka-cheesy mong banat, kung okay lang sa kanya.",
+      "kind": "dare",
+      "spice": 3
+    },
+    {
+      "id": "tod-tl-d042",
+      "text": "Ipakita ang huling thirst trap na sinave o ni-like mo.",
+      "kind": "dare",
+      "spice": 3
+    },
+    {
+      "id": "tod-tl-d043",
+      "text": "Mag-voice message sa crush mo ng 'Ingat ka pauwi, ha' sa pinaka-malambing mong boses.",
+      "kind": "dare",
+      "spice": 3
+    },
+    {
+      "id": "tod-tl-d044",
+      "text": "I-reenact kasama si {random} ang pinaka-kilig na eksena sa paborito mong teleserye, kung game siya.",
+      "kind": "dare",
+      "spice": 3
+    },
+    {
+      "id": "tod-tl-d045",
+      "text": "Hayaang ang grupo ang pumili ng emoji na ire-react mo sa story ng crush mo.",
+      "kind": "dare",
+      "spice": 3
+    },
+    {
+      "id": "tod-tl-d046",
+      "text": "Sabihin kay {random} ang pinaka-attractive niyang ugali, nang seryoso at may eye contact.",
+      "kind": "dare",
+      "spice": 3
+    }
+  ]
+}

@@ -33,15 +33,23 @@ function DrinkToast({ fx, players }: { fx: DrinksFx; players: readonly Player[] 
   const { t } = useTranslation();
   const name = (id: string) => players.find((p) => p.id === id)?.name ?? '?';
   const many = fx.entries.length > 1;
+  const give = fx.kind === 'give';
   // Game reasons are written for the drinkers ("Tagay mo na!"); when nobody here is drinking
   // alcohol, a neutral line replaces them instead of telling someone with juice to "tagay".
-  const soft = fx.entries.every((e) => !e.alcoholic);
+  // Sips being handed out aren't drunk by these players, so their reason always stands.
+  const soft = !give && fx.entries.every((e) => !e.alcoholic);
   return (
     <div className="flex flex-col gap-1.5">
       {many && (
         <span className="font-sign text-lg leading-tight text-brass-300">
           {t(
-            fx.kind === 'social' ? (soft ? 'drink.everyoneSoft' : 'drink.everyone') : 'drink.group',
+            give
+              ? 'drink.giveGroup'
+              : fx.kind === 'social'
+                ? soft
+                  ? 'drink.everyoneSoft'
+                  : 'drink.everyone'
+                : 'drink.group',
           )}
         </span>
       )}
@@ -56,9 +64,12 @@ function DrinkToast({ fx, players }: { fx: DrinksFx; players: readonly Player[] 
           </BottleCap>
           <div className="flex min-w-0 flex-col">
             <span className={`truncate font-bold text-capiz-50 ${many ? 'text-base' : 'text-lg'}`}>
-              {t('drink.line', { name: name(e.playerId), amount: drinkAmount(t, e) })}
+              {t(give ? 'drink.giveLine' : 'drink.line', {
+                name: name(e.playerId),
+                amount: drinkAmount(t, e),
+              })}
             </span>
-            {!e.alcoholic && !soft && (
+            {!e.alcoholic && !soft && !give && (
               <span className="flex items-center gap-1 text-xs font-bold text-tubig-300">
                 <IconDrop size={13} />
                 {t('drink.nonAlc')}
