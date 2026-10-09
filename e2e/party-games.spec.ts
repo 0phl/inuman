@@ -1,4 +1,10 @@
+import { readFileSync } from 'node:fs';
 import { expect, test, type Page } from '@playwright/test';
+
+/** The built-in Never Have I Ever pack: Filipino `text`, English `alt.en`. */
+const NHIE = JSON.parse(readFileSync('src/core/content/packs/never-have-i-ever.json', 'utf8')) as {
+  items: { text: string; alt: { en: string } }[];
+};
 
 /** Through the 18+ gate and seat a few players. */
 async function seat(page: Page, names: string[]) {
@@ -84,11 +90,8 @@ test('Never Have I Ever: mark who did it, next prompt, drink toast below the rea
   await seat(page, ['Migs', 'Bea', 'Jun']);
   await page.goto('/games/never-have-i-ever');
   await expect(page.getByTestId('content-picker')).toBeVisible();
-  // The Taglish pack is picked by default for the Taglish UI.
-  await expect(page.getByTestId('pack-builtin-nhie-taglish')).toHaveAttribute(
-    'aria-pressed',
-    'true',
-  );
+  // The built-in (bilingual) pack is picked by default.
+  await expect(page.getByTestId('pack-builtin-nhie')).toHaveAttribute('aria-pressed', 'true');
   await expect(page.getByTestId('prompt-count')).not.toContainText(/^0 /);
   await page.getByTestId('start-game').click();
 
@@ -133,4 +136,29 @@ test('Non-alcoholic mode: the drink toast drops the "tagay" wording', async ({ p
   await expect(toast).toBeVisible({ timeout: 5_000 });
   await expect(toast.getByTestId('drink-soft-reason')).toBeVisible();
   await expect(toast).not.toContainText(/tagay/i);
+});
+
+test('a built-in prompt shows in the app language and follows a language switch', async ({
+  page,
+}) => {
+  await seat(page, ['Migs', 'Bea']);
+  await page.goto('/games/never-have-i-ever');
+  await page.getByTestId('start-game').click();
+  await expect(page).toHaveURL(/\/play$/);
+
+  // Filipino UI (the default): the prompt is the pack's Filipino line.
+  const prompt = page.getByTestId('nhie-prompt');
+  await expect(prompt).not.toBeEmpty({ timeout: 15_000 });
+  // The card's eyebrow is the round number ("#1"); the rest is the prompt.
+  const filipino = ((await prompt.textContent()) ?? '').replace(/^\s*#\d+/, '').trim();
+  const item = NHIE.items.find((i) => i.text === filipino);
+  expect(item, `"${filipino}" is a Filipino line of the pack`).toBeTruthy();
+
+  // Same game in English: the same prompt, in English.
+  await page.goto('/settings');
+  await page.getByTestId('settings-language').getByRole('radio', { name: 'English' }).click();
+  await page.goto('/play');
+  await expect(page.getByTestId('nhie-prompt')).toHaveText(`#1${item!.alt.en}`, {
+    timeout: 15_000,
+  });
 });

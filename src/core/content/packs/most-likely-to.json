@@ -1,0 +1,1283 @@
+{
+  "schema": 1,
+  "kind": "pack",
+  "id": "builtin-mlt",
+  "name": "Most Likely To: Barkada Edition",
+  "game": "most-likely-to",
+  "locale": "any",
+  "builtin": true,
+  "items": [
+    {
+      "id": "mlt-001",
+      "text": "Most likely to ma-late kahit siya ang nag-organize ng lakad.",
+      "alt": {
+        "en": "Most likely to show up late to their own birthday party."
+      },
+      "spice": 0
+    },
+    {
+      "id": "mlt-002",
+      "text": "Most likely to maiyak sa Jollibee commercial tuwing Pasko.",
+      "alt": {
+        "en": "Most likely to cry at a kids' movie."
+      },
+      "spice": 0
+    },
+    {
+      "id": "mlt-003",
+      "text": "Most likely to magtayo ng milk tea shop na magiging coffee shop after six months.",
+      "alt": {
+        "en": "Most likely to open a milk tea shop that turns into a coffee shop six months later."
+      },
+      "spice": 0
+    },
+    {
+      "id": "mlt-004",
+      "text": "Most likely to maka-100 sa videoke kahit sintunado.",
+      "alt": {
+        "en": "Most likely to score 100 on videoke while completely off-key."
+      },
+      "spice": 0
+    },
+    {
+      "id": "mlt-005",
+      "text": "Most likely to maligaw sa mall kahit ilang beses na siyang nagpunta.",
+      "alt": {
+        "en": "Most likely to get lost in a supermarket."
+      },
+      "spice": 0
+    },
+    {
+      "id": "mlt-006",
+      "text": "Most likely to mag-uwi ng tupperware ng handa sa bawat party.",
+      "alt": {
+        "en": "Most likely to take home a container of leftovers from every party."
+      },
+      "spice": 0
+    },
+    {
+      "id": "mlt-007",
+      "text": "Most likely to makatulog sa bus pauwi ng probinsya at lumampas sa babaan.",
+      "alt": {
+        "en": "Most likely to fall asleep on the bus home to the province and miss their stop."
+      },
+      "spice": 0
+    },
+    {
+      "id": "mlt-008",
+      "text": "Most likely to mag-'on the way na' kahit kakaligo pa lang.",
+      "alt": {
+        "en": "Most likely to text 'On the way!' when they literally just got out of the shower."
+      },
+      "spice": 0
+    },
+    {
+      "id": "mlt-009",
+      "text": "Most likely to maging ninong o ninang ng kalahati ng barangay.",
+      "alt": {
+        "en": "Most likely to be a godparent to half the neighborhood."
+      },
+      "spice": 0
+    },
+    {
+      "id": "mlt-010",
+      "text": "Most likely to sumali sa reality show at maging fan favorite.",
+      "alt": {
+        "en": "Most likely to join a reality show and become the fan favorite."
+      },
+      "spice": 0
+    },
+    {
+      "id": "mlt-011",
+      "text": "Most likely to sumagot ng 'kahit saan' tapos ayaw sa lahat ng options.",
+      "alt": {
+        "en": "Most likely to say 'anywhere's fine' and then shoot down every option."
+      },
+      "spice": 0
+    },
+    {
+      "id": "mlt-012",
+      "text": "Most likely to mag-ipon ng plastic bag sa ilalim ng lababo.",
+      "alt": {
+        "en": "Most likely to keep a stash of plastic bags under the sink."
+      },
+      "spice": 0
+    },
+    {
+      "id": "mlt-013",
+      "text": "Most likely to pumila nang tatlong oras para sa bagong bukas na fast food.",
+      "alt": {
+        "en": "Most likely to queue for three hours at a newly opened fast-food place."
+      },
+      "spice": 0
+    },
+    {
+      "id": "mlt-014",
+      "text": "Most likely to picturan muna ang bawat pagkain bago kainin.",
+      "alt": {
+        "en": "Most likely to take a photo of every dish before anyone is allowed to eat."
+      },
+      "spice": 0
+    },
+    {
+      "id": "mlt-015",
+      "text": "Most likely to magreklamo sa teleserye pero hindi makaligtaan ang kahit isang episode.",
+      "alt": {
+        "en": "Most likely to complain about a soap opera but never miss a single episode."
+      },
+      "spice": 0
+    },
+    {
+      "id": "mlt-016",
+      "text": "Most likely to unang makatulog sa inuman.",
+      "alt": {
+        "en": "Most likely to be the first one asleep at the drinking session."
+      },
+      "spice": 0
+    },
+    {
+      "id": "mlt-017",
+      "text": "Most likely to manalo ng grand prize sa raffle ng Christmas party.",
+      "alt": {
+        "en": "Most likely to win the grand prize in the Christmas party raffle."
+      },
+      "spice": 0
+    },
+    {
+      "id": "mlt-018",
+      "text": "Most likely to tumawad kahit sa mall.",
+      "alt": {
+        "en": "Most likely to haggle even at the mall."
+      },
+      "spice": 0
+    },
+    {
+      "id": "mlt-019",
+      "text": "Most likely to magdala ng sariling sawsawan sa restaurant.",
+      "alt": {
+        "en": "Most likely to bring their own dipping sauce to a restaurant."
+      },
+      "spice": 0
+    },
+    {
+      "id": "mlt-020",
+      "text": "Most likely to mag-uwi ng pasalubong para sa buong opisina.",
+      "alt": {
+        "en": "Most likely to bring snacks for everyone."
+      },
+      "spice": 0
+    },
+    {
+      "id": "mlt-021",
+      "text": "Most likely to sumagot ng 'Ha?' kahit narinig naman.",
+      "alt": {
+        "en": "Most likely to say 'Huh?' even though they heard you perfectly."
+      },
+      "spice": 0
+    },
+    {
+      "id": "mlt-022",
+      "text": "Most likely to mag-extra rice kahit kasasabi lang na busog na siya.",
+      "alt": {
+        "en": "Most likely to order extra rice right after saying they're full."
+      },
+      "spice": 0
+    },
+    {
+      "id": "mlt-023",
+      "text": "Most likely to mag-viral dahil sa isang random na sayaw.",
+      "alt": {
+        "en": "Most likely to become famous for something completely random."
+      },
+      "spice": 0
+    },
+    {
+      "id": "mlt-024",
+      "text": "Most likely to biglang mag-ampon ng aso kahit 'titingin lang' daw siya.",
+      "alt": {
+        "en": "Most likely to adopt a dog on impulse."
+      },
+      "spice": 0
+    },
+    {
+      "id": "mlt-025",
+      "text": "Most likely to manalo sa isang cooking competition sa TV.",
+      "alt": {
+        "en": "Most likely to win a cooking competition show."
+      },
+      "spice": 0
+    },
+    {
+      "id": "mlt-026",
+      "text": "Most likely to maka-survive hanggang dulo ng horror movie.",
+      "alt": {
+        "en": "Most likely to survive a horror movie."
+      },
+      "spice": 0
+    },
+    {
+      "id": "mlt-027",
+      "text": "Most likely to maging plantito o plantita na kinakausap ang halaman tuwing umaga.",
+      "alt": {
+        "en": "Most likely to talk to their plants every morning."
+      },
+      "spice": 0
+    },
+    {
+      "id": "mlt-028",
+      "text": "Most likely to makalimutan kung saan niya pinark ang sasakyan.",
+      "alt": {
+        "en": "Most likely to forget where they parked."
+      },
+      "spice": 0
+    },
+    {
+      "id": "mlt-029",
+      "text": "Most likely to kabisado ang bawat lyrics ng isang buong musical.",
+      "alt": {
+        "en": "Most likely to know every word of a musical."
+      },
+      "spice": 0
+    },
+    {
+      "id": "mlt-030",
+      "text": "Most likely to unang sumayaw sa dance floor kahit wala pang ibang sumasayaw.",
+      "alt": {
+        "en": "Most likely to be the first one on the dance floor."
+      },
+      "spice": 0
+    },
+    {
+      "id": "mlt-031",
+      "text": "Most likely to magsimula ng podcast na wala namang nag-request.",
+      "alt": {
+        "en": "Most likely to start a podcast nobody asked for."
+      },
+      "spice": 0
+    },
+    {
+      "id": "mlt-032",
+      "text": "Most likely to kainin muna ang dessert bago mag-dinner.",
+      "alt": {
+        "en": "Most likely to eat dessert before dinner."
+      },
+      "spice": 0
+    },
+    {
+      "id": "mlt-033",
+      "text": "Most likely to manalo sa debate na siya rin ang nagsimula nang walang dahilan.",
+      "alt": {
+        "en": "Most likely to win an argument they started for no reason."
+      },
+      "spice": 0
+    },
+    {
+      "id": "mlt-034",
+      "text": "Most likely to itago ang bawat resibong inabot sa kanya.",
+      "alt": {
+        "en": "Most likely to keep every receipt they've ever been handed."
+      },
+      "spice": 0
+    },
+    {
+      "id": "mlt-035",
+      "text": "Most likely to matawa sa sarili niyang joke bago pa matapos ikuwento.",
+      "alt": {
+        "en": "Most likely to laugh at their own joke before finishing it."
+      },
+      "spice": 0
+    },
+    {
+      "id": "mlt-036",
+      "text": "Most likely to biglang lumipat sa ibang bansa nang walang plano.",
+      "alt": {
+        "en": "Most likely to move to another country on a whim."
+      },
+      "spice": 0
+    },
+    {
+      "id": "mlt-037",
+      "text": "Most likely to ampunin ang pusang kalye at bigyan ng buong pangalan, pati apelyido.",
+      "alt": {
+        "en": "Most likely to befriend a stray cat and give it a full name."
+      },
+      "spice": 0
+    },
+    {
+      "id": "mlt-038",
+      "text": "Most likely to maging milyonaryo pero naghahanap pa rin ng discount voucher.",
+      "alt": {
+        "en": "Most likely to become a millionaire and still clip coupons."
+      },
+      "spice": 0
+    },
+    {
+      "id": "mlt-039",
+      "text": "Most likely to makatulog sa pelikulang siya mismo ang pumili.",
+      "alt": {
+        "en": "Most likely to fall asleep during the movie they picked."
+      },
+      "spice": 0
+    },
+    {
+      "id": "mlt-040",
+      "text": "Most likely to seryosohin ang videoke na parang nasa grand finals.",
+      "alt": {
+        "en": "Most likely to take karaoke way too seriously."
+      },
+      "spice": 0
+    },
+    {
+      "id": "mlt-041",
+      "text": "Most likely to mag-iwan ng 50 tabs na nakabukas sa browser.",
+      "alt": {
+        "en": "Most likely to have 50 browser tabs open right now."
+      },
+      "spice": 0
+    },
+    {
+      "id": "mlt-042",
+      "text": "Most likely to mag-stalk ng ex gamit ang dummy account.",
+      "alt": {
+        "en": "Most likely to have a secret account just for lurking."
+      },
+      "spice": 1
+    },
+    {
+      "id": "mlt-043",
+      "text": "Most likely to mag-chat ng 'Gising ka pa?' nang alas-dos ng madaling araw.",
+      "alt": {
+        "en": "Most likely to send a risky text and then put their phone face down."
+      },
+      "spice": 1
+    },
+    {
+      "id": "mlt-044",
+      "text": "Most likely to ma-budol sa live selling.",
+      "alt": {
+        "en": "Most likely to fall for an obvious phishing email."
+      },
+      "spice": 1
+    },
+    {
+      "id": "mlt-045",
+      "text": "Most likely to mag-resign sa trabaho sa GC message.",
+      "alt": {
+        "en": "Most likely to resign from their job with a group chat message."
+      },
+      "spice": 1
+    },
+    {
+      "id": "mlt-046",
+      "text": "Most likely to umutang ng 'pang-load lang' tapos makalimutan na.",
+      "alt": {
+        "en": "Most likely to borrow cash 'just for phone credit' and then conveniently forget."
+      },
+      "spice": 1
+    },
+    {
+      "id": "mlt-047",
+      "text": "Most likely to mag-checkout sa online shop habang lasing.",
+      "alt": {
+        "en": "Most likely to check out a whole online cart while drunk."
+      },
+      "spice": 1
+    },
+    {
+      "id": "mlt-048",
+      "text": "Most likely to mag-react lang ng thumbs up sa family GC.",
+      "alt": {
+        "en": "Most likely to mute the group chat and forget it exists."
+      },
+      "spice": 1
+    },
+    {
+      "id": "mlt-049",
+      "text": "Most likely to magkuwento ng chismis tapos sabihing 'Wag mo ikalat, ha.'",
+      "alt": {
+        "en": "Most likely to spill gossip and then say, 'Don't spread it, okay?'"
+      },
+      "spice": 1
+    },
+    {
+      "id": "mlt-050",
+      "text": "Most likely to mag-post ng hugot quote pagkatapos ng away.",
+      "alt": {
+        "en": "Most likely to post a sad, dramatic quote right after a fight."
+      },
+      "spice": 1
+    },
+    {
+      "id": "mlt-051",
+      "text": "Most likely to makipag-away sa comment section ng news page.",
+      "alt": {
+        "en": "Most likely to get into fights in the comment section of a news page."
+      },
+      "spice": 1
+    },
+    {
+      "id": "mlt-052",
+      "text": "Most likely to mag-drunk call sa ex tapos itanggi kinabukasan.",
+      "alt": {
+        "en": "Most likely to drunk-call their ex and deny it the next day."
+      },
+      "spice": 1
+    },
+    {
+      "id": "mlt-053",
+      "text": "Most likely to sabihing nag-overnight siya kina bestie kahit hindi naman.",
+      "alt": {
+        "en": "Most likely to say they slept over at a friend's place when they really didn't."
+      },
+      "spice": 1
+    },
+    {
+      "id": "mlt-054",
+      "text": "Most likely to magdahilan na 'may sakit si Lola' para hindi sumama sa lakad.",
+      "alt": {
+        "en": "Most likely to use 'my grandma's sick' as an excuse to skip the hangout."
+      },
+      "spice": 1
+    },
+    {
+      "id": "mlt-055",
+      "text": "Most likely to mag-uwi ng bagong kaibigan galing sa inuman.",
+      "alt": {
+        "en": "Most likely to make a best friend in the bathroom line."
+      },
+      "spice": 1
+    },
+    {
+      "id": "mlt-056",
+      "text": "Most likely to ma-inlove sa barista ng paborito niyang coffee shop.",
+      "alt": {
+        "en": "Most likely to fall for the barista at their favorite coffee shop."
+      },
+      "spice": 1
+    },
+    {
+      "id": "mlt-057",
+      "text": "Most likely to mag-seen lang tapos mag-reply after isang linggo.",
+      "alt": {
+        "en": "Most likely to reply to a text three weeks later like nothing happened."
+      },
+      "spice": 1
+    },
+    {
+      "id": "mlt-058",
+      "text": "Most likely to magkunwaring may tumatawag para makatakas sa usapan.",
+      "alt": {
+        "en": "Most likely to fake a phone call to escape a conversation."
+      },
+      "spice": 1
+    },
+    {
+      "id": "mlt-059",
+      "text": "Most likely to mag-'last na 'to' tapos oorder pa ng isang bucket.",
+      "alt": {
+        "en": "Most likely to say 'one last drink' and order three more."
+      },
+      "spice": 1
+    },
+    {
+      "id": "mlt-060",
+      "text": "Most likely to i-screenshot ang GC tapos i-send sa ibang GC.",
+      "alt": {
+        "en": "Most likely to screenshot the group chat and send it to someone else."
+      },
+      "spice": 1
+    },
+    {
+      "id": "mlt-061",
+      "text": "Most likely to maubos ang sahod bago pa mag-kinsenas.",
+      "alt": {
+        "en": "Most likely to blow a whole paycheck in one weekend."
+      },
+      "spice": 1
+    },
+    {
+      "id": "mlt-062",
+      "text": "Most likely to magtago sa CR ng party para lang mag-scroll.",
+      "alt": {
+        "en": "Most likely to hide in the bathroom at a party just to scroll."
+      },
+      "spice": 1
+    },
+    {
+      "id": "mlt-063",
+      "text": "Most likely to sumulpot lang kapag may libre.",
+      "alt": {
+        "en": "Most likely to show up only when someone else is paying."
+      },
+      "spice": 1
+    },
+    {
+      "id": "mlt-064",
+      "text": "Most likely to umiyak sa inuman tapos sasabihing 'Masaya lang ako.'",
+      "alt": {
+        "en": "Most likely to cry at the drinking session and then say, 'I'm just happy.'"
+      },
+      "spice": 1
+    },
+    {
+      "id": "mlt-065",
+      "text": "Most likely to mag-sick leave para makapunta sa concert.",
+      "alt": {
+        "en": "Most likely to call in sick just to go to a concert."
+      },
+      "spice": 1
+    },
+    {
+      "id": "mlt-066",
+      "text": "Most likely to ma-like ang lumang picture ng crush habang nag-i-stalk.",
+      "alt": {
+        "en": "Most likely to accidentally like a five-year-old photo while stalking."
+      },
+      "spice": 1
+    },
+    {
+      "id": "mlt-067",
+      "text": "Most likely to hindi marinig ang alarm sa pinaka-importanteng araw.",
+      "alt": {
+        "en": "Most likely to sleep through their alarm on a really important day."
+      },
+      "spice": 1
+    },
+    {
+      "id": "mlt-068",
+      "text": "Most likely to magkunwaring napanood na ang pelikulang pinag-uusapan ng lahat.",
+      "alt": {
+        "en": "Most likely to pretend they've seen the movie everyone's talking about."
+      },
+      "spice": 1
+    },
+    {
+      "id": "mlt-069",
+      "text": "Most likely to sabihing magluluto siya tapos mag-order din pala ng delivery.",
+      "alt": {
+        "en": "Most likely to order takeout right after saying they'll cook."
+      },
+      "spice": 1
+    },
+    {
+      "id": "mlt-070",
+      "text": "Most likely to mag-cancel ng lakad limang minuto bago ang usapan.",
+      "alt": {
+        "en": "Most likely to cancel plans five minutes before."
+      },
+      "spice": 1
+    },
+    {
+      "id": "mlt-071",
+      "text": "Most likely to sumilip sa phone ng katabi para makibasa ng chat.",
+      "alt": {
+        "en": "Most likely to read someone's texts over their shoulder."
+      },
+      "spice": 1
+    },
+    {
+      "id": "mlt-072",
+      "text": "Most likely to magsimula ng drama tapos magkunwaring nagulat.",
+      "alt": {
+        "en": "Most likely to start drama and then act surprised."
+      },
+      "spice": 1
+    },
+    {
+      "id": "mlt-073",
+      "text": "Most likely to ma-kick out sa GC.",
+      "alt": {
+        "en": "Most likely to get kicked out of a group chat."
+      },
+      "spice": 1
+    },
+    {
+      "id": "mlt-074",
+      "text": "Most likely to mag-'Happy birthday' sa ex nang saktong alas-dose ng hatinggabi.",
+      "alt": {
+        "en": "Most likely to text their ex 'happy birthday' at exactly midnight."
+      },
+      "spice": 1
+    },
+    {
+      "id": "mlt-075",
+      "text": "Most likely to isisi sa isa sa mga nandito ang sarili niyang kasalanan.",
+      "alt": {
+        "en": "Most likely to blame someone at this table for something they did."
+      },
+      "spice": 1
+    },
+    {
+      "id": "mlt-076",
+      "text": "Most likely to maging life coach ng lahat pagdating ng dulo ng inuman.",
+      "alt": {
+        "en": "Most likely to end the night giving everyone life advice."
+      },
+      "spice": 1
+    },
+    {
+      "id": "mlt-077",
+      "text": "Most likely to isang oras pumili ng kakainan tapos ayaw pala sa pagkain.",
+      "alt": {
+        "en": "Most likely to spend an hour picking a restaurant and then hate the food."
+      },
+      "spice": 1
+    },
+    {
+      "id": "mlt-078",
+      "text": "Most likely to i-practice ang away habang naliligo tapos talo pa rin.",
+      "alt": {
+        "en": "Most likely to rehearse an argument in the shower and still lose."
+      },
+      "spice": 1
+    },
+    {
+      "id": "mlt-079",
+      "text": "Most likely to mang-seenzone nang sinasadya.",
+      "alt": {
+        "en": "Most likely to leave someone on read on purpose."
+      },
+      "spice": 1
+    },
+    {
+      "id": "mlt-080",
+      "text": "Most likely to makain ang baon ng iba sa ref ng opisina.",
+      "alt": {
+        "en": "Most likely to eat someone else's lunch from the office fridge."
+      },
+      "spice": 1
+    },
+    {
+      "id": "mlt-081",
+      "text": "Most likely to mang-ghost ng ka-talking stage.",
+      "alt": {
+        "en": "Most likely to ghost someone after an amazing first date."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-082",
+      "text": "Most likely to magka-jowa na nakilala sa dating app.",
+      "alt": {
+        "en": "Most likely to meet their soulmate on a dating app."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-083",
+      "text": "Most likely to makipagbalikan sa ex sa loob ng isang buwan.",
+      "alt": {
+        "en": "Most likely to go back to an ex 'just to talk.'"
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-084",
+      "text": "Most likely to magtago ng relasyon sa barkada.",
+      "alt": {
+        "en": "Most likely to keep a relationship secret from the whole friend group."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-085",
+      "text": "Most likely to mauna sa barkada na ikasal.",
+      "alt": {
+        "en": "Most likely to be the first in the friend group to get married."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-086",
+      "text": "Most likely to magka-secret admirer sa opisina.",
+      "alt": {
+        "en": "Most likely to have a secret admirer at the office."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-087",
+      "text": "Most likely to ma-friendzone pero umaasa pa rin.",
+      "alt": {
+        "en": "Most likely to get friendzoned and still keep hoping."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-088",
+      "text": "Most likely to mag-first move.",
+      "alt": {
+        "en": "Most likely to make the first move."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-089",
+      "text": "Most likely to i-chat ang crush tapos i-unsend agad.",
+      "alt": {
+        "en": "Most likely to type out a love confession and delete it."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-090",
+      "text": "Most likely to magka-situationship na umabot ng isang taon.",
+      "alt": {
+        "en": "Most likely to stay in a situationship way too long."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-091",
+      "text": "Most likely to umamin ng feelings sa inuman.",
+      "alt": {
+        "en": "Most likely to confess their feelings during a drinking session."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-092",
+      "text": "Most likely to magselos sa bestfriend ng jowa.",
+      "alt": {
+        "en": "Most likely to get jealous of their partner's best friend."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-093",
+      "text": "Most likely to ma-crush sa isa sa mga nandito ngayon.",
+      "alt": {
+        "en": "Most likely to have a crush on someone in this room."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-094",
+      "text": "Most likely to magising sa bahay na hindi niya alam kung kanino.",
+      "alt": {
+        "en": "Most likely to wake up somewhere they don't recognize."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-095",
+      "text": "Most likely to makipag-make out sa party.",
+      "alt": {
+        "en": "Most likely to make out with someone at a party."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-096",
+      "text": "Most likely to mag-soft launch ng jowa tapos hiwalay na after one week.",
+      "alt": {
+        "en": "Most likely to soft-launch a relationship that lasts one week."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-097",
+      "text": "Most likely to ma-attract lagi sa red flag.",
+      "alt": {
+        "en": "Most likely to have a type that's always a red flag."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-098",
+      "text": "Most likely to mag-'I love you' agad sa second date.",
+      "alt": {
+        "en": "Most likely to say 'I love you' first."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-099",
+      "text": "Most likely to i-stalk ang ex ng jowa hanggang sa pinakalumang post.",
+      "alt": {
+        "en": "Most likely to deep-dive their crush's ex's ex online."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-100",
+      "text": "Most likely to makalimutan ang sarili nilang anniversary.",
+      "alt": {
+        "en": "Most likely to forget their own anniversary."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-101",
+      "text": "Most likely to magpa-tattoo ng pangalan ng jowa.",
+      "alt": {
+        "en": "Most likely to get a matching tattoo with someone they just started dating."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-102",
+      "text": "Most likely to makipag-date sa dalawang tao sa iisang araw.",
+      "alt": {
+        "en": "Most likely to go on dates with two different people on the same day."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-103",
+      "text": "Most likely to ipakilala agad sa pamilya ang jowa after one week.",
+      "alt": {
+        "en": "Most likely to introduce a new partner to the family after just one week."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-104",
+      "text": "Most likely to mag-swipe right sa lahat ng nasa dating app.",
+      "alt": {
+        "en": "Most likely to swipe right on literally everyone."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-105",
+      "text": "Most likely to maging hopia sa crush na may jowa na.",
+      "alt": {
+        "en": "Most likely to keep pining for a crush who's already taken."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-106",
+      "text": "Most likely to gumamit ng bagong jowa para pagselosin ang ex.",
+      "alt": {
+        "en": "Most likely to fake a new relationship to make an ex jealous."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-107",
+      "text": "Most likely to mawalan ng phone, wallet, at dignidad sa iisang gabi.",
+      "alt": {
+        "en": "Most likely to lose their phone, wallet, and dignity in one night."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-108",
+      "text": "Most likely to mag-propose habang lasing.",
+      "alt": {
+        "en": "Most likely to propose while drunk."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-109",
+      "text": "Most likely to magising na naka-sapatos pa sa kama pagkatapos ng inuman.",
+      "alt": {
+        "en": "Most likely to wake up still wearing last night's outfit."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-110",
+      "text": "Most likely to makatagal sa long-distance relationship.",
+      "alt": {
+        "en": "Most likely to make a long-distance relationship actually work."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-111",
+      "text": "Most likely to ma-fall sa katrabaho.",
+      "alt": {
+        "en": "Most likely to fall for a coworker."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-112",
+      "text": "Most likely to magplano ng proposal na mas engrande pa sa kasal.",
+      "alt": {
+        "en": "Most likely to plan a proposal bigger than the wedding."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-113",
+      "text": "Most likely to mag-slide sa DMs ng isang artista.",
+      "alt": {
+        "en": "Most likely to slide into a celebrity's DMs."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-114",
+      "text": "Most likely to magselos dahil lang sa isang 'like.'",
+      "alt": {
+        "en": "Most likely to get jealous over a single 'like.'"
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-115",
+      "text": "Most likely to maka-date ang dalawang tao na magkapareho ng pangalan.",
+      "alt": {
+        "en": "Most likely to date two people with the same name."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-116",
+      "text": "Most likely to ma-inlove habang nasa bakasyon.",
+      "alt": {
+        "en": "Most likely to fall in love on vacation."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-117",
+      "text": "Most likely to suot pa rin ang hoodie ng ex niya.",
+      "alt": {
+        "en": "Most likely to still have their ex's hoodie."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-118",
+      "text": "Most likely to gumawa ng love song tungkol sa isa sa mga nandito.",
+      "alt": {
+        "en": "Most likely to write a love song about someone here."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-119",
+      "text": "Most likely to ma-send ang thirst trap sa maling tao.",
+      "alt": {
+        "en": "Most likely to send a thirst trap to the wrong person."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-120",
+      "text": "Most likely to magpa-tattoo sa sobrang private na parte ng katawan.",
+      "alt": {
+        "en": "Most likely to have a tattoo in a very private spot."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-121",
+      "text": "Most likely to magkaroon ng kuwentong pang-after midnight lang.",
+      "alt": {
+        "en": "Most likely to have a story they only tell after midnight."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-122",
+      "text": "Most likely to mag-send ng buong nobela sa crush habang lasing.",
+      "alt": {
+        "en": "Most likely to drunk-text their crush a whole paragraph."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-123",
+      "text": "Most likely to makalimutan ang pangalan ng ka-date habang nagdi-dinner pa lang.",
+      "alt": {
+        "en": "Most likely to forget their date's name halfway through dinner."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-124",
+      "text": "Most likely to mag-send ng voice message na pagsisisihan niya pagdating ng umaga.",
+      "alt": {
+        "en": "Most likely to send a voice note they'll regret by morning."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-125",
+      "text": "Most likely to pakasalan ang first love niya.",
+      "alt": {
+        "en": "Most likely to marry their first love."
+      },
+      "spice": 2
+    },
+    {
+      "id": "mlt-126",
+      "text": "Most likely to magka-'friends with benefits.'",
+      "alt": {
+        "en": "Most likely to end up with a friend with benefits."
+      },
+      "spice": 3
+    },
+    {
+      "id": "mlt-127",
+      "text": "Most likely to mag-'Netflix and chill' nang walang napanood kahit isang episode.",
+      "alt": {
+        "en": "Most likely to invite someone over to 'watch a show' and not see a single episode."
+      },
+      "spice": 3
+    },
+    {
+      "id": "mlt-128",
+      "text": "Most likely to magbawas ng body count kapag tinatanong.",
+      "alt": {
+        "en": "Most likely to round their body count down."
+      },
+      "spice": 3
+    },
+    {
+      "id": "mlt-129",
+      "text": "Most likely to mag-check in sa motel 'para lang magpahinga.'",
+      "alt": {
+        "en": "Most likely to check into a motel 'just to rest.'"
+      },
+      "spice": 3
+    },
+    {
+      "id": "mlt-130",
+      "text": "Most likely to magka-ONS sa out-of-town trip.",
+      "alt": {
+        "en": "Most likely to have a one-night stand on a business trip."
+      },
+      "spice": 3
+    },
+    {
+      "id": "mlt-131",
+      "text": "Most likely to masita ng guard habang nakikipag-momol sa parking.",
+      "alt": {
+        "en": "Most likely to get caught by a security guard making out in a parking lot."
+      },
+      "spice": 3
+    },
+    {
+      "id": "mlt-132",
+      "text": "Most likely to mag-walk of shame habang nagwawalis ang mga kapitbahay.",
+      "alt": {
+        "en": "Most likely to do the walk of shame and wave at the neighbors."
+      },
+      "spice": 3
+    },
+    {
+      "id": "mlt-133",
+      "text": "Most likely to i-save ang ka-hookup niya sa contacts as 'Kuya Delivery.'",
+      "alt": {
+        "en": "Most likely to save their booty call under a fake contact name."
+      },
+      "spice": 3
+    },
+    {
+      "id": "mlt-134",
+      "text": "Most likely to magkaroon ng kink na hindi namin ine-expect.",
+      "alt": {
+        "en": "Most likely to have a kink nobody here would ever guess."
+      },
+      "spice": 3
+    },
+    {
+      "id": "mlt-135",
+      "text": "Most likely to mag-send ng thirst trap sa ex nang 3 AM.",
+      "alt": {
+        "en": "Most likely to send their ex a thirst trap at 3 AM."
+      },
+      "spice": 3
+    },
+    {
+      "id": "mlt-136",
+      "text": "Most likely to mahuli ng roommate na may kasamang ka-harutan sa kwarto.",
+      "alt": {
+        "en": "Most likely to get walked in on by their roommate with someone in their room."
+      },
+      "spice": 3
+    },
+    {
+      "id": "mlt-137",
+      "text": "Most likely to maging super harot kapag nakainom na.",
+      "alt": {
+        "en": "Most likely to get extra flirty after a few drinks."
+      },
+      "spice": 3
+    },
+    {
+      "id": "mlt-138",
+      "text": "Most likely to makipaglandian sa bartender para sa libreng shot.",
+      "alt": {
+        "en": "Most likely to flirt their way into free drinks all night."
+      },
+      "spice": 3
+    },
+    {
+      "id": "mlt-139",
+      "text": "Most likely to magkaroon ng sariling playlist pang-'alam mo na.'",
+      "alt": {
+        "en": "Most likely to have a bedroom playlist ready to go."
+      },
+      "spice": 3
+    },
+    {
+      "id": "mlt-140",
+      "text": "Most likely to ma-turn on sa boses pa lang.",
+      "alt": {
+        "en": "Most likely to get turned on by a voice alone."
+      },
+      "spice": 3
+    },
+    {
+      "id": "mlt-141",
+      "text": "Most likely to ma-fall sa naka-ONS niya.",
+      "alt": {
+        "en": "Most likely to catch feelings for their FWB."
+      },
+      "spice": 3
+    },
+    {
+      "id": "mlt-142",
+      "text": "Most likely to ma-late sa work kasi 'may tinapos pa' kaninang umaga.",
+      "alt": {
+        "en": "Most likely to be late for work because they 'had something to finish' that morning."
+      },
+      "spice": 3
+    },
+    {
+      "id": "mlt-143",
+      "text": "Most likely to mag-'Dito ka na matulog' sa first date pa lang.",
+      "alt": {
+        "en": "Most likely to say 'Just stay the night' on the very first date."
+      },
+      "spice": 3
+    },
+    {
+      "id": "mlt-144",
+      "text": "Most likely to mahilig sa role play sa kama.",
+      "alt": {
+        "en": "Most likely to be into role-play in bed."
+      },
+      "spice": 3
+    },
+    {
+      "id": "mlt-145",
+      "text": "Most likely to makipaglandian sa tatlo nang sabay-sabay.",
+      "alt": {
+        "en": "Most likely to flirt with three people at the same time."
+      },
+      "spice": 3
+    },
+    {
+      "id": "mlt-146",
+      "text": "Most likely to magka-chikinini tapos mag-turtleneck kahit 35 degrees.",
+      "alt": {
+        "en": "Most likely to get a hickey and wear a turtleneck in 35-degree heat."
+      },
+      "spice": 3
+    },
+    {
+      "id": "mlt-147",
+      "text": "Most likely to magpaka-inosente pero pinaka-wild pala sa kama.",
+      "alt": {
+        "en": "Most likely to act all innocent but turn out to be the wildest in bed."
+      },
+      "spice": 3
+    },
+    {
+      "id": "mlt-148",
+      "text": "Most likely to makipag-hookup sa ex 'for closure' daw.",
+      "alt": {
+        "en": "Most likely to hook up with an ex 'for closure.'"
+      },
+      "spice": 3
+    },
+    {
+      "id": "mlt-149",
+      "text": "Most likely to makipag-momol sa stranger nang hindi man lang nalaman ang pangalan.",
+      "alt": {
+        "en": "Most likely to make out with a stranger and never get their name."
+      },
+      "spice": 3
+    },
+    {
+      "id": "mlt-150",
+      "text": "Most likely to magtago ng posas na hindi pang-costume.",
+      "alt": {
+        "en": "Most likely to own handcuffs that aren't part of a costume."
+      },
+      "spice": 3
+    },
+    {
+      "id": "mlt-151",
+      "text": "Most likely to mareklamo ng kapitbahay sa ingay, at hindi dahil sa party.",
+      "alt": {
+        "en": "Most likely to get a noise complaint, and not from partying."
+      },
+      "spice": 3
+    },
+    {
+      "id": "mlt-152",
+      "text": "Most likely to magtago ng hidden folder ng spicy pics sa phone.",
+      "alt": {
+        "en": "Most likely to have a hidden folder of spicy pics on their phone."
+      },
+      "spice": 3
+    },
+    {
+      "id": "mlt-153",
+      "text": "Most likely to magtago ng hookup story na dadalhin niya hanggang hukay.",
+      "alt": {
+        "en": "Most likely to have a hookup story they'll take to the grave."
+      },
+      "spice": 3
+    },
+    {
+      "id": "mlt-154",
+      "text": "Most likely to mag-'Hindi ko 'to usually ginagawa' kahit lagi naman.",
+      "alt": {
+        "en": "Most likely to say 'I don't usually do this' when they totally do."
+      },
+      "spice": 3
+    },
+    {
+      "id": "mlt-155",
+      "text": "Most likely to maka-hookup ang isa sa mga abay sa isang kasal.",
+      "alt": {
+        "en": "Most likely to hook up with a bridesmaid or groomsman at a wedding."
+      },
+      "spice": 3
+    },
+    {
+      "id": "mlt-156",
+      "text": "Most likely to gumawa ng spreadsheet na nire-rate ang mga naka-hookup niya.",
+      "alt": {
+        "en": "Most likely to keep a spreadsheet rating their hookups."
+      },
+      "spice": 3
+    },
+    {
+      "id": "mlt-157",
+      "text": "Most likely to magising katabi ang isang tao tapos magtulog-tulugan.",
+      "alt": {
+        "en": "Most likely to wake up next to someone and pretend to still be asleep."
+      },
+      "spice": 3
+    },
+    {
+      "id": "mlt-158",
+      "text": "Most likely to mag-send ng sext na may typo kaya nawala ang mood.",
+      "alt": {
+        "en": "Most likely to send a sext with a typo that kills the mood."
+      },
+      "spice": 3
+    },
+    {
+      "id": "mlt-159",
+      "text": "Most likely to maging boss pagdating sa kama.",
+      "alt": {
+        "en": "Most likely to be the boss in the bedroom."
+      },
+      "spice": 3
+    }
+  ]
+}

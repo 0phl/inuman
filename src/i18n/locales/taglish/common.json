@@ -79,6 +79,7 @@
       "items": "{{match}}/{{total}} pasok",
       "none": "Walang prompt na pasok. Pumili ng pack o taasan ang anghang.",
       "anyLocale": "Kahit ano",
+      "bilingual": "Filipino + English",
       "custom": "Gawa ng barkada",
       "manage": "Ayusin",
       "makeOwn": "Gumawa ng sariling pack"

@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
+import { isBilingual } from '@/core/content/builtin';
 import type { PromptPack } from '@/core/content/schemas';
 import { SPICE_LEVELS } from '@/core/content/schemas';
 import { IconCheck, IconChevron, IconPlus } from './icons';
@@ -49,7 +50,7 @@ function PackToggle({
             {t('lobby.packs.items', { match, total: pack.items.length })}
           </span>
         </span>
-        <LocaleBadge locale={pack.locale} />
+        <LocaleBadge locale={pack.locale} bilingual={isBilingual(pack)} />
       </button>
     </li>
   );

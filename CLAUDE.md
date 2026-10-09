@@ -31,7 +31,9 @@ Approved plan: `~/.claude/plans/glimmering-prancing-token.md`. Commands: `pnpm d
   and not machine-translated slang. Keep English loanwords where Filipinos actually use them.
 
 ## Content
-- Built-in prompt packs: `src/core/content/packs/<locale>/<game>.json`, validated by `PromptPackSchema`.
+- Built-in prompt packs: one bilingual pack per game, `src/core/content/packs/<game>.json`, validated by
+  `PromptPackSchema`: `text` is Filipino (Taglish) and `alt.en` the English; the UI shows `alt[locale] ?? text`.
+  Both languages of a prompt use the same placeholders.
   Spice 0 family-friendly, 1 light teasing, 2 crushes/dating/exes, 3 "SPG (18+)": adults-only sexy prompts (opt-in;
   suggestive, never graphic; dares with another player always say "if they're okay with it"; nothing involving
   minors, nudity or posting outside the room). Placeholders: `{player}`, `{random}`, `{left}`, `{right}`.

@@ -1,18 +1,34 @@
 import { describe, expect, it } from 'vitest';
-import { BUILTIN_PACKS, collectPrompts } from './builtin';
+import { BUILTIN_PACKS, collectPrompts, isBilingual, LEGACY_BUILTIN_IDS } from './builtin';
 import type { PromptPack } from './schemas';
 
 describe('built-in packs', () => {
-  it('ships a Taglish and an English pack for every prompt game', () => {
-    expect(BUILTIN_PACKS.map((p) => [p.locale, p.game])).toEqual([
-      ['taglish', 'never-have-i-ever'],
-      ['en', 'never-have-i-ever'],
-      ['taglish', 'truth-or-dare'],
-      ['en', 'truth-or-dare'],
-      ['taglish', 'most-likely-to'],
-      ['en', 'most-likely-to'],
+  it('ships one bilingual pack per prompt game', () => {
+    expect(BUILTIN_PACKS.map((p) => [p.id, p.game, p.locale])).toEqual([
+      ['builtin-nhie', 'never-have-i-ever', 'any'],
+      ['builtin-tod', 'truth-or-dare', 'any'],
+      ['builtin-mlt', 'most-likely-to', 'any'],
     ]);
-    for (const pack of BUILTIN_PACKS) expect(pack.builtin).toBe(true);
+    for (const pack of BUILTIN_PACKS) {
+      expect(pack.builtin).toBe(true);
+      expect(isBilingual(pack), pack.id).toBe(true);
+      for (const item of pack.items) {
+        expect(item.text.trim(), item.id).not.toBe('');
+        expect(item.alt?.en?.trim(), item.id).toBeTruthy();
+      }
+    }
+  });
+
+  it('uses the same placeholders in both languages of a prompt', () => {
+    const slots = (t: string) => [...(t.match(/\{[^}]*\}/g) ?? [])].sort();
+    for (const pack of BUILTIN_PACKS)
+      for (const item of pack.items)
+        expect(slots(item.alt?.en ?? ''), item.id).toEqual(slots(item.text));
+  });
+
+  it('maps picks of the old per-language packs to the merged ones', () => {
+    const ids = new Set(BUILTIN_PACKS.map((p) => p.id));
+    for (const to of Object.values(LEGACY_BUILTIN_IDS)) expect(ids.has(to)).toBe(true);
   });
 
   it('marks every truth-or-dare item as a truth or a dare, with both at every everyday spice', () => {
@@ -62,6 +78,7 @@ describe('built-in packs', () => {
         if (item.kind !== 'dare' || item.spice < 3) continue;
         if (!/\{(random|left|right)\}/.test(item.text)) continue;
         expect(item.text, item.id).toMatch(asks);
+        expect(item.alt?.en ?? '', item.id).toMatch(asks);
       }
     }
   });
@@ -69,7 +86,7 @@ describe('built-in packs', () => {
   it('only uses known placeholders', () => {
     for (const pack of BUILTIN_PACKS) {
       for (const item of pack.items) {
-        for (const ph of item.text.match(/\{[^}]*\}/g) ?? [])
+        for (const ph of `${item.text} ${item.alt?.en ?? ''}`.match(/\{[^}]*\}/g) ?? [])
           expect(['{player}', '{random}', '{left}', '{right}']).toContain(ph);
       }
     }

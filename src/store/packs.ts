@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist, type PersistStorage } from 'zustand/middleware';
 import { del, get as idbGet, set as idbSet } from 'idb-keyval';
-import { BUILTIN_PACKS } from '@/core/content/builtin';
+import { BUILTIN_PACKS, LEGACY_BUILTIN_IDS } from '@/core/content/builtin';
 import {
   LOCALES,
   PACK_GAMES,
@@ -533,7 +533,12 @@ export function sanitizePicks(raw: unknown): PicksState['byGame'] {
   for (const [game, ids] of Object.entries(raw as Record<string, unknown>)) {
     if (!isPackGame(game) || !Array.isArray(ids)) continue;
     out[game] = [
-      ...new Set(ids.filter((x): x is string => typeof x === 'string' && x.length <= 40)),
+      ...new Set(
+        ids
+          .filter((x): x is string => typeof x === 'string' && x.length <= 40)
+          // A pick of the old Filipino or English built-in pack means the merged one now.
+          .map((id) => LEGACY_BUILTIN_IDS[id] ?? id),
+      ),
     ].slice(0, 50);
   }
   return out;

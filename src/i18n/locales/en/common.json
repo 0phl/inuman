@@ -74,6 +74,7 @@
       "items": "{{match}} of {{total}}",
       "none": "No prompts match. Pick a pack or raise the spice level.",
       "anyLocale": "Any",
+      "bilingual": "Filipino + English",
       "custom": "Made by the barkada",
       "manage": "Manage",
       "makeOwn": "Make your own pack"

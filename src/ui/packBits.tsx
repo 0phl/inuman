@@ -114,11 +114,22 @@ export function SpicePicker({
   );
 }
 
-export function LocaleBadge({ locale }: { locale: PackLocale }) {
+/** The pack's language; a bilingual pack (every prompt translated) reads "Filipino + English". */
+export function LocaleBadge({
+  locale,
+  bilingual = false,
+}: {
+  locale: PackLocale;
+  bilingual?: boolean;
+}) {
   const { t } = useTranslation();
   return (
     <span className="shrink-0 rounded-md border border-tubig-400/50 bg-tubig-400/10 px-2 py-0.5 text-xs font-bold tracking-wide text-tubig-300 uppercase">
-      {locale === 'any' ? t('lobby.packs.anyLocale') : t(`locale.${locale}`)}
+      {bilingual
+        ? t('lobby.packs.bilingual')
+        : locale === 'any'
+          ? t('lobby.packs.anyLocale')
+          : t(`locale.${locale}`)}
     </span>
   );
 }

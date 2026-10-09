@@ -1,6 +1,7 @@
 import { memo, useCallback, useEffect, useMemo, useRef, useState, type RefObject } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router';
+import { isBilingual } from '@/core/content/builtin';
 import type { PackGame, PromptItem, PromptPack } from '@/core/content/schemas';
 import type { SharePayload } from '@/core/share/codec';
 import {
@@ -46,6 +47,7 @@ import {
   SpicePicker,
   SpiceSpread,
 } from '@/ui/packBits';
+import { useSettings } from '@/store/settings';
 import { safeBack, savePackFile } from '@/ui/share';
 import { ShareSheet } from '@/ui/ShareSheet';
 import { Sheet } from '@/ui/Sheet';
@@ -498,6 +500,9 @@ const ItemRow = memo(function ItemRow({
   onOpen,
 }: ItemRowProps) {
   const { t } = useTranslation();
+  const locale = useSettings((s) => s.locale);
+  // A built-in (bilingual) pack reads in the app language; editable packs show the text you edit.
+  const shown = readOnly ? (item.alt?.[locale] ?? item.text) : item.text;
   if (open && !readOnly) {
     return (
       <li className="scroll-mt-24" data-testid="item-row" data-open="true">
@@ -519,7 +524,7 @@ const ItemRow = memo(function ItemRow({
       </span>
       <span className="flex min-w-0 flex-1 flex-col gap-1.5">
         <span className="leading-snug text-capiz-50 [overflow-wrap:anywhere]">
-          <PromptText text={item.text} />
+          <PromptText text={shown} />
         </span>
         <span className="flex flex-wrap items-center gap-2">
           <SpiceDots level={item.spice} size="sm" />
@@ -637,7 +642,7 @@ function EditorFor({ pack, query }: { pack: PromptPack; query: string }) {
             </h2>
             <span className="flex flex-wrap items-center gap-2">
               <span className="chip">{t(`game.${pack.game}.title`)}</span>
-              <LocaleBadge locale={pack.locale} />
+              <LocaleBadge locale={pack.locale} bilingual={isBilingual(pack)} />
             </span>
           </div>
           <p className="relative z-10 text-sm text-capiz-200">{t('packs.readOnly')}</p>

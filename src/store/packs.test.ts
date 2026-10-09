@@ -200,7 +200,7 @@ describe('selectors and lobby picks', () => {
   it('remembers picks, drops deleted packs, and falls back to defaults', () => {
     const packs = allPacksFor('never-have-i-ever')({ packs: [pack()] });
     const defaults = defaultPackIds(packs, 'taglish');
-    expect(defaults).toEqual(['builtin-nhie-taglish']);
+    expect(defaults).toEqual(['builtin-nhie']);
     expect(resolvePicks(undefined, packs, 'taglish', true)).toEqual(defaults);
     expect(resolvePicks(['custom-abcd1234', 'custom-gone0000'], packs, 'taglish', true)).toEqual([
       'custom-abcd1234',
@@ -215,6 +215,18 @@ describe('selectors and lobby picks', () => {
     expect(
       sanitizePicks({ 'never-have-i-ever': ['a', 'a', 3, 'b'], 'kings-cup': ['x'], nope: 1 }),
     ).toEqual({ 'never-have-i-ever': ['a', 'b'] });
+  });
+
+  it('turns picks of the old Filipino / English built-in packs into the bilingual one', () => {
+    expect(
+      sanitizePicks({
+        'never-have-i-ever': ['builtin-nhie-taglish', 'builtin-nhie-en', 'custom-abcd1234'],
+        'truth-or-dare': ['builtin-tod-en'],
+      }),
+    ).toEqual({
+      'never-have-i-ever': ['builtin-nhie', 'custom-abcd1234'],
+      'truth-or-dare': ['builtin-tod'],
+    });
   });
 });
 

@@ -47,7 +47,7 @@ test('custom NHIE pack: create 3 prompts, then play with only that pack', async 
   await expect(custom).toContainText('Pang-GC namin');
 
   // Only our pack: drop the default built-in, pick ours.
-  const builtin = page.getByTestId('pack-builtin-nhie-taglish');
+  const builtin = page.getByTestId('pack-builtin-nhie');
   await expect(builtin).toHaveAttribute('aria-pressed', 'true');
   await builtin.click();
   await custom.click();

@@ -9,7 +9,7 @@ import {
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate, useSearchParams } from 'react-router';
-import { BUILTIN_PACKS } from '@/core/content/builtin';
+import { BUILTIN_PACKS, isBilingual } from '@/core/content/builtin';
 import { PACK_GAMES, type PackGame, type PromptPack } from '@/core/content/schemas';
 import type { SharePayload } from '@/core/share/codec';
 import { hasLogic } from '@/core/games/registry';
@@ -61,7 +61,7 @@ const PackCard = memo(function PackCard({ pack, query, onShare, onDuplicate }: P
             <span className="line-clamp-2 min-w-0 flex-1 text-lg leading-snug font-extrabold text-capiz-50 [overflow-wrap:anywhere]">
               {pack.name}
             </span>
-            <LocaleBadge locale={pack.locale} />
+            <LocaleBadge locale={pack.locale} bilingual={isBilingual(pack)} />
           </span>
           <span className="flex items-center gap-3">
             <span className="shrink-0 text-sm font-bold text-capiz-200 tabular-nums">

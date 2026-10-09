@@ -89,10 +89,7 @@ test('Truth or Dare: the wheel picks, refusing costs a drink', async ({ page }) 
   await seat(page, ['Migs', 'Bea']);
   await lobby(page, 'truth-or-dare', 'choice');
   // Starts with the built-in pack through the content picker.
-  await expect(page.getByTestId('pack-builtin-tod-taglish')).toHaveAttribute(
-    'aria-pressed',
-    'true',
-  );
+  await expect(page.getByTestId('pack-builtin-tod')).toHaveAttribute('aria-pressed', 'true');
   await expect(page.getByTestId('prompt-count')).not.toContainText(/^0 /);
   await page.locator('[data-field="choice"]').getByRole('radio', { name: 'Ang wheel' }).click();
   await start(page);
@@ -127,10 +124,7 @@ test('Truth or Dare: the wheel picks, refusing costs a drink', async ({ page }) 
 test('Most Likely To: point mode, pick who got pointed at, then skip', async ({ page }) => {
   await seat(page, ['Migs', 'Bea', 'Jun']);
   await lobby(page, 'most-likely-to', 'voting');
-  await expect(page.getByTestId('pack-builtin-mlt-taglish')).toHaveAttribute(
-    'aria-pressed',
-    'true',
-  );
+  await expect(page.getByTestId('pack-builtin-mlt')).toHaveAttribute('aria-pressed', 'true');
   await start(page);
 
   await expect(page.getByTestId('turn-name')).toHaveText('Migs', { timeout: 15_000 });

@@ -1,6 +1,7 @@
 import { useMemo, useState, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
+import { isBilingual } from '@/core/content/builtin';
 import type { PromptPack, Theme } from '@/core/content/schemas';
 import type { SharePayload } from '@/core/share/codec';
 import type { GameId } from '@/core/engine/types';
@@ -56,7 +57,7 @@ function PackPreview({ pack }: { pack: PromptPack }) {
         </h2>
         <div className="flex flex-wrap items-center gap-2">
           <span className="chip text-capiz-50">{t(`game.${pack.game}.title`)}</span>
-          <LocaleBadge locale={pack.locale} />
+          <LocaleBadge locale={pack.locale} bilingual={isBilingual(pack)} />
           <span className="chip" data-testid="import-count">
             {t('packs.count', { count: pack.items.length })}
           </span>
