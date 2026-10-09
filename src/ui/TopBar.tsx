@@ -21,6 +21,7 @@ export function TopBar({ title, back, right }: TopBarProps) {
           className="icon-btn"
           aria-label={t('nav.back')}
           onClick={() => navigate(back)}
+          data-sfx="back"
         >
           <IconBack />
         </button>

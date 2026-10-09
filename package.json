@@ -15,7 +15,8 @@
     "e2e": "playwright test",
     "dice:check": "node --experimental-strip-types scripts/dice-fairness.ts",
     "throw:check": "node --experimental-strip-types scripts/throw-check.ts",
-    "assets": "node scripts/build-assets.mjs"
+    "assets": "node scripts/build-assets.mjs",
+    "audio": "node scripts/build-audio.mjs"
   },
   "dependencies": {
     "@dimforge/rapier3d-compat": "0.19.2",

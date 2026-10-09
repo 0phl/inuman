@@ -35,7 +35,16 @@ export default defineConfig({
         ],
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,svg,png,woff2}'],
+        // Sound effects are small and needed offline at the table: precache them with the audio
+        // manifest. Music is large, so it is only cached once played (runtime rule below).
+        globPatterns: [
+          '**/*.{js,css,html,svg,png,woff2}',
+          'assets/audio/sfx/**/*.mp3',
+          'assets/audio/manifest.json',
+        ],
+        // Rapier runs in the physics worker (precached); these main-thread copies are only the
+        // fallback for a browser that can't start it, so they aren't worth 2 MB of every install.
+        globIgnores: ['**/presim-*.js', '**/throwSim-*.js', '**/rapierRuntime-*.js'],
         // Rapier ships its WASM inlined in a JS chunk (~2 MB); allow it into the precache.
         maximumFileSizeToCacheInBytes: 6 * 1024 * 1024,
         runtimeCaching: [
@@ -46,6 +55,25 @@ export default defineConfig({
             handler: 'StaleWhileRevalidate',
             options: { cacheName: 'game-assets', expiration: { maxEntries: 200 } },
           },
+          {
+            // Background music: streamed by <audio> (range requests), cached on first play and
+            // refreshed in the background. Only full 200 responses are stored; the range plugin
+            // slices them for the player.
+            urlPattern: /\/assets\/audio\/music\/.*\.mp3$/,
+            handler: 'StaleWhileRevalidate',
+            options: {
+              cacheName: 'game-music',
+              expiration: { maxEntries: 8 },
+              cacheableResponse: { statuses: [200] },
+              rangeRequests: true,
+            },
+          },
+          {
+            // Any sound effect that isn't in the precache (added after this build).
+            urlPattern: /\/assets\/audio\/sfx\/.*\.mp3$/,
+            handler: 'StaleWhileRevalidate',
+            options: { cacheName: 'game-sfx', expiration: { maxEntries: 300 } },
+          },
         ],
       },
     }),
@@ -54,6 +82,8 @@ export default defineConfig({
     alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) },
   },
   server: { host: true },
+  // The physics worker is started as a module worker (physicsWorker.ts).
+  worker: { format: 'es' },
   test: {
     include: ['src/**/*.test.{ts,tsx}'],
     environment: 'node',

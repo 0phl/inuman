@@ -1,6 +1,7 @@
 import {
   CanvasTexture,
   MeshPhysicalMaterial,
+  MeshStandardMaterial,
   RepeatWrapping,
   SRGBColorSpace,
   type Texture,
@@ -24,6 +25,9 @@ export const CARD_FINISH = {
   envMapIntensity: 0.45,
   specularIntensity: 0.25,
 } as const;
+
+/** The paper edge every Card3D shares (never disposed). */
+export const cardEdgeMaterial = new MeshStandardMaterial({ color: '#efe6d2', roughness: 0.8 });
 
 /** A card-surface material over `map` (callers own and dispose it; the map belongs to the caches). */
 export const cardMaterial = (map: Texture): MeshPhysicalMaterial =>

@@ -7,6 +7,10 @@ import {
   type Mesh,
 } from 'three';
 import { useFrame, useThree, type ThreeElements } from '@react-three/fiber';
+import { cardFlight, outcome } from '@/audio/cues';
+import { play } from '@/audio/engine';
+import { haptic, hapticLater } from '@/audio/haptics';
+import { duck } from '@/audio/music';
 import type { PlayerId } from '@/core/engine/types';
 import type { LastAnswer, View } from '@/core/games/ride-the-bus/logic';
 import type { Card } from '@/core/primitives/deck';
@@ -142,7 +146,13 @@ function LeavingCard({ card, from, to, scale }: { card: Card; from: V3; to: V3; 
   const glow = useRef<Mesh>(null);
   const invalidate = useThree((s) => s.invalidate);
   const t0 = useRef(-1);
-  useEffect(() => invalidate(), [invalidate]);
+  useEffect(() => {
+    invalidate();
+    // It lifts and glows, then slides over to the pyramid card.
+    const fly = reducedMotion() ? 1.2 : 1.75;
+    play('card.slide', { delay: fly, gain: 0.7 });
+    play('card.place', { delay: fly + 0.5, gain: 0.6 });
+  }, [invalidate]);
   useFrame((state) => {
     const g = group.current;
     if (!g) return;
@@ -261,7 +271,15 @@ function HandCard({
   const t0 = useRef(-1);
   const [from] = useState<V3>(() => [DECK[0], deckTop, DECK[2]]);
   const done = useRef(!fly);
-  useEffect(() => invalidate(), [invalidate]);
+  useEffect(() => {
+    invalidate();
+    if (!anim) return;
+    // Off the deck, flipped in the air, into its spot; then the green / red flash rings.
+    cardFlight(anim.dur, { pan: Math.max(-0.5, Math.min(0.5, handX(slot) * 0.6)) });
+    if (flash !== null) outcome(flash ? 'correct' : 'wrong', anim.dur + 0.05);
+    // Mount-time cue only: `anim` and `flash` are fixed for this card.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [invalidate]);
 
   useFrame((state) => {
     const g = group.current;
@@ -328,7 +346,13 @@ function CrashRow({
   const row = useRef<Group>(null);
   const invalidate = useThree((s) => s.invalidate);
   const t0 = useRef(-1);
-  useEffect(() => invalidate(), [invalidate]);
+  useEffect(() => {
+    invalidate();
+    // The run lurches and drives off the table: cards everywhere.
+    const at = reducedMotion() ? 0.6 : FLY_S + CRASH_HOLD_S;
+    play('bus.crash', { delay: at });
+    hapticLater('impactHeavy', at * 1000);
+  }, [invalidate]);
   useFrame((state) => {
     const g = row.current;
     if (!g) return;
@@ -395,8 +419,18 @@ function PyramidCard({
     if (!flipped) return;
     anim.current = { t0: -1, kind: 'flip', delay: 0 };
     invalidate();
+    const d = reducedMotion() ? 0.15 : FLIP_S;
+    play('card.flip', { delay: d * 0.5 });
+    play('card.place', { delay: d, gain: 0.8 });
+    haptic('select');
   }, [flipped, invalidate]);
-  useEffect(() => invalidate(), [invalidate]);
+  useEffect(() => {
+    invalidate();
+    // Dealt face down into the pyramid, one after another.
+    if (dealDelay !== null)
+      play('card.place', { delay: dealDelay + (reducedMotion() ? 0.1 : 0.4), gain: 0.55 });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [invalidate]);
 
   useFrame((state) => {
     const a = anim.current;
@@ -519,6 +553,18 @@ export default function RideTheBusScene({ view, players }: GameViewProps<View>) 
     const id = window.setTimeout(() => setHeld(null), HOLD_MS);
     return () => window.clearTimeout(id);
   }, [held]);
+
+  // All aboard: the jeepney horn when the rider gets on the bus.
+  const phaseNow = view.phase;
+  const prevPhase = useRef(phaseNow);
+  useEffect(() => {
+    if (prevPhase.current === 'board' && phaseNow === 'bus') {
+      duck(-6, 1400);
+      play('bus.horn');
+      haptic('success');
+    }
+    prevPhase.current = phaseNow;
+  }, [phaseNow]);
   useEffect(() => {
     if (!crash) return;
     const id = window.setTimeout(() => setCrash(null), CRASH_MS);

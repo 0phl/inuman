@@ -1,6 +1,8 @@
 import { useEffect, useLayoutEffect, useMemo, useRef } from 'react';
 import type { Group } from 'three';
 import { useFrame, useThree } from '@react-three/fiber';
+import { play, type SoundHandle } from '@/audio/engine';
+import { hapticLater } from '@/audio/haptics';
 import type { View } from '@/core/games/spin-the-bottle/logic';
 import { BlobShadow } from '@/three/BlobShadow';
 import { reducedMotion } from '../mexico/dice3d';
@@ -9,7 +11,15 @@ import { BOTTLE_R, bottleParts } from './bottle';
 import { Nameplate } from './seatKit';
 import { ovalSeats, plateWidthFor, type PlateTone } from './seats';
 import { settleOnce } from './settle';
-import { angleAt, durationFor, planSpin, wedgeOffset, wrap, type SpinPlan } from './spin';
+import {
+  angleAt,
+  durationFor,
+  planSpin,
+  velocityAt,
+  wedgeOffset,
+  wrap,
+  type SpinPlan,
+} from './spin';
 
 /** The bottle spins on the felt's centre line, a little back so the HUD never hides it. */
 const CZ = -0.24;
@@ -25,7 +35,16 @@ interface Anim {
   id: number;
   plan: SpinPlan;
   t0: number;
+  /** The glass-on-wood spin loop; its pitch and level follow the bottle's angular velocity. */
+  hum: SoundHandle | null;
 }
+
+/** Angular velocity (rad/s) the spin loop is pitched for: faster flicks top out here. */
+const HUM_FULL = 14;
+/** Spin loop playback rate for an angular velocity (≈0.6 crawling … 1.4 flat out). */
+const humRate = (w: number) => 0.6 + 0.8 * Math.min(1, Math.max(0, w / HUM_FULL));
+/** …and its level: fades away as the bottle slows. */
+const humGain = (w: number) => Math.min(1, Math.max(0, w / HUM_FULL)) ** 0.7;
 
 /** Where the neck points at rest after a spin: the target's seat, nudged inside its wedge. */
 function landingYaw(yaws: readonly number[], seat: number, spinId: number): number {
@@ -62,13 +81,27 @@ export default function SpinTheBottleScene({ view, players, dispatch }: GameView
     const from = yaw.current ?? REST_YAW;
     const to = landingYaw(yaws, Math.max(targetSeat, 0), spinId);
     const short = reducedMotion();
-    anim.current = {
-      id: spinId,
-      plan: short ? planSpin(from, to, 0, 0.6) : planSpin(from, to, turns, durationFor(power)),
-      t0: -1,
-    };
+    const plan = short ? planSpin(from, to, 0, 0.6) : planSpin(from, to, turns, durationFor(power));
+    // A hard flick spins faster: the loop starts higher and louder.
+    const w0 = velocityAt(plan, 0);
+    const hum = short
+      ? null
+      : play('bottle.spin', { exact: true, rate: humRate(w0), gain: humGain(w0) });
+    anim.current?.hum?.stop(80);
+    anim.current = { id: spinId, plan, t0: performance.now() / 1000, hum };
+    // It rocks to a stop, then the pick lands with a ding.
+    const T = plan.duration;
+    play('bottle.stop', { delay: Math.max(0, T - 0.25) });
+    play('bottle.select', { delay: T + 0.2 });
+    hapticLater('impactMedium', (T + 0.2) * 1000);
     invalidate();
   }, [spinning, spinId, targetSeat, turns, power, yaws, invalidate]);
+
+  // Leaving mid-spin: don't leave the loop humming.
+  useEffect(() => {
+    const a = anim;
+    return () => a.current?.hum?.stop(80);
+  }, []);
 
   // At rest (no spin yet, or a settled one): point where it landed.
   useLayoutEffect(() => {
@@ -90,10 +123,16 @@ export default function SpinTheBottleScene({ view, players, dispatch }: GameView
     const th = angleAt(a.plan, t);
     g.rotation.y = th;
     yaw.current = wrap(th);
+    if (a.hum) {
+      const w = velocityAt(a.plan, t);
+      a.hum.setRate(humRate(w), 50);
+      a.hum.setGain(humGain(w), 50);
+    }
     if (t < a.plan.duration) {
       state.invalidate();
       return;
     }
+    a.hum?.stop(120);
     anim.current = null;
     settleOnce('stb', a.id, () =>
       dispatch({ type: 'GAME', action: { type: 'SETTLED', spinId: a.id } }),

@@ -1,6 +1,6 @@
-import { useEffect, useMemo } from 'react';
+import { useEffect, useLayoutEffect, useMemo } from 'react';
 import { MeshStandardMaterial } from 'three';
-import type { ThreeElements } from '@react-three/fiber';
+import { useThree, type ThreeElements } from '@react-three/fiber';
 import { cardGeometries, deckHeight } from './cardGeometry';
 import { cardBackTexture, cardMaterial, deckEdgeTexture } from './cardTextures';
 
@@ -11,13 +11,19 @@ type Deck3DProps = ThreeElements['group'] & { count: number; back: string };
 /** A face-down stack of `count` cards; its top sits at y = deckHeight(count). */
 export function Deck3D({ count, back, ...group }: Deck3DProps) {
   const geo = cardGeometries();
+  const invalidate = useThree((s) => s.invalidate);
   const height = deckHeight(count);
+  // One side material per deck for its whole life: a draw only changes how many paper layers the
+  // stripes repeat (it used to rebuild the material and clone the texture on every draw).
   const side = useMemo(() => {
     const map = deckEdgeTexture().clone();
-    map.repeat.set(1, Math.max(count, 1));
     map.needsUpdate = true;
     return new MeshStandardMaterial({ map, roughness: 0.85 });
-  }, [count]);
+  }, []);
+  useLayoutEffect(() => {
+    side.map?.repeat.set(1, Math.max(count, 1));
+    invalidate();
+  }, [side, count, invalidate]);
   const top = useMemo(() => cardMaterial(cardBackTexture(back)), [back]);
   useEffect(
     () => () => {

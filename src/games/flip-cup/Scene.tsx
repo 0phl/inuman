@@ -2,6 +2,8 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { Group } from 'three';
 import { useFrame, useThree } from '@react-three/fiber';
+import { withHaptic } from '@/audio/cues';
+import { play } from '@/audio/engine';
 import type { View } from '@/core/games/flip-cup/logic';
 import type { TeamIndex } from '@/core/games/beer-pong/skill';
 import { Cup3D, type CupInstance } from '@/three/Cup3D';
@@ -89,6 +91,8 @@ export default function FlipCupScene({ view, dispatch }: GameViewProps<View>) {
   const shown = useRef(new Map<number, CupPose>());
   const anim = useRef<FlipAnim | null>(null);
   const [rows, setRows] = useState<{ team: TeamIndex; beer: boolean; cups: CupInstance[] }[]>([]);
+  /** The row batches need rebuilding (new rest spots); otherwise only while a row cup slides. */
+  const rowsStale = useRef(true);
 
   // New rest spots (a leg ended, a new one starts): slide the cups that moved.
   useEffect(() => {
@@ -106,6 +110,7 @@ export default function FlipCupScene({ view, dispatch }: GameViewProps<View>) {
       if (same || (anim.current && !anim.current.done && i === view.leg)) return;
       moves.current.set(i, { from: was, to: r.pose, start: reduced ? t0 - MOVE_S : t0 });
     });
+    rowsStale.current = true;
     invalidate();
   }, [rest, view.leg, invalidate]);
 
@@ -113,25 +118,32 @@ export default function FlipCupScene({ view, dispatch }: GameViewProps<View>) {
   const flip = view.flip;
   useEffect(() => {
     if (!flip || flip.settled || anim.current?.id === flip.id) return;
-    anim.current = {
-      id: flip.id,
-      kind: flipKind(flip.success, flip.quality),
-      start: now(),
-      reduced: reducedMotion(),
-      done: false,
-    };
+    const kind = flipKind(flip.success, flip.quality);
+    const reduced = reducedMotion();
+    anim.current = { id: flip.id, kind, start: now(), reduced, done: false };
     moves.current.delete(view.leg);
+    // The flick, then a clean clack mouth-down, or the cup rocking back / tipping over. Times
+    // follow the flip script in flip.ts.
+    play('flip.whoosh', { delay: reduced ? 0 : 0.1 });
+    if (kind === 'flip') withHaptic('flip.land', 'success', { delay: reduced ? 0.36 : 0.74 });
+    else
+      withHaptic('flip.fail', 'error', {
+        delay: reduced ? 0.2 : kind === 'under' ? 0.42 : 0.72,
+      });
     invalidate();
   }, [flip, view.leg, invalidate]);
 
   useFrame((three) => {
     const t = now();
     let moving = false;
+    // Any slide this frame (its last one included) means the row batches change.
+    let slid = false;
     const posed: { pose: CupPose; scale: number }[] = rest.map((r, i) => {
       const m = moves.current.get(i);
       if (!m) return { pose: shown.current.get(i) ?? r.pose, scale: r.scale };
       const k = clamp01((t - m.start) / MOVE_S);
       const pose = lerpPose(m.from, m.to, easeInOut(k), 0.12);
+      slid = true;
       if (k >= 1) moves.current.delete(i);
       else moving = true;
       return { pose, scale: r.scale };
@@ -166,6 +178,11 @@ export default function FlipCupScene({ view, dispatch }: GameViewProps<View>) {
       }
     }
 
+    if (moving) three.invalidate();
+    // The flipping cup isn't in the rows: during a flip they stay as they are (no React work).
+    if (!slid && !rowsStale.current) return;
+    rowsStale.current = false;
+
     // Row cups: two batches per team, with beer (still to play) and without (done).
     const next = TEAMS.flatMap((team) =>
       [true, false].map((beer) => ({
@@ -182,12 +199,13 @@ export default function FlipCupScene({ view, dispatch }: GameViewProps<View>) {
     );
     setRows((prev) =>
       prev.length === next.length &&
-      prev.every((r, i) => sameCups(r.cups, next[i]?.cups ?? [])) &&
-      !moving
+      prev.every(
+        (r, i) =>
+          r.team === next[i]?.team && r.beer === next[i]?.beer && sameCups(r.cups, next[i].cups),
+      )
         ? prev
         : next,
     );
-    if (moving) three.invalidate();
   });
 
   const leg = over ? null : view.legs[view.leg];

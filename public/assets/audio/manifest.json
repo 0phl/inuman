@@ -1,0 +1,1400 @@
+{
+  "version": 1,
+  "sfx": {
+    "ui.tap": {
+      "files": [
+        "sfx/ui.tap_1.mp3",
+        "sfx/ui.tap_2.mp3",
+        "sfx/ui.tap_3.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.0849,
+        0.086,
+        0.0765
+      ]
+    },
+    "ui.tapPrimary": {
+      "files": [
+        "sfx/ui.tapPrimary_1.mp3",
+        "sfx/ui.tapPrimary_2.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.1375,
+        0.0791
+      ]
+    },
+    "ui.select": {
+      "files": [
+        "sfx/ui.select_1.mp3",
+        "sfx/ui.select_2.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.0644,
+        0.0454
+      ]
+    },
+    "ui.toggleOn": {
+      "files": [
+        "sfx/ui.toggleOn_1.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.0778
+      ]
+    },
+    "ui.toggleOff": {
+      "files": [
+        "sfx/ui.toggleOff_1.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.1062
+      ]
+    },
+    "ui.back": {
+      "files": [
+        "sfx/ui.back_1.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "synth",
+      "durationsSec": [
+        0.1518
+      ]
+    },
+    "ui.sheetOpen": {
+      "files": [
+        "sfx/ui.sheetOpen_1.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "synth",
+      "durationsSec": [
+        0.2107
+      ]
+    },
+    "ui.sheetClose": {
+      "files": [
+        "sfx/ui.sheetClose_1.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "synth",
+      "durationsSec": [
+        0.2038
+      ]
+    },
+    "ui.error": {
+      "files": [
+        "sfx/ui.error_1.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "synth",
+      "durationsSec": [
+        0.2376
+      ]
+    },
+    "ui.success": {
+      "files": [
+        "sfx/ui.success_1.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "synth",
+      "durationsSec": [
+        0.5
+      ]
+    },
+    "ui.notice": {
+      "files": [
+        "sfx/ui.notice_1.mp3",
+        "sfx/ui.notice_2.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "synth",
+      "durationsSec": [
+        0.5392,
+        0.5412
+      ]
+    },
+    "ui.pass": {
+      "files": [
+        "sfx/ui.pass_1.mp3",
+        "sfx/ui.pass_2.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.314,
+        0.314
+      ]
+    },
+    "ui.reveal": {
+      "files": [
+        "sfx/ui.reveal_1.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "synth",
+      "durationsSec": [
+        0.5369
+      ]
+    },
+    "ui.water": {
+      "files": [
+        "sfx/ui.water_1.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        1.7126
+      ]
+    },
+    "ui.gameStart": {
+      "files": [
+        "sfx/ui.gameStart_1.mp3",
+        "sfx/ui.gameStart_2.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.3187,
+        0.4213
+      ]
+    },
+    "drink.cheers": {
+      "files": [
+        "sfx/drink.cheers_1.mp3",
+        "sfx/drink.cheers_2.mp3",
+        "sfx/drink.cheers_3.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.8123,
+        0.9389,
+        0.4461
+      ]
+    },
+    "drink.social": {
+      "files": [
+        "sfx/drink.social_1.mp3",
+        "sfx/drink.social_2.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.8938,
+        0.7702
+      ]
+    },
+    "drink.finish": {
+      "files": [
+        "sfx/drink.finish_1.mp3",
+        "sfx/drink.finish_2.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.4087,
+        0.2217
+      ]
+    },
+    "drink.give": {
+      "files": [
+        "sfx/drink.give_1.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "synth",
+      "durationsSec": [
+        0.3694
+      ]
+    },
+    "game.correct": {
+      "files": [
+        "sfx/game.correct_1.mp3",
+        "sfx/game.correct_2.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "synth",
+      "durationsSec": [
+        0.75,
+        0.75
+      ]
+    },
+    "game.wrong": {
+      "files": [
+        "sfx/game.wrong_1.mp3",
+        "sfx/game.wrong_2.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "synth",
+      "durationsSec": [
+        0.4138,
+        0.4238
+      ]
+    },
+    "game.tie": {
+      "files": [
+        "sfx/game.tie_1.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "synth",
+      "durationsSec": [
+        0.4316
+      ]
+    },
+    "game.streak": {
+      "files": [
+        "sfx/game.streak_1.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "synth",
+      "durationsSec": [
+        0.9497
+      ]
+    },
+    "game.roundOver": {
+      "files": [
+        "sfx/game.roundOver_1.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.7781
+      ]
+    },
+    "game.win": {
+      "files": [
+        "sfx/game.win_1.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.8515
+      ]
+    },
+    "game.lose": {
+      "files": [
+        "sfx/game.lose_1.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        1.6831
+      ]
+    },
+    "game.sting": {
+      "files": [
+        "sfx/game.sting_1.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        1.1434
+      ]
+    },
+    "card.slide": {
+      "files": [
+        "sfx/card.slide_1.mp3",
+        "sfx/card.slide_2.mp3",
+        "sfx/card.slide_3.mp3",
+        "sfx/card.slide_4.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.1073,
+        0.4959,
+        0.5709,
+        0.191
+      ]
+    },
+    "card.flip": {
+      "files": [
+        "sfx/card.flip_1.mp3",
+        "sfx/card.flip_2.mp3",
+        "sfx/card.flip_3.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.1725,
+        0.2,
+        0.23
+      ]
+    },
+    "card.place": {
+      "files": [
+        "sfx/card.place_1.mp3",
+        "sfx/card.place_2.mp3",
+        "sfx/card.place_3.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.1704,
+        0.1912,
+        0.2852
+      ]
+    },
+    "card.shuffle": {
+      "files": [
+        "sfx/card.shuffle_1.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        1.5392
+      ]
+    },
+    "card.fan": {
+      "files": [
+        "sfx/card.fan_1.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.7198
+      ]
+    },
+    "dice.grab": {
+      "files": [
+        "sfx/dice.grab_1.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.3314
+      ]
+    },
+    "dice.shake": {
+      "files": [
+        "sfx/dice.shake_1.mp3",
+        "sfx/dice.shake_2.mp3"
+      ],
+      "gainDb": 0,
+      "loop": true,
+      "origin": "recorded",
+      "durationsSec": [
+        1.022,
+        1.018
+      ]
+    },
+    "dice.throw": {
+      "files": [
+        "sfx/dice.throw_1.mp3",
+        "sfx/dice.throw_2.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.1656,
+        0.1937
+      ]
+    },
+    "dice.hitTable": {
+      "files": [
+        "sfx/dice.hitTable_1.mp3",
+        "sfx/dice.hitTable_2.mp3",
+        "sfx/dice.hitTable_3.mp3",
+        "sfx/dice.hitTable_4.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.098,
+        0.1208,
+        0.1109,
+        0.1463
+      ]
+    },
+    "dice.hitDie": {
+      "files": [
+        "sfx/dice.hitDie_1.mp3",
+        "sfx/dice.hitDie_2.mp3",
+        "sfx/dice.hitDie_3.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.0755,
+        0.0633,
+        0.0824
+      ]
+    },
+    "dice.hitWall": {
+      "files": [
+        "sfx/dice.hitWall_1.mp3",
+        "sfx/dice.hitWall_2.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.1536,
+        0.1599
+      ]
+    },
+    "cup.slam": {
+      "files": [
+        "sfx/cup.slam_1.mp3",
+        "sfx/cup.slam_2.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.2365,
+        0.2139
+      ]
+    },
+    "cup.lift": {
+      "files": [
+        "sfx/cup.lift_1.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.2
+      ]
+    },
+    "bottle.spin": {
+      "files": [
+        "sfx/bottle.spin_1.mp3"
+      ],
+      "gainDb": 0,
+      "loop": true,
+      "origin": "mixed",
+      "durationsSec": [
+        1
+      ]
+    },
+    "bottle.stop": {
+      "files": [
+        "sfx/bottle.stop_1.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.3706
+      ]
+    },
+    "bottle.select": {
+      "files": [
+        "sfx/bottle.select_1.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.7475
+      ]
+    },
+    "wheel.tick": {
+      "files": [
+        "sfx/wheel.tick_1.mp3",
+        "sfx/wheel.tick_2.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.0351,
+        0.0276
+      ]
+    },
+    "wheel.whoosh": {
+      "files": [
+        "sfx/wheel.whoosh_1.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.3527
+      ]
+    },
+    "wheel.stop": {
+      "files": [
+        "sfx/wheel.stop_1.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.4234
+      ]
+    },
+    "throw.whoosh": {
+      "files": [
+        "sfx/throw.whoosh_1.mp3",
+        "sfx/throw.whoosh_2.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.1677,
+        0.2351
+      ]
+    },
+    "ball.bounce": {
+      "files": [
+        "sfx/ball.bounce_1.mp3",
+        "sfx/ball.bounce_2.mp3",
+        "sfx/ball.bounce_3.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.1332,
+        0.1317,
+        0.1367
+      ]
+    },
+    "ball.rim": {
+      "files": [
+        "sfx/ball.rim_1.mp3",
+        "sfx/ball.rim_2.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.085,
+        0.074
+      ]
+    },
+    "ball.plop": {
+      "files": [
+        "sfx/ball.plop_1.mp3",
+        "sfx/ball.plop_2.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.4928,
+        0.3051
+      ]
+    },
+    "cup.remove": {
+      "files": [
+        "sfx/cup.remove_1.mp3",
+        "sfx/cup.remove_2.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.2266,
+        0.2061
+      ]
+    },
+    "cup.rerack": {
+      "files": [
+        "sfx/cup.rerack_1.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.6605
+      ]
+    },
+    "coin.bounce": {
+      "files": [
+        "sfx/coin.bounce_1.mp3",
+        "sfx/coin.bounce_2.mp3",
+        "sfx/coin.bounce_3.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.7208,
+        0.3004,
+        0.2905
+      ]
+    },
+    "coin.rim": {
+      "files": [
+        "sfx/coin.rim_1.mp3",
+        "sfx/coin.rim_2.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.1153,
+        0.0787
+      ]
+    },
+    "coin.ding": {
+      "files": [
+        "sfx/coin.ding_1.mp3",
+        "sfx/coin.ding_2.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.7747,
+        0.7207
+      ]
+    },
+    "flip.whoosh": {
+      "files": [
+        "sfx/flip.whoosh_1.mp3",
+        "sfx/flip.whoosh_2.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.1513,
+        0.1664
+      ]
+    },
+    "flip.land": {
+      "files": [
+        "sfx/flip.land_1.mp3",
+        "sfx/flip.land_2.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.2265,
+        0.1759
+      ]
+    },
+    "flip.fail": {
+      "files": [
+        "sfx/flip.fail_1.mp3",
+        "sfx/flip.fail_2.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.8219,
+        0.48
+      ]
+    },
+    "pour.beer": {
+      "files": [
+        "sfx/pour.beer_1.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        2.4829
+      ]
+    },
+    "chips.stack": {
+      "files": [
+        "sfx/chips.stack_1.mp3",
+        "sfx/chips.stack_2.mp3",
+        "sfx/chips.stack_3.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.1006,
+        0.1058,
+        0.0874
+      ]
+    },
+    "bus.horn": {
+      "files": [
+        "sfx/bus.horn_1.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        0.5644
+      ]
+    },
+    "bus.crash": {
+      "files": [
+        "sfx/bus.crash_1.mp3"
+      ],
+      "gainDb": 0,
+      "loop": false,
+      "origin": "recorded",
+      "durationsSec": [
+        1.0282
+      ]
+    },
+    "ambience.bar": {
+      "files": [
+        "sfx/ambience.bar_1.mp3"
+      ],
+      "gainDb": 0,
+      "loop": true,
+      "origin": "recorded",
+      "durationsSec": [
+        38.5
+      ]
+    }
+  },
+  "music": {
+    "opm-acoustic": {
+      "file": "music/opm-acoustic.mp3",
+      "title": "Clear Air",
+      "artist": "Kevin MacLeod (incompetech.com)",
+      "license": "CC-BY 4.0",
+      "url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100626",
+      "loopStart": null,
+      "loopEnd": null,
+      "durationSec": 181.5
+    },
+    "lofi-lounge": {
+      "file": "music/lofi-lounge.mp3",
+      "title": "Study And Relax",
+      "artist": "Kevin MacLeod (incompetech.com)",
+      "license": "CC-BY 4.0",
+      "url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1900030",
+      "loopStart": 16.666667,
+      "loopEnd": 123.333333,
+      "durationSec": 126.5
+    },
+    "retro-videoke": {
+      "file": "music/retro-videoke.mp3",
+      "title": "Newer Wave",
+      "artist": "Kevin MacLeod (incompetech.com)",
+      "license": "CC-BY 4.0",
+      "url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN2000024",
+      "loopStart": null,
+      "loopEnd": null,
+      "durationSec": 172.1
+    }
+  },
+  "credits": [
+    {
+      "what": "Wooden clicks.wav",
+      "author": "Anzbot",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/Anzbot/sounds/565027/",
+      "ids": [
+        "ui.tap",
+        "ui.tapPrimary"
+      ]
+    },
+    {
+      "what": "Button click",
+      "author": "Kolombooo",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/Kolombooo/sounds/629020/",
+      "ids": [
+        "ui.select"
+      ]
+    },
+    {
+      "what": "Light Switch Click On and Off",
+      "author": "SomeoneCool15",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/SomeoneCool15/sounds/423512/",
+      "ids": [
+        "ui.toggleOff",
+        "ui.toggleOn"
+      ]
+    },
+    {
+      "what": "Whoosh For Whip Zoom",
+      "author": "BennettFilmTeacher",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/BennettFilmTeacher/sounds/486234/",
+      "ids": [
+        "flip.whoosh",
+        "throw.whoosh",
+        "ui.pass",
+        "wheel.whoosh"
+      ]
+    },
+    {
+      "what": "Pouring water in a glass",
+      "author": "DenysFontanarosa",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/DenysFontanarosa/sounds/579752/",
+      "ids": [
+        "ui.water"
+      ]
+    },
+    {
+      "what": "soda bottle open",
+      "author": "supersnd",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/supersnd/sounds/350618/",
+      "ids": [
+        "ui.gameStart"
+      ]
+    },
+    {
+      "what": "Opening Beer Bottle 170428_1469.wav",
+      "author": "megashroom",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/megashroom/sounds/390337/",
+      "ids": [
+        "ui.gameStart"
+      ]
+    },
+    {
+      "what": "Opening a bottle of beer.WAV",
+      "author": "13GPanska_Gorbusinova_Anna",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/13GPanska_Gorbusinova_Anna/sounds/377991/",
+      "ids": [
+        "ui.gameStart"
+      ]
+    },
+    {
+      "what": "Wine Glass Clinks (5), Heavy",
+      "author": "CHallSmith",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/CHallSmith/sounds/870720/",
+      "ids": [
+        "ambience.bar",
+        "drink.cheers",
+        "drink.social"
+      ]
+    },
+    {
+      "what": "Wine Glass Clink1.m4a",
+      "author": "RoyalRose",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/RoyalRose/sounds/560299/",
+      "ids": [
+        "ambience.bar",
+        "drink.cheers"
+      ]
+    },
+    {
+      "what": "Bottles Clinking.aif",
+      "author": "MegaPenguin13",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/MegaPenguin13/sounds/118199/",
+      "ids": [
+        "ambience.bar",
+        "drink.cheers",
+        "drink.social"
+      ]
+    },
+    {
+      "what": "clink glasses.wav",
+      "author": "Mikes-MultiMedia",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/Mikes-MultiMedia/sounds/349691/",
+      "ids": [
+        "drink.social"
+      ]
+    },
+    {
+      "what": "Empty Beer Bottles Clinking, Clanking.wav",
+      "author": "Fugeni",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/Fugeni/sounds/416288/",
+      "ids": [
+        "ambience.bar",
+        "drink.social"
+      ]
+    },
+    {
+      "what": "Toasting on Glasses",
+      "author": "elricadavis",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/elricadavis/sounds/764616/",
+      "ids": [
+        "drink.social"
+      ]
+    },
+    {
+      "what": "Wine Glass clank 1",
+      "author": "wasserbjorn",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/wasserbjorn/sounds/761135/",
+      "ids": [
+        "ambience.bar",
+        "drink.social"
+      ]
+    },
+    {
+      "what": "Glass cup pick up put down on wood table.wav",
+      "author": "SpliceSound",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/SpliceSound/sounds/218333/",
+      "ids": [
+        "drink.finish"
+      ]
+    },
+    {
+      "what": "shot glass slam.aif",
+      "author": "soundboy2000",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/soundboy2000/sounds/205880/",
+      "ids": [
+        "drink.finish"
+      ]
+    },
+    {
+      "what": "Music Jingles (pack)",
+      "author": "Kenney (kenney.nl)",
+      "license": "CC0 1.0",
+      "url": "https://kenney.nl/assets/music-jingles",
+      "ids": [
+        "game.lose",
+        "game.roundOver",
+        "game.sting",
+        "game.win"
+      ]
+    },
+    {
+      "what": "Casino Audio (pack)",
+      "author": "Kenney (kenney.nl)",
+      "license": "CC0 1.0",
+      "url": "https://kenney.nl/assets/casino-audio",
+      "ids": [
+        "bus.crash",
+        "card.fan",
+        "card.place",
+        "card.slide",
+        "chips.stack",
+        "dice.grab",
+        "dice.hitTable",
+        "dice.hitWall"
+      ]
+    },
+    {
+      "what": "Card Deal",
+      "author": "RealSquink",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/RealSquink/sounds/787405/",
+      "ids": [
+        "card.flip"
+      ]
+    },
+    {
+      "what": "Playing Card Deal Variation 1",
+      "author": "el_boss",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/el_boss/sounds/571577/",
+      "ids": [
+        "card.flip"
+      ]
+    },
+    {
+      "what": "flipCard.wav",
+      "author": "Splashdust",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/Splashdust/sounds/84322/",
+      "ids": [
+        "card.flip"
+      ]
+    },
+    {
+      "what": "Riffle Card Shuffle",
+      "author": "Kodack",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/Kodack/sounds/256508/",
+      "ids": [
+        "card.shuffle"
+      ]
+    },
+    {
+      "what": "Dice Cup",
+      "author": "Breviceps",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/Breviceps/sounds/466141/",
+      "ids": [
+        "dice.shake",
+        "dice.throw"
+      ]
+    },
+    {
+      "what": "Cachos y dados.mp3",
+      "author": "Frankail",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/Frankail/sounds/151165/",
+      "ids": [
+        "cup.lift",
+        "dice.throw"
+      ]
+    },
+    {
+      "what": "Swinging axe.mp3",
+      "author": "ZHRØ",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/ZHRØ/sounds/514162/",
+      "ids": [
+        "dice.throw",
+        "flip.whoosh",
+        "throw.whoosh"
+      ]
+    },
+    {
+      "what": "rolling dice 1.wav",
+      "author": "nettimato",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/nettimato/sounds/353975/",
+      "ids": [
+        "dice.hitDie"
+      ]
+    },
+    {
+      "what": "Impact Sounds (pack)",
+      "author": "Kenney (kenney.nl)",
+      "license": "CC0 1.0",
+      "url": "https://kenney.nl/assets/impact-sounds",
+      "ids": [
+        "dice.hitWall",
+        "wheel.stop"
+      ]
+    },
+    {
+      "what": "Dice (3) slam on felt.wav",
+      "author": "2BACH",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/2BACH/sounds/185977/",
+      "ids": [
+        "cup.slam"
+      ]
+    },
+    {
+      "what": "RPG Audio (pack)",
+      "author": "Kenney (kenney.nl)",
+      "license": "CC0 1.0",
+      "url": "https://kenney.nl/assets/rpg-audio",
+      "ids": [
+        "cup.lift"
+      ]
+    },
+    {
+      "what": "quick empty wine bottle spin - 1",
+      "author": "FOSSarts",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/FOSSarts/sounds/762366/",
+      "ids": [
+        "bottle.spin",
+        "bottle.stop"
+      ]
+    },
+    {
+      "what": "Glass ding 2",
+      "author": "Counter-gamer",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/Counter-gamer/sounds/404105/",
+      "ids": [
+        "bottle.select"
+      ]
+    },
+    {
+      "what": "toy ratchet.wav",
+      "author": "monotraum",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/monotraum/sounds/376195/",
+      "ids": [
+        "wheel.stop",
+        "wheel.tick"
+      ]
+    },
+    {
+      "what": "Dropping ping pong ball on table 2",
+      "author": "giddster",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/giddster/sounds/414461/",
+      "ids": [
+        "ball.bounce"
+      ]
+    },
+    {
+      "what": "Ping pong ball hit",
+      "author": "michorvath",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/michorvath/sounds/269718/",
+      "ids": [
+        "ball.rim"
+      ]
+    },
+    {
+      "what": "Plastic-Cup.wav",
+      "author": "chebere1001",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/chebere1001/sounds/153395/",
+      "ids": [
+        "ball.rim",
+        "cup.rerack",
+        "flip.land",
+        "flip.whoosh"
+      ]
+    },
+    {
+      "what": "Ping pong impact the table.WAV",
+      "author": "14FPanskaBubik_Lukas",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/14FPanskaBubik_Lukas/sounds/418555/",
+      "ids": [
+        "ball.rim"
+      ]
+    },
+    {
+      "what": "Plastic Ting.wav",
+      "author": "LuttoAudio",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/LuttoAudio/sounds/170236/",
+      "ids": [
+        "ball.rim"
+      ]
+    },
+    {
+      "what": "Solo cup clink water splashback.wav",
+      "author": "MootMcnoodles",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/MootMcnoodles/sounds/444410/",
+      "ids": [
+        "ball.plop"
+      ]
+    },
+    {
+      "what": "Fishing Lure Plop Water - Game SFX (2 or 2)",
+      "author": "el_boss",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/el_boss/sounds/853279/",
+      "ids": [
+        "ball.plop"
+      ]
+    },
+    {
+      "what": "First Person Ball Water Drop Splash",
+      "author": "qubodup",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/qubodup/sounds/867498/",
+      "ids": [
+        "ball.plop"
+      ]
+    },
+    {
+      "what": "drinking cup slide",
+      "author": "getwecked",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/getwecked/sounds/765084/",
+      "ids": [
+        "cup.remove",
+        "cup.rerack"
+      ]
+    },
+    {
+      "what": "plastic cup down.flac",
+      "author": "kyles",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/kyles/sounds/637753/",
+      "ids": [
+        "cup.rerack",
+        "flip.whoosh"
+      ]
+    },
+    {
+      "what": "Cup Drop",
+      "author": "davdud101",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/davdud101/sounds/150501/",
+      "ids": [
+        "cup.rerack",
+        "flip.land"
+      ]
+    },
+    {
+      "what": "Plastic cup dropping",
+      "author": "oztrum",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/oztrum/sounds/401773/",
+      "ids": [
+        "cup.rerack"
+      ]
+    },
+    {
+      "what": "Coin Dropped:Bounced on Wooden Desk (Longer Sound).mp3",
+      "author": "dominictreis",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/dominictreis/sounds/334939/",
+      "ids": [
+        "coin.bounce"
+      ]
+    },
+    {
+      "what": "flipping a small coin",
+      "author": "florianreichelt",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/florianreichelt/sounds/447462/",
+      "ids": [
+        "coin.bounce"
+      ]
+    },
+    {
+      "what": "money5.wav",
+      "author": "florian_reinke",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/florian_reinke/sounds/63524/",
+      "ids": [
+        "coin.bounce"
+      ]
+    },
+    {
+      "what": "Coin on glass 3",
+      "author": "D4XX",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/D4XX/sounds/617039/",
+      "ids": [
+        "coin.rim"
+      ]
+    },
+    {
+      "what": "Drop Coin into Glass",
+      "author": "thedapperdan",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/thedapperdan/sounds/199922/",
+      "ids": [
+        "coin.ding"
+      ]
+    },
+    {
+      "what": "Plastic cup",
+      "author": "avreference",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/avreference/sounds/707395/",
+      "ids": [
+        "flip.fail"
+      ]
+    },
+    {
+      "what": "Plastic cup falling on wooden table",
+      "author": "grizzlypwn",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/grizzlypwn/sounds/347950/",
+      "ids": [
+        "flip.fail"
+      ]
+    },
+    {
+      "what": "Pour Beer Into Glass #1",
+      "author": "Kinoton",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/Kinoton/sounds/347006/",
+      "ids": [
+        "pour.beer"
+      ]
+    },
+    {
+      "what": "Car horn beep beep two beeps honk honk",
+      "author": "AmishRob",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/AmishRob/sounds/423990/",
+      "ids": [
+        "bus.horn"
+      ]
+    },
+    {
+      "what": "Ambience_Bar_No_Music.wav",
+      "author": "Dokuta_Gerovv",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/Dokuta_Gerovv/sounds/661686/",
+      "ids": [
+        "ambience.bar"
+      ]
+    },
+    {
+      "what": "Clear Air",
+      "author": "Kevin MacLeod (incompetech.com)",
+      "license": "CC-BY 4.0",
+      "url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100626",
+      "ids": [
+        "music:opm-acoustic"
+      ]
+    },
+    {
+      "what": "Study And Relax",
+      "author": "Kevin MacLeod (incompetech.com)",
+      "license": "CC-BY 4.0",
+      "url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1900030",
+      "ids": [
+        "music:lofi-lounge"
+      ]
+    },
+    {
+      "what": "Newer Wave",
+      "author": "Kevin MacLeod (incompetech.com)",
+      "license": "CC-BY 4.0",
+      "url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN2000024",
+      "ids": [
+        "music:retro-videoke"
+      ]
+    },
+    {
+      "what": "Synthesized sounds (original, made for Inuman)",
+      "author": "Inuman",
+      "license": "CC0 1.0",
+      "url": "",
+      "ids": [
+        "bottle.spin",
+        "drink.give",
+        "game.correct",
+        "game.streak",
+        "game.tie",
+        "game.wrong",
+        "ui.back",
+        "ui.error",
+        "ui.notice",
+        "ui.reveal",
+        "ui.sheetClose",
+        "ui.sheetOpen",
+        "ui.success"
+      ]
+    }
+  ]
+}

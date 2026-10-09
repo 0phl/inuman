@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
+import { MUSIC } from '@/audio/catalog';
 import {
   DEFAULT_INTENSITY,
   IntensitySchema,
@@ -12,15 +13,36 @@ export const QUALITY_OPTIONS = ['auto', 'low', 'mid', 'high'] as const;
 export type Quality = (typeof QUALITY_OPTIONS)[number];
 export type Tier = Exclude<Quality, 'auto'>;
 
-export interface SettingsData {
+/** A music track id from the catalog, or 'shuffle' ("Halo-halo": every track, in random order). */
+export type MusicChoice = string;
+export const SHUFFLE = 'shuffle';
+export const MUSIC_CHOICES: readonly MusicChoice[] = [...MUSIC.map((m) => m.id), SHUFFLE];
+
+/** The sound and haptics settings (all volumes are 0..1 sliders). */
+export interface AudioSettings {
+  /** Master switch: off silences effects, music and ambience alike. */
+  sound: boolean;
+  masterVolume: number;
+  /** UI clicks and game effects. */
+  sfxVolume: number;
+  music: boolean;
+  musicTrack: MusicChoice;
+  musicVolume: number;
+  /** The bar room-tone loop. */
+  ambience: boolean;
+  ambienceVolume: number;
+  /** iOS: let the barkada's own music (Spotify…) keep playing alongside the app. */
+  mixWithOthers: boolean;
+  haptics: boolean;
+}
+
+export interface SettingsData extends AudioSettings {
   locale: Locale;
   ageConfirmed: boolean;
   quality: Quality;
   /** Result of GPU detection / runtime step-downs, remembered so we only probe once. */
   detectedTier: Tier | null;
   intensity: Intensity;
-  sound: boolean;
-  haptics: boolean;
 }
 
 interface SettingsActions {
@@ -31,9 +53,24 @@ interface SettingsActions {
   setIntensity(patch: Partial<Intensity>): void;
   setSound(on: boolean): void;
   setHaptics(on: boolean): void;
+  /** Any of the sound settings at once (values are clamped / validated). */
+  setAudio(patch: Partial<AudioSettings>): void;
 }
 
 export type SettingsState = SettingsData & SettingsActions;
+
+export const DEFAULT_AUDIO: AudioSettings = {
+  sound: true,
+  masterVolume: 0.9,
+  sfxVolume: 0.85,
+  music: true,
+  musicTrack: 'opm-acoustic',
+  musicVolume: 0.3,
+  ambience: false,
+  ambienceVolume: 0.5,
+  mixWithOthers: true,
+  haptics: true,
+};
 
 export const DEFAULT_SETTINGS: SettingsData = {
   locale: 'taglish',
@@ -41,11 +78,37 @@ export const DEFAULT_SETTINGS: SettingsData = {
   quality: 'auto',
   detectedTier: null,
   intensity: DEFAULT_INTENSITY,
-  sound: true,
-  haptics: true,
+  ...DEFAULT_AUDIO,
 };
 
-const SETTINGS_VERSION = 1;
+/**
+ * v1: language, intensity, quality and two booleans (sound, haptics).
+ * v2: the audio engine — volumes, music track, ambience, mix-with-other-apps.
+ */
+export const SETTINGS_VERSION = 2;
+
+const bool = (v: unknown, fallback: boolean) => (typeof v === 'boolean' ? v : fallback);
+const volume = (v: unknown, fallback: number) =>
+  typeof v === 'number' && Number.isFinite(v) ? Math.min(1, Math.max(0, v)) : fallback;
+const track = (v: unknown): MusicChoice =>
+  typeof v === 'string' && MUSIC_CHOICES.includes(v) ? v : DEFAULT_AUDIO.musicTrack;
+
+/** Validates the sound settings field by field; anything unknown falls back to its default. */
+export function sanitizeAudio(raw: Partial<Record<keyof AudioSettings, unknown>>): AudioSettings {
+  const d = DEFAULT_AUDIO;
+  return {
+    sound: bool(raw.sound, d.sound),
+    masterVolume: volume(raw.masterVolume, d.masterVolume),
+    sfxVolume: volume(raw.sfxVolume, d.sfxVolume),
+    music: bool(raw.music, d.music),
+    musicTrack: track(raw.musicTrack),
+    musicVolume: volume(raw.musicVolume, d.musicVolume),
+    ambience: bool(raw.ambience, d.ambience),
+    ambienceVolume: volume(raw.ambienceVolume, d.ambienceVolume),
+    mixWithOthers: bool(raw.mixWithOthers, d.mixWithOthers),
+    haptics: bool(raw.haptics, d.haptics),
+  };
+}
 
 /** Accepts anything from storage and returns a valid settings object. */
 export function sanitizeSettings(raw: unknown): SettingsData {
@@ -60,9 +123,19 @@ export function sanitizeSettings(raw: unknown): SettingsData {
     quality: QUALITY_OPTIONS.includes(r.quality as Quality) ? (r.quality as Quality) : 'auto',
     detectedTier: tier(r.detectedTier) ? r.detectedTier : null,
     intensity: intensity.success ? intensity.data : DEFAULT_INTENSITY,
-    sound: typeof r.sound === 'boolean' ? r.sound : DEFAULT_SETTINGS.sound,
-    haptics: typeof r.haptics === 'boolean' ? r.haptics : DEFAULT_SETTINGS.haptics,
+    ...sanitizeAudio(r),
   };
+}
+
+/**
+ * Brings stored settings of any earlier version up to SETTINGS_VERSION. v0 never shipped and
+ * v1 → v2 only added fields, so both are sanitized field by field: what v1 stored (including
+ * its sound/haptics switches) is kept and the new audio fields get their defaults.
+ */
+export function migrateSettings(persisted: unknown, _fromVersion: number): SettingsData {
+  // Nothing was renamed between versions, so sanitizing is the whole migration: v1's "Tunog"
+  // switch stays the master switch and the new audio fields fill in from their defaults.
+  return sanitizeSettings(persisted);
 }
 
 export const useSettings = create<SettingsState>()(
@@ -80,6 +153,7 @@ export const useSettings = create<SettingsState>()(
         }),
       setSound: (sound) => set({ sound }),
       setHaptics: (haptics) => set({ haptics }),
+      setAudio: (patch) => set((s) => sanitizeAudio({ ...pickAudio(s), ...patch })),
     }),
     {
       name: 'inuman.settings',
@@ -91,12 +165,26 @@ export const useSettings = create<SettingsState>()(
         quality: s.quality,
         detectedTier: s.detectedTier,
         intensity: s.intensity,
-        sound: s.sound,
-        haptics: s.haptics,
+        ...pickAudio(s),
       }),
-      // v0 never shipped; any older/unknown shape is sanitized field by field.
-      migrate: (persisted) => sanitizeSettings(persisted),
+      migrate: (persisted, version) => migrateSettings(persisted, version),
       merge: (persisted, current) => ({ ...current, ...sanitizeSettings(persisted) }),
     },
   ),
 );
+
+/** Just the sound settings out of the whole state. */
+export function pickAudio(s: AudioSettings): AudioSettings {
+  return {
+    sound: s.sound,
+    masterVolume: s.masterVolume,
+    sfxVolume: s.sfxVolume,
+    music: s.music,
+    musicTrack: s.musicTrack,
+    musicVolume: s.musicVolume,
+    ambience: s.ambience,
+    ambienceVolume: s.ambienceVolume,
+    mixWithOthers: s.mixWithOthers,
+    haptics: s.haptics,
+  };
+}

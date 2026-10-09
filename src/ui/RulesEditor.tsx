@@ -7,6 +7,7 @@ import { MAX_PRESET_NAME, useRules } from '@/store/rules';
 import { Segmented, Stepper, Toggle } from './controls';
 import { IconChevron, IconClose, IconShare } from './icons';
 import { getAt, rulesFields, setAt, type FieldNode, type Primitive } from './rulesForm';
+import { feedback } from '@/audio/feedback';
 
 interface FieldProps {
   field: FieldNode;
@@ -186,6 +187,7 @@ export function RulesEditor({
   const save = () => {
     const err = savePreset(gameId, name);
     setError(err);
+    feedback(err ? 'error' : 'success');
     if (!err) {
       setNaming(false);
       setName('');

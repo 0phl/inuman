@@ -1,18 +1,13 @@
-// The only door to the throw pre-sim chunk (Rapier). Everything else imports throwSim types only,
-// so the WASM loads when a skill game first asks for it and never ships with the app shell.
+// The only door to the throw pre-sim: everything else imports throwSim types only. It runs in the
+// physics worker (Rapier's ~2 MB of WASM loads there, on first use); see physicsWorker.ts.
+import { presimulateThrowInWorker } from './physicsWorker';
 import { fallbackThrow } from './throwMath';
 import type { PresimThrowInput, PresimThrowOutput } from './throwSim';
 
-type ThrowSimModule = typeof import('./throwSim');
+const throwSim = { presimThrow: presimulateThrowInWorker };
 
-let mod: Promise<ThrowSimModule> | null = null;
-
-export function loadThrowSim(): Promise<ThrowSimModule> {
-  mod ??= import('./throwSim').catch((err: unknown) => {
-    mod = null; // let a later throw retry (e.g. a flaky network on first load)
-    throw err;
-  });
-  return mod;
+export function loadThrowSim(): Promise<typeof throwSim> {
+  return Promise.resolve(throwSim);
 }
 
 /**

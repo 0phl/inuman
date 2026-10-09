@@ -2,6 +2,8 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Quaternion, Vector3, type Group, type Mesh, type MeshBasicMaterial } from 'three';
 import { useFrame, useThree } from '@react-three/fiber';
+import { outcome } from '@/audio/cues';
+import { play } from '@/audio/engine';
 import {
   lockDice,
   ROLE_FACE,
@@ -128,7 +130,11 @@ function DockDie({
   );
 
   useEffect(() => {
-    if (anim.current) invalidate();
+    const a = anim.current;
+    if (!a) return;
+    invalidate();
+    // Hops over and knocks down on the narra dock.
+    play('dice.hitWall', { delay: a.delay + a.dur, gain: 0.75 });
   }, [invalidate]);
 
   useFrame((state) => {
@@ -241,6 +247,8 @@ export default function SccScene({ view, dispatch }: GameViewProps<View>) {
     });
     const dice = lockDice(thrown);
     const fresh = dice.flatMap((d, i) => (d.lockedAs && !view.dice[i]?.lockedAs ? [i] : []));
+    // Ship, captain or crew found: a rising chime as they hop to the dock.
+    if (fresh.length) outcome('streak', reducedMotion() ? 0.1 : SLIDE_DELAY + SLIDE_SECONDS + 0.05, 0.8);
     setSnap({ rollId: r.rollId, dice, poses, fresh });
     dispatch({ type: 'GAME', action: { type: 'SETTLED', rollId: r.rollId } });
   };
@@ -256,6 +264,14 @@ export default function SccScene({ view, dispatch }: GameViewProps<View>) {
       fresh: [],
     };
   }
+
+  // The round is over: whoever scored lowest drinks.
+  const roundOver = view.phase === 'roundOver';
+  const wasOver = useRef(roundOver);
+  useEffect(() => {
+    if (roundOver && !wasOver.current) play('game.lose', { delay: 0.4 });
+    wasOver.current = roundOver;
+  }, [roundOver]);
 
   const filled: Record<Role, boolean> = { ship: false, captain: false, crew: false };
   for (const d of table?.dice ?? []) if (d.lockedAs) filled[d.lockedAs] = true;

@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { play } from '@/audio/engine';
+import { haptic } from '@/audio/haptics';
 import { useSession } from '@/store/session';
 import { useSettings } from '@/store/settings';
 import { IconDrop } from './icons';
@@ -22,6 +24,13 @@ export function WaterReminder() {
     };
   }, [minutes, waterAt]);
 
+  // A pour of water as the nudge appears.
+  useEffect(() => {
+    if (!due) return;
+    play('ui.water');
+    haptic('select');
+  }, [due]);
+
   if (!due) return null;
   return (
     <div
@@ -34,7 +43,11 @@ export function WaterReminder() {
       <button
         type="button"
         className="btn min-h-11 shrink-0 bg-tubig-400 px-3 text-sm text-narra-950"
-        onClick={markWater}
+        onClick={() => {
+          play('ui.success');
+          markWater();
+        }}
+        data-sfx="none"
       >
         {t('water.done')}
       </button>

@@ -50,6 +50,7 @@ import { safeBack, savePackFile } from '@/ui/share';
 import { ShareSheet } from '@/ui/ShareSheet';
 import { Sheet } from '@/ui/Sheet';
 import { TopBar } from '@/ui/TopBar';
+import { feedback } from '@/audio/feedback';
 
 const COMMIT_MS = 450;
 /** Rows rendered per "show more" step: keeps the DOM small on budget phones, even at 1000 prompts. */
@@ -271,7 +272,11 @@ function BulkSheet({
       packId,
       parsed.lines.map((line) => ({ text: line, spice, kind: tod ? kind : undefined })),
     );
-    if (err) return setMsg({ key: err, params: { max: MAX_ITEMS } });
+    if (err) {
+      feedback('error');
+      return setMsg({ key: err, params: { max: MAX_ITEMS } });
+    }
+    feedback('success');
     onAdded(n);
     if (parsed.tooLong.length) {
       // Keep the lines that didn't fit so they can be shortened, instead of dropping them.
@@ -593,7 +598,10 @@ function EditorFor({ pack, query }: { pack: PromptPack; query: string }) {
   };
   const download = async () => {
     const res = await savePackFile(pack, pack.name);
-    if (res === 'downloaded') setNotice({ key: 'share.downloaded', n: 0, at: Date.now() });
+    if (res === 'downloaded') {
+      feedback('success');
+      setNotice({ key: 'share.downloaded', n: 0, at: Date.now() });
+    }
   };
   const remove = () => {
     if (!confirmDelete) return setConfirmDelete(true);

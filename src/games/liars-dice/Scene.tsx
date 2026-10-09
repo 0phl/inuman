@@ -2,6 +2,9 @@ import { useEffect, useMemo, useRef, useState, type Ref } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { Group } from 'three';
 import { useFrame, useThree } from '@react-three/fiber';
+import { play } from '@/audio/engine';
+import { haptic, hapticLater } from '@/audio/haptics';
+import { duck } from '@/audio/music';
 import type { Rules, View } from '@/core/games/liars-dice/logic';
 import type { Face } from '@/core/primitives/dice';
 import { DIE_SIZE } from '@/physics/diceConfig';
@@ -9,7 +12,8 @@ import { TABLE_Y } from '@/stage/tableSpace';
 import { useTheme } from '@/store/theme';
 import { Die3D } from '@/three/Die3D';
 import { easeInOut, faceUpQuaternion, hash01, reducedMotion } from '../mexico/dice3d';
-import { CUP_H, CUP_R_TOP, DiceCup, DieShadow, GlowDisc } from '../mexico/diceKit';
+import { CUP_H, CUP_R_TOP } from '../mexico/diceCup';
+import { DiceCup, DieShadow, GlowDisc } from '../mexico/diceKit';
 import type { GameViewProps } from '../types';
 import { usePeeking, usePrivateView } from './privateView';
 import { tagTexture, type TagTone } from './tags';
@@ -119,6 +123,16 @@ function Seat({
     anim.current.liftT0 = -1;
     invalidate();
   }, [lifted, invalidate]);
+
+  // The leather cup lifting off its dice (a reveal, or the bidder's peek) and going back down.
+  const wasLifted = useRef(lifted);
+  useEffect(() => {
+    if (wasLifted.current === lifted) return;
+    wasLifted.current = lifted;
+    if (out) return;
+    if (lifted) play('cup.lift', { delay: reducedMotion() ? 0 : delay, gain: 0.8 });
+    else play('cup.slam', { gain: 0.35 });
+  }, [lifted, delay, out]);
 
   useFrame((state, rawDt) => {
     const g = cup.current;
@@ -233,6 +247,32 @@ export default function LiarsDiceScene({ view, rules, players }: GameViewProps<V
   const shakeCue = view.roll.id === mountRoll ? 0 : view.roll.id;
 
   useEffect(() => invalidate(), [ringTarget, invalidate]);
+
+  // A new round: every cup rattles, then comes down hard on the table.
+  useEffect(() => {
+    if (shakeCue === 0) return;
+    const quick = reducedMotion();
+    if (!quick) play('dice.shake', { loop: true, duration: SHAKE_S * 0.9 });
+    const slam = quick ? 0 : SHAKE_S + 0.05;
+    play('cup.slam', { delay: slam });
+    hapticLater('impactMedium', slam * 1000);
+  }, [shakeCue]);
+
+  // Liar! / spot on: the sting as the cups come up (each cup's own lift is in its Seat).
+  const revealing = view.phase === 'reveal';
+  const knockedOut = (view.reveal?.out.length ?? 0) > 0;
+  const [mountReveal] = useState(revealing);
+  const wasRevealing = useRef(mountReveal);
+  useEffect(() => {
+    if (revealing && !wasRevealing.current) {
+      duck(-6, 1600);
+      play('game.sting');
+      haptic('impactHeavy');
+      // Someone lost their last die.
+      if (knockedOut) play('game.lose', { delay: 1.8 });
+    }
+    wasRevealing.current = revealing;
+  }, [revealing, knockedOut]);
 
   useFrame((state, rawDt) => {
     const dt = Math.min(rawDt, 0.05);

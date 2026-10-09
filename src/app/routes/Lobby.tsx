@@ -1,6 +1,8 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, Navigate, useNavigate, useParams } from 'react-router';
+import { preload } from '@/audio/engine';
+import { soundsFor } from '@/audio/gameSounds';
 import { collectPrompts } from '@/core/content/builtin';
 import { PACK_GAMES, type PackGame } from '@/core/content/schemas';
 import type { GameId } from '@/core/engine/types';
@@ -100,6 +102,9 @@ function LobbyFor({ id }: { id: GameId }) {
   const startGame = useSession((s) => s.startGame);
   const [invalid, setInvalid] = useState<ReadonlySet<string>>(new Set());
   const [error, setError] = useState<string | null>(null);
+
+  // Fetch and decode this game's sounds while the rules are being read.
+  useEffect(() => preload(soundsFor(id)), [id]);
 
   // Prompt games: which packs to deal from — built-ins plus the barkada's own. The last pick is
   // remembered per game (default: the UI language's built-in pack); spice lives in the rules.

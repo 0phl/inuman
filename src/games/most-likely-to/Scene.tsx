@@ -10,6 +10,9 @@ import {
 } from 'three';
 import { useFrame, useThree } from '@react-three/fiber';
 import { easing } from 'maath';
+import { play } from '@/audio/engine';
+import { hapticLater } from '@/audio/haptics';
+import { duck } from '@/audio/music';
 import type { Result, View } from '@/core/games/most-likely-to/logic';
 import { BlobShadow } from '@/three/BlobShadow';
 import { cardGeometries, CARD_H } from '@/three/cardGeometry';
@@ -190,11 +193,15 @@ function CapStacks({ slots, animate }: { slots: CapSlot[]; animate: boolean }) {
   const { geometry, material } = capParts();
   const t0 = useRef(-1);
   const dummy = useMemo(() => new Object3D(), []);
-  const max = Math.max(slots.length, 1);
+  // Room for a big table's votes, so a reveal never remounts the mesh.
+  const max = Math.max(slots.length, 24);
 
   const place = (elapsed: number): boolean => {
     const m = mesh.current;
     if (!m) return false;
+    // Per-instance colour is a shader variant: give the mesh its colour attribute from the start,
+    // so the scene gate compiles that variant up front instead of mid-reveal.
+    if (!m.instanceColor) m.setColorAt(0, CAP_REST);
     let busy = false;
     slots.forEach((s, i) => {
       const rest = s.level * (CAP_H + CAP_GAP) + CAP_H / 2;
@@ -296,6 +303,23 @@ export default function MostLikelyToScene({ view, players }: GameViewProps<View>
   const animateCaps = reveal !== null && reveal !== mountReveal;
   const dropSeconds = slots.length ? (slots[slots.length - 1]?.delay ?? 0) + CAP_FALL_S : 0;
 
+  // The secret votes come out: a sting, then every bottle cap clacks onto its stack as it lands.
+  useEffect(() => {
+    if (!reveal || !animateCaps) return;
+    duck(-6, 1500);
+    play('game.sting');
+    const quick = reducedMotion();
+    slots.forEach((slot, i) =>
+      play('chips.stack', {
+        delay: quick ? 0.05 * i : slot.delay + CAP_FALL_S,
+        // Higher on a taller stack.
+        rate: 0.96 + Math.min(slot.level, 6) * 0.02,
+        gain: 0.7 + (0.3 * ((i * 7) % 3)) / 2,
+      }),
+    );
+    if (slots.length) hapticLater('impactLight', (quick ? 0 : dropSeconds) * 1000);
+  }, [reveal, animateCaps, slots, dropSeconds]);
+
   // The most-voted plaques light up once their caps have landed.
   const [litFor, setLitFor] = useState<Result | null>(mountReveal);
   useEffect(() => {
@@ -351,7 +375,8 @@ export default function MostLikelyToScene({ view, players }: GameViewProps<View>
           />
         );
       })}
-      {slots.length > 0 && <CapStacks slots={slots} animate={animateCaps} />}
+      {/* Mounted (empty) before the reveal too: its shader compiles with the scene. */}
+      <CapStacks slots={slots} animate={animateCaps} />
     </group>
   );
 }

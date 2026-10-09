@@ -1,10 +1,14 @@
+import { useEffect } from 'react';
 import { Outlet } from 'react-router';
+import { installAudio } from '@/audio/wire';
 import { StageHost } from '@/stage/StageHost';
 import { useSettings } from '@/store/settings';
 import { AgeGate } from './AgeGate';
 
 export function RootLayout() {
   const ageConfirmed = useSettings((s) => s.ageConfirmed);
+  // Sound, music and haptics: unlocked by the first tap (the 18+ gate is usually it).
+  useEffect(() => installAudio(), []);
   return (
     <>
       <StageHost />

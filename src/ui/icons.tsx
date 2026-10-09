@@ -160,3 +160,28 @@ export const IconUndo = ({ size = 20, ...p }: IconProps) => (
     <path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11" />
   </svg>
 );
+export const IconSpeaker = ({ size = 22, ...p }: IconProps) => (
+  <svg {...base(size)} {...p}>
+    <path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z" />
+    <path d="M15.5 9a4.2 4.2 0 0 1 0 6M18.2 6.5a8 8 0 0 1 0 11" />
+  </svg>
+);
+export const IconSpeakerOff = ({ size = 22, ...p }: IconProps) => (
+  <svg {...base(size)} {...p}>
+    <path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z" />
+    <path d="M16 9.5l5 5M21 9.5l-5 5" />
+  </svg>
+);
+export const IconNote = ({ size = 20, ...p }: IconProps) => (
+  <svg {...base(size)} {...p}>
+    <path d="M9 17.5V6l10-2v11.5" />
+    <circle cx="6.5" cy="17.5" r="2.5" />
+    <circle cx="16.5" cy="15.5" r="2.5" />
+  </svg>
+);
+export const IconShuffle = ({ size = 20, ...p }: IconProps) => (
+  <svg {...base(size)} {...p}>
+    <path d="M4 7h3.5c4 0 5 10 9 10H20M4 17h3.5c1.6 0 2.7-1.6 3.6-3.6M13 9.6C13.9 8.2 15 7 16.5 7H20" />
+    <path d="M18 4.5L20.5 7 18 9.5M18 14.5l2.5 2.5-2.5 2.5" />
+  </svg>
+);

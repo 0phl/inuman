@@ -133,7 +133,12 @@
     "responsibleTitle": "Drink responsibly",
     "responsibleBody": "It's just a game. Anyone can stop or switch to non-alcoholic anytime, no pressure.",
     "credits": "Credits",
-    "creditsBody": "3D bar made in Blender with free CC0 (public domain) assets from Poly Haven:"
+    "creditsBody": "3D bar made in Blender with free CC0 (public domain) assets from Poly Haven:",
+    "audioCredits": "Sounds and music:",
+    "musicBy": "“{{title}}” by {{artist}}",
+    "advanced": "Advanced",
+    "bench": "Performance test",
+    "benchHelp": "Check how well this phone handles the 3D."
   },
   "quality": { "auto": "Auto", "low": "Low", "mid": "Mid", "high": "High" },
   "cardBack": {
@@ -512,5 +517,49 @@
     "angle": "Off by {{deg}}°",
     "tapHint": "Or tap Flip it! when the needle is in the gold band.",
     "raceOver": "Race over"
+  },
+  "audio": {
+    "soundHelp": "Turn off to silence everything: effects, music and bar noise.",
+    "master": "Master volume",
+    "sfx": "Effects",
+    "sfxHelp": "Cards, dice, clinking glasses, button taps.",
+    "music": "Music",
+    "musicHelp": "Low in the background while you play.",
+    "track": "Track",
+    "musicVolume": "Music volume",
+    "shuffle": "Halo-halo",
+    "shuffleHelp": "Every track, shuffled",
+    "off": "Off",
+    "offHelp": "No music",
+    "nowPlaying": "Now playing",
+    "byArtist": "by {{artist}}",
+    "ambience": "Bar ambience",
+    "ambienceHelp": "Low chatter and clinks around you, like a real bar.",
+    "ambienceVolume": "Ambience volume",
+    "mix": "Mix with other apps",
+    "mixHelp": "Keep your own Spotify playing while you play (iPhone).",
+    "haptics": "Vibration",
+    "hapticsHelp": "A little buzz on taps, wins and drinks.",
+    "test": "Test",
+    "testHelp": "A card, dice, then a toast: check the levels.",
+    "speaker": "Sound",
+    "speakerHint": "Tap: mute. Long-press: music.",
+    "quickTitle": "Sound & music",
+    "moreSettings": "More settings",
+    "percent": "{{value}}%",
+    "tracks": {
+      "opm-acoustic": {
+        "title": "OPM Acoustic",
+        "vibe": "Chill guitar for a night of drinks"
+      },
+      "lofi-lounge": {
+        "title": "Lofi Lounge",
+        "vibe": "Jazzy and relaxed, stays in the background"
+      },
+      "retro-videoke": {
+        "title": "Retro Videoke",
+        "vibe": "80s–90s synth with videoke-bar energy"
+      }
+    }
   }
 }

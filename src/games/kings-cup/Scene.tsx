@@ -17,6 +17,10 @@ import {
 } from 'three';
 import { useFrame, useThree } from '@react-three/fiber';
 import { easing } from 'maath';
+import { cardFlight } from '@/audio/cues';
+import { play } from '@/audio/engine';
+import { haptic, hapticLater } from '@/audio/haptics';
+import { duck } from '@/audio/music';
 import type { View } from '@/core/games/kings-cup/logic';
 import type { Card } from '@/core/primitives/deck';
 import { useTheme } from '@/store/theme';
@@ -264,6 +268,7 @@ function KingsCup({ kings }: { kings: number }) {
   const liquid = useRef<Group>(null);
   // Where the surface is now and where it is heading; a resumed game starts already filled.
   const level = useRef({ now: levelFor(kings), target: levelFor(kings) });
+  const poured = useRef(kings);
 
   useEffect(() => {
     const t = window.setTimeout(
@@ -275,6 +280,22 @@ function KingsCup({ kings }: { kings: number }) {
     );
     return () => window.clearTimeout(t);
   }, [kings, invalidate]);
+
+  // A king: everyone's pour glugs into the cup as the level rises (the fourth one is the big one).
+  useEffect(() => {
+    if (kings <= poured.current) {
+      poured.current = kings;
+      return;
+    }
+    poured.current = kings;
+    const delay = reducedMotion() ? 0 : POUR_DELAY_MS / 1000;
+    play('pour.beer', { delay, gain: kings >= 4 ? 1 : 0.85 });
+    hapticLater(kings >= 4 ? 'impactHeavy' : 'impactMedium', delay * 1000);
+    if (kings >= 4) {
+      duck(-6, 2200);
+      play('game.sting', { delay: delay + 0.6 });
+    }
+  }, [kings]);
 
   useFrame((state, dt) => {
     const m = liquid.current;
@@ -351,7 +372,12 @@ function PileCard({ card, index, level, back, from }: PileCardProps) {
   );
 
   useEffect(() => {
-    if (anim.current) invalidate();
+    const a = anim.current;
+    if (!a) return;
+    invalidate();
+    // Pulled out of the ring, flipped over the cup, down in front of the players.
+    cardFlight(a.duration, { pan: Math.max(-0.5, Math.min(0.5, a.from.x * 0.5)) });
+    haptic('select');
   }, [invalidate]);
 
   useFrame((state) => {

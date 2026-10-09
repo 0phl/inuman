@@ -1,6 +1,9 @@
 import { Suspense, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Navigate, useNavigate } from 'react-router';
+import { play } from '@/audio/engine';
+import { haptic } from '@/audio/haptics';
+import { duck } from '@/audio/music';
 import type { SessionState } from '@/core/engine/session';
 import { getLogic } from '@/core/games/registry';
 import { getView } from '@/games/views';
@@ -8,7 +11,8 @@ import { sceneTunnel } from '@/stage/tunnel';
 import { useFx } from '@/store/fx';
 import { useGameView, useSession } from '@/store/session';
 import { FxLayer } from '@/ui/FxLayer';
-import { IconArrowRight, IconEye, IconMenu, IconPlus } from '@/ui/icons';
+import { QuickSoundSheet, SpeakerButton } from '@/ui/AudioControls';
+import { IconArrowRight, IconEye, IconMenu, IconNote, IconPlus } from '@/ui/icons';
 import { ParusaSheet } from '@/ui/ParusaSheet';
 import { Sheet } from '@/ui/Sheet';
 import { Tally } from '@/ui/Tally';
@@ -20,11 +24,13 @@ function PlayMenu({
   onClose,
   session,
   onParusa,
+  onSound,
 }: {
   open: boolean;
   onClose(): void;
   session: SessionState;
   onParusa(): void;
+  onSound(): void;
 }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -57,6 +63,18 @@ function PlayMenu({
           }}
         >
           {t('parusa.open')}
+        </button>
+        <button
+          type="button"
+          className="btn btn-wood col-span-2 gap-2"
+          onClick={() => {
+            close();
+            onSound();
+          }}
+          data-testid="menu-sound"
+        >
+          <IconNote size={20} />
+          {t('audio.quickTitle')}
         </button>
       </div>
       <h3 className="eyebrow mb-1">{t('tally.title')}</h3>
@@ -120,11 +138,49 @@ function useResultsCover(over: boolean) {
   };
 }
 
-function GameOver({ session, onLookAtTable }: { session: SessionState; onLookAtTable(): void }) {
+/** Games already celebrated (by start time), so peeking at the table and back doesn't replay it. */
+const celebrated = new Set<number>();
+
+/**
+ * The results jingle: a winner gets the fanfare (music ducks under it), a game that just ran out
+ * or was ended from the menu gets the round-over sting.
+ */
+function resultsCue(session: SessionState): void {
+  const logic = getLogic(session.gameId);
+  const view = logic.project(session.game, 'table') as { winner?: unknown } | null;
+  const won = logic.isOver(session.game) && view?.winner !== null && view?.winner !== undefined;
+  if (won) {
+    duck(-8, 2600);
+    play('game.win');
+    haptic('win');
+  } else {
+    play('game.roundOver');
+    haptic('success');
+  }
+}
+
+function GameOver({
+  session,
+  onLookAtTable,
+  celebrate,
+}: {
+  session: SessionState;
+  onLookAtTable(): void;
+  /** The game ended on this screen (not already over when it opened). */
+  celebrate: boolean;
+}) {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const startGame = useSession((s) => s.startGame);
   const clear = useSession((s) => s.clear);
+  const startedAt = useSession((s) => s.startedAt);
+  useEffect(() => {
+    if (!celebrate || celebrated.has(startedAt)) return;
+    celebrated.add(startedAt);
+    resultsCue(session);
+    // Once per game, when the cover first comes up.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <div
       className="anim-fade fixed inset-0 z-30 flex flex-col bg-narra-950/92 backdrop-blur-sm"
@@ -177,7 +233,11 @@ function PlaySession({ session }: { session: SessionState }) {
   const gameView = getView(session.gameId);
   const [menu, setMenu] = useState(false);
   const [parusa, setParusa] = useState(false);
+  const [soundSheet, setSoundSheet] = useState(false);
   const results = useResultsCover(session.over);
+  // A game that was already over when the screen opened (reload / resume) isn't celebrated again.
+  const [openedOver, setOpenedOver] = useState(session.over);
+  if (openedOver && !session.over) setOpenedOver(false);
 
   if (!gameView || view === null) return <Navigate to="/" replace />;
   const { Scene, Hud } = gameView;
@@ -217,6 +277,7 @@ function PlaySession({ session }: { session: SessionState }) {
               {t(`game.${session.gameId}.title`)}
             </span>
           )}
+          <SpeakerButton />
           <button
             type="button"
             className="btn btn-wood min-h-12 gap-1 px-3 text-sm"
@@ -242,8 +303,16 @@ function PlaySession({ session }: { session: SessionState }) {
         onClose={() => setMenu(false)}
         session={session}
         onParusa={() => setParusa(true)}
+        onSound={() => setSoundSheet(true)}
       />
-      {results.visible && <GameOver session={session} onLookAtTable={results.lookAtTable} />}
+      <QuickSoundSheet open={soundSheet} onClose={() => setSoundSheet(false)} />
+      {results.visible && (
+        <GameOver
+          session={session}
+          onLookAtTable={results.lookAtTable}
+          celebrate={!openedOver}
+        />
+      )}
     </main>
   );
 }

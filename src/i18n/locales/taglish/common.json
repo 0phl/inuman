@@ -138,7 +138,12 @@
     "responsibleTitle": "Inom nang responsable",
     "responsibleBody": "Laro lang 'to. Pwedeng tumigil o mag-non-alcoholic kahit kailan, at walang pipilitin.",
     "credits": "Credits",
-    "creditsBody": "Ginawa ang 3D bar sa Blender gamit ang mga libreng CC0 (public domain) asset galing Poly Haven:"
+    "creditsBody": "Ginawa ang 3D bar sa Blender gamit ang mga libreng CC0 (public domain) asset galing Poly Haven:",
+    "audioCredits": "Mga tunog at music:",
+    "musicBy": "“{{title}}” ni {{artist}}",
+    "advanced": "Advanced",
+    "bench": "Performance test",
+    "benchHelp": "Subukan kung kaya ng phone ang 3D."
   },
   "quality": { "auto": "Auto", "low": "Low", "mid": "Mid", "high": "High" },
   "cardBack": {
@@ -517,5 +522,49 @@
     "angle": "Tagilid: {{deg}}°",
     "tapHint": "O i-tap ang I-flip! pag nasa gold na bahagi ang guhit.",
     "raceOver": "Tapos ang karera"
+  },
+  "audio": {
+    "soundHelp": "Patayin para tahimik ang lahat: effects, music at ingay ng bar.",
+    "master": "Lakas ng lahat",
+    "sfx": "Effects",
+    "sfxHelp": "Baraha, dice, kalansing ng baso, mga pindot.",
+    "music": "Music",
+    "musicHelp": "Mahina lang, pang-background habang naglalaro.",
+    "track": "Kanta",
+    "musicVolume": "Lakas ng music",
+    "shuffle": "Halo-halo",
+    "shuffleHelp": "Lahat ng kanta, sali-salitan",
+    "off": "Off",
+    "offHelp": "Walang music",
+    "nowPlaying": "Tumutugtog",
+    "byArtist": "ni {{artist}}",
+    "ambience": "Ingay ng bar",
+    "ambienceHelp": "Mahinang kuwentuhan at kalansing sa paligid, parang nasa bar talaga.",
+    "ambienceVolume": "Lakas ng ingay",
+    "mix": "Ihalo sa ibang app",
+    "mixHelp": "Tuloy pa rin ang Spotify n’yo habang naglalaro (sa iPhone).",
+    "haptics": "Vibrate",
+    "hapticsHelp": "Konting kalabit sa pindot, sa tama, at sa tagay.",
+    "test": "Subukan",
+    "testHelp": "Baraha, dice, tapos tagay: para marinig kung tama ang lakas.",
+    "speaker": "Tunog",
+    "speakerHint": "Pindot: mute. Pindutin nang matagal: music.",
+    "quickTitle": "Tunog at music",
+    "moreSettings": "Iba pang settings",
+    "percent": "{{value}}%",
+    "tracks": {
+      "opm-acoustic": {
+        "title": "OPM Acoustic",
+        "vibe": "Chill na gitara, pang-inuman sa gabi"
+      },
+      "lofi-lounge": {
+        "title": "Lofi Lounge",
+        "vibe": "Jazzy at relax, pang-background lang"
+      },
+      "retro-videoke": {
+        "title": "Retro Videoke",
+        "vibe": "80s–90s na synth, pang-videoke ang energy"
+      }
+    }
   }
 }

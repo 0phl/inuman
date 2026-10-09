@@ -1,6 +1,8 @@
 import { useEffect, useRef } from 'react';
 import type { Group, Mesh, MeshBasicMaterial } from 'three';
 import { useFrame, useThree } from '@react-three/fiber';
+import { outcome } from '@/audio/cues';
+import { play } from '@/audio/engine';
 import type { View } from '@/core/games/mexico/logic';
 import { DiceReplay, type DiceSettleResult } from '@/physics/DiceReplay';
 import type { TraySpec } from '@/physics/diceConfig';
@@ -8,7 +10,8 @@ import { TABLE_Y } from '@/stage/tableSpace';
 import { useTheme } from '@/store/theme';
 import type { GameViewProps } from '../types';
 import { clamp01, easeInOut, easeOut } from './dice3d';
-import { CUP_H, DiceCup, DiceTray, DieShadow } from './diceKit';
+import { CUP_H } from './diceCup';
+import { DiceCup, DiceTray, DieShadow } from './diceKit';
 import { useThrowGate } from './throwGate';
 
 type V3 = readonly [number, number, number];
@@ -47,7 +50,13 @@ function ThrowingCup({ cue, lead }: { cue: number; lead: number }) {
     if (cue === 0) return;
     anim.current = { start: -1 };
     invalidate();
-  }, [cue, invalidate]);
+    // Scoop the dice up, rattle them on the way over (the pour itself is DiceReplay's throw), and
+    // set the cup back down on its spot.
+    const tipStart = lead - 0.14;
+    play('dice.grab', { gain: 0.8 });
+    play('dice.shake', { delay: 0.12, loop: true, duration: Math.max(0.15, tipStart - 0.12) });
+    play('cup.slam', { delay: lead + 0.9, gain: 0.4 });
+  }, [cue, lead, invalidate]);
 
   useFrame((state) => {
     const a = anim.current;
@@ -126,6 +135,18 @@ export default function MexicoScene({ view, dispatch }: GameViewProps<View>) {
     if (!roll || roll.settled || r.rollId !== roll.id) return;
     dispatch({ type: 'GAME', action: { type: 'SETTLED', rollId: r.rollId } });
   };
+
+  // A Mexico (2-1) rings out; a finished round gets the losers' trombone.
+  const mexicos = view.mexicos;
+  const roundOver = view.phase === 'roundOver';
+  const seen = useRef({ mexicos, roundOver });
+  useEffect(() => {
+    const prev = seen.current;
+    seen.current = { mexicos, roundOver };
+    if (mexicos > prev.mexicos) outcome('streak');
+    if (roundOver && !prev.roundOver)
+      play('game.lose', { delay: mexicos > prev.mexicos ? 0.7 : 0.25 });
+  }, [mexicos, roundOver]);
 
   return (
     <group>

@@ -8,7 +8,18 @@ const BENCHMARKS = import.meta.glob<Entries>('/node_modules/detect-gpu/dist/benc
   import: 'default',
 });
 
-export async function detectTier(): Promise<Tier> {
+/** What detect-gpu reported (for /bench's device info), plus the tier we map it to. */
+export interface GpuDetection {
+  tier: Tier;
+  /** detect-gpu's own 0–3 tier and result type. */
+  gpuTier: number | null;
+  type: string;
+  gpu: string | null;
+  fps: number | null;
+  isMobile: boolean | null;
+}
+
+export async function detectGpu(): Promise<GpuDetection> {
   try {
     const { getGPUTier } = await import('detect-gpu');
     const result = await getGPUTier({
@@ -21,12 +32,31 @@ export async function detectTier(): Promise<Tier> {
         },
       },
     });
-    if (result.type === 'WEBGL_UNSUPPORTED' || result.type === 'BLOCKLISTED') return 'low';
-    if (result.type === 'FALLBACK') return result.isMobile ? 'low' : 'mid';
-    if (result.tier >= 3) return 'high';
-    if (result.tier === 2) return 'mid';
-    return 'low';
+    const tier: Tier =
+      result.type === 'WEBGL_UNSUPPORTED' || result.type === 'BLOCKLISTED'
+        ? 'low'
+        : result.type === 'FALLBACK'
+          ? result.isMobile
+            ? 'low'
+            : 'mid'
+          : result.tier >= 3
+            ? 'high'
+            : result.tier === 2
+              ? 'mid'
+              : 'low';
+    return {
+      tier,
+      gpuTier: result.tier,
+      type: result.type,
+      gpu: result.gpu ?? null,
+      fps: result.fps ?? null,
+      isMobile: result.isMobile ?? null,
+    };
   } catch {
-    return 'mid';
+    return { tier: 'mid', gpuTier: null, type: 'ERROR', gpu: null, fps: null, isMobile: null };
   }
+}
+
+export async function detectTier(): Promise<Tier> {
+  return (await detectGpu()).tier;
 }

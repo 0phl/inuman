@@ -1,5 +1,6 @@
-import { Fragment, type ReactNode } from 'react';
+import { Fragment, useEffect, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
+import { play } from '@/audio/engine';
 import type { Kind } from '@/core/games/truth-or-dare/prompts';
 import type { Slot } from './promptFill';
 
@@ -54,6 +55,13 @@ export function PromptCard({
   testId?: string;
   className?: string;
 }) {
+  // Dealt onto the table: snapped over, then down on the felt, in time with its pour-in.
+  useEffect(() => {
+    play('card.flip', { delay: delay / 1000 });
+    play('card.place', { delay: delay / 1000 + 0.22, gain: 0.8 });
+    // Once, as the card appears.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <article
       className={`anim-pour relative rounded-[18px] border border-brass-500/80 bg-[linear-gradient(165deg,#fbf6ea,#eadfc8)] px-5 pt-3.5 pb-4 text-narra-950 shadow-[0_18px_40px_-14px_rgb(0_0_0/0.95),inset_0_1px_0_rgb(255_255_255/0.7)] ${className}`}

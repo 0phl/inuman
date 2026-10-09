@@ -4,6 +4,7 @@ import { useLoader, useThree } from '@react-three/fiber';
 import { Environment } from '@react-three/drei';
 import type { Tier } from '@/store/settings';
 import { BAKED_FELT, ENV_SCALE, TABLE_Y } from '../tableSpace';
+import { WarmGate } from '../warm/SceneGate';
 import { BarLightformers } from './BarLightformers';
 import { DIVE_BAR_HDR, DiveBarLoader, diveBarUrl, ReflectionHdrLoader } from './diveBarAssets';
 import { EnvFallback } from './EnvFallback';
@@ -124,10 +125,6 @@ export function DiveBarBaked({ tier }: { tier: Tier }) {
   return (
     <>
       <color attach="background" args={['#050302']} />
-      <group position-y={TABLE_Y} scale={ENV_SCALE}>
-        <primitive object={gltf.scene} />
-      </group>
-
       <primitive object={target} position={toWorld(key.target)} />
       <spotLight
         position={toWorld(key.position)}
@@ -142,12 +139,20 @@ export function DiveBarBaked({ tier }: { tier: Tier }) {
       />
       <Fill tier={tier} />
 
-      <FeltMat
-        width={BAKED_FELT.width}
-        depth={BAKED_FELT.depth}
-        radius={BAKED_FELT.radius}
-        ibl={tier !== 'low'}
-      />
+      {/* The room and the mat show once their shaders are compiled. After the lights and the
+          environment on purpose: those are part of every lit shader, and their layout effects
+          (scene.environment) must have run before the gate compiles. */}
+      <WarmGate>
+        <group position-y={TABLE_Y} scale={ENV_SCALE}>
+          <primitive object={gltf.scene} />
+        </group>
+        <FeltMat
+          width={BAKED_FELT.width}
+          depth={BAKED_FELT.depth}
+          radius={BAKED_FELT.radius}
+          ibl={tier !== 'low'}
+        />
+      </WarmGate>
     </>
   );
 }

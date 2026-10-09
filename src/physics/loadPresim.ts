@@ -1,16 +1,11 @@
-// The only door to the Rapier chunk: everything else imports presim types only, so the ~2 MB
-// WASM loads when a dice scene first asks for it and never ships with the app shell.
+// The only door to the dice pre-sim: everything else imports presim types only. It runs in the
+// physics worker (Rapier's ~2 MB of WASM loads there, on first use); see physicsWorker.ts.
+import { presimulateDice } from './physicsWorker';
 
-type PresimModule = typeof import('./presim');
+const presim = { presimulateThrow: presimulateDice };
 
-let mod: Promise<PresimModule> | null = null;
-
-export function loadPresim(): Promise<PresimModule> {
-  mod ??= import('./presim').catch((err: unknown) => {
-    mod = null; // let a later roll retry (e.g. a flaky network on first load)
-    throw err;
-  });
-  return mod;
+export function loadPresim(): Promise<typeof presim> {
+  return Promise.resolve(presim);
 }
 
 /**

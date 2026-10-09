@@ -73,6 +73,33 @@ function prepareDiveBar(gltf: GLTF): void {
   });
 }
 
+interface Pending {
+  promise: Promise<void>;
+  resolve(): void;
+  reject(err: unknown): void;
+}
+
+/** One settle-once promise per URL loaded through the loaders below (R3F loads each URL once). */
+const pending = new Map<string, Pending>();
+function pendingFor(url: string): Pending {
+  let p = pending.get(url);
+  if (!p) {
+    let resolve!: () => void;
+    let reject!: (err: unknown) => void;
+    const promise = new Promise<void>((res, rej) => {
+      resolve = res;
+      reject = rej;
+    });
+    promise.catch(() => {}); // awaited only by preloaders, which handle it themselves
+    p = { promise, resolve, reject };
+    pending.set(url, p);
+  }
+  return p;
+}
+
+/** Resolves once `url` has been loaded (and prepared) through DiveBarLoader / ReflectionHdrLoader. */
+export const whenLoaded = (url: string): Promise<void> => pendingFor(url).promise;
+
 /** GLTFLoader with the meshopt decoder the bar needs (EXT_meshopt_compression). */
 export class DiveBarLoader extends GLTFLoader {
   constructor() {
@@ -86,14 +113,19 @@ export class DiveBarLoader extends GLTFLoader {
     onProgress?: (event: ProgressEvent) => void,
     onError?: (err: unknown) => void,
   ): void {
+    const done = pendingFor(url);
     super.load(
       url,
       (gltf) => {
         prepareDiveBar(gltf);
+        done.resolve();
         onLoad(gltf);
       },
       onProgress,
-      onError,
+      (err) => {
+        done.reject(err);
+        onError?.(err);
+      },
     );
   }
 }
@@ -106,19 +138,29 @@ export class ReflectionHdrLoader extends HDRLoader {
     onProgress?: (event: ProgressEvent) => void,
     onError?: (err: unknown) => void,
   ): DataTexture {
+    const done = pendingFor(url);
     return super.load(
       url,
       (texture, texData) => {
         texture.mapping = EquirectangularReflectionMapping;
+        done.resolve();
         onLoad?.(texture, texData);
       },
       onProgress,
-      onError,
+      (err) => {
+        done.reject(err);
+        onError?.(err);
+      },
     );
   }
 }
 
-/** Starts fetching + decoding the bar into R3F's loader cache, so /play mounts it without a wait. */
-export function preloadDiveBar(tier: Tier): void {
+/**
+ * Starts fetching + decoding the bar (and, on high, the reflection HDRI) into R3F's loader cache,
+ * so /play mounts them without a wait. Resolves when the bar is ready.
+ */
+export function preloadDiveBar(tier: Tier): Promise<void> {
   useLoader.preload(DiveBarLoader, diveBarUrl(tier));
+  if (tier === 'high') useLoader.preload(ReflectionHdrLoader, DIVE_BAR_HDR);
+  return whenLoaded(diveBarUrl(tier));
 }

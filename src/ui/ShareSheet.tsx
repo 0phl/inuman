@@ -6,6 +6,7 @@ import { IconCopy, IconDownload, IconShare } from './icons';
 import { QrCode } from './QrCode';
 import { canNativeShare, copyText, savePackFile, shareLink, shareUrl } from './share';
 import { Sheet } from './Sheet';
+import { feedback } from '@/audio/feedback';
 
 interface ShareSheetProps {
   open: boolean;
@@ -49,7 +50,10 @@ export function ShareSheet({ open, onClose, payload, title, pack }: ShareSheetPr
   const name = payload && 'name' in payload ? payload.name : '';
 
   const copy = async () => {
-    if (await copyText(url)) setNote('copied');
+    if (await copyText(url)) {
+      feedback('success');
+      setNote('copied');
+    }
     else {
       linkRef.current?.select();
       setNote('copyFailed');
@@ -62,7 +66,10 @@ export function ShareSheet({ open, onClose, payload, title, pack }: ShareSheetPr
   const file = async () => {
     if (!pack) return;
     const res = await savePackFile(pack, name);
-    if (res === 'downloaded') setNote('downloaded');
+    if (res === 'downloaded') {
+      feedback('success');
+      setNote('downloaded');
+    }
     else if (res === 'failed') setNote('shareFailed');
   };
 

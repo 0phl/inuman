@@ -1,4 +1,7 @@
 import { create } from 'zustand';
+import { SOUNDS, type SoundId } from '@/audio/catalog';
+import { play } from '@/audio/engine';
+import { haptic } from '@/audio/haptics';
 import type { SessionEffect } from '@/core/engine/session';
 import type { Msg } from '@/core/engine/types';
 
@@ -37,13 +40,27 @@ interface FxState {
 let nextId = 1;
 const MAX_QUEUE = 30;
 
+/**
+ * Effects that are heard at once rather than shown: a rejected action buzzes as it's refused, and a
+ * game's own `sfx` effects play their catalog id (unknown ids are ignored).
+ */
+function sound(effects: readonly UiEffect[]): void {
+  for (const fx of effects) {
+    if (fx.type === 'error') {
+      play('ui.error');
+      haptic('error');
+    } else if (fx.type === 'sfx' && fx.id in SOUNDS) play(fx.id as SoundId);
+  }
+}
+
 /** The effect queue the play UI drains: drink toasts, notices, pass-the-phone prompts. */
 export const useFx = create<FxState>()((set) => ({
   items: [],
   anchor: null,
   compact: false,
   resultsShown: false,
-  push: (effects) =>
+  push: (effects) => {
+    sound(effects);
     set((s) => {
       const at = Date.now();
       const added = effects
@@ -55,10 +72,11 @@ export const useFx = create<FxState>()((set) => ({
         ? s.items.filter((i) => i.fx.type !== 'passTo')
         : s.items;
       return { items: [...keep, ...added].slice(-MAX_QUEUE) };
-    }),
+    });
+  },
   dismiss: (id) => set((s) => ({ items: s.items.filter((i) => i.id !== id) })),
   clear: () => set({ items: [] }),
-  setAnchor: (y) => set((s) => (s.anchor === y ? {} : { anchor: y })),
-  setCompact: (on) => set((s) => (s.compact === on ? {} : { compact: on })),
-  setResultsShown: (on) => set((s) => (s.resultsShown === on ? {} : { resultsShown: on })),
+  setAnchor: (y) => set((s) => (s.anchor === y ? s : { anchor: y })),
+  setCompact: (on) => set((s) => (s.compact === on ? s : { compact: on })),
+  setResultsShown: (on) => set((s) => (s.resultsShown === on ? s : { resultsShown: on })),
 }));

@@ -1,11 +1,15 @@
 import { useLayoutEffect, useRef, type Ref } from 'react';
-import { MeshStandardMaterial, type Group, type MeshPhysicalMaterial, type Texture } from 'three';
+import type { Group, MeshPhysicalMaterial, Texture } from 'three';
 import { useThree, type ThreeElements } from '@react-three/fiber';
 import type { Card } from '@/core/primitives/deck';
 import { cardGeometries } from './cardGeometry';
-import { acquireCardFace, CARD_FINISH, cardBackTexture, releaseCardFace } from './cardTextures';
-
-const edgeMaterial = new MeshStandardMaterial({ color: '#efe6d2', roughness: 0.8 });
+import {
+  acquireCardFace,
+  CARD_FINISH,
+  cardBackTexture,
+  cardEdgeMaterial,
+  releaseCardFace,
+} from './cardTextures';
 
 type Card3DProps = ThreeElements['group'] & {
   /** The card's face; null renders a card whose face is unknown (shows the back on both sides). */
@@ -64,7 +68,7 @@ export function Card3D({ card, back, ref, ...group }: Card3DProps) {
       <mesh geometry={geo.back}>
         <meshPhysicalMaterial ref={backMat} {...CARD_FINISH} />
       </mesh>
-      <mesh geometry={geo.edge} material={edgeMaterial} />
+      <mesh geometry={geo.edge} material={cardEdgeMaterial} />
     </group>
   );
 }

@@ -12,11 +12,13 @@ import {
 } from 'three';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 import { useFrame, useThree } from '@react-three/fiber';
+import { play } from '@/audio/engine';
+import { hapticLater } from '@/audio/haptics';
 import type { Rules, View } from '@/core/games/truth-or-dare/logic';
 import { BlobShadow } from '@/three/BlobShadow';
 import { brassMaterial, narraMaterial, reducedMotion } from '../mexico/dice3d';
 import { settleOnce } from '../spin-the-bottle/settle';
-import { angleAt, planSpin, type SpinPlan } from '../spin-the-bottle/spin';
+import { angleAt, planSpin, velocityAt, type SpinPlan } from '../spin-the-bottle/spin';
 import type { GameViewProps } from '../types';
 import { SEG, SEGMENTS, flapAt, landingFor, wheelTexture } from './wheel';
 
@@ -39,7 +41,14 @@ interface Anim {
   t0: number;
   /** Wheel-mode spins report SETTLED when they land; player-mode nudges don't. */
   settle: number | null;
+  /** Peg the flapper last rode over (a change = one tick). */
+  peg: number;
+  /** Starting angular speed, to scale the ticks against. */
+  w0: number;
 }
+
+/** Which peg gap is under the flapper for wheel angle `psi` (pegs on the segment boundaries). */
+const pegAt = (psi: number) => Math.floor((Math.PI / 2 - psi) / SEG);
 
 interface WheelParts {
   face: BufferGeometry;
@@ -141,7 +150,18 @@ export default function TruthOrDareScene({ view, rules, dispatch }: GameViewProp
     const short = reducedMotion();
     // Clockwise: plan on negated angles so the wheel's angle decreases.
     const plan = planSpin(-psi.current, -to, short ? 0 : turns, short ? 0.5 : seconds);
-    anim.current = { key, plan, t0: -1, settle };
+    anim.current = {
+      key,
+      plan,
+      t0: performance.now() / 1000,
+      settle,
+      peg: pegAt(psi.current),
+      w0: Math.abs(velocityAt(plan, 0)),
+    };
+    // A hard spin whooshes; it thunks to rest at the end.
+    if (turns > 1) play('wheel.whoosh');
+    play('wheel.stop', { delay: plan.duration, gain: settle === null ? 0.6 : 1 });
+    hapticLater('impactLight', plan.duration * 1000);
     invalidate();
   };
 
@@ -175,6 +195,13 @@ export default function TruthOrDareScene({ view, rules, dispatch }: GameViewProp
     const value = -angleAt(a.plan, tt);
     psi.current = value;
     g.rotation.z = value;
+    // The flapper snaps off a peg: tick, a little higher while it's flying.
+    const peg = pegAt(value);
+    if (peg !== a.peg && tt < a.plan.duration) {
+      a.peg = peg;
+      const k = a.w0 > 0 ? Math.abs(velocityAt(a.plan, tt)) / a.w0 : 0;
+      play('wheel.tick', { rate: 0.9 + 0.25 * k, gain: 0.55 + 0.45 * k });
+    }
     if (flapper.current)
       flapper.current.rotation.z = tt < a.plan.duration ? flapAt(value) * 0.55 : 0;
     if (tt < a.plan.duration) {

@@ -2,12 +2,12 @@ import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { Player } from '@/core/content/schemas';
 import type { SessionEffect } from '@/core/engine/session';
+import { play } from '@/audio/engine';
+import { haptic, hapticLater } from '@/audio/haptics';
 import { useFx, type FxItem } from '@/store/fx';
-import { useSettings } from '@/store/settings';
 import { BottleCap } from './BottleCap';
 import { drinkAmount } from './drinkText';
 import { IconArrowRight, IconDrop } from './icons';
-import { buzz, clink } from './sfx';
 
 /** Let the card land before revealing what it means. */
 const REVEAL_MS = 650;
@@ -32,6 +32,24 @@ const reducedMotion = () =>
  *   < winner line z-31 < sheets + private pass cover z-40 < lost-GL cover z-60.
  * Toasts never draw over a modal cover; their timers pause while the private cover is up.
  */
+
+/**
+ * The sound of a drink toast: one clink (a toast), several (everyone / waterfall), a bright blip
+ * for sips handed out, and an empty glass set down hard when someone has to finish theirs.
+ */
+function drinkCue(fx: DrinksFx): void {
+  if (fx.kind === 'give') {
+    play('drink.give');
+    haptic('select');
+  } else {
+    play(fx.kind === 'social' || fx.kind === 'waterfall' ? 'drink.social' : 'drink.cheers');
+    haptic('drink');
+  }
+  if (fx.kind !== 'give' && fx.entries.some((e) => e.finish)) {
+    play('drink.finish', { delay: 0.4 });
+    hapticLater('impactHeavy', 400);
+  }
+}
 
 function useDelayed(at: number, delay: number): boolean {
   const [shown, setShown] = useState(false);
@@ -144,17 +162,16 @@ function Toast({
 }) {
   const { t } = useTranslation();
   const dismiss = useFx((s) => s.dismiss);
-  const sound = useSettings((s) => s.sound);
-  const haptics = useSettings((s) => s.haptics);
   const shown = useDelayed(item.at, item.fx.type === 'error' ? 0 : REVEAL_MS);
   const fedBack = useRef(false);
 
   useEffect(() => {
     if (!shown) return;
-    if (item.fx.type === 'drinks' && !fedBack.current) {
+    // Feedback as the toast appears (a rejected action already buzzed when it was refused).
+    if (!fedBack.current) {
       fedBack.current = true;
-      if (sound) clink();
-      if (haptics) buzz(70);
+      if (item.fx.type === 'drinks') drinkCue(item.fx);
+      else if (item.fx.type === 'notice') play('ui.notice');
     }
     // Under a modal cover nobody can read it: the clock starts once it's back in view.
     if (paused) return;
@@ -220,12 +237,22 @@ function PassCover({
   const { t } = useTranslation();
   const dismiss = useFx((s) => s.dismiss);
   const name = players.find((p) => p.id === fx.player)?.name ?? '?';
+  useEffect(() => {
+    play('ui.pass');
+    haptic('select');
+  }, []);
   return (
     <button
       type="button"
       data-testid="pass-cover"
+      data-sfx="none"
       aria-label={t('pass.aria', { name })}
-      onClick={() => dismiss(item.id)}
+      onClick={() => {
+        // The next player taps their private view open.
+        play('ui.reveal');
+        haptic('select');
+        dismiss(item.id);
+      }}
       className="anim-fade fixed inset-0 z-40 flex flex-col items-center justify-center gap-5 bg-narra-950 px-6 text-center"
     >
       <span className="eyebrow">{t('pass.eyebrow')}</span>
@@ -264,6 +291,10 @@ function PassBanner({
     const timer = window.setTimeout(() => dismiss(item.id), BANNER_MS);
     return () => window.clearTimeout(timer);
   }, [item.id, dismiss]);
+
+  useEffect(() => {
+    play('ui.pass');
+  }, []);
 
   useEffect(() => {
     if (reducedMotion()) return;

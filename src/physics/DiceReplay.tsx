@@ -4,11 +4,15 @@ import {
   MeshBasicMaterial,
   MeshStandardMaterial,
   PlaneGeometry,
+  Vector3,
   type Group,
   type Mesh,
   type Texture,
 } from 'three';
 import { useFrame, useThree, type ThreeElements } from '@react-three/fiber';
+import { diceThrow } from '@/audio/cues';
+import { play, type SoundHandle } from '@/audio/engine';
+import { haptic } from '@/audio/haptics';
 import { IDENTITY, remap, type Face, type Quat } from '@/core/primitives/dice';
 import { feltTexture, softDiscTexture } from '@/stage/proceduralTextures';
 import { useTheme } from '@/store/theme';
@@ -69,6 +73,8 @@ interface Playback {
   /** performance.now() seconds of the first shown frame; -1 until then. */
   start: number;
   result: DiceSettleResult;
+  /** The throw's scheduled knocks (stopped if the throw is superseded). */
+  sound: SoundHandle | null;
 }
 
 const DT = 1 / 60;
@@ -180,6 +186,8 @@ export function DiceReplay({
   ...group
 }: DiceReplayProps) {
   const invalidate = useThree((s) => s.invalidate);
+  const getThree = useThree((s) => s.get);
+  const panVec = useMemo(() => new Vector3(), []);
   const slots = useRef<DieSlot[]>([]);
   const bodies = useRef<(Group | null)[]>([]);
   const visuals = useRef<(Mesh | null)[]>([]);
@@ -199,6 +207,7 @@ export function DiceReplay({
     preloadDicePhysics();
     return () => {
       alive.current = false;
+      playback.current?.sound?.stop(60);
     };
   }, []);
 
@@ -262,7 +271,19 @@ export function DiceReplay({
     if (!pb) return;
     playback.current = null;
     showFrame(pb, pb.steps - 1, 0);
-    if (notify) settled.current?.(pb.result);
+    if (notify) {
+      // The last die comes to rest.
+      if (pb.rolled.length > 0) haptic('impactLight');
+      settled.current?.(pb.result);
+    } else pb.sound?.stop(40);
+  };
+
+  /** Stereo position of a point in the tray's space, from where it shows on screen. */
+  const panOf = (x: number, y: number, z: number): number => {
+    const parent = bodies.current.find(Boolean)?.parent;
+    if (!parent) return 0;
+    panVec.set(x, y, z).applyMatrix4(parent.matrixWorld).project(getThree().camera);
+    return Math.max(-0.8, Math.min(0.8, panVec.x * 0.7));
   };
 
   const begin = (id: number, rolled: number[], goal: Face[], res: PresimResult, jump: boolean) => {
@@ -280,12 +301,32 @@ export function DiceReplay({
       const v = visuals.current[die];
       if (v) v.quaternion.set(s.visual[0], s.visual[1], s.visual[2], s.visual[3]);
     });
+    // Release: the knocks are scheduled on the audio clock from now, and the replay starts now
+    // too, so every knock lands on its frame.
+    const sound =
+      jump || rolled.length === 0
+        ? null
+        : diceThrow({
+            frames: res.frames,
+            steps: res.steps,
+            count: rolled.length,
+            dt: DT,
+            dieSize: DIE_SIZE,
+            tray,
+            obstacles: slots.current
+              .filter((_, i) => !rolled.includes(i) && slots.current[i]?.placed)
+              .map((o) => ({ p: o.p })),
+            pan: panOf,
+          });
+    // Reduced motion / no physics: the dice are just there, with one knock.
+    if (!sound && rolled.length > 0) play('dice.hitTable', { gain: 0.7 });
     playback.current = {
       frames: res.frames,
       steps: res.steps,
       dt: DT,
       rolled,
-      start: -1,
+      start: sound ? performance.now() / 1000 : -1,
+      sound,
       result: {
         rollId: id,
         faces: slots.current.map((s) => s.face),

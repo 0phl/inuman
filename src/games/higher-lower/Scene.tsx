@@ -2,8 +2,10 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import type { Group, Mesh, MeshBasicMaterial } from 'three';
 import { useFrame, useThree } from '@react-three/fiber';
 import { easing } from 'maath';
+import { cardFlight, outcome } from '@/audio/cues';
+import { play } from '@/audio/engine';
 import type { Card } from '@/core/primitives/deck';
-import type { View } from '@/core/games/higher-lower/logic';
+import type { Rules, View } from '@/core/games/higher-lower/logic';
 import { useTheme } from '@/store/theme';
 import { BlobShadow } from '@/three/BlobShadow';
 import { Card3D } from '@/three/Card3D';
@@ -49,7 +51,11 @@ function PileCard({ card, index, level, back, fromDeckY }: PileCardProps) {
   const anim = useRef(fromDeckY === null ? null : { from: fromDeckY, start: -1, duration: reducedMotion() ? 0.15 : FLIP_SECONDS });
 
   useEffect(() => {
-    if (anim.current) invalidate();
+    const a = anim.current;
+    if (!a) return;
+    invalidate();
+    // Off the deck, over mid-arc, down on the pile (the pile sits right of centre).
+    cardFlight(a.duration, { pan: 0.18 });
   }, [invalidate]);
 
   useFrame((state) => {
@@ -89,11 +95,29 @@ function PileCard({ card, index, level, back, fromDeckY }: PileCardProps) {
 }
 
 /** Deck on the left, face-up pile on the right; each guess flips the next card over onto the pile. */
-export default function HigherLowerScene({ view }: GameViewProps<View>) {
+export default function HigherLowerScene({ view, rules }: GameViewProps<View>) {
   const back = useTheme((s) => s.theme.cardBack);
   // The result showing when the scene mounted (e.g. after a reload) is not animated again.
   const [firstLast] = useState(view.last);
   const fresh = view.last !== null && view.last !== firstLast;
+
+  // Tama / mali / tabla as the card lands; a streak that earned the safe pass rings higher.
+  const last = view.last;
+  const passAfter = (rules as Rules).passAfter;
+  const streak = view.streak;
+  useEffect(() => {
+    if (!last || last === firstLast) return;
+    const safe = last.outcome === 'correct' && passAfter > 0 && streak === 0;
+    outcome(safe ? 'streak' : last.outcome, reducedMotion() ? 0.15 : FLIP_SECONDS);
+  }, [last, firstLast, passAfter, streak]);
+
+  // The deck ran out and the pile was shuffled back in.
+  const deckCount = view.deckCount;
+  const prevDeck = useRef(deckCount);
+  useEffect(() => {
+    if (deckCount > prevDeck.current) play('card.shuffle');
+    prevDeck.current = deckCount;
+  }, [deckCount]);
 
   const visible = view.pile.slice(-3);
   const offset = view.pile.length - visible.length;

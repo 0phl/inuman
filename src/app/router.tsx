@@ -39,6 +39,11 @@ export const router = createBrowserRouter([
         path: 'settings',
         lazy: () => import('./routes/Settings').then((m) => ({ Component: m.default })),
       },
+      // On-device performance bench (production too; not linked from the UI).
+      {
+        path: 'bench',
+        lazy: () => import('./routes/Bench').then((m) => ({ Component: m.default })),
+      },
       // Dev benches: only in dev builds (import.meta.env.DEV is statically false in production,
       // so these routes and their chunks are dropped from the build).
       ...(import.meta.env.DEV

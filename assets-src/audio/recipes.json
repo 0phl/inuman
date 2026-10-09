@@ -1,0 +1,1946 @@
+{
+  "$comment": "Audio build recipes for scripts/build-audio.mjs (pnpm audio). Sources are fetched by assets-src/audio/fetch.mjs. Times in seconds of the source file; gain in dB; filter = ffmpeg filter chain; rate = varispeed (pitch+speed).",
+  "version": 1,
+  "categories": {
+    "$comment": "loudness = target max 200 ms K-weighted loudness (LUFS-ish) after peak-normalising to -3 dBFS; gain only ever goes down. Loops with measure \"mean\" use whole-file loudness.",
+    "ui": {
+      "loudness": -35,
+      "gate": -42,
+      "tailDb": -40
+    },
+    "uiTick": {
+      "loudness": -37,
+      "gate": -42,
+      "tailDb": -40
+    },
+    "uiSwoosh": {
+      "loudness": -36
+    },
+    "uiChime": {
+      "loudness": -33
+    },
+    "chime": {
+      "loudness": -24
+    },
+    "light": {
+      "loudness": -24,
+      "gate": -46,
+      "tailDb": -44
+    },
+    "impact": {
+      "loudness": -21,
+      "gate": -48,
+      "tailDb": -46
+    },
+    "glass": {
+      "loudness": -23,
+      "gate": -60
+    },
+    "jingle": {
+      "loudness": -21
+    },
+    "loop": {
+      "loudness": -26
+    },
+    "ambience": {
+      "loudness": -33,
+      "measure": "mean"
+    }
+  },
+  "sources": {
+    "fs-565027": {
+      "kind": "freesound",
+      "file": "freesound/565027.mp3",
+      "download": "https://cdn.freesound.org/previews/565/565027_12606404-hq.mp3",
+      "url": "https://freesound.org/people/Anzbot/sounds/565027/",
+      "title": "Wooden clicks.wav",
+      "author": "Anzbot",
+      "license": "CC0 1.0"
+    },
+    "fs-629020": {
+      "kind": "freesound",
+      "file": "freesound/629020.mp3",
+      "download": "https://cdn.freesound.org/previews/629/629020_12471724-hq.mp3",
+      "url": "https://freesound.org/people/Kolombooo/sounds/629020/",
+      "title": "Button click",
+      "author": "Kolombooo",
+      "license": "CC0 1.0"
+    },
+    "fs-423512": {
+      "kind": "freesound",
+      "file": "freesound/423512.mp3",
+      "download": "https://cdn.freesound.org/previews/423/423512_8326967-hq.mp3",
+      "url": "https://freesound.org/people/SomeoneCool15/sounds/423512/",
+      "title": "Light Switch Click On and Off",
+      "author": "SomeoneCool15",
+      "license": "CC0 1.0"
+    },
+    "fs-486234": {
+      "kind": "freesound",
+      "file": "freesound/486234.mp3",
+      "download": "https://cdn.freesound.org/previews/486/486234_7254895-hq.mp3",
+      "url": "https://freesound.org/people/BennettFilmTeacher/sounds/486234/",
+      "title": "Whoosh For Whip Zoom",
+      "author": "BennettFilmTeacher",
+      "license": "CC0 1.0"
+    },
+    "fs-579752": {
+      "kind": "freesound",
+      "file": "freesound/579752.mp3",
+      "download": "https://cdn.freesound.org/previews/579/579752_329215-hq.mp3",
+      "url": "https://freesound.org/people/DenysFontanarosa/sounds/579752/",
+      "title": "Pouring water in a glass",
+      "author": "DenysFontanarosa",
+      "license": "CC0 1.0"
+    },
+    "fs-350618": {
+      "kind": "freesound",
+      "file": "freesound/350618.mp3",
+      "download": "https://cdn.freesound.org/previews/350/350618_3877322-hq.mp3",
+      "url": "https://freesound.org/people/supersnd/sounds/350618/",
+      "title": "soda bottle open",
+      "author": "supersnd",
+      "license": "CC0 1.0"
+    },
+    "fs-390337": {
+      "kind": "freesound",
+      "file": "freesound/390337.mp3",
+      "download": "https://cdn.freesound.org/previews/390/390337_1830834-hq.mp3",
+      "url": "https://freesound.org/people/megashroom/sounds/390337/",
+      "title": "Opening Beer Bottle 170428_1469.wav",
+      "author": "megashroom",
+      "license": "CC0 1.0"
+    },
+    "fs-377991": {
+      "kind": "freesound",
+      "file": "freesound/377991.mp3",
+      "download": "https://cdn.freesound.org/previews/377/377991_7006550-hq.mp3",
+      "url": "https://freesound.org/people/13GPanska_Gorbusinova_Anna/sounds/377991/",
+      "title": "Opening a bottle of beer.WAV",
+      "author": "13GPanska_Gorbusinova_Anna",
+      "license": "CC0 1.0"
+    },
+    "fs-870720": {
+      "kind": "freesound",
+      "file": "freesound/870720.mp3",
+      "download": "https://cdn.freesound.org/previews/870/870720_18412227-hq.mp3",
+      "url": "https://freesound.org/people/CHallSmith/sounds/870720/",
+      "title": "Wine Glass Clinks (5), Heavy",
+      "author": "CHallSmith",
+      "license": "CC0 1.0"
+    },
+    "fs-118199": {
+      "kind": "freesound",
+      "file": "freesound/118199.mp3",
+      "download": "https://cdn.freesound.org/previews/118/118199_2043421-hq.mp3",
+      "url": "https://freesound.org/people/MegaPenguin13/sounds/118199/",
+      "title": "Bottles Clinking.aif",
+      "author": "MegaPenguin13",
+      "license": "CC0 1.0"
+    },
+    "fs-761135": {
+      "kind": "freesound",
+      "file": "freesound/761135.mp3",
+      "download": "https://cdn.freesound.org/previews/761/761135_13431397-hq.mp3",
+      "url": "https://freesound.org/people/wasserbjorn/sounds/761135/",
+      "title": "Wine Glass clank 1",
+      "author": "wasserbjorn",
+      "license": "CC0 1.0"
+    },
+    "fs-560299": {
+      "kind": "freesound",
+      "file": "freesound/560299.mp3",
+      "download": "https://cdn.freesound.org/previews/560/560299_12560866-hq.mp3",
+      "url": "https://freesound.org/people/RoyalRose/sounds/560299/",
+      "title": "Wine Glass Clink1.m4a",
+      "author": "RoyalRose",
+      "license": "CC0 1.0"
+    },
+    "fs-416288": {
+      "kind": "freesound",
+      "file": "freesound/416288.mp3",
+      "download": "https://cdn.freesound.org/previews/416/416288_6857156-hq.mp3",
+      "url": "https://freesound.org/people/Fugeni/sounds/416288/",
+      "title": "Empty Beer Bottles Clinking, Clanking.wav",
+      "author": "Fugeni",
+      "license": "CC0 1.0"
+    },
+    "fs-349691": {
+      "kind": "freesound",
+      "file": "freesound/349691.mp3",
+      "download": "https://cdn.freesound.org/previews/349/349691_5632532-hq.mp3",
+      "url": "https://freesound.org/people/Mikes-MultiMedia/sounds/349691/",
+      "title": "clink glasses.wav",
+      "author": "Mikes-MultiMedia",
+      "license": "CC0 1.0"
+    },
+    "fs-218333": {
+      "kind": "freesound",
+      "file": "freesound/218333.mp3",
+      "download": "https://cdn.freesound.org/previews/218/218333_1480854-hq.mp3",
+      "url": "https://freesound.org/people/SpliceSound/sounds/218333/",
+      "title": "Glass cup pick up put down on wood table.wav",
+      "author": "SpliceSound",
+      "license": "CC0 1.0"
+    },
+    "fs-205880": {
+      "kind": "freesound",
+      "file": "freesound/205880.mp3",
+      "download": "https://cdn.freesound.org/previews/205/205880_3698418-hq.mp3",
+      "url": "https://freesound.org/people/soundboy2000/sounds/205880/",
+      "title": "shot glass slam.aif",
+      "author": "soundboy2000",
+      "license": "CC0 1.0"
+    },
+    "fs-84322": {
+      "kind": "freesound",
+      "file": "freesound/84322.mp3",
+      "download": "https://cdn.freesound.org/previews/84/84322_754949-hq.mp3",
+      "url": "https://freesound.org/people/Splashdust/sounds/84322/",
+      "title": "flipCard.wav",
+      "author": "Splashdust",
+      "license": "CC0 1.0"
+    },
+    "fs-571577": {
+      "kind": "freesound",
+      "file": "freesound/571577.mp3",
+      "download": "https://cdn.freesound.org/previews/571/571577_9129912-hq.mp3",
+      "url": "https://freesound.org/people/el_boss/sounds/571577/",
+      "title": "Playing Card Deal Variation 1",
+      "author": "el_boss",
+      "license": "CC0 1.0"
+    },
+    "fs-256508": {
+      "kind": "freesound",
+      "file": "freesound/256508.mp3",
+      "download": "https://cdn.freesound.org/previews/256/256508_2276808-hq.mp3",
+      "url": "https://freesound.org/people/Kodack/sounds/256508/",
+      "title": "Riffle Card Shuffle",
+      "author": "Kodack",
+      "license": "CC0 1.0"
+    },
+    "fs-151165": {
+      "kind": "freesound",
+      "file": "freesound/151165.mp3",
+      "download": "https://cdn.freesound.org/previews/151/151165_2732374-hq.mp3",
+      "url": "https://freesound.org/people/Frankail/sounds/151165/",
+      "title": "Cachos y dados.mp3",
+      "author": "Frankail",
+      "license": "CC0 1.0"
+    },
+    "fs-466141": {
+      "kind": "freesound",
+      "file": "freesound/466141.mp3",
+      "download": "https://cdn.freesound.org/previews/466/466141_9159316-hq.mp3",
+      "url": "https://freesound.org/people/Breviceps/sounds/466141/",
+      "title": "Dice Cup",
+      "author": "Breviceps",
+      "license": "CC0 1.0"
+    },
+    "fs-185977": {
+      "kind": "freesound",
+      "file": "freesound/185977.mp3",
+      "download": "https://cdn.freesound.org/previews/185/185977_878622-hq.mp3",
+      "url": "https://freesound.org/people/2BACH/sounds/185977/",
+      "title": "Dice (3) slam on felt.wav",
+      "author": "2BACH",
+      "license": "CC0 1.0"
+    },
+    "fs-353975": {
+      "kind": "freesound",
+      "file": "freesound/353975.mp3",
+      "download": "https://cdn.freesound.org/previews/353/353975_1815993-hq.mp3",
+      "url": "https://freesound.org/people/nettimato/sounds/353975/",
+      "title": "rolling dice 1.wav",
+      "author": "nettimato",
+      "license": "CC0 1.0"
+    },
+    "fs-762366": {
+      "kind": "freesound",
+      "file": "freesound/762366.mp3",
+      "download": "https://cdn.freesound.org/previews/762/762366_14631530-hq.mp3",
+      "url": "https://freesound.org/people/FOSSarts/sounds/762366/",
+      "title": "quick empty wine bottle spin - 1",
+      "author": "FOSSarts",
+      "license": "CC0 1.0"
+    },
+    "fs-404105": {
+      "kind": "freesound",
+      "file": "freesound/404105.mp3",
+      "download": "https://cdn.freesound.org/previews/404/404105_2287873-hq.mp3",
+      "url": "https://freesound.org/people/Counter-gamer/sounds/404105/",
+      "title": "Glass ding 2",
+      "author": "Counter-gamer",
+      "license": "CC0 1.0"
+    },
+    "fs-376195": {
+      "kind": "freesound",
+      "file": "freesound/376195.mp3",
+      "download": "https://cdn.freesound.org/previews/376/376195_1756543-hq.mp3",
+      "url": "https://freesound.org/people/monotraum/sounds/376195/",
+      "title": "toy ratchet.wav",
+      "author": "monotraum",
+      "license": "CC0 1.0"
+    },
+    "fs-514162": {
+      "kind": "freesound",
+      "file": "freesound/514162.mp3",
+      "download": "https://cdn.freesound.org/previews/514/514162_10859468-hq.mp3",
+      "url": "https://freesound.org/people/ZHRØ/sounds/514162/",
+      "title": "Swinging axe.mp3",
+      "author": "ZHRØ",
+      "license": "CC0 1.0"
+    },
+    "fs-414461": {
+      "kind": "freesound",
+      "file": "freesound/414461.mp3",
+      "download": "https://cdn.freesound.org/previews/414/414461_1738686-hq.mp3",
+      "url": "https://freesound.org/people/giddster/sounds/414461/",
+      "title": "Dropping ping pong ball on table 2",
+      "author": "giddster",
+      "license": "CC0 1.0"
+    },
+    "fs-269718": {
+      "kind": "freesound",
+      "file": "freesound/269718.mp3",
+      "download": "https://cdn.freesound.org/previews/269/269718_3094998-hq.mp3",
+      "url": "https://freesound.org/people/michorvath/sounds/269718/",
+      "title": "Ping pong ball hit",
+      "author": "michorvath",
+      "license": "CC0 1.0"
+    },
+    "fs-418555": {
+      "kind": "freesound",
+      "file": "freesound/418555.mp3",
+      "download": "https://cdn.freesound.org/previews/418/418555_8333239-hq.mp3",
+      "url": "https://freesound.org/people/14FPanskaBubik_Lukas/sounds/418555/",
+      "title": "Ping pong impact the table.WAV",
+      "author": "14FPanskaBubik_Lukas",
+      "license": "CC0 1.0"
+    },
+    "fs-153395": {
+      "kind": "freesound",
+      "file": "freesound/153395.mp3",
+      "download": "https://cdn.freesound.org/previews/153/153395_2370732-hq.mp3",
+      "url": "https://freesound.org/people/chebere1001/sounds/153395/",
+      "title": "Plastic-Cup.wav",
+      "author": "chebere1001",
+      "license": "CC0 1.0"
+    },
+    "fs-170236": {
+      "kind": "freesound",
+      "file": "freesound/170236.mp3",
+      "download": "https://cdn.freesound.org/previews/170/170236_3147897-hq.mp3",
+      "url": "https://freesound.org/people/LuttoAudio/sounds/170236/",
+      "title": "Plastic Ting.wav",
+      "author": "LuttoAudio",
+      "license": "CC0 1.0"
+    },
+    "fs-444410": {
+      "kind": "freesound",
+      "file": "freesound/444410.mp3",
+      "download": "https://cdn.freesound.org/previews/444/444410_7231443-hq.mp3",
+      "url": "https://freesound.org/people/MootMcnoodles/sounds/444410/",
+      "title": "Solo cup clink water splashback.wav",
+      "author": "MootMcnoodles",
+      "license": "CC0 1.0"
+    },
+    "fs-867498": {
+      "kind": "freesound",
+      "file": "freesound/867498.mp3",
+      "download": "https://cdn.freesound.org/previews/867/867498_71257-hq.mp3",
+      "url": "https://freesound.org/people/qubodup/sounds/867498/",
+      "title": "First Person Ball Water Drop Splash",
+      "author": "qubodup",
+      "license": "CC0 1.0"
+    },
+    "fs-853279": {
+      "kind": "freesound",
+      "file": "freesound/853279.mp3",
+      "download": "https://cdn.freesound.org/previews/853/853279_9129912-hq.mp3",
+      "url": "https://freesound.org/people/el_boss/sounds/853279/",
+      "title": "Fishing Lure Plop Water - Game SFX (2 or 2)",
+      "author": "el_boss",
+      "license": "CC0 1.0"
+    },
+    "fs-765084": {
+      "kind": "freesound",
+      "file": "freesound/765084.mp3",
+      "download": "https://cdn.freesound.org/previews/765/765084_16538157-hq.mp3",
+      "url": "https://freesound.org/people/getwecked/sounds/765084/",
+      "title": "drinking cup slide",
+      "author": "getwecked",
+      "license": "CC0 1.0"
+    },
+    "fs-637753": {
+      "kind": "freesound",
+      "file": "freesound/637753.mp3",
+      "download": "https://cdn.freesound.org/previews/637/637753_612689-hq.mp3",
+      "url": "https://freesound.org/people/kyles/sounds/637753/",
+      "title": "plastic cup down.flac",
+      "author": "kyles",
+      "license": "CC0 1.0"
+    },
+    "fs-150501": {
+      "kind": "freesound",
+      "file": "freesound/150501.mp3",
+      "download": "https://cdn.freesound.org/previews/150/150501_1883289-hq.mp3",
+      "url": "https://freesound.org/people/davdud101/sounds/150501/",
+      "title": "Cup Drop",
+      "author": "davdud101",
+      "license": "CC0 1.0"
+    },
+    "fs-401773": {
+      "kind": "freesound",
+      "file": "freesound/401773.mp3",
+      "download": "https://cdn.freesound.org/previews/401/401773_7687000-hq.mp3",
+      "url": "https://freesound.org/people/oztrum/sounds/401773/",
+      "title": "Plastic cup dropping",
+      "author": "oztrum",
+      "license": "CC0 1.0"
+    },
+    "fs-334939": {
+      "kind": "freesound",
+      "file": "freesound/334939.mp3",
+      "download": "https://cdn.freesound.org/previews/334/334939_5058825-hq.mp3",
+      "url": "https://freesound.org/people/dominictreis/sounds/334939/",
+      "title": "Coin Dropped:Bounced on Wooden Desk (Longer Sound).mp3",
+      "author": "dominictreis",
+      "license": "CC0 1.0"
+    },
+    "fs-447462": {
+      "kind": "freesound",
+      "file": "freesound/447462.mp3",
+      "download": "https://cdn.freesound.org/previews/447/447462_6253486-hq.mp3",
+      "url": "https://freesound.org/people/florianreichelt/sounds/447462/",
+      "title": "flipping a small coin",
+      "author": "florianreichelt",
+      "license": "CC0 1.0"
+    },
+    "fs-63524": {
+      "kind": "freesound",
+      "file": "freesound/63524.mp3",
+      "download": "https://cdn.freesound.org/previews/63/63524_398161-hq.mp3",
+      "url": "https://freesound.org/people/florian_reinke/sounds/63524/",
+      "title": "money5.wav",
+      "author": "florian_reinke",
+      "license": "CC0 1.0"
+    },
+    "fs-617039": {
+      "kind": "freesound",
+      "file": "freesound/617039.mp3",
+      "download": "https://cdn.freesound.org/previews/617/617039_887696-hq.mp3",
+      "url": "https://freesound.org/people/D4XX/sounds/617039/",
+      "title": "Coin on glass 3",
+      "author": "D4XX",
+      "license": "CC0 1.0"
+    },
+    "fs-199922": {
+      "kind": "freesound",
+      "file": "freesound/199922.mp3",
+      "download": "https://cdn.freesound.org/previews/199/199922_11337-hq.mp3",
+      "url": "https://freesound.org/people/thedapperdan/sounds/199922/",
+      "title": "Drop Coin into Glass",
+      "author": "thedapperdan",
+      "license": "CC0 1.0"
+    },
+    "fs-707395": {
+      "kind": "freesound",
+      "file": "freesound/707395.mp3",
+      "download": "https://cdn.freesound.org/previews/707/707395_9243191-hq.mp3",
+      "url": "https://freesound.org/people/avreference/sounds/707395/",
+      "title": "Plastic cup",
+      "author": "avreference",
+      "license": "CC0 1.0"
+    },
+    "fs-347950": {
+      "kind": "freesound",
+      "file": "freesound/347950.mp3",
+      "download": "https://cdn.freesound.org/previews/347/347950_6165603-hq.mp3",
+      "url": "https://freesound.org/people/grizzlypwn/sounds/347950/",
+      "title": "Plastic cup falling on wooden table",
+      "author": "grizzlypwn",
+      "license": "CC0 1.0"
+    },
+    "fs-347006": {
+      "kind": "freesound",
+      "file": "freesound/347006.mp3",
+      "download": "https://cdn.freesound.org/previews/347/347006_2247456-hq.mp3",
+      "url": "https://freesound.org/people/Kinoton/sounds/347006/",
+      "title": "Pour Beer Into Glass #1",
+      "author": "Kinoton",
+      "license": "CC0 1.0"
+    },
+    "fs-423990": {
+      "kind": "freesound",
+      "file": "freesound/423990.mp3",
+      "download": "https://cdn.freesound.org/previews/423/423990_4023430-hq.mp3",
+      "url": "https://freesound.org/people/AmishRob/sounds/423990/",
+      "title": "Car horn beep beep two beeps honk honk",
+      "author": "AmishRob",
+      "license": "CC0 1.0"
+    },
+    "fs-661686": {
+      "kind": "freesound",
+      "file": "freesound/661686.mp3",
+      "download": "https://cdn.freesound.org/previews/661/661686_11310256-hq.mp3",
+      "url": "https://freesound.org/people/Dokuta_Gerovv/sounds/661686/",
+      "title": "Ambience_Bar_No_Music.wav",
+      "author": "Dokuta_Gerovv",
+      "license": "CC0 1.0"
+    },
+    "fs-764616": {
+      "kind": "freesound",
+      "file": "freesound/764616.mp3",
+      "download": "https://cdn.freesound.org/previews/764/764616_15688424-hq.mp3",
+      "url": "https://freesound.org/people/elricadavis/sounds/764616/",
+      "title": "Toasting on Glasses",
+      "author": "elricadavis",
+      "license": "CC0 1.0"
+    },
+    "kenney-casino": {
+      "kind": "kenney",
+      "dir": "kenney/casino-audio",
+      "zip": "https://kenney.nl/media/pages/assets/casino-audio/2472606a04-1721639069/kenney_casino-audio.zip",
+      "url": "https://kenney.nl/assets/casino-audio",
+      "title": "Casino Audio (pack)",
+      "author": "Kenney (kenney.nl)",
+      "license": "CC0 1.0"
+    },
+    "kenney-impact": {
+      "kind": "kenney",
+      "dir": "kenney/impact-sounds",
+      "zip": "https://kenney.nl/media/pages/assets/impact-sounds/87b4ddecda-1677589768/kenney_impact-sounds.zip",
+      "url": "https://kenney.nl/assets/impact-sounds",
+      "title": "Impact Sounds (pack)",
+      "author": "Kenney (kenney.nl)",
+      "license": "CC0 1.0"
+    },
+    "kenney-jingles": {
+      "kind": "kenney",
+      "dir": "kenney/music-jingles",
+      "zip": "https://kenney.nl/media/pages/assets/music-jingles/f37e530b9e-1677590399/kenney_music-jingles.zip",
+      "url": "https://kenney.nl/assets/music-jingles",
+      "title": "Music Jingles (pack)",
+      "author": "Kenney (kenney.nl)",
+      "license": "CC0 1.0"
+    },
+    "kenney-rpg": {
+      "kind": "kenney",
+      "dir": "kenney/rpg-audio",
+      "zip": "https://kenney.nl/media/pages/assets/rpg-audio/8e99002d76-1677590336/kenney_rpg-audio.zip",
+      "url": "https://kenney.nl/assets/rpg-audio",
+      "title": "RPG Audio (pack)",
+      "author": "Kenney (kenney.nl)",
+      "license": "CC0 1.0"
+    },
+    "im-clear-air": {
+      "kind": "incompetech",
+      "file": "music/Clear_Air.mp3",
+      "download": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Clear%20Air.mp3",
+      "url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100626",
+      "title": "Clear Air",
+      "author": "Kevin MacLeod (incompetech.com)",
+      "license": "CC-BY 4.0",
+      "attribution": "\"Clear Air\" Kevin MacLeod (incompetech.com) Licensed under Creative Commons: By Attribution 4.0 License http://creativecommons.org/licenses/by/4.0/"
+    },
+    "im-study-and-relax": {
+      "kind": "incompetech",
+      "file": "music/Study_And_Relax.mp3",
+      "download": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Study%20And%20Relax.mp3",
+      "url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1900030",
+      "title": "Study And Relax",
+      "author": "Kevin MacLeod (incompetech.com)",
+      "license": "CC-BY 4.0",
+      "attribution": "\"Study And Relax\" Kevin MacLeod (incompetech.com) Licensed under Creative Commons: By Attribution 4.0 License http://creativecommons.org/licenses/by/4.0/"
+    },
+    "im-newer-wave": {
+      "kind": "incompetech",
+      "file": "music/Newer_Wave.mp3",
+      "download": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Newer%20Wave.mp3",
+      "url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN2000024",
+      "title": "Newer Wave",
+      "author": "Kevin MacLeod (incompetech.com)",
+      "license": "CC-BY 4.0",
+      "attribution": "\"Newer Wave\" Kevin MacLeod (incompetech.com) Licensed under Creative Commons: By Attribution 4.0 License http://creativecommons.org/licenses/by/4.0/"
+    },
+    "fs-787405": {
+      "kind": "freesound",
+      "file": "freesound/787405.mp3",
+      "download": "https://cdn.freesound.org/previews/787/787405_12262933-hq.mp3",
+      "url": "https://freesound.org/people/RealSquink/sounds/787405/",
+      "title": "Card Deal",
+      "author": "RealSquink",
+      "license": "CC0 1.0"
+    }
+  },
+  "sfx": {
+    "ui.tap": {
+      "category": "ui",
+      "takes": [
+        {
+          "src": "fs-565027",
+          "in": 1.8,
+          "out": 1.915,
+          "filter": "highpass=f=120,lowpass=f=9000"
+        },
+        {
+          "src": "fs-565027",
+          "in": 2.255,
+          "out": 2.37,
+          "filter": "highpass=f=120,lowpass=f=9000"
+        },
+        {
+          "src": "fs-565027",
+          "in": 2.685,
+          "out": 2.8,
+          "filter": "highpass=f=120,lowpass=f=9000"
+        }
+      ]
+    },
+    "ui.tapPrimary": {
+      "category": "ui",
+      "loudness": -33,
+      "takes": [
+        {
+          "src": "fs-565027",
+          "in": 1.385,
+          "out": 1.6,
+          "filter": "highpass=f=70,equalizer=f=170:t=q:w=1:g=5,lowpass=f=9000"
+        },
+        {
+          "src": "fs-565027",
+          "in": 0.19,
+          "out": 0.4,
+          "filter": "highpass=f=70,equalizer=f=170:t=q:w=1:g=5,lowpass=f=9000"
+        }
+      ]
+    },
+    "ui.select": {
+      "category": "uiTick",
+      "takes": [
+        {
+          "src": "fs-629020",
+          "in": 0.03,
+          "out": 0.12,
+          "filter": "lowpass=f=10000"
+        },
+        {
+          "src": "fs-629020",
+          "in": 0.195,
+          "out": 0.29,
+          "filter": "lowpass=f=10000"
+        }
+      ]
+    },
+    "ui.toggleOn": {
+      "category": "ui",
+      "takes": [
+        {
+          "src": "fs-423512",
+          "in": 1.4,
+          "out": 1.53,
+          "rate": 1.06
+        }
+      ]
+    },
+    "ui.toggleOff": {
+      "category": "ui",
+      "takes": [
+        {
+          "src": "fs-423512",
+          "in": 1.935,
+          "out": 2.06,
+          "rate": 0.92
+        }
+      ]
+    },
+    "ui.back": {
+      "category": "uiSwoosh",
+      "takes": [
+        {
+          "synth": {
+            "voice": "swoosh",
+            "dur": 0.17,
+            "f0": 2400,
+            "f1": 800,
+            "q": 1.2,
+            "peakAt": 0.72,
+            "seed": 3
+          }
+        }
+      ]
+    },
+    "ui.sheetOpen": {
+      "category": "uiSwoosh",
+      "takes": [
+        {
+          "synth": {
+            "voice": "swoosh",
+            "dur": 0.24,
+            "f0": 520,
+            "f1": 2600,
+            "q": 1.3,
+            "peakAt": 0.6,
+            "seed": 4
+          }
+        }
+      ]
+    },
+    "ui.sheetClose": {
+      "category": "uiSwoosh",
+      "takes": [
+        {
+          "synth": {
+            "voice": "swoosh",
+            "dur": 0.22,
+            "f0": 2400,
+            "f1": 520,
+            "q": 1.3,
+            "peakAt": 0.35,
+            "seed": 5
+          }
+        }
+      ]
+    },
+    "ui.error": {
+      "category": "ui",
+      "loudness": -33,
+      "takes": [
+        {
+          "synth": {
+            "voice": "errorThud"
+          }
+        }
+      ]
+    },
+    "ui.success": {
+      "category": "uiChime",
+      "takes": [
+        {
+          "synth": {
+            "voice": "notes",
+            "dur": 0.5,
+            "seq": [
+              [
+                0,
+                "E6"
+              ],
+              [
+                0.075,
+                "B6",
+                0.9
+              ]
+            ],
+            "decay": 0.24,
+            "partials": "GLOCK"
+          }
+        }
+      ]
+    },
+    "ui.notice": {
+      "category": "uiChime",
+      "takes": [
+        {
+          "synth": {
+            "voice": "notes",
+            "dur": 0.6,
+            "seq": [
+              [
+                0,
+                "D6",
+                1,
+                0.3
+              ]
+            ],
+            "partials": "SOFT_BELL",
+            "mallet": 0.05
+          }
+        },
+        {
+          "synth": {
+            "voice": "notes",
+            "dur": 0.6,
+            "seq": [
+              [
+                0,
+                "A5",
+                1,
+                0.32
+              ]
+            ],
+            "partials": "SOFT_BELL",
+            "mallet": 0.05
+          }
+        }
+      ]
+    },
+    "ui.pass": {
+      "category": "uiSwoosh",
+      "loudness": -34,
+      "takes": [
+        {
+          "src": "fs-486234",
+          "in": 0,
+          "out": 0.34
+        },
+        {
+          "src": "fs-486234",
+          "in": 0.42,
+          "out": 0.76
+        }
+      ]
+    },
+    "ui.reveal": {
+      "category": "uiChime",
+      "takes": [
+        {
+          "synth": {
+            "voice": "shimmer"
+          }
+        }
+      ]
+    },
+    "ui.water": {
+      "category": "ui",
+      "loudness": -32,
+      "takes": [
+        {
+          "src": "fs-579752",
+          "in": 0.4,
+          "out": 2.2,
+          "fadeOutSec": 0.5
+        }
+      ]
+    },
+    "ui.gameStart": {
+      "category": "impact",
+      "loudness": -22,
+      "takes": [
+        {
+          "src": "fs-350618",
+          "in": 0,
+          "out": 0.5
+        },
+        {
+          "layers": [
+            {
+              "src": "fs-390337",
+              "in": 1.4,
+              "out": 1.62
+            },
+            {
+              "src": "fs-377991",
+              "in": 2.77,
+              "out": 3.05,
+              "at": 0.17,
+              "gain": -3
+            }
+          ]
+        }
+      ]
+    },
+    "drink.cheers": {
+      "category": "glass",
+      "takes": [
+        {
+          "src": "fs-870720",
+          "in": 0.22,
+          "out": 1.3,
+          "fadeOutSec": 0.4
+        },
+        {
+          "src": "fs-560299",
+          "in": 0.52,
+          "out": 1.5,
+          "fadeOutSec": 0.4
+        },
+        {
+          "src": "fs-118199",
+          "in": 1.37,
+          "out": 2.3,
+          "fadeOutSec": 0.4
+        }
+      ]
+    },
+    "drink.social": {
+      "category": "glass",
+      "takes": [
+        {
+          "layers": [
+            {
+              "src": "fs-349691",
+              "in": 10.6,
+              "out": 11.7
+            },
+            {
+              "src": "fs-870720",
+              "in": 2.53,
+              "out": 3.4,
+              "at": 0.05,
+              "gain": -3
+            },
+            {
+              "src": "fs-416288",
+              "in": 0.24,
+              "out": 0.6,
+              "at": 0.16,
+              "gain": -5
+            }
+          ],
+          "fadeOutSec": 0.4
+        },
+        {
+          "layers": [
+            {
+              "src": "fs-764616",
+              "in": 3.81,
+              "out": 4.6
+            },
+            {
+              "src": "fs-761135",
+              "in": 4.25,
+              "out": 5,
+              "at": 0.07,
+              "gain": -4
+            },
+            {
+              "src": "fs-118199",
+              "in": 9.57,
+              "out": 10.1,
+              "at": 0.13,
+              "gain": -6
+            }
+          ],
+          "fadeOutSec": 0.4
+        }
+      ]
+    },
+    "drink.finish": {
+      "category": "impact",
+      "takes": [
+        {
+          "src": "fs-218333",
+          "in": 11.3,
+          "out": 11.75
+        },
+        {
+          "src": "fs-205880",
+          "in": 2.56,
+          "out": 3
+        }
+      ]
+    },
+    "drink.give": {
+      "category": "chime",
+      "takes": [
+        {
+          "synth": {
+            "voice": "coinBlip"
+          }
+        }
+      ]
+    },
+    "game.correct": {
+      "category": "chime",
+      "takes": [
+        {
+          "synth": {
+            "voice": "notes",
+            "dur": 0.75,
+            "seq": [
+              [
+                0,
+                "E6"
+              ],
+              [
+                0.06,
+                "B6",
+                0.9
+              ]
+            ],
+            "decay": 0.45,
+            "partials": "GLOCK"
+          }
+        },
+        {
+          "synth": {
+            "voice": "notes",
+            "dur": 0.75,
+            "seq": [
+              [
+                0,
+                "F#6"
+              ],
+              [
+                0.06,
+                "C#7",
+                0.9
+              ]
+            ],
+            "decay": 0.45,
+            "partials": "GLOCK"
+          }
+        }
+      ]
+    },
+    "game.wrong": {
+      "category": "chime",
+      "takes": [
+        {
+          "synth": {
+            "voice": "sablay"
+          }
+        },
+        {
+          "synth": {
+            "voice": "sablay",
+            "seq": [
+              [
+                0,
+                0.11,
+                "D4",
+                "D4"
+              ],
+              [
+                0.14,
+                0.28,
+                "A3",
+                "G#3"
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    "game.tie": {
+      "category": "chime",
+      "loudness": -25,
+      "takes": [
+        {
+          "synth": {
+            "voice": "notes",
+            "dur": 0.5,
+            "seq": [
+              [
+                0,
+                "G5"
+              ],
+              [
+                0.13,
+                "G5",
+                0.85
+              ]
+            ],
+            "decay": 0.3,
+            "partials": "MARIMBA"
+          }
+        }
+      ]
+    },
+    "game.streak": {
+      "category": "chime",
+      "takes": [
+        {
+          "synth": {
+            "voice": "notes",
+            "dur": 0.95,
+            "seq": [
+              [
+                0,
+                "C6"
+              ],
+              [
+                0.055,
+                "E6"
+              ],
+              [
+                0.11,
+                "G6"
+              ],
+              [
+                0.165,
+                "C7"
+              ]
+            ],
+            "decay": 0.4,
+            "partials": "GLOCK"
+          }
+        }
+      ]
+    },
+    "game.roundOver": {
+      "category": "jingle",
+      "loudness": -22,
+      "takes": [
+        {
+          "src": "kenney-jingles",
+          "file": "Audio/Pizzicato jingles/jingles_PIZZI11.ogg"
+        }
+      ]
+    },
+    "game.win": {
+      "category": "jingle",
+      "takes": [
+        {
+          "layers": [
+            {
+              "src": "kenney-jingles",
+              "file": "Audio/Steel jingles/jingles_STEEL10.ogg"
+            },
+            {
+              "src": "kenney-jingles",
+              "file": "Audio/Sax jingles/jingles_SAX10.ogg",
+              "gain": -5
+            }
+          ]
+        }
+      ]
+    },
+    "game.lose": {
+      "category": "jingle",
+      "loudness": -22,
+      "takes": [
+        {
+          "src": "kenney-jingles",
+          "file": "Audio/Sax jingles/jingles_SAX07.ogg"
+        }
+      ]
+    },
+    "game.sting": {
+      "category": "jingle",
+      "takes": [
+        {
+          "src": "kenney-jingles",
+          "file": "Audio/Hit jingles/jingles_HIT15.ogg"
+        }
+      ]
+    },
+    "card.slide": {
+      "category": "light",
+      "takes": [
+        {
+          "src": "kenney-casino",
+          "file": "Audio/card-slide-1.ogg",
+          "tailDb": -36
+        },
+        {
+          "src": "kenney-casino",
+          "file": "Audio/card-slide-2.ogg",
+          "tailDb": -36
+        },
+        {
+          "src": "kenney-casino",
+          "file": "Audio/card-slide-3.ogg",
+          "tailDb": -36
+        },
+        {
+          "src": "kenney-casino",
+          "file": "Audio/card-slide-5.ogg",
+          "tailDb": -36
+        }
+      ]
+    },
+    "card.flip": {
+      "category": "light",
+      "takes": [
+        {
+          "src": "fs-787405",
+          "in": 0.35,
+          "out": 0.53
+        },
+        {
+          "src": "fs-571577",
+          "in": 0.235,
+          "out": null
+        },
+        {
+          "src": "fs-84322",
+          "in": 0.57,
+          "out": 0.8
+        }
+      ]
+    },
+    "card.place": {
+      "category": "light",
+      "takes": [
+        {
+          "src": "kenney-casino",
+          "file": "Audio/card-place-1.ogg",
+          "onsetDb": -20
+        },
+        {
+          "src": "kenney-casino",
+          "file": "Audio/card-place-3.ogg",
+          "onsetDb": -14
+        },
+        {
+          "src": "kenney-casino",
+          "file": "Audio/card-place-4.ogg",
+          "onsetDb": -14
+        }
+      ]
+    },
+    "card.shuffle": {
+      "category": "light",
+      "takes": [
+        {
+          "src": "fs-256508",
+          "in": 0.28,
+          "out": 1.98,
+          "fadeOutSec": 0.12
+        }
+      ]
+    },
+    "card.fan": {
+      "category": "light",
+      "takes": [
+        {
+          "src": "kenney-casino",
+          "file": "Audio/card-fan-1.ogg"
+        }
+      ]
+    },
+    "dice.grab": {
+      "category": "light",
+      "takes": [
+        {
+          "src": "kenney-casino",
+          "file": "Audio/dice-grab-1.ogg",
+          "onsetDb": -28,
+          "gate": -40
+        }
+      ]
+    },
+    "dice.shake": {
+      "category": "loop",
+      "loop": true,
+      "takes": [
+        {
+          "src": "fs-466141",
+          "in": 2.92,
+          "out": 3.972,
+          "xfade": 0.03
+        },
+        {
+          "src": "fs-466141",
+          "in": 10.61,
+          "out": 11.658,
+          "xfade": 0.03
+        }
+      ]
+    },
+    "dice.throw": {
+      "category": "light",
+      "takes": [
+        {
+          "layers": [
+            {
+              "src": "fs-151165",
+              "in": 5.58,
+              "out": 5.76
+            },
+            {
+              "src": "fs-514162",
+              "in": 0.12,
+              "out": 0.45,
+              "at": 0,
+              "gain": -12
+            }
+          ]
+        },
+        {
+          "layers": [
+            {
+              "src": "fs-466141",
+              "in": 4.18,
+              "out": 4.37
+            },
+            {
+              "src": "fs-514162",
+              "in": 0.12,
+              "out": 0.45,
+              "at": 0,
+              "gain": -12,
+              "rate": 1.15
+            }
+          ]
+        }
+      ]
+    },
+    "dice.hitTable": {
+      "category": "impact",
+      "takes": [
+        {
+          "src": "kenney-casino",
+          "file": "Audio/die-throw-1.ogg",
+          "in": 0.13,
+          "out": 0.27
+        },
+        {
+          "src": "kenney-casino",
+          "file": "Audio/die-throw-2.ogg",
+          "in": 0.05,
+          "out": 0.21
+        },
+        {
+          "src": "kenney-casino",
+          "file": "Audio/die-throw-2.ogg",
+          "in": 0.2,
+          "out": 0.34
+        },
+        {
+          "src": "kenney-casino",
+          "file": "Audio/die-throw-4.ogg",
+          "in": 0.1,
+          "out": 0.27
+        }
+      ]
+    },
+    "dice.hitDie": {
+      "category": "light",
+      "loudness": -21,
+      "takes": [
+        {
+          "src": "fs-353975",
+          "in": 0.335,
+          "out": 0.42,
+          "filter": "highpass=f=600"
+        },
+        {
+          "src": "fs-353975",
+          "in": 0.16,
+          "out": 0.25,
+          "filter": "highpass=f=600"
+        },
+        {
+          "src": "fs-353975",
+          "in": 0.462,
+          "out": 0.55,
+          "filter": "highpass=f=600"
+        }
+      ]
+    },
+    "dice.hitWall": {
+      "category": "impact",
+      "takes": [
+        {
+          "layers": [
+            {
+              "src": "kenney-casino",
+              "file": "Audio/die-throw-3.ogg",
+              "in": 0.05,
+              "out": 0.2,
+              "rate": 0.9
+            },
+            {
+              "src": "kenney-impact",
+              "file": "Audio/impactWood_light_001.ogg",
+              "gain": -10
+            }
+          ]
+        },
+        {
+          "layers": [
+            {
+              "src": "kenney-casino",
+              "file": "Audio/die-throw-1.ogg",
+              "in": 0.13,
+              "out": 0.27,
+              "rate": 0.86
+            },
+            {
+              "src": "kenney-impact",
+              "file": "Audio/impactPlank_medium_002.ogg",
+              "gain": -12
+            }
+          ]
+        }
+      ]
+    },
+    "cup.slam": {
+      "category": "impact",
+      "takes": [
+        {
+          "src": "fs-185977",
+          "in": 1.37,
+          "out": 1.66
+        },
+        {
+          "src": "fs-185977",
+          "in": 4.47,
+          "out": 4.76
+        }
+      ]
+    },
+    "cup.lift": {
+      "category": "light",
+      "takes": [
+        {
+          "layers": [
+            {
+              "src": "kenney-rpg",
+              "file": "Audio/handleSmallLeather.ogg"
+            },
+            {
+              "src": "fs-151165",
+              "in": 7.42,
+              "out": 7.52,
+              "at": 0.06,
+              "gain": -8
+            }
+          ]
+        }
+      ]
+    },
+    "bottle.spin": {
+      "category": "loop",
+      "loudness": -27,
+      "loop": true,
+      "takes": [
+        {
+          "synth": {
+            "voice": "bottleSpin",
+            "loopSec": 1,
+            "turns": 4,
+            "xfade": 0.06
+          },
+          "ir": {
+            "src": "fs-762366",
+            "in": 1.86,
+            "out": 2.06,
+            "mix": 0.6
+          },
+          "filter": "highpass=f=70",
+          "xfade": 0.06
+        }
+      ]
+    },
+    "bottle.stop": {
+      "category": "impact",
+      "loudness": -22,
+      "takes": [
+        {
+          "src": "fs-762366",
+          "in": 1.84,
+          "out": 2.26,
+          "onsetDb": -20,
+          "fadeOutSec": 0.12
+        }
+      ]
+    },
+    "bottle.select": {
+      "category": "chime",
+      "loudness": -21,
+      "takes": [
+        {
+          "src": "fs-404105",
+          "in": 0.43,
+          "out": 1.2,
+          "fadeOutSec": 0.35,
+          "filter": "highpass=f=500"
+        }
+      ]
+    },
+    "wheel.tick": {
+      "category": "light",
+      "takes": [
+        {
+          "src": "fs-376195",
+          "in": 0.945,
+          "out": 0.99
+        },
+        {
+          "src": "fs-376195",
+          "in": 2.137,
+          "out": 2.18
+        }
+      ]
+    },
+    "wheel.whoosh": {
+      "category": "light",
+      "takes": [
+        {
+          "src": "fs-486234",
+          "in": 1.73,
+          "out": 2.1
+        }
+      ]
+    },
+    "wheel.stop": {
+      "category": "impact",
+      "loudness": -21,
+      "takes": [
+        {
+          "layers": [
+            {
+              "src": "fs-376195",
+              "in": 1.425,
+              "out": 1.47
+            },
+            {
+              "src": "kenney-impact",
+              "file": "Audio/impactPlank_medium_001.ogg",
+              "filter": "lowpass=f=2500",
+              "at": 0.035,
+              "gain": -6
+            }
+          ]
+        }
+      ]
+    },
+    "throw.whoosh": {
+      "category": "light",
+      "takes": [
+        {
+          "src": "fs-514162",
+          "in": 0.1,
+          "out": 0.5
+        },
+        {
+          "src": "fs-486234",
+          "in": 0.86,
+          "out": 1.15,
+          "rate": 1.3
+        }
+      ]
+    },
+    "ball.bounce": {
+      "category": "impact",
+      "takes": [
+        {
+          "src": "fs-414461",
+          "in": 0.18,
+          "out": 0.33
+        },
+        {
+          "src": "fs-414461",
+          "in": 0.71,
+          "out": 0.86
+        },
+        {
+          "src": "fs-414461",
+          "in": 1.19,
+          "out": 1.34
+        }
+      ]
+    },
+    "ball.rim": {
+      "category": "light",
+      "takes": [
+        {
+          "layers": [
+            {
+              "src": "fs-269718",
+              "in": 0.06,
+              "out": 0.16
+            },
+            {
+              "src": "fs-153395",
+              "in": 0.06,
+              "out": 0.16,
+              "filter": "highpass=f=900",
+              "gain": -8
+            }
+          ]
+        },
+        {
+          "layers": [
+            {
+              "src": "fs-418555",
+              "in": 2.03,
+              "out": 2.1
+            },
+            {
+              "src": "fs-170236",
+              "in": 0,
+              "out": null,
+              "gain": -10
+            }
+          ]
+        }
+      ]
+    },
+    "ball.plop": {
+      "category": "impact",
+      "loudness": -21,
+      "takes": [
+        {
+          "src": "fs-444410",
+          "in": 0.03,
+          "out": 0.6
+        },
+        {
+          "layers": [
+            {
+              "src": "fs-853279",
+              "in": 0,
+              "out": 0.3
+            },
+            {
+              "src": "fs-867498",
+              "in": 0,
+              "out": null,
+              "at": 0.01,
+              "gain": -6
+            }
+          ]
+        }
+      ]
+    },
+    "cup.remove": {
+      "category": "light",
+      "takes": [
+        {
+          "src": "fs-765084",
+          "in": 0.7,
+          "out": 0.95
+        },
+        {
+          "src": "fs-765084",
+          "in": 2.2,
+          "out": 2.46
+        }
+      ]
+    },
+    "cup.rerack": {
+      "category": "light",
+      "takes": [
+        {
+          "layers": [
+            {
+              "src": "fs-153395",
+              "in": 0.05,
+              "out": 0.3
+            },
+            {
+              "src": "fs-765084",
+              "in": 2.2,
+              "out": 2.45,
+              "at": 0.05,
+              "gain": -4
+            },
+            {
+              "src": "fs-637753",
+              "in": 0,
+              "out": null,
+              "at": 0.12,
+              "gain": -2
+            },
+            {
+              "src": "fs-150501",
+              "in": 0,
+              "out": 0.2,
+              "at": 0.27,
+              "gain": -3
+            },
+            {
+              "src": "fs-401773",
+              "in": 0,
+              "out": 0.25,
+              "at": 0.43,
+              "gain": -6
+            }
+          ]
+        }
+      ]
+    },
+    "coin.bounce": {
+      "category": "impact",
+      "takes": [
+        {
+          "src": "fs-334939",
+          "in": 1,
+          "out": 1.75
+        },
+        {
+          "src": "fs-447462",
+          "in": 1.58,
+          "out": 1.9
+        },
+        {
+          "src": "fs-63524",
+          "in": 0.04,
+          "out": 0.35
+        }
+      ]
+    },
+    "coin.rim": {
+      "category": "light",
+      "loudness": -21,
+      "takes": [
+        {
+          "src": "fs-617039",
+          "in": 0.07,
+          "out": 0.2
+        },
+        {
+          "src": "fs-617039",
+          "in": 0.2,
+          "out": 0.29
+        }
+      ]
+    },
+    "coin.ding": {
+      "category": "glass",
+      "takes": [
+        {
+          "src": "fs-199922",
+          "in": 3.57,
+          "out": 4.4,
+          "fadeOutSec": 0.25
+        },
+        {
+          "src": "fs-199922",
+          "in": 13.25,
+          "out": 14,
+          "fadeOutSec": 0.25
+        }
+      ]
+    },
+    "flip.whoosh": {
+      "category": "light",
+      "takes": [
+        {
+          "layers": [
+            {
+              "src": "fs-514162",
+              "in": 0.12,
+              "out": 0.4,
+              "rate": 1.35
+            },
+            {
+              "src": "fs-153395",
+              "in": 0.05,
+              "out": 0.2,
+              "filter": "highpass=f=1500",
+              "gain": -14
+            }
+          ]
+        },
+        {
+          "layers": [
+            {
+              "src": "fs-486234",
+              "in": 0.42,
+              "out": 0.66,
+              "rate": 1.5
+            },
+            {
+              "src": "fs-637753",
+              "in": 0,
+              "out": null,
+              "gain": -14
+            }
+          ]
+        }
+      ]
+    },
+    "flip.land": {
+      "category": "impact",
+      "takes": [
+        {
+          "src": "fs-153395",
+          "in": 0.05,
+          "out": 0.3
+        },
+        {
+          "src": "fs-150501",
+          "in": 0,
+          "out": 0.2
+        }
+      ]
+    },
+    "flip.fail": {
+      "category": "impact",
+      "loudness": -21,
+      "takes": [
+        {
+          "src": "fs-707395",
+          "in": 0.16,
+          "out": 1.1,
+          "fadeOutSec": 0.2
+        },
+        {
+          "src": "fs-347950",
+          "in": 0.2,
+          "out": 0.9,
+          "fadeOutSec": 0.2
+        }
+      ]
+    },
+    "pour.beer": {
+      "category": "light",
+      "loudness": -25,
+      "takes": [
+        {
+          "src": "fs-347006",
+          "in": 0.3,
+          "out": 2.8,
+          "fadeOutSec": 0.5
+        }
+      ]
+    },
+    "chips.stack": {
+      "category": "light",
+      "takes": [
+        {
+          "src": "kenney-casino",
+          "file": "Audio/chips-stack-1.ogg"
+        },
+        {
+          "src": "kenney-casino",
+          "file": "Audio/chips-stack-2.ogg"
+        },
+        {
+          "src": "kenney-casino",
+          "file": "Audio/chips-stack-5.ogg"
+        }
+      ]
+    },
+    "bus.horn": {
+      "category": "impact",
+      "loudness": -21,
+      "takes": [
+        {
+          "src": "fs-423990",
+          "in": 0.09,
+          "out": 0.7
+        }
+      ]
+    },
+    "bus.crash": {
+      "category": "impact",
+      "loudness": -22,
+      "takes": [
+        {
+          "layers": [
+            {
+              "src": "kenney-casino",
+              "file": "Audio/card-fan-2.ogg",
+              "in": 0.2
+            },
+            {
+              "src": "kenney-casino",
+              "file": "Audio/card-shove-1.ogg",
+              "at": 0.04,
+              "gain": -2
+            },
+            {
+              "src": "kenney-casino",
+              "file": "Audio/card-place-2.ogg",
+              "at": 0.22,
+              "gain": -4
+            },
+            {
+              "src": "kenney-casino",
+              "file": "Audio/card-slide-7.ogg",
+              "at": 0.35,
+              "gain": -6
+            }
+          ],
+          "onsetDb": -20,
+          "maxDur": 1.3,
+          "fadeOutSec": 0.3
+        }
+      ]
+    },
+    "ambience.bar": {
+      "category": "ambience",
+      "loop": true,
+      "takes": [
+        {
+          "layers": [
+            {
+              "src": "fs-661686",
+              "in": 0.5,
+              "out": 40.5,
+              "filter": "highpass=f=90,lowpass=f=7000"
+            },
+            {
+              "src": "fs-870720",
+              "in": 4.7,
+              "out": 5.4,
+              "filter": "lowpass=f=3200,aecho=0.8:0.7:23|41|67:0.35|0.25|0.15",
+              "fadeOut": 0.3,
+              "at": 4.3,
+              "gain": -24
+            },
+            {
+              "src": "fs-118199",
+              "in": 5.84,
+              "out": 6.4,
+              "filter": "lowpass=f=3200,aecho=0.8:0.7:23|41|67:0.35|0.25|0.15",
+              "fadeOut": 0.25,
+              "at": 11.6,
+              "gain": -26
+            },
+            {
+              "src": "fs-761135",
+              "in": 7.37,
+              "out": 8,
+              "filter": "lowpass=f=3200,aecho=0.8:0.7:23|41|67:0.35|0.25|0.15",
+              "fadeOut": 0.3,
+              "at": 17.9,
+              "gain": -27
+            },
+            {
+              "src": "fs-416288",
+              "in": 0.24,
+              "out": 0.62,
+              "filter": "lowpass=f=3200,aecho=0.8:0.7:23|41|67:0.35|0.25|0.15",
+              "fadeOut": 0.15,
+              "at": 23.2,
+              "gain": -25
+            },
+            {
+              "src": "fs-560299",
+              "in": 3.69,
+              "out": 4.4,
+              "filter": "lowpass=f=3200,aecho=0.8:0.7:23|41|67:0.35|0.25|0.15",
+              "fadeOut": 0.3,
+              "at": 27.1,
+              "gain": -28
+            },
+            {
+              "src": "fs-870720",
+              "in": 6.93,
+              "out": 7.5,
+              "filter": "lowpass=f=3200,aecho=0.8:0.7:23|41|67:0.35|0.25|0.15",
+              "fadeOut": 0.25,
+              "at": 33.4,
+              "gain": -26
+            }
+          ],
+          "xfade": 1.5
+        }
+      ]
+    }
+  },
+  "music": {
+    "opm-acoustic": {
+      "src": "im-clear-air",
+      "in": 0,
+      "out": 181.5,
+      "fadeIn": 1.5,
+      "fadeOut": 3
+    },
+    "lofi-lounge": {
+      "src": "im-study-and-relax",
+      "in": 0,
+      "out": 126.5,
+      "fadeIn": 1.5,
+      "fadeOut": 3,
+      "loopStart": 16.666667,
+      "loopEnd": 123.333333,
+      "$comment": "exact 32-bar repeat at 72 BPM (50/3 s .. 370/3 s), verified sample-aligned in the source"
+    },
+    "retro-videoke": {
+      "src": "im-newer-wave",
+      "in": 0.5,
+      "out": 172.6,
+      "fadeIn": 1.5,
+      "fadeOut": 3
+    }
+  }
+}

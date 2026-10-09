@@ -2,6 +2,7 @@ import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { MeshStandardMaterial, type Group, type Texture } from 'three';
 import { useFrame, useThree } from '@react-three/fiber';
 import { easing } from 'maath';
+import { play } from '@/audio/engine';
 import type { View } from '@/core/games/never-have-i-ever/logic';
 import { BlobShadow } from '@/three/BlobShadow';
 import { cardGeometries, CARD_H, deckHeight } from '@/three/cardGeometry';
@@ -97,7 +98,11 @@ function TentCard({ round, fontReady }: { round: number; fontReady: boolean }) {
   // A new round: spin to the far side.
   useEffect(() => {
     if (round === shown) return;
-    anim.current = { start: -1, duration: reducedMotion() ? 0.15 : SPIN_SECONDS };
+    const duration = reducedMotion() ? 0.15 : SPIN_SECONDS;
+    anim.current = { start: -1, duration };
+    // The tent card hops, turns over to the next prompt and sets back down.
+    play('card.flip', { delay: duration * 0.45 });
+    play('card.place', { delay: duration, gain: 0.7 });
     invalidate();
   }, [round, shown, invalidate]);
 
@@ -145,12 +150,18 @@ function PromptStack({ count }: { count: number }) {
   const geo = cardGeometries();
   const shown = Math.min(count, STACK_MAX);
   const height = deckHeight(shown);
+  const invalidate = useThree((s) => s.invalidate);
+  // One side material for the stack's life: a new prompt only changes how many paper layers the
+  // stripes repeat (no new material or texture clone per card).
   const side = useMemo(() => {
     const map = deckEdgeTexture().clone();
-    map.repeat.set(1, Math.max(shown, 1));
     map.needsUpdate = true;
     return new MeshStandardMaterial({ map, color: '#e9dcc0', roughness: 0.85 });
-  }, [shown]);
+  }, []);
+  useLayoutEffect(() => {
+    side.map?.repeat.set(1, Math.max(shown, 1));
+    invalidate();
+  }, [side, shown, invalidate]);
   const top = useMemo(
     () =>
       new MeshStandardMaterial({ map: promptBackTexture(), roughness: 0.45, envMapIntensity: 0.8 }),

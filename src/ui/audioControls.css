@@ -1,0 +1,268 @@
+/* Brass mixing-desk faders and jukebox title strips for the sound settings. */
+
+.fader {
+  --fill: 50%;
+  -webkit-appearance: none;
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 40px;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.fader:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.fader:focus-visible {
+  outline: none;
+}
+
+.fader::-webkit-slider-runnable-track {
+  height: 10px;
+  border-radius: 999px;
+  border: 1px solid var(--color-narra-600);
+  background: linear-gradient(
+    90deg,
+    var(--color-brass-600),
+    var(--color-brass-300) var(--fill),
+    var(--color-narra-950) var(--fill)
+  );
+  box-shadow:
+    inset 0 1px 3px rgb(0 0 0 / 0.75),
+    0 1px 0 rgb(255 235 200 / 0.06);
+}
+
+.fader::-moz-range-track {
+  height: 10px;
+  border-radius: 999px;
+  border: 1px solid var(--color-narra-600);
+  background: var(--color-narra-950);
+  box-shadow: inset 0 1px 3px rgb(0 0 0 / 0.75);
+}
+
+.fader::-moz-range-progress {
+  height: 10px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--color-brass-600), var(--color-brass-300));
+}
+
+/* The knob: a ridged brass cap, like a mixing-desk fader. */
+.fader::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  margin-top: -11px;
+  border-radius: 9px;
+  border: 1px solid var(--color-brass-600);
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 8px,
+      rgb(70 40 10 / 0.55) 8px 9px,
+      rgb(255 245 220 / 0.5) 9px 10px
+    ),
+    linear-gradient(180deg, var(--color-brass-200), var(--color-brass-400) 55%, var(--color-brass-600));
+  background-size:
+    20px 14px,
+    100% 100%;
+  background-position:
+    center,
+    0 0;
+  background-repeat: no-repeat;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.55),
+    0 3px 0 var(--color-narra-950),
+    0 6px 14px -4px rgb(0 0 0 / 0.8);
+  transition: transform 120ms var(--ease-pour);
+}
+
+.fader::-moz-range-thumb {
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  border: 1px solid var(--color-brass-600);
+  background: linear-gradient(180deg, var(--color-brass-200), var(--color-brass-400) 55%, var(--color-brass-600));
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.55),
+    0 3px 0 var(--color-narra-950);
+}
+
+.fader:active::-webkit-slider-thumb {
+  transform: scale(1.08);
+}
+
+.fader:focus-visible::-webkit-slider-thumb {
+  outline: 3px solid var(--color-brass-300);
+  outline-offset: 2px;
+}
+
+/* Painted scale under the groove: eleven ticks, the 0 / 50 / 100 ones taller. */
+.fader-scale {
+  height: 7px;
+  margin: -6px 15px 0;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgb(205 184 154 / 0.35) 0 1px,
+      transparent 1px calc(10% - 0.1px)
+    ),
+    linear-gradient(90deg, rgb(205 184 154 / 0.6) 0 1.5px, transparent 1.5px) 0 0 / 50% 100% repeat-x;
+  pointer-events: none;
+}
+
+.fader-readout {
+  min-width: 3.4rem;
+  padding: 0.2rem 0.45rem;
+  border-radius: 7px;
+  background: var(--color-narra-950);
+  border: 1px solid var(--color-narra-600);
+  box-shadow: inset 0 1px 4px rgb(0 0 0 / 0.8);
+  color: var(--color-brass-300);
+  font-family: var(--font-sign);
+  font-size: 0.95rem;
+  line-height: 1.2;
+  text-align: right;
+  text-shadow: 0 0 8px rgb(232 176 74 / 0.45);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ------------------------------------------------------------------ jukebox */
+
+.jukebox {
+  display: grid;
+  gap: 6px;
+  padding: 8px;
+  border-radius: 16px;
+  background:
+    radial-gradient(120% 80% at 50% 0%, rgb(232 176 74 / 0.12), transparent 70%),
+    linear-gradient(180deg, var(--color-narra-800), var(--color-narra-950));
+  border: 1px solid var(--color-narra-600);
+  box-shadow:
+    inset 0 0 0 3px rgb(0 0 0 / 0.25),
+    inset 0 1px 0 rgb(255 235 200 / 0.08);
+}
+
+/* A paper title strip: cream card, a red rule top and bottom, the selection code on the left. */
+.strip {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 54px;
+  padding: 6px 10px 6px 6px;
+  border-radius: 10px;
+  text-align: left;
+  color: var(--color-narra-950);
+  background:
+    linear-gradient(180deg, #b8341f 0 3px, transparent 3px calc(100% - 3px), #b8341f calc(100% - 3px)),
+    linear-gradient(180deg, #f7eedb, #e9dcc0);
+  box-shadow:
+    0 2px 0 rgb(0 0 0 / 0.45),
+    inset 0 0 0 1px rgb(120 80 40 / 0.25);
+  opacity: 0.78;
+  transition:
+    opacity 160ms,
+    transform 160ms var(--ease-pour),
+    box-shadow 160ms;
+}
+
+.strip:active {
+  transform: translateY(1px);
+}
+
+.strip[aria-checked='true'] {
+  opacity: 1;
+  box-shadow:
+    0 0 0 2px var(--color-brass-300),
+    0 0 18px -2px rgb(232 176 74 / 0.7),
+    0 2px 0 rgb(0 0 0 / 0.45);
+}
+
+.strip-muted {
+  background:
+    linear-gradient(180deg, var(--color-narra-500) 0 3px, transparent 3px calc(100% - 3px), var(--color-narra-500) calc(100% - 3px)),
+    linear-gradient(180deg, #d7ccb6, #c4b597);
+}
+
+.strip-code {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  font-family: var(--font-sign);
+  font-size: 1rem;
+  color: var(--color-capiz-300);
+  background: linear-gradient(180deg, var(--color-narra-700), var(--color-narra-950));
+  box-shadow: inset 0 1px 3px rgb(0 0 0 / 0.8);
+}
+
+.strip[aria-checked='true'] .strip-code {
+  color: var(--color-narra-950);
+  background: linear-gradient(180deg, var(--color-brass-200), var(--color-brass-400));
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.6),
+    0 0 12px rgb(232 176 74 / 0.8);
+}
+
+/* "Now playing": three bouncing bars. */
+.eq {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 16px;
+}
+
+.eq span {
+  width: 3px;
+  border-radius: 1px;
+  background: #b8341f;
+  animation: eq-bounce 900ms ease-in-out infinite;
+}
+
+.eq span:nth-child(2) {
+  animation-delay: -300ms;
+}
+
+.eq span:nth-child(3) {
+  animation-delay: -600ms;
+}
+
+@keyframes eq-bounce {
+  0%,
+  100% {
+    height: 4px;
+  }
+  50% {
+    height: 16px;
+  }
+}
+
+/* The Play screen's speaker: a long press fills a brass ring before the music sheet opens. */
+.speaker-btn {
+  position: relative;
+}
+
+.speaker-btn[data-holding='true']::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 14px;
+  border: 2px solid var(--color-brass-300);
+  animation: speaker-hold 450ms linear forwards;
+}
+
+@keyframes speaker-hold {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}

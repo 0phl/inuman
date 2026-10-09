@@ -41,11 +41,11 @@ export const useThrowBus = create<ThrowBus>()((set) => ({
   camera: null,
   sceneBusy: false,
   picked: null,
-  setAim: (aim) => set((s) => (s.aim === aim ? {} : { aim })),
+  setAim: (aim) => set((s) => (s.aim === aim ? s : { aim })),
   setRunner: (runner) => set({ runner }),
   setCamera: (camera) => set({ camera }),
-  setSceneBusy: (sceneBusy) => set((s) => (s.sceneBusy === sceneBusy ? {} : { sceneBusy })),
-  setPicked: (picked) => set((s) => (s.picked === picked ? {} : { picked })),
+  setSceneBusy: (sceneBusy) => set((s) => (s.sceneBusy === sceneBusy ? s : { sceneBusy })),
+  setPicked: (picked) => set((s) => (s.picked === picked ? s : { picked })),
 }));
 
 /**

@@ -16,6 +16,7 @@ import type { Primitive } from './rulesForm';
 import { TablePreview } from './ThemePicker';
 import { feltSwatchCss } from './themeArt';
 import { swatchName } from './themeNames';
+import { feedback } from '@/audio/feedback';
 
 const PREVIEW_ITEMS = 10;
 
@@ -367,14 +368,17 @@ export function ImportPreview({ payload, onCancel, onBackToPacks }: ImportPrevie
     if (checked.kind === 'theme') {
       setSaved({ kind: 'theme', previous: useTheme.getState().theme, undone: false });
       setTheme(checked.theme);
+      feedback('success');
       return;
     }
     if (checked.kind === 'pack') {
       const res = importPack(checked.pack);
+      feedback(res.ok ? 'success' : 'error');
       if (res.ok) setSaved({ kind: 'pack', id: res.value });
       else setError(res.error);
     } else {
       const res = addPreset(checked.gameId, presetName, checked.rules);
+      feedback('name' in res ? 'success' : 'error');
       if ('name' in res) setSaved({ kind: 'rules', gameId: checked.gameId, name: res.name });
       else setError(res.error);
     }
@@ -419,6 +423,7 @@ export function ImportPreview({ payload, onCancel, onBackToPacks }: ImportPrevie
           className="btn btn-brass min-h-16 font-sign text-xl"
           disabled={waiting}
           onClick={save}
+          data-sfx="none"
           data-testid="import-save"
         >
           {waiting

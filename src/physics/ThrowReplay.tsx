@@ -1,6 +1,16 @@
-import { useCallback, useEffect, useRef, type Ref } from 'react';
-import { MeshBasicMaterial, PlaneGeometry, type Group, type Mesh, type Texture } from 'three';
+import { useCallback, useEffect, useMemo, useRef, type Ref } from 'react';
+import {
+  MeshBasicMaterial,
+  PlaneGeometry,
+  Vector3,
+  type Group,
+  type Mesh,
+  type Texture,
+} from 'three';
 import { useFrame, useThree, type ThreeElements } from '@react-three/fiber';
+import { throwFlight } from '@/audio/cues';
+import { play, type SoundHandle } from '@/audio/engine';
+import { hapticLater } from '@/audio/haptics';
 import { softDiscTexture } from '@/stage/proceduralTextures';
 import { Ball3D, type BallColor } from '@/three/Ball3D';
 import { Coin3D } from '@/three/Coin3D';
@@ -75,6 +85,10 @@ export function ThrowReplay({
   ...group
 }: ThrowReplayProps) {
   const invalidate = useThree((s) => s.invalidate);
+  const getThree = useThree((s) => s.get);
+  const panVec = useMemo(() => new Vector3(), []);
+  /** The playing throw's scheduled whoosh / bounces / plop. */
+  const sound = useRef<SoundHandle | null>(null);
   const body = useRef<Group>(null);
   const shadow = useRef<Mesh>(null);
   const state = useRef<{
@@ -155,10 +169,22 @@ export function ThrowReplay({
     cb.current.onResolved?.(s.pb.sim.result, s.pb);
   };
 
+  /** Stereo position of a point in this replay's space, from where it shows on screen. */
+  const panOf = (x: number, y: number, z: number): number => {
+    const parent = body.current?.parent;
+    if (!parent) return 0;
+    panVec.set(x, y, z).applyMatrix4(parent.matrixWorld).project(getThree().camera);
+    return Math.max(-0.8, Math.min(0.8, panVec.x * 0.7));
+  };
+
   // A new playback: finish (and report) the old one at once, then start the new one.
   useEffect(() => {
     const prev = state.current;
-    if (prev && prev.pb !== playback) report(prev);
+    if (prev && prev.pb !== playback) {
+      sound.current?.stop(40);
+      sound.current = null;
+      report(prev);
+    }
     if (!playback) {
       state.current = null;
       return;
@@ -167,7 +193,29 @@ export function ThrowReplay({
     state.current = { pb: playback, start: -1, done: false, decided: false };
     const first = frameAt(playback, 0);
     place(first.p, first.q, 1, true);
-    if (instant ?? prefersReducedMotion()) state.current.start = -Infinity;
+    const { sim, input } = playback;
+    const made = isMade(sim.result);
+    if (instant ?? prefersReducedMotion()) {
+      state.current.start = -Infinity;
+      // No flight to listen to: just the result.
+      if (made) {
+        play(input.kind === 'ball' ? 'ball.plop' : 'coin.ding');
+        hapticLater('impactMedium', 0);
+      }
+    } else {
+      // Release now: the replay's clock and the scheduled sounds start together.
+      state.current.start = performance.now() / 1000;
+      sound.current = throwFlight({
+        kind: input.kind,
+        frames: sim.frames,
+        steps: sim.steps,
+        dt: sim.dt,
+        targets: input.targets,
+        made,
+        resolvedStep: sim.resolvedStep,
+        pan: panOf,
+      });
+    }
     invalidate();
     // eslint-disable-next-line react-hooks/exhaustive-deps -- keyed on the playback object only
   }, [playback]);
@@ -187,6 +235,7 @@ export function ThrowReplay({
   // Settle a pending promise if the replay unmounts mid-flight.
   useEffect(
     () => () => {
+      sound.current?.stop(60);
       const s = state.current;
       if (s && !s.done) {
         s.done = true;

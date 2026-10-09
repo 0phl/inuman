@@ -152,6 +152,7 @@ export default function HigherLowerHud({ view, rules, players, dispatch }: GameV
             className="btn btn-wood min-h-20 flex-col gap-1 border-brass-600 font-sign text-lg text-brass-200"
             disabled={locked}
             onClick={() => guess('lower')}
+            data-sfx="primary"
             data-testid="guess-lower"
           >
             <IconArrowDown />

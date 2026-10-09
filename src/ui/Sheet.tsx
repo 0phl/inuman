@@ -1,5 +1,6 @@
-import { useEffect, useId, type ReactNode } from 'react';
+import { useEffect, useId, useRef, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
+import { play } from '@/audio/engine';
 import { IconClose } from './icons';
 
 interface SheetProps {
@@ -14,6 +15,13 @@ interface SheetProps {
 export function Sheet({ open, onClose, title, children, testId }: SheetProps) {
   const { t } = useTranslation();
   const titleId = useId();
+  // Swoosh up when it opens, down when it closes (not on first mount closed).
+  const was = useRef(open);
+  useEffect(() => {
+    if (was.current === open) return;
+    was.current = open;
+    play(open ? 'ui.sheetOpen' : 'ui.sheetClose');
+  }, [open]);
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => e.key === 'Escape' && onClose();
@@ -34,6 +42,7 @@ export function Sheet({ open, onClose, title, children, testId }: SheetProps) {
         aria-label={t('nav.close')}
         className="anim-fade absolute inset-0 bg-black/60"
         onClick={onClose}
+        data-sfx="none"
       />
       <div className="anim-rise relative mx-auto max-h-[85dvh] w-full max-w-[560px] overflow-y-auto rounded-t-[22px] border-t border-narra-500 bg-narra-850 px-4 pt-3 pb-[calc(env(safe-area-inset-bottom)+18px)] shadow-[0_-12px_40px_rgb(0_0_0/0.6)]">
         <div className="mx-auto mb-2 h-1.5 w-10 rounded-full bg-narra-500" aria-hidden />
@@ -41,7 +50,13 @@ export function Sheet({ open, onClose, title, children, testId }: SheetProps) {
           <h2 id={titleId} className="flex-1 font-sign text-xl text-brass-300">
             {title}
           </h2>
-          <button type="button" className="icon-btn" aria-label={t('nav.close')} onClick={onClose}>
+          <button
+            type="button"
+            className="icon-btn"
+            aria-label={t('nav.close')}
+            onClick={onClose}
+            data-sfx="none"
+          >
             <IconClose />
           </button>
         </div>

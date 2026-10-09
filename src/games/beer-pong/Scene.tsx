@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState, type RefCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { Group } from 'three';
 import { useFrame, useThree } from '@react-three/fiber';
+import { play } from '@/audio/engine';
 import type { Cup, Formation, View } from '@/core/games/beer-pong/logic';
 import type { TeamIndex } from '@/core/games/beer-pong/skill';
 import { AimPreview } from '@/physics/AimPreview';
@@ -104,6 +105,8 @@ function useRackCups(cups: readonly Cup[], formation: Formation): CupInstance[] 
     });
     tween.current = { list, start: moved ? now() : -1 };
     if (!moved) setDisplay(list.map((c) => ({ position: c.to })));
+    // Re-rack: the cups shuffle across the felt into the new formation.
+    else play('cup.rerack');
     invalidate();
   }, [cups, formation, invalidate]);
 
@@ -164,6 +167,10 @@ interface Pulled {
 function PulledCup({ cup, onDone }: { cup: Pulled; onDone(key: string): void }) {
   const ref = useRef<Group>(null);
   const done = useRef(false);
+  // Lifted out of the rack, ball and all.
+  useEffect(() => {
+    play('cup.remove', { delay: 0.05 });
+  }, []);
   useFrame((three) => {
     const g = ref.current;
     if (!g || done.current) return;
@@ -265,8 +272,11 @@ function Racks({ view }: { view: View }) {
       swap.current = null;
     }
     if (defending !== far.current) {
-      swap.current = { from: far.current, to: defending, start: Math.max(now(), pullEnd.current) };
+      const start = Math.max(now(), pullEnd.current);
+      swap.current = { from: far.current, to: defending, start };
       setSceneBusy(true);
+      // The racks slide past each other to trade ends.
+      play('cup.rerack', { delay: Math.max(0, start - now()), gain: 0.4, rate: 1.08 });
     }
     invalidate();
   }, [defending, setSceneBusy, invalidate]);
