@@ -27,7 +27,7 @@
   },
   "players": {
     "title": "Players",
-    "placeholder": "Name (e.g. Migs)",
+    "placeholder": "Name (e.g. Rene)",
     "nameLabel": "Player name",
     "add": "Add",
     "emptyTitle": "Who's playing?",
@@ -126,7 +126,7 @@
     "felt": "Table color",
     "quality": "Graphics",
     "qualityRow": "3D quality",
-    "qualityHelp": "If your phone lags, choose Low.",
+    "qualityHelp": "Starts on High. If your phone lags, choose Mid or Low.",
     "feedback": "Sound & vibration",
     "sound": "Sound",
     "haptics": "Vibration",
