@@ -1,7 +1,7 @@
 {
   "app": { "name": "Inuman" },
   "nav": { "back": "Back", "close": "Close" },
-  "locale": { "taglish": "Taglish", "en": "English" },
+  "locale": { "taglish": "Filipino", "en": "English" },
   "age": {
     "title": "Are you 18 or older?",
     "body": "This app is for 18+ only, the legal drinking age in the Philippines.",

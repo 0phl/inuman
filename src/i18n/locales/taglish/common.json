@@ -1,7 +1,7 @@
 {
   "app": { "name": "Inuman" },
   "nav": { "back": "Balik", "close": "Isara" },
-  "locale": { "taglish": "Taglish", "en": "English" },
+  "locale": { "taglish": "Filipino", "en": "English" },
   "age": {
     "title": "18 ka na ba?",
     "body": "Pang-18 pataas lang 'tong app. 'Yan ang legal drinking age dito sa Pinas.",
