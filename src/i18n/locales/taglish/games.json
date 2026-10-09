@@ -70,11 +70,11 @@
     },
     "nhie": {
       "sips": "Lagok kapag nagawa mo na",
-      "maxSpice": "Anghang",
-      "maxSpice_help": "0 = pang-pamilya, 3 = SPG: pang-adults lang, green jokes at landian.",
-      "maxSpice_opt_0": "Pang-pamilya",
-      "maxSpice_opt_1": "Medyo maanghang",
-      "maxSpice_opt_2": "Maanghang",
+      "maxSpice": "Rating",
+      "maxSpice_help": "Chill = pang-lahat, SPG = pang-adults lang: green jokes at landian.",
+      "maxSpice_opt_0": "Chill",
+      "maxSpice_opt_1": "Kulitan",
+      "maxSpice_opt_2": "Harutan",
       "maxSpice_opt_3": "SPG (18+)",
       "rounds": "Ilang round",
       "rounds_help": "0 = hanggang maubos ang cards."
@@ -122,11 +122,11 @@
       "nextSpinner": "Susunod na magpapaikot",
       "nextSpinner_opt_picked": "Ang tinapatan",
       "nextSpinner_opt_clockwise": "Ang katabi sa kaliwa",
-      "maxSpice": "Anghang",
-      "maxSpice_help": "0 = pang-pamilya, 3 = SPG: pang-adults lang, green jokes at landian.",
-      "maxSpice_opt_0": "Pang-pamilya",
-      "maxSpice_opt_1": "Medyo maanghang",
-      "maxSpice_opt_2": "Maanghang",
+      "maxSpice": "Rating",
+      "maxSpice_help": "Chill = pang-lahat, SPG = pang-adults lang: green jokes at landian.",
+      "maxSpice_opt_0": "Chill",
+      "maxSpice_opt_1": "Kulitan",
+      "maxSpice_opt_2": "Harutan",
       "maxSpice_opt_3": "SPG (18+)"
     },
     "tod": {
@@ -136,11 +136,11 @@
       "choice_help": "Sa wheel, paiikutin ang gulong at ito ang magdedesisyon kung truth o dare.",
       "refuseSips": "Lagok pag umatras",
       "refuseSips_help": "Base na lagok. Puwedeng may sariling lagok ang isang prompt.",
-      "maxSpice": "Anghang",
-      "maxSpice_help": "0 = pang-pamilya, 3 = SPG: pang-adults lang, green jokes at landian.",
-      "maxSpice_opt_0": "Pang-pamilya",
-      "maxSpice_opt_1": "Medyo maanghang",
-      "maxSpice_opt_2": "Maanghang",
+      "maxSpice": "Rating",
+      "maxSpice_help": "Chill = pang-lahat, SPG = pang-adults lang: green jokes at landian.",
+      "maxSpice_opt_0": "Chill",
+      "maxSpice_opt_1": "Kulitan",
+      "maxSpice_opt_2": "Harutan",
       "maxSpice_opt_3": "SPG (18+)",
       "rounds": "Ilang turn",
       "rounds_help": "0 = tuloy-tuloy hanggang i-end ng host."
@@ -151,11 +151,11 @@
       "voting_opt_secret": "Secret na botohan",
       "voting_help": "Turuan: sabay-sabay ituturo, at ilalagay ng babasa kung sino. Secret: ipapasa ang phone, isa-isang boboto, at sa dulo lalabas ang resulta.",
       "sips": "Lagok ng napili",
-      "maxSpice": "Anghang",
-      "maxSpice_help": "0 = pang-pamilya, 3 = SPG: pang-adults lang, green jokes at landian.",
-      "maxSpice_opt_0": "Pang-pamilya",
-      "maxSpice_opt_1": "Medyo maanghang",
-      "maxSpice_opt_2": "Maanghang",
+      "maxSpice": "Rating",
+      "maxSpice_help": "Chill = pang-lahat, SPG = pang-adults lang: green jokes at landian.",
+      "maxSpice_opt_0": "Chill",
+      "maxSpice_opt_1": "Kulitan",
+      "maxSpice_opt_2": "Harutan",
       "maxSpice_opt_3": "SPG (18+)",
       "rounds": "Ilang round",
       "rounds_help": "0 = hanggang maubos ang cards."
@@ -313,7 +313,7 @@
       "round": "Round {{round}}",
       "remaining": "{{n}} cards pa",
       "done": "Ubos na ang cards!",
-      "empty": "Walang prompts. Mag-add ng pack o babaan ang anghang."
+      "empty": "Walang prompts. Mag-add ng pack o babaan ang rating."
     }
   },
   "mx": {
@@ -514,7 +514,7 @@
       "round": "Round {{round}}",
       "roundOf": "Round {{round}} / {{total}}",
       "over": "Tapos na ang laro!",
-      "empty": "Walang prompts. Mag-add ng pack o babaan ang anghang."
+      "empty": "Walang prompts. Mag-add ng pack o babaan ang rating."
     }
   },
   "mlt": {
@@ -550,7 +550,7 @@
       "round": "Round {{round}}",
       "remaining": "{{n}} cards pa",
       "done": "Ubos na ang cards!",
-      "empty": "Walang prompts. Mag-add ng pack o babaan ang anghang."
+      "empty": "Walang prompts. Mag-add ng pack o babaan ang rating."
     }
   },
   "rtb": {

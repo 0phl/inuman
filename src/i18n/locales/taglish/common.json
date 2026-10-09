@@ -73,11 +73,11 @@
     "packs": {
       "title": "Mga prompt",
       "help": "Piliin kung aling pack ang gagamitin.",
-      "spice": "Anghang",
+      "spice": "Rating",
       "count_one": "{{count}} prompt ang pasok",
       "count_other": "{{count}} prompts ang pasok",
       "items": "{{match}}/{{total}} pasok",
-      "none": "Walang prompt na pasok. Pumili ng pack o taasan ang anghang.",
+      "none": "Walang prompt na pasok. Pumili ng pack o taasan ang rating.",
       "anyLocale": "Kahit ano",
       "bilingual": "Filipino + English",
       "custom": "Gawa ng barkada",
@@ -314,9 +314,9 @@
     "emptyName": "Lagyan muna ng pangalan."
   },
   "spice": {
-    "0": "Pang-pamilya",
-    "1": "Medyo maanghang",
-    "2": "Maanghang",
+    "0": "Chill",
+    "1": "Kulitan",
+    "2": "Harutan",
     "3": "SPG (18+)"
   },
   "placeholder": {
@@ -371,14 +371,14 @@
     "bulk": "I-paste",
     "bulkTitle": "I-paste nang marami",
     "bulkHelp": "Isang prompt bawat linya. Tatanggalin ang bullet o numero sa umpisa.",
-    "bulkSpice": "Anghang ng lahat",
+    "bulkSpice": "Rating ng lahat",
     "bulkAdd_one": "Idagdag ({{count}})",
     "bulkAdd_other": "Idagdag lahat ({{count}})",
     "bulkPartial": "Naidagdag ang {{added}}. May {{count}} na lampas 280 — naiwan dito para paikliin.",
     "tooLongCount": "{{count}} ang lampas {{max}}",
     "added_one": "Naidagdag!",
     "added_other": "Naidagdag ang {{count}}!",
-    "spiceLabel": "Anghang",
+    "spiceLabel": "Rating",
     "kindLabel": "Klase",
     "kind": {
       "truth": "Truth",

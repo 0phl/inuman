@@ -40,8 +40,8 @@ loaded.
   - Drink intensity: multiplier, sips or _tagay_, per-turn cap, finish/chug allowed or not.
   - Look: card backs, felt color, dice finish and cup color.
   - Your own prompt packs: create, edit, share by link or QR, or import a file.
-- **500+ built-in prompts** for Truth or Dare, Never Have I Ever and Most Likely To. Four spice
-  levels go from _Pang-pamilya_ to **SPG (18+)**, which is opt-in.
+- **500+ built-in prompts** for Truth or Dare, Never Have I Ever and Most Likely To. Four
+  ratings go from _Chill_ to **SPG (18+)**, which is opt-in.
 - **Sound and haptics.** CC0 sound effects timed to the physics (dice knocks, a real bottle spin,
   ball plops), three background music tracks, and vibration on Android plus a tick on iOS.
 - **PWA.** Install it to the home screen (there's an in-app prompt) and play offline.
@@ -131,18 +131,20 @@ Some design choices worth knowing:
 Adding a game, writing prompts and the Taglish style guide are covered in
 [`CLAUDE.md`](./CLAUDE.md).
 
-### Prompts and spice levels
+### Prompts and ratings
 
 Built-in packs live in `src/core/content/packs/<game>.json`, one pack per game. Each prompt's
 `text` is in Filipino (Taglish), `alt.en` holds the English, and the app shows the one that
 matches its language.
 
-| Spice | Label                          | Content                                           |
-| ----- | ------------------------------ | ------------------------------------------------- |
-| 0     | Pang-pamilya / Family-friendly | Anyone can play                                   |
-| 1     | Medyo maanghang / Mild         | Light teasing                                     |
-| 2     | Maanghang / Spicy              | Crushes, dating, exes, drunk stories              |
-| 3     | **SPG (18+)**                  | Adults-only, suggestive but never graphic; opt-in |
+The app calls this the **Rating** (`spice` 0–3 in the data):
+
+| `spice` | Filipino / English      | Content                                           |
+| ------- | ----------------------- | ------------------------------------------------- |
+| 0       | Chill / Family-friendly | Anyone can play                                   |
+| 1       | Kulitan / Mild          | Light teasing                                     |
+| 2       | Harutan / Spicy         | Crushes, dating, exes, drunk stories              |
+| 3       | **SPG (18+)**           | Adults-only, suggestive but never graphic; opt-in |
 
 Dares that involve another player always say _"kung game siya / if they're okay with it."_ The
 Taglish was written for a real barkada, so proofreading by native speakers is welcome.
