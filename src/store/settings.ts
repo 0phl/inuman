@@ -75,7 +75,8 @@ export const DEFAULT_AUDIO: AudioSettings = {
 export const DEFAULT_SETTINGS: SettingsData = {
   locale: 'taglish',
   ageConfirmed: false,
-  quality: 'auto',
+  // Looks its best from the first open; a phone that lags is switched down in Settings.
+  quality: 'high',
   detectedTier: null,
   intensity: DEFAULT_INTENSITY,
   ...DEFAULT_AUDIO,
@@ -84,8 +85,9 @@ export const DEFAULT_SETTINGS: SettingsData = {
 /**
  * v1: language, intensity, quality and two booleans (sound, haptics).
  * v2: the audio engine — volumes, music track, ambience, mix-with-other-apps.
+ * v3: quality defaults to High instead of Auto.
  */
-export const SETTINGS_VERSION = 2;
+export const SETTINGS_VERSION = 3;
 
 const bool = (v: unknown, fallback: boolean) => (typeof v === 'boolean' ? v : fallback);
 const volume = (v: unknown, fallback: number) =>
@@ -120,7 +122,9 @@ export function sanitizeSettings(raw: unknown): SettingsData {
   return {
     locale: LOCALES.includes(r.locale as Locale) ? (r.locale as Locale) : DEFAULT_SETTINGS.locale,
     ageConfirmed: r.ageConfirmed === true,
-    quality: QUALITY_OPTIONS.includes(r.quality as Quality) ? (r.quality as Quality) : 'auto',
+    quality: QUALITY_OPTIONS.includes(r.quality as Quality)
+      ? (r.quality as Quality)
+      : DEFAULT_SETTINGS.quality,
     detectedTier: tier(r.detectedTier) ? r.detectedTier : null,
     intensity: intensity.success ? intensity.data : DEFAULT_INTENSITY,
     ...sanitizeAudio(r),
@@ -131,11 +135,14 @@ export function sanitizeSettings(raw: unknown): SettingsData {
  * Brings stored settings of any earlier version up to SETTINGS_VERSION. v0 never shipped and
  * v1 → v2 only added fields, so both are sanitized field by field: what v1 stored (including
  * its sound/haptics switches) is kept and the new audio fields get their defaults.
+ * Before v3, Auto was the default nobody had to pick, so a stored Auto moves to the new
+ * default (High); Low / Mid / High picked by hand stay.
  */
-export function migrateSettings(persisted: unknown, _fromVersion: number): SettingsData {
-  // Nothing was renamed between versions, so sanitizing is the whole migration: v1's "Tunog"
-  // switch stays the master switch and the new audio fields fill in from their defaults.
-  return sanitizeSettings(persisted);
+export function migrateSettings(persisted: unknown, fromVersion: number): SettingsData {
+  // Nothing was renamed between versions, so sanitizing is the rest of the migration: v1's
+  // "Tunog" switch stays the master switch and the new audio fields fill in from their defaults.
+  const s = sanitizeSettings(persisted);
+  return fromVersion < 3 && s.quality === 'auto' ? { ...s, quality: DEFAULT_SETTINGS.quality } : s;
 }
 
 export const useSettings = create<SettingsState>()(

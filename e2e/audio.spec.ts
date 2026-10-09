@@ -155,7 +155,7 @@ test('volume and music choices persist across reloads', async ({ page }) => {
   const stored = await page.evaluate(() =>
     JSON.parse(localStorage.getItem('inuman.settings') ?? '{}'),
   );
-  expect(stored.version).toBe(2);
+  expect(stored.version).toBe(3);
   expect(stored.state).toMatchObject({
     masterVolume: 0.4,
     sfxVolume: 0.65,

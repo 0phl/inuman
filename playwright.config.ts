@@ -10,6 +10,20 @@ export default defineConfig({
   reporter: [['list']],
   use: {
     baseURL: 'http://localhost:4173',
+    // The app starts on High graphics; under SwiftShader that only makes every test slower and
+    // flakier, so tests start on Low (what Auto used to detect here). defaults.spec.ts checks the
+    // real first-run default with empty storage.
+    storageState: {
+      cookies: [],
+      origins: [
+        {
+          origin: 'http://localhost:4173',
+          localStorage: [
+            { name: 'inuman.settings', value: '{"state":{"quality":"low"},"version":3}' },
+          ],
+        },
+      ],
+    },
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
   },

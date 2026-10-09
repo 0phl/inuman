@@ -1,9 +1,31 @@
 import { describe, expect, it } from 'vitest';
-import { DEFAULT_AUDIO, migrateSettings, sanitizeAudio, SETTINGS_VERSION } from './settings';
+import {
+  DEFAULT_AUDIO,
+  DEFAULT_SETTINGS,
+  migrateSettings,
+  sanitizeAudio,
+  sanitizeSettings,
+  SETTINGS_VERSION,
+} from './settings';
 
 describe('settings migration', () => {
-  it('is at version 2', () => {
-    expect(SETTINGS_VERSION).toBe(2);
+  it('is at version 3', () => {
+    expect(SETTINGS_VERSION).toBe(3);
+  });
+
+  it('starts new players on High graphics', () => {
+    expect(DEFAULT_SETTINGS.quality).toBe('high');
+    expect(sanitizeSettings({}).quality).toBe('high');
+    expect(sanitizeSettings({ quality: 'ultra' }).quality).toBe('high');
+  });
+
+  it('moves the old Auto default to High, but keeps a quality picked by hand', () => {
+    expect(migrateSettings({ quality: 'auto' }, 2).quality).toBe('high');
+    expect(migrateSettings({ quality: 'auto' }, 1).quality).toBe('high');
+    expect(migrateSettings({ quality: 'mid' }, 2).quality).toBe('mid');
+    expect(migrateSettings({ quality: 'low' }, 2).quality).toBe('low');
+    // Auto chosen on purpose after v3 stays Auto.
+    expect(migrateSettings({ quality: 'auto' }, 3).quality).toBe('auto');
   });
 
   it('upgrades v1 settings: keeps what was stored, adds the audio defaults', () => {
