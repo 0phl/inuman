@@ -42,6 +42,30 @@ describe('built-in packs', () => {
     expect(new Set(all).size).toBe(all.length);
   });
 
+  it('ships a real SPG (spice 3) set in every pack, truths and dares alike', () => {
+    for (const pack of BUILTIN_PACKS) {
+      const spg = pack.items.filter((i) => i.spice === 3);
+      expect(spg.length, `${pack.id} SPG prompts`).toBeGreaterThanOrEqual(20);
+      if (pack.game === 'truth-or-dare')
+        for (const kind of ['truth', 'dare'])
+          expect(
+            spg.filter((i) => i.kind === kind).length,
+            `${pack.id} SPG ${kind}s`,
+          ).toBeGreaterThanOrEqual(15);
+    }
+  });
+
+  it('keeps every SPG dare that involves another player consensual', () => {
+    const asks = /if (they're|they are|both are) (okay|game)|kung (game|okay)/i;
+    for (const pack of BUILTIN_PACKS.filter((p) => p.game === 'truth-or-dare')) {
+      for (const item of pack.items) {
+        if (item.kind !== 'dare' || item.spice < 3) continue;
+        if (!/\{(random|left|right)\}/.test(item.text)) continue;
+        expect(item.text, item.id).toMatch(asks);
+      }
+    }
+  });
+
   it('only uses known placeholders', () => {
     for (const pack of BUILTIN_PACKS) {
       for (const item of pack.items) {

@@ -240,21 +240,271 @@
     {
       "id": "mlt-en-047",
       "text": "Most likely to wake up somewhere they don't recognize.",
-      "spice": 3
+      "spice": 2
     },
     {
       "id": "mlt-en-048",
       "text": "Most likely to send a thirst trap to the wrong person.",
-      "spice": 3
+      "spice": 2
     },
     {
       "id": "mlt-en-049",
       "text": "Most likely to have a tattoo in a very private spot.",
-      "spice": 3
+      "spice": 2
     },
     {
       "id": "mlt-en-050",
       "text": "Most likely to have a story they only tell after midnight.",
+      "spice": 2
+    },
+    {
+      "id": "mlt-en-051",
+      "text": "Most likely to befriend a stray cat and give it a full name.",
+      "spice": 0
+    },
+    {
+      "id": "mlt-en-052",
+      "text": "Most likely to become a millionaire and still clip coupons.",
+      "spice": 0
+    },
+    {
+      "id": "mlt-en-053",
+      "text": "Most likely to fall asleep during the movie they picked.",
+      "spice": 0
+    },
+    {
+      "id": "mlt-en-054",
+      "text": "Most likely to take karaoke way too seriously.",
+      "spice": 0
+    },
+    {
+      "id": "mlt-en-055",
+      "text": "Most likely to have 50 browser tabs open right now.",
+      "spice": 0
+    },
+    {
+      "id": "mlt-en-056",
+      "text": "Most likely to reply to a text three weeks later like nothing happened.",
+      "spice": 1
+    },
+    {
+      "id": "mlt-en-057",
+      "text": "Most likely to fake a phone call to escape a conversation.",
+      "spice": 1
+    },
+    {
+      "id": "mlt-en-058",
+      "text": "Most likely to accidentally like a five-year-old photo while stalking.",
+      "spice": 1
+    },
+    {
+      "id": "mlt-en-059",
+      "text": "Most likely to rehearse an argument in the shower and still lose.",
+      "spice": 1
+    },
+    {
+      "id": "mlt-en-060",
+      "text": "Most likely to say 'one last drink' and order three more.",
+      "spice": 1
+    },
+    {
+      "id": "mlt-en-061",
+      "text": "Most likely to screenshot the group chat and send it to someone else.",
+      "spice": 1
+    },
+    {
+      "id": "mlt-en-062",
+      "text": "Most likely to leave someone on read on purpose.",
+      "spice": 1
+    },
+    {
+      "id": "mlt-en-063",
+      "text": "Most likely to blow a whole paycheck in one weekend.",
+      "spice": 1
+    },
+    {
+      "id": "mlt-en-064",
+      "text": "Most likely to eat someone else's lunch from the office fridge.",
+      "spice": 1
+    },
+    {
+      "id": "mlt-en-065",
+      "text": "Most likely to hide in the bathroom at a party just to scroll.",
+      "spice": 1
+    },
+    {
+      "id": "mlt-en-066",
+      "text": "Most likely to drunk-text their crush a whole paragraph.",
+      "spice": 2
+    },
+    {
+      "id": "mlt-en-067",
+      "text": "Most likely to stay in a situationship way too long.",
+      "spice": 2
+    },
+    {
+      "id": "mlt-en-068",
+      "text": "Most likely to ghost someone after an amazing first date.",
+      "spice": 2
+    },
+    {
+      "id": "mlt-en-069",
+      "text": "Most likely to deep-dive their crush's ex's ex online.",
+      "spice": 2
+    },
+    {
+      "id": "mlt-en-070",
+      "text": "Most likely to say 'I love you' first.",
+      "spice": 2
+    },
+    {
+      "id": "mlt-en-071",
+      "text": "Most likely to have a type that's always a red flag.",
+      "spice": 2
+    },
+    {
+      "id": "mlt-en-072",
+      "text": "Most likely to swipe right on literally everyone.",
+      "spice": 2
+    },
+    {
+      "id": "mlt-en-073",
+      "text": "Most likely to forget their date's name halfway through dinner.",
+      "spice": 2
+    },
+    {
+      "id": "mlt-en-074",
+      "text": "Most likely to wake up still wearing last night's outfit.",
+      "spice": 2
+    },
+    {
+      "id": "mlt-en-075",
+      "text": "Most likely to send a voice note they'll regret by morning.",
+      "spice": 2
+    },
+    {
+      "id": "mlt-en-076",
+      "text": "Most likely to soft-launch a relationship that lasts one week.",
+      "spice": 2
+    },
+    {
+      "id": "mlt-en-077",
+      "text": "Most likely to marry their first love.",
+      "spice": 2
+    },
+    {
+      "id": "mlt-en-078",
+      "text": "Most likely to get a matching tattoo with someone they just started dating.",
+      "spice": 2
+    },
+    {
+      "id": "mlt-en-079",
+      "text": "Most likely to fake a new relationship to make an ex jealous.",
+      "spice": 2
+    },
+    {
+      "id": "mlt-en-080",
+      "text": "Most likely to lose their phone, wallet, and dignity in one night.",
+      "spice": 2
+    },
+    {
+      "id": "mlt-en-081",
+      "text": "Most likely to round their body count down.",
+      "spice": 3
+    },
+    {
+      "id": "mlt-en-082",
+      "text": "Most likely to flirt their way into free drinks all night.",
+      "spice": 3
+    },
+    {
+      "id": "mlt-en-083",
+      "text": "Most likely to hook up with an ex 'for closure.'",
+      "spice": 3
+    },
+    {
+      "id": "mlt-en-084",
+      "text": "Most likely to catch feelings for their FWB.",
+      "spice": 3
+    },
+    {
+      "id": "mlt-en-085",
+      "text": "Most likely to do the walk of shame and wave at the neighbors.",
+      "spice": 3
+    },
+    {
+      "id": "mlt-en-086",
+      "text": "Most likely to make out with a stranger and never get their name.",
+      "spice": 3
+    },
+    {
+      "id": "mlt-en-087",
+      "text": "Most likely to have a kink nobody here would ever guess.",
+      "spice": 3
+    },
+    {
+      "id": "mlt-en-088",
+      "text": "Most likely to own handcuffs that aren't part of a costume.",
+      "spice": 3
+    },
+    {
+      "id": "mlt-en-089",
+      "text": "Most likely to get a noise complaint, and not from partying.",
+      "spice": 3
+    },
+    {
+      "id": "mlt-en-090",
+      "text": "Most likely to have a bedroom playlist ready to go.",
+      "spice": 3
+    },
+    {
+      "id": "mlt-en-091",
+      "text": "Most likely to have a hidden folder of spicy pics on their phone.",
+      "spice": 3
+    },
+    {
+      "id": "mlt-en-092",
+      "text": "Most likely to have a hookup story they'll take to the grave.",
+      "spice": 3
+    },
+    {
+      "id": "mlt-en-093",
+      "text": "Most likely to say 'I don't usually do this' when they totally do.",
+      "spice": 3
+    },
+    {
+      "id": "mlt-en-094",
+      "text": "Most likely to hook up with a bridesmaid or groomsman at a wedding.",
+      "spice": 3
+    },
+    {
+      "id": "mlt-en-095",
+      "text": "Most likely to save their booty call under a fake contact name.",
+      "spice": 3
+    },
+    {
+      "id": "mlt-en-096",
+      "text": "Most likely to keep a spreadsheet rating their hookups.",
+      "spice": 3
+    },
+    {
+      "id": "mlt-en-097",
+      "text": "Most likely to have a one-night stand on a business trip.",
+      "spice": 3
+    },
+    {
+      "id": "mlt-en-098",
+      "text": "Most likely to wake up next to someone and pretend to still be asleep.",
+      "spice": 3
+    },
+    {
+      "id": "mlt-en-099",
+      "text": "Most likely to send a sext with a typo that kills the mood.",
+      "spice": 3
+    },
+    {
+      "id": "mlt-en-100",
+      "text": "Most likely to be the boss in the bedroom.",
       "spice": 3
     }
   ]

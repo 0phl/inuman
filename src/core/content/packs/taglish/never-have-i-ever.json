@@ -300,31 +300,331 @@
     {
       "id": "nhie-tl-059",
       "text": "Never have I ever nakipag-kiss sa first date.",
-      "spice": 3
+      "spice": 2
     },
     {
       "id": "nhie-tl-060",
       "text": "Never have I ever nakipag-make out sa sinehan.",
-      "spice": 3
+      "spice": 2
     },
     {
       "id": "nhie-tl-061",
       "text": "Never have I ever nagkaroon ng situationship na sikreto sa lahat, pati sa barkada.",
-      "spice": 3
+      "spice": 2
     },
     {
       "id": "nhie-tl-062",
       "text": "Never have I ever nag-post ng thirst trap para sa isang specific na tao.",
-      "spice": 3
+      "spice": 2
     },
     {
       "id": "nhie-tl-063",
       "text": "Never have I ever nahuli ng magulang ko na may kahalikan.",
-      "spice": 3
+      "spice": 2
     },
     {
       "id": "nhie-tl-064",
       "text": "Never have I ever nakipag-kiss sa kaibigan tapos nagkunwaring walang nangyari.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-tl-065",
+      "text": "Never have I ever nagkunwaring tulog para hindi mautusan ni Mama.",
+      "spice": 0
+    },
+    {
+      "id": "nhie-tl-066",
+      "text": "Never have I ever nagsabing “Diet na ako bukas” habang nagpapa-extra rice.",
+      "spice": 0
+    },
+    {
+      "id": "nhie-tl-067",
+      "text": "Never have I ever nagtago ng paborito kong ulam sa ref para hindi makain ng kapatid ko.",
+      "spice": 0
+    },
+    {
+      "id": "nhie-tl-068",
+      "text": "Never have I ever hinanap ang tsinelas ko tapos suot ko na pala.",
+      "spice": 0
+    },
+    {
+      "id": "nhie-tl-069",
+      "text": "Never have I ever sumagot ng “Opo” sa tawag kahit hindi ko naintindihan ang sinabi.",
+      "spice": 0
+    },
+    {
+      "id": "nhie-tl-070",
+      "text": "Never have I ever nag-concert sa banyo gamit ang shampoo bilang mic.",
+      "spice": 0
+    },
+    {
+      "id": "nhie-tl-071",
+      "text": "Never have I ever gumawa ng dummy account para lang may ma-stalk.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-tl-072",
+      "text": "Never have I ever nag-screenshot ng chat tapos sinend sa GC para pag-usapan.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-tl-073",
+      "text": "Never have I ever nang-seenzone on purpose para magmukhang busy.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-tl-074",
+      "text": "Never have I ever umutot tapos ibinintang sa iba.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-tl-075",
+      "text": "Never have I ever nagpa-cute para lang makalibre o maka-discount.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-tl-076",
+      "text": "Never have I ever nag-delete ng post kasi kaunti lang ang nag-react.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-tl-077",
+      "text": "Never have I ever nagbigay ng fake number sa nanghingi ng number ko.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-tl-078",
+      "text": "Never have I ever umidlip sa CR ng office.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-tl-079",
+      "text": "Never have I ever nakipag-plastikan sa taong ayaw ko naman talaga.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-tl-080",
+      "text": "Never have I ever nangupit sa sukli ng pinabili ni Mama.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-tl-081",
+      "text": "Never have I ever nag-English bigla para lang manalo sa away.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-tl-082",
+      "text": "Never have I ever pumunta sa handaan kahit hindi naman ako imbitado.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-tl-083",
+      "text": "Never have I ever nag-slide sa DMs ng crush gamit ang corny na pickup line.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-tl-084",
+      "text": "Never have I ever naunang mag-“I love you” tapos walang sagot.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-tl-085",
+      "text": "Never have I ever nagka-crush sa officemate ko.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-tl-086",
+      "text": "Never have I ever nag-hugot tungkol sa ex sa inuman hanggang napaiyak na ako.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-tl-087",
+      "text": "Never have I ever itinago ang regalo ng ex ko kahit “move on” na raw ako.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-tl-088",
+      "text": "Never have I ever sumayaw sa ibabaw ng mesa habang lasing.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-tl-089",
+      "text": "Never have I ever nawalan ng phone, wallet, o tsinelas pagkatapos ng gimik.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-tl-090",
+      "text": "Never have I ever na-set up ng barkada sa isang blind date.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-tl-091",
+      "text": "Never have I ever nagkunwaring single para malibre ng drinks.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-tl-092",
+      "text": "Never have I ever nagtiis sa toxic na relasyon nang mas matagal kaysa dapat.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-tl-093",
+      "text": "Never have I ever nagka-rebound.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-tl-094",
+      "text": "Never have I ever na-fall sa taong pinilit kong “kaibigan lang” talaga.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-tl-095",
+      "text": "Never have I ever nag-ayos nang todo kasi baka makasalubong ko ang ex ko.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-tl-096",
+      "text": "Never have I ever nakatulog sa inuman tapos ginuhitan ng barkada ang mukha ko.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-tl-097",
+      "text": "Never have I ever nagpatawag sa kaibigan ng fake emergency para makatakas sa date.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-tl-098",
+      "text": "Never have I ever nag-confess sa crush tapos binawi ko ng “Joke lang!”",
+      "spice": 2
+    },
+    {
+      "id": "nhie-tl-099",
+      "text": "Never have I ever nakipag-inuman hanggang sumikat na ang araw.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-tl-100",
+      "text": "Never have I ever nagka-one night stand na hindi ko na nakita ulit.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-tl-101",
+      "text": "Never have I ever nagkaroon ng FWB tapos ako pa ang na-fall.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-tl-102",
+      "text": "Never have I ever nag-walk of shame pauwi suot pa rin ang damit ko kagabi.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-tl-103",
+      "text": "Never have I ever nakipag-momol sa taong kakakilala ko lang nang gabing 'yon.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-tl-104",
+      "text": "Never have I ever nagsinungaling tungkol sa body count ko.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-tl-105",
+      "text": "Never have I ever nag-check in sa motel nang “short time” lang.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-tl-106",
+      "text": "Never have I ever nagtago ng chikinini gamit ang concealer o turtleneck.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-tl-107",
+      "text": "Never have I ever nahuli ng roommate na may kasama ako sa kama.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-tl-108",
+      "text": "Never have I ever nakipag-hookup sa ex ko “for the last time” daw.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-tl-109",
+      "text": "Never have I ever naka-momol ng isa sa mga kasama natin dito.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-tl-110",
+      "text": "Never have I ever nag-skinny dip sa beach o pool.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-tl-111",
+      "text": "Never have I ever sinagot ang 2 a.m. na “Gising ka pa?” tapos pinuntahan ko talaga.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-tl-112",
+      "text": "Never have I ever nag-roleplay kasama ang jowa ko, may costume pa.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-tl-113",
+      "text": "Never have I ever nakipag-hookup sa officemate tapos nagkunwaring professional kinabukasan.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-tl-114",
+      "text": "Never have I ever naging kabit, alam ko man o hindi.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-tl-115",
+      "text": "Never have I ever nagkaroon ng spicy na panaginip tungkol sa isang nandito ngayon.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-tl-116",
+      "text": "Never have I ever nag-fake ng “Ang galing mo!” sa kama.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-tl-117",
+      "text": "Never have I ever nagkaroon ng fling sa out-of-town trip na sikreto hanggang ngayon.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-tl-118",
+      "text": "Never have I ever na-noise complaint ng kapitbahay, pero hindi dahil sa videoke.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-tl-119",
+      "text": "Never have I ever naglaro ng strip game sa inuman.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-tl-120",
+      "text": "Never have I ever nasabi ang maling pangalan habang nasa kama.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-tl-121",
+      "text": "Never have I ever bumili ng condom tapos nagkunwaring pinabili lang ng tropa.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-tl-122",
+      "text": "Never have I ever nag-send ng pasilip na pic tapos nag-panic unsend.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-tl-123",
+      "text": "Never have I ever nakipagharutan sa kotse hanggang nag-fog ang bintana.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-tl-124",
+      "text": "Never have I ever ginamit ang barkada bilang alibi para makapag-overnight sa jowa.",
       "spice": 3
     }
   ]

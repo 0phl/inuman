@@ -32,7 +32,9 @@ Approved plan: `~/.claude/plans/glimmering-prancing-token.md`. Commands: `pnpm d
 
 ## Content
 - Built-in prompt packs: `src/core/content/packs/<locale>/<game>.json`, validated by `PromptPackSchema`.
-  Spice 0 family-friendly … 3 extra (3 is opt-in). Placeholders: `{player}`, `{random}`, `{left}`, `{right}`.
+  Spice 0 family-friendly, 1 light teasing, 2 crushes/dating/exes, 3 "SPG (18+)": adults-only sexy prompts (opt-in;
+  suggestive, never graphic; dares with another player always say "if they're okay with it"; nothing involving
+  minors, nudity or posting outside the room). Placeholders: `{player}`, `{random}`, `{left}`, `{right}`.
 
 ## Product constraints
 - Players are names only — no avatars. Responsible-drinking defaults: finish/chug off, per-turn cap, water reminders,

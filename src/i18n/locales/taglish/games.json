@@ -71,11 +71,11 @@
     "nhie": {
       "sips": "Lagok kapag nagawa mo na",
       "maxSpice": "Anghang",
-      "maxSpice_help": "0 = pang-pamilya, 3 = extra spicy.",
+      "maxSpice_help": "0 = pang-pamilya, 3 = SPG: pang-adults lang, green jokes at landian.",
       "maxSpice_opt_0": "Pang-pamilya",
       "maxSpice_opt_1": "Medyo maanghang",
       "maxSpice_opt_2": "Maanghang",
-      "maxSpice_opt_3": "Extra spicy",
+      "maxSpice_opt_3": "SPG (18+)",
       "rounds": "Ilang round",
       "rounds_help": "0 = hanggang maubos ang cards."
     },
@@ -123,11 +123,11 @@
       "nextSpinner_opt_picked": "Ang tinapatan",
       "nextSpinner_opt_clockwise": "Ang katabi sa kaliwa",
       "maxSpice": "Anghang",
-      "maxSpice_help": "0 = pang-pamilya, 3 = extra spicy.",
+      "maxSpice_help": "0 = pang-pamilya, 3 = SPG: pang-adults lang, green jokes at landian.",
       "maxSpice_opt_0": "Pang-pamilya",
       "maxSpice_opt_1": "Medyo maanghang",
       "maxSpice_opt_2": "Maanghang",
-      "maxSpice_opt_3": "Extra spicy"
+      "maxSpice_opt_3": "SPG (18+)"
     },
     "tod": {
       "choice": "Sino'ng pipili",
@@ -137,11 +137,11 @@
       "refuseSips": "Lagok pag umatras",
       "refuseSips_help": "Base na lagok. Puwedeng may sariling lagok ang isang prompt.",
       "maxSpice": "Anghang",
-      "maxSpice_help": "0 = pang-pamilya, 3 = extra spicy.",
+      "maxSpice_help": "0 = pang-pamilya, 3 = SPG: pang-adults lang, green jokes at landian.",
       "maxSpice_opt_0": "Pang-pamilya",
       "maxSpice_opt_1": "Medyo maanghang",
       "maxSpice_opt_2": "Maanghang",
-      "maxSpice_opt_3": "Extra spicy",
+      "maxSpice_opt_3": "SPG (18+)",
       "rounds": "Ilang turn",
       "rounds_help": "0 = tuloy-tuloy hanggang i-end ng host."
     },
@@ -152,11 +152,11 @@
       "voting_help": "Turuan: sabay-sabay ituturo, at ilalagay ng babasa kung sino. Secret: ipapasa ang phone, isa-isang boboto, at sa dulo lalabas ang resulta.",
       "sips": "Lagok ng napili",
       "maxSpice": "Anghang",
-      "maxSpice_help": "0 = pang-pamilya, 3 = extra spicy.",
+      "maxSpice_help": "0 = pang-pamilya, 3 = SPG: pang-adults lang, green jokes at landian.",
       "maxSpice_opt_0": "Pang-pamilya",
       "maxSpice_opt_1": "Medyo maanghang",
       "maxSpice_opt_2": "Maanghang",
-      "maxSpice_opt_3": "Extra spicy",
+      "maxSpice_opt_3": "SPG (18+)",
       "rounds": "Ilang round",
       "rounds_help": "0 = hanggang maubos ang cards."
     },

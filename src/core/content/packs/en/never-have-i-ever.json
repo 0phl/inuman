@@ -290,31 +290,331 @@
     {
       "id": "nhie-en-057",
       "text": "Never have I ever kissed someone on the first date.",
-      "spice": 3
+      "spice": 2
     },
     {
       "id": "nhie-en-058",
       "text": "Never have I ever made out in a movie theater.",
-      "spice": 3
+      "spice": 2
     },
     {
       "id": "nhie-en-059",
       "text": "Never have I ever had a secret situationship.",
-      "spice": 3
+      "spice": 2
     },
     {
       "id": "nhie-en-060",
       "text": "Never have I ever posted a thirst trap for one specific person.",
-      "spice": 3
+      "spice": 2
     },
     {
       "id": "nhie-en-061",
       "text": "Never have I ever been caught kissing someone by a parent.",
-      "spice": 3
+      "spice": 2
     },
     {
       "id": "nhie-en-062",
       "text": "Never have I ever kissed a friend and pretended it never happened.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-en-063",
+      "text": "Never have I ever texted “almost there” before I'd even left the house.",
+      "spice": 0
+    },
+    {
+      "id": "nhie-en-064",
+      "text": "Never have I ever pushed a door that clearly said pull.",
+      "spice": 0
+    },
+    {
+      "id": "nhie-en-065",
+      "text": "Never have I ever searched for my phone while it was in my hand.",
+      "spice": 0
+    },
+    {
+      "id": "nhie-en-066",
+      "text": "Never have I ever won an argument in the shower hours after it ended.",
+      "spice": 0
+    },
+    {
+      "id": "nhie-en-067",
+      "text": "Never have I ever fallen asleep in a movie I paid to watch.",
+      "spice": 0
+    },
+    {
+      "id": "nhie-en-068",
+      "text": "Never have I ever laughed at a joke I didn't get just to fit in.",
+      "spice": 0
+    },
+    {
+      "id": "nhie-en-069",
+      "text": "Never have I ever made a fake account just to stalk someone.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-en-070",
+      "text": "Never have I ever screenshotted a chat and sent it to the group chat for analysis.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-en-071",
+      "text": "Never have I ever deleted a post because it didn't get enough likes.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-en-072",
+      "text": "Never have I ever left someone on seen on purpose to look busy.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-en-073",
+      "text": "Never have I ever blamed my fart on someone else.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-en-074",
+      "text": "Never have I ever peed in a pool as an adult.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-en-075",
+      "text": "Never have I ever given a fake number to someone hitting on me.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-en-076",
+      "text": "Never have I ever cried on purpose to get out of trouble.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-en-077",
+      "text": "Never have I ever lied on my resume.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-en-078",
+      "text": "Never have I ever re-recorded a voice message more than five times.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-en-079",
+      "text": "Never have I ever pretended I'd read a book or seen a movie to sound smart.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-en-080",
+      "text": "Never have I ever fake-laughed at my boss's terrible joke.",
+      "spice": 1
+    },
+    {
+      "id": "nhie-en-081",
+      "text": "Never have I ever slid into someone's DMs with a cheesy pickup line.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-en-082",
+      "text": "Never have I ever said “I love you” first and didn't hear it back.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-en-083",
+      "text": "Never have I ever had a crush on a coworker.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-en-084",
+      "text": "Never have I ever cried over an ex at a party.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-en-085",
+      "text": "Never have I ever kept a gift from an ex that I really should've thrown out.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-en-086",
+      "text": "Never have I ever written a long love message and never sent it.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-en-087",
+      "text": "Never have I ever danced on a table at a party.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-en-088",
+      "text": "Never have I ever lost my phone, wallet, or shoes on a night out.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-en-089",
+      "text": "Never have I ever been set up on a blind date.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-en-090",
+      "text": "Never have I ever pretended to be single to get free drinks.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-en-091",
+      "text": "Never have I ever stayed in a relationship way longer than I should have.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-en-092",
+      "text": "Never have I ever had a rebound.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-en-093",
+      "text": "Never have I ever fallen for someone I swore was “just a friend.”",
+      "spice": 2
+    },
+    {
+      "id": "nhie-en-094",
+      "text": "Never have I ever planned my outfit around possibly running into my ex.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-en-095",
+      "text": "Never have I ever thrown up somewhere that definitely wasn't a toilet.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-en-096",
+      "text": "Never have I ever had a friend fake an emergency call to rescue me from a date.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-en-097",
+      "text": "Never have I ever woken up to a drunk online order I don't remember placing.",
+      "spice": 2
+    },
+    {
+      "id": "nhie-en-098",
+      "text": "Never have I ever had a one-night stand.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-en-099",
+      "text": "Never have I ever had a friend with benefits.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-en-100",
+      "text": "Never have I ever done the walk of shame in last night's outfit.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-en-101",
+      "text": "Never have I ever woken up next to someone and needed a second to remember their name.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-en-102",
+      "text": "Never have I ever lied about my body count.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-en-103",
+      "text": "Never have I ever been walked in on by a roommate at the worst possible moment.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-en-104",
+      "text": "Never have I ever hooked up with an ex “one last time.”",
+      "spice": 3
+    },
+    {
+      "id": "nhie-en-105",
+      "text": "Never have I ever hooked up with someone at this table.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-en-106",
+      "text": "Never have I ever steamed up the windows of a parked car.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-en-107",
+      "text": "Never have I ever gone skinny-dipping.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-en-108",
+      "text": "Never have I ever made out with a total stranger on the dance floor.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-en-109",
+      "text": "Never have I ever answered a 2 a.m. “you up?” text and actually gone over.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-en-110",
+      "text": "Never have I ever tried role-play in the bedroom.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-en-111",
+      "text": "Never have I ever owned handcuffs that weren't part of a costume.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-en-112",
+      "text": "Never have I ever sexted someone during a work meeting.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-en-113",
+      "text": "Never have I ever been the other woman or the other man.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-en-114",
+      "text": "Never have I ever had a spicy dream about someone in this room.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-en-115",
+      "text": "Never have I ever joined the mile-high club.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-en-116",
+      "text": "Never have I ever faked it in bed.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-en-117",
+      "text": "Never have I ever had a vacation fling.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-en-118",
+      "text": "Never have I ever gotten a noise complaint, and not because of loud music.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-en-119",
+      "text": "Never have I ever hidden a hickey with concealer or a scarf.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-en-120",
+      "text": "Never have I ever played a strip game.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-en-121",
+      "text": "Never have I ever said the wrong name in bed.",
+      "spice": 3
+    },
+    {
+      "id": "nhie-en-122",
+      "text": "Never have I ever bought condoms and pretended they were for a friend.",
       "spice": 3
     }
   ]

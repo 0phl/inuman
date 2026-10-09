@@ -71,11 +71,11 @@
     "nhie": {
       "sips": "Sips if you've done it",
       "maxSpice": "Spice level",
-      "maxSpice_help": "0 = family-friendly, 3 = extra spicy.",
+      "maxSpice_help": "0 = family-friendly, 3 = SPG: adults-only, sexy prompts.",
       "maxSpice_opt_0": "Family-friendly",
       "maxSpice_opt_1": "Mild",
       "maxSpice_opt_2": "Spicy",
-      "maxSpice_opt_3": "Extra spicy",
+      "maxSpice_opt_3": "SPG (18+)",
       "rounds": "Rounds",
       "rounds_help": "0 = until the cards run out."
     },
@@ -123,11 +123,11 @@
       "nextSpinner_opt_picked": "Whoever got picked",
       "nextSpinner_opt_clockwise": "Player on the left",
       "maxSpice": "Spice level",
-      "maxSpice_help": "0 = family-friendly, 3 = extra spicy.",
+      "maxSpice_help": "0 = family-friendly, 3 = SPG: adults-only, sexy prompts.",
       "maxSpice_opt_0": "Family-friendly",
       "maxSpice_opt_1": "Mild",
       "maxSpice_opt_2": "Spicy",
-      "maxSpice_opt_3": "Extra spicy"
+      "maxSpice_opt_3": "SPG (18+)"
     },
     "tod": {
       "choice": "Who picks",
@@ -137,11 +137,11 @@
       "refuseSips": "Sips for refusing",
       "refuseSips_help": "Base sips. A prompt can set its own amount.",
       "maxSpice": "Spice level",
-      "maxSpice_help": "0 = family-friendly, 3 = extra spicy.",
+      "maxSpice_help": "0 = family-friendly, 3 = SPG: adults-only, sexy prompts.",
       "maxSpice_opt_0": "Family-friendly",
       "maxSpice_opt_1": "Mild",
       "maxSpice_opt_2": "Spicy",
-      "maxSpice_opt_3": "Extra spicy",
+      "maxSpice_opt_3": "SPG (18+)",
       "rounds": "Turns",
       "rounds_help": "0 = keep going until the host ends it."
     },
@@ -152,11 +152,11 @@
       "voting_help": "Point: everyone points at once and the reader records it. Secret: pass the phone, vote one by one, and the results come out at the end.",
       "sips": "Sips for whoever gets picked",
       "maxSpice": "Spice level",
-      "maxSpice_help": "0 = family-friendly, 3 = extra spicy.",
+      "maxSpice_help": "0 = family-friendly, 3 = SPG: adults-only, sexy prompts.",
       "maxSpice_opt_0": "Family-friendly",
       "maxSpice_opt_1": "Mild",
       "maxSpice_opt_2": "Spicy",
-      "maxSpice_opt_3": "Extra spicy",
+      "maxSpice_opt_3": "SPG (18+)",
       "rounds": "Rounds",
       "rounds_help": "0 = until the cards run out."
     },

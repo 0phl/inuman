@@ -22,6 +22,7 @@ export const IntensitySchema = z.object({
 export type Intensity = z.output<typeof IntensitySchema>;
 export const DEFAULT_INTENSITY: Intensity = IntensitySchema.parse({});
 
+/** 0 family-friendly · 1 light teasing · 2 crushes, dating, exes · 3 "SPG (18+)": adults-only (opt-in). */
 export const SPICE_LEVELS = [0, 1, 2, 3] as const;
 export type Spice = (typeof SPICE_LEVELS)[number];
 
