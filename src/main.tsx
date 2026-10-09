@@ -5,6 +5,10 @@ import './index.css';
 import './i18n';
 import { router } from './app/router';
 import { registerPwa } from './pwa';
+import { captureInstallEvents } from './store/install';
+
+// Chrome offers its install dialog once, early: catch it before anything renders.
+captureInstallEvents();
 
 const root = document.getElementById('root');
 if (!root) throw new Error('#root missing');

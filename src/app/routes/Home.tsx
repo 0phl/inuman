@@ -1,9 +1,11 @@
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router';
+import { selectBannerVisible, useInstall } from '@/store/install';
 import { usePlayers } from '@/store/players';
 import { useSession } from '@/store/session';
 import { BottleCap } from '@/ui/BottleCap';
 import { IconChevron, IconGear } from '@/ui/icons';
+import { InstallBanner } from '@/ui/InstallPrompt';
 
 function ResumeCard() {
   const { t } = useTranslation();
@@ -15,10 +17,17 @@ function ResumeCard() {
     <section className="felt anim-rise flex items-center gap-4 p-4 pr-3" data-testid="resume-card">
       <div className="relative z-10 flex min-w-0 flex-1 flex-col">
         <span className="eyebrow text-capiz-300">{t('home.paused')}</span>
-        <span className="truncate text-xl font-extrabold text-capiz-50">{t(`game.${session.gameId}.title`)}</span>
+        <span className="truncate text-xl font-extrabold text-capiz-50">
+          {t(`game.${session.gameId}.title`)}
+        </span>
         <span className="text-sm text-capiz-300">{t('home.pausedMeta', { count: seated })}</span>
       </div>
-      <button type="button" className="btn btn-brass relative z-10 shrink-0" onClick={() => navigate('/play')} data-testid="resume">
+      <button
+        type="button"
+        className="btn btn-brass relative z-10 shrink-0"
+        onClick={() => navigate('/play')}
+        data-testid="resume"
+      >
         {t('home.resume')}
       </button>
     </section>
@@ -28,14 +37,21 @@ function ResumeCard() {
 export default function Home() {
   const { t } = useTranslation();
   const count = usePlayers((s) => s.players.length);
+  // Room under the buttons so the floating install banner never covers them.
+  const banner = useInstall(selectBannerVisible);
 
   return (
-    <main className="screen gap-6" data-testid="home">
+    <main className={`screen gap-6 ${banner ? 'pb-32' : ''}`} data-testid="home">
       <header className="flex items-center justify-between">
         <BottleCap size={40} tone="sili">
           <span className="text-[13px]">18+</span>
         </BottleCap>
-        <Link to="/settings" className="icon-btn" aria-label={t('settings.title')} data-testid="nav-settings">
+        <Link
+          to="/settings"
+          className="icon-btn"
+          aria-label={t('settings.title')}
+          data-testid="nav-settings"
+        >
           <IconGear />
         </Link>
       </header>
@@ -48,11 +64,19 @@ export default function Home() {
       <ResumeCard />
 
       <nav className="flex flex-col gap-3">
-        <Link to="/games" className="btn btn-brass min-h-16 justify-between text-xl" data-testid="nav-games">
+        <Link
+          to="/games"
+          className="btn btn-brass min-h-16 justify-between text-xl"
+          data-testid="nav-games"
+        >
           <span className="font-sign text-[1.35rem]">{t('home.pickGame')}</span>
           <IconChevron />
         </Link>
-        <Link to="/players" className="btn btn-wood min-h-14 justify-between" data-testid="nav-players">
+        <Link
+          to="/players"
+          className="btn btn-wood min-h-14 justify-between"
+          data-testid="nav-players"
+        >
           <span>{t('home.players')}</span>
           <span className="flex items-center gap-2 text-capiz-300">
             <span className="chip">{t('home.playerCount', { count })}</span>
@@ -66,6 +90,7 @@ export default function Home() {
       </nav>
 
       <p className="text-center text-sm text-capiz-400">{t('home.footer')}</p>
+      <InstallBanner />
     </main>
   );
 }

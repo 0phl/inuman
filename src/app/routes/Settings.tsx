@@ -10,6 +10,7 @@ import { FieldRow, InlineRow, Segmented, Stepper, Toggle } from '@/ui/controls';
 import { IconChevron } from '@/ui/icons';
 import { ThemePicker } from '@/ui/ThemePicker';
 import { TopBar } from '@/ui/TopBar';
+import { InstallSettingsRow } from '@/ui/InstallPrompt';
 import { LanguageSwitch } from '../LanguageSwitch';
 
 const MULTIPLIERS = [0.5, 1, 1.5, 2] as const;
@@ -105,6 +106,10 @@ export default function Settings() {
         <div className="py-3">
           <LanguageSwitch testId="settings-language" />
         </div>
+      </Section>
+
+      <Section title={t('install.settingsTitle')}>
+        <InstallSettingsRow />
       </Section>
 
       <Section title={t('settings.drinking')}>

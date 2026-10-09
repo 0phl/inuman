@@ -146,6 +146,22 @@
     "bench": "Performance test",
     "benchHelp": "Subukan kung kaya ng phone ang 3D."
   },
+  "install": {
+    "settingsTitle": "App",
+    "bannerTitle": "I-install ang Inuman",
+    "bannerBody": "Mabilis buksan, gumagana kahit offline.",
+    "button": "I-install",
+    "settingsBody": "I-add sa home screen para mabilis buksan at magamit kahit offline.",
+    "installed": "Naka-install na ang Inuman sa device na 'to.",
+    "stepsTitle": "Paano i-install",
+    "ios1": "I-tap ang Share button sa Safari (yung kahon na may arrow pataas).",
+    "ios2": "Mag-scroll at piliin ang “Add to Home Screen”.",
+    "ios3": "I-tap ang “Add” sa itaas. Nasa home screen na si Inuman!",
+    "android1": "Buksan ang menu ng browser (⋮ sa itaas).",
+    "android2": "Piliin ang “Install app” o “Add to Home screen”.",
+    "desktop1": "I-click ang install icon sa address bar, o buksan ang menu ng browser at piliin ang “Install Inuman”.",
+    "needsHttps": "Heads-up: kailangang naka-https ang link (gaya ng na-deploy na site) para ma-install."
+  },
   "quality": { "auto": "Auto", "low": "Low", "mid": "Mid", "high": "High" },
   "cardBack": {
     "classic-red": "Pula",

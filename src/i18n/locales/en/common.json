@@ -141,6 +141,22 @@
     "bench": "Performance test",
     "benchHelp": "Check how well this phone handles the 3D."
   },
+  "install": {
+    "settingsTitle": "App",
+    "bannerTitle": "Install Inuman",
+    "bannerBody": "Opens fast, works offline.",
+    "button": "Install",
+    "settingsBody": "Add it to your home screen so it opens fast and works offline.",
+    "installed": "Inuman is installed on this device.",
+    "stepsTitle": "How to install",
+    "ios1": "Tap the Share button in Safari (the square with an arrow pointing up).",
+    "ios2": "Scroll down and choose “Add to Home Screen”.",
+    "ios3": "Tap “Add” at the top. Inuman is on your home screen!",
+    "android1": "Open the browser menu (⋮ at the top).",
+    "android2": "Choose “Install app” or “Add to Home screen”.",
+    "desktop1": "Click the install icon in the address bar, or open the browser menu and choose “Install Inuman”.",
+    "needsHttps": "Heads-up: installing needs an https link (like the deployed site)."
+  },
   "quality": { "auto": "Auto", "low": "Low", "mid": "Mid", "high": "High" },
   "cardBack": {
     "classic-red": "Red",

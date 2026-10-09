@@ -12,7 +12,7 @@ export default defineConfig({
     baseURL: 'http://localhost:4173',
     // The app starts on High graphics; under SwiftShader that only makes every test slower and
     // flakier, so tests start on Low (what Auto used to detect here). defaults.spec.ts checks the
-    // real first-run default with empty storage.
+    // real first-run defaults (graphics, install banner) with empty storage.
     storageState: {
       cookies: [],
       origins: [
@@ -20,6 +20,8 @@ export default defineConfig({
           origin: 'http://localhost:4173',
           localStorage: [
             { name: 'inuman.settings', value: '{"state":{"quality":"low"},"version":3}' },
+            // The floating install banner would sit over bottom buttons other tests tap.
+            { name: 'inuman.installDismissed', value: '1' },
           ],
         },
       ],
