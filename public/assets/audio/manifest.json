@@ -501,13 +501,19 @@
     },
     "bottle.spin": {
       "files": [
-        "sfx/bottle.spin_1.mp3"
+        "sfx/bottle.spin_1.mp3",
+        "sfx/bottle.spin_2.mp3",
+        "sfx/bottle.spin_3.mp3",
+        "sfx/bottle.spin_4.mp3"
       ],
       "gainDb": 0,
-      "loop": true,
-      "origin": "mixed",
+      "loop": false,
+      "origin": "recorded",
       "durationsSec": [
-        1
+        5.08,
+        3.21,
+        4.18,
+        2.67
       ]
     },
     "bottle.stop": {
@@ -1116,12 +1122,20 @@
       ]
     },
     {
+      "what": "Beer Bottle, Spin, Hardwood Floor.wav",
+      "author": "SpliceSound",
+      "license": "CC0 1.0",
+      "url": "https://freesound.org/people/SpliceSound/sounds/150438/",
+      "ids": [
+        "bottle.spin"
+      ]
+    },
+    {
       "what": "quick empty wine bottle spin - 1",
       "author": "FOSSarts",
       "license": "CC0 1.0",
       "url": "https://freesound.org/people/FOSSarts/sounds/762366/",
       "ids": [
-        "bottle.spin",
         "bottle.stop"
       ]
     },
@@ -1381,7 +1395,6 @@
       "license": "CC0 1.0",
       "url": "",
       "ids": [
-        "bottle.spin",
         "drink.give",
         "game.correct",
         "game.streak",

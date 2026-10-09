@@ -572,6 +572,15 @@
       "title": "Card Deal",
       "author": "RealSquink",
       "license": "CC0 1.0"
+    },
+    "fs-150438": {
+      "kind": "freesound",
+      "file": "freesound/150438.mp3",
+      "download": "https://cdn.freesound.org/previews/150/150438_1480854-hq.mp3",
+      "url": "https://freesound.org/people/SpliceSound/sounds/150438/",
+      "title": "Beer Bottle, Spin, Hardwood Floor.wav",
+      "author": "SpliceSound",
+      "license": "CC0 1.0"
     }
   },
   "sfx": {
@@ -1394,25 +1403,49 @@
       ]
     },
     "bottle.spin": {
-      "category": "loop",
-      "loudness": -27,
-      "loop": true,
+      "$comment": "Whole real spins, flick to stop, each cut 0.35 s after the bottle stops (faded). The engine picks the take whose length fits the on-screen spin (PlayOpts.fit).",
+      "category": "light",
+      "loudness": -25,
       "takes": [
         {
-          "synth": {
-            "voice": "bottleSpin",
-            "loopSec": 1,
-            "turns": 4,
-            "xfade": 0.06
-          },
-          "ir": {
-            "src": "fs-762366",
-            "in": 1.86,
-            "out": 2.06,
-            "mix": 0.6
-          },
-          "filter": "highpass=f=70",
-          "xfade": 0.06
+          "src": "fs-150438",
+          "in": 48.61,
+          "out": 53.69,
+          "filter": "highpass=f=80,afftdn=nf=-50",
+          "fadeIn": 0.012,
+          "trim": false,
+          "fadeOutSec": 0.35,
+          "gate": null
+        },
+        {
+          "src": "fs-150438",
+          "in": 60.55,
+          "out": 63.76,
+          "filter": "highpass=f=80,afftdn=nf=-50",
+          "fadeIn": 0.012,
+          "trim": false,
+          "fadeOutSec": 0.35,
+          "gate": null
+        },
+        {
+          "src": "fs-150438",
+          "in": 68.09,
+          "out": 72.27,
+          "filter": "highpass=f=80,afftdn=nf=-50",
+          "fadeIn": 0.012,
+          "trim": false,
+          "fadeOutSec": 0.35,
+          "gate": null
+        },
+        {
+          "src": "fs-150438",
+          "in": 89.48,
+          "out": 92.15,
+          "filter": "highpass=f=80,afftdn=nf=-50",
+          "fadeIn": 0.012,
+          "trim": false,
+          "fadeOutSec": 0.35,
+          "gate": null
         }
       ]
     },

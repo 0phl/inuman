@@ -263,36 +263,7 @@ function coinBlip({ a = 'B6', b = 'E7' }) {
   return out;
 }
 
-/**
- * Glass bottle spinning on its side on a wooden table: a low wood rumble and a brighter glass
- * grind, both modulated by the rotation (the bottle's bulge lifts and drops once per turn), plus
- * sparse grit ticks. The modulation is exactly periodic over `loopSec`, so the build's crossfade
- * loop lands on a whole number of turns. The build convolves it with a real bottle's ring.
- */
-function bottleSpin({ loopSec = 1.0, turns = 4, xfade = 0.06, seed = 8, rumbleHz = 260, grindHz = 1900 }) {
-  const dur = loopSec + xfade;
-  const out = buf(dur);
-  const rnd = mulberry32(seed);
-  const fr = turns / loopSec;
-  const r1 = makeSvf(), r2 = makeSvf(), r3 = makeSvf(), hp = makeSvf();
-  let tickEnv = 0;
-  for (let i = 0; i < out.length; i++) {
-    const t = i / SR;
-    const ph = 2 * Math.PI * fr * t;
-    const lift = (0.5 + 0.5 * Math.cos(ph)) ** 3; // contact pressure peaks once per turn
-    const wob = 0.5 + 0.5 * Math.cos(2 * ph + 0.7); // the neck scuffs twice per turn
-    const n = rnd() * 2 - 1;
-    const rumble = r1(n, rumbleHz, 1.2).bp * (0.55 + 0.45 * lift);
-    const grind = r2(r3(n, grindHz, 2.5).bp, grindHz * 1.6, 1.5).bp * (0.25 + 0.75 * lift * wob);
-    if (rnd() < 35 / SR) tickEnv = 0.6 + 0.4 * rnd();
-    tickEnv *= Math.exp(-1 / (0.0015 * SR));
-    const grit = hp(n, 3500, 0.8).hp * tickEnv;
-    out[i] = rumble * 1.0 + grind * 0.55 + grit * 0.35;
-  }
-  return out;
-}
-
-const VOICES = { swoosh, notes, horn, shimmer, errorThud, sablay, tick, coinBlip, bottleSpin };
+const VOICES = { swoosh, notes, horn, shimmer, errorThud, sablay, tick, coinBlip };
 const PARTIAL_SETS = { MARIMBA, GLOCK, SOFT_BELL };
 
 /** Render a synth recipe: { voice, ...params }; `partials` may name a preset. */

@@ -174,3 +174,29 @@ export function loopRegion(
   const start = Math.min(leading, bufferDuration - exact);
   return { start, end: Math.min(bufferDuration, start + exact) };
 }
+
+/** How far a fitted take may be sped up or slowed down (pitch moves with it: ±~2.5 semitones). */
+export const FIT_RATE_MIN = 0.85;
+export const FIT_RATE_MAX = 1.18;
+
+/**
+ * Picks the take whose length best fits `target` seconds, and the playback rate that makes it last
+ * exactly that long (clamped to FIT_RATE_MIN…MAX). Takes within ~5% of the best fit count as
+ * equally good: one of those is drawn at random, avoiding `last` when there's a choice.
+ */
+export function fitTake(
+  lengths: readonly number[],
+  target: number,
+  last: number | undefined,
+  rand: () => number,
+): { index: number; rate: number } {
+  if (!lengths.length || !(target > 0)) return { index: 0, rate: 1 };
+  const miss = lengths.map((len) => (len > 0 ? Math.abs(Math.log(len / target)) : Infinity));
+  const best = Math.min(...miss);
+  let near = miss.flatMap((m, i) => (m <= best + 0.05 ? [i] : []));
+  if (near.length > 1 && last !== undefined) near = near.filter((i) => i !== last);
+  const index = near[Math.min(near.length - 1, Math.floor(clamp01(rand()) * near.length))] ?? 0;
+  const len = lengths[index] ?? target;
+  const rate = Math.min(FIT_RATE_MAX, Math.max(FIT_RATE_MIN, len / target));
+  return { index, rate };
+}

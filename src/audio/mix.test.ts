@@ -1,6 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import {
   dbToGain,
+  fitTake,
+  FIT_RATE_MAX,
+  FIT_RATE_MIN,
   humanize,
   leadingSilence,
   loopRegion,
@@ -177,5 +180,35 @@ describe('loopRegion', () => {
   it('falls back to the whole buffer without a usable length', () => {
     expect(loopRegion(2, 0.01, null)).toEqual({ start: 0, end: 2 });
     expect(loopRegion(2, 0.01, 3)).toEqual({ start: 0, end: 2 });
+  });
+});
+
+describe('fitTake', () => {
+  const takes = [5.08, 3.21, 4.18, 2.67];
+
+  it('picks the take closest in length and times it to the target', () => {
+    const r = fitTake(takes, 4.4, undefined, () => 0);
+    expect(r.index).toBe(2);
+    expect(r.rate).toBeCloseTo(4.18 / 4.4, 6);
+    expect(fitTake(takes, 2.85, undefined, () => 0).index).toBe(3);
+  });
+
+  it('clamps the rate so pitch never moves too far', () => {
+    expect(fitTake(takes, 20, undefined, () => 0).rate).toBe(FIT_RATE_MIN);
+    expect(fitTake(takes, 1, undefined, () => 0).rate).toBe(FIT_RATE_MAX);
+  });
+
+  it('draws among near-equal fits, avoiding the last one', () => {
+    const twins = [3, 3.05, 6];
+    expect(fitTake(twins, 3.02, 0, () => 0).index).toBe(1);
+    expect(fitTake(twins, 3.02, 1, () => 0).index).toBe(0);
+  });
+
+  it('covers every spin length the game plans (2.85–5.35 s with the tail) within the clamp', () => {
+    for (let t = 2.85; t <= 5.35; t += 0.05) {
+      const { index, rate } = fitTake(takes, t, undefined, () => 0.5);
+      const len = takes[index] ?? 0;
+      expect(Math.abs(len / rate - t)).toBeLessThan(0.01);
+    }
   });
 });

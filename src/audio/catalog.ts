@@ -106,9 +106,8 @@ export const SOUNDS = {
   // ── Bottle & wheel ──────────────────────────────────────────────────────────────────
   'bottle.spin': {
     bus: 'sfx',
-    desc: 'Glass bottle spinning on wood (loop; pitch follows speed)',
-    variants: 1,
-    loop: true,
+    desc: 'A whole real spin of a beer bottle on wood, flick to stop (takes of different lengths)',
+    variants: 4,
   },
   'bottle.stop': {
     bus: 'sfx',

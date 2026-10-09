@@ -77,7 +77,7 @@ Attribution lines to show in the app credits:
 | Toasting on Glasses | `drink.social` | https://freesound.org/people/elricadavis/sounds/764616/ | CC0 1.0 | elricadavis |
 | money5.wav | `coin.bounce` | https://freesound.org/people/florian_reinke/sounds/63524/ | CC0 1.0 | florian_reinke |
 | flipping a small coin | `coin.bounce` | https://freesound.org/people/florianreichelt/sounds/447462/ | CC0 1.0 | florianreichelt |
-| quick empty wine bottle spin - 1 | `bottle.spin`, `bottle.stop` | https://freesound.org/people/FOSSarts/sounds/762366/ | CC0 1.0 | FOSSarts |
+| quick empty wine bottle spin - 1 | `bottle.stop` | https://freesound.org/people/FOSSarts/sounds/762366/ | CC0 1.0 | FOSSarts |
 | Cachos y dados.mp3 | `cup.lift`, `dice.throw` | https://freesound.org/people/Frankail/sounds/151165/ | CC0 1.0 | Frankail |
 | Empty Beer Bottles Clinking, Clanking.wav | `ambience.bar`, `drink.social` | https://freesound.org/people/Fugeni/sounds/416288/ | CC0 1.0 | Fugeni |
 | drinking cup slide | `cup.remove`, `cup.rerack` | https://freesound.org/people/getwecked/sounds/765084/ | CC0 1.0 | getwecked |
@@ -106,6 +106,7 @@ Attribution lines to show in the app credits:
 | Light Switch Click On and Off | `ui.toggleOff`, `ui.toggleOn` | https://freesound.org/people/SomeoneCool15/sounds/423512/ | CC0 1.0 | SomeoneCool15 |
 | shot glass slam.aif | `drink.finish` | https://freesound.org/people/soundboy2000/sounds/205880/ | CC0 1.0 | soundboy2000 |
 | flipCard.wav | `card.flip` | https://freesound.org/people/Splashdust/sounds/84322/ | CC0 1.0 | Splashdust |
+| Beer Bottle, Spin, Hardwood Floor.wav | `bottle.spin` | https://freesound.org/people/SpliceSound/sounds/150438/ | CC0 1.0 | SpliceSound |
 | Glass cup pick up put down on wood table.wav | `drink.finish` | https://freesound.org/people/SpliceSound/sounds/218333/ | CC0 1.0 | SpliceSound |
 | soda bottle open | `ui.gameStart` | https://freesound.org/people/supersnd/sounds/350618/ | CC0 1.0 | supersnd |
 | Drop Coin into Glass | `coin.ding` | https://freesound.org/people/thedapperdan/sounds/199922/ | CC0 1.0 | thedapperdan |
@@ -115,4 +116,4 @@ Attribution lines to show in the app credits:
 Freesound files are the public HQ preview MP3s of the CC0 originals; Kenney sounds come from the pack zips linked on each pack page.
 
 Original work (no third-party licence; CC0, made for this project): sounds synthesized offline by
-`assets-src/audio/synth.mjs`. Fully synthesized: `ui.back`, `ui.sheetOpen`, `ui.sheetClose`, `ui.error`, `ui.success`, `ui.notice`, `ui.reveal`, `drink.give`, `game.correct`, `game.wrong`, `game.tie`, `game.streak`. Partly synthesized: `bottle.spin` (a synthesized spinning-bottle grind convolved with a recorded bottle ring, which is credited above).
+`assets-src/audio/synth.mjs`. Fully synthesized: `ui.back`, `ui.sheetOpen`, `ui.sheetClose`, `ui.error`, `ui.success`, `ui.notice`, `ui.reveal`, `drink.give`, `game.correct`, `game.wrong`, `game.tie`, `game.streak`.

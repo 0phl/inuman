@@ -14,6 +14,7 @@ import { SOUNDS, type Bus, type SoundId } from './catalog';
 import { audioUrl, loadManifest } from './manifest';
 import {
   dbToGain,
+  fitTake,
   humanize,
   leadingSilence,
   loopRegion,
@@ -39,6 +40,11 @@ export interface PlayOpts {
   loop?: boolean;
   /** Stop (with a short fade) this many seconds after it starts: e.g. a shake loop. */
   duration?: number;
+  /**
+   * Seconds this one-shot should last: plays the take whose length fits best, sped up or slowed
+   * down a little to land exactly (e.g. a bottle spin that stops when the bottle does).
+   */
+  fit?: number;
 }
 
 /** A playing (or scheduled) sound. Every method is safe to call at any time, even after it ended. */
@@ -536,6 +542,8 @@ export function play(id: SoundId, opts: PlayOpts = {}): SoundHandle {
     logPlayed(id);
     const loop = opts.loop ?? ('loop' in spec && spec.loop === true);
     const h = opts.exact ? { rate: 1, gainDb: 0 } : humanize(Math.random);
+    // A fitted take's rate is its timing: only its level is humanised.
+    if (opts.fit !== undefined) h.rate = 1;
     const voice = new Voice(
       id,
       spec.bus,
@@ -548,7 +556,13 @@ export function play(id: SoundId, opts: PlayOpts = {}): SoundHandle {
     if (opts.duration !== undefined) voice.hold = Math.max(0.02, opts.duration);
     const start = (clips: Clip[]) => {
       if (!clips.length) return voice.cancel();
-      const k = pickVariant(clips.length, lastVariant.get(id), Math.random);
+      let k: number;
+      if (opts.fit !== undefined) {
+        const lengths = clips.map((cl) => cl.buffer.duration - cl.offset);
+        const fit = fitTake(lengths, opts.fit, lastVariant.get(id), Math.random);
+        k = fit.index;
+        voice.setRate(fit.rate * (opts.rate ?? 1));
+      } else k = pickVariant(clips.length, lastVariant.get(id), Math.random);
       lastVariant.set(id, k);
       voice.begin(c, g, clips[k] as Clip);
     };
